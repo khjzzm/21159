@@ -1,10 +1,21 @@
+/* =========================
+   Reset & Base Styles
+========================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f8f9fa;
+    line-height: 1.6;
 }
 
+/* =========================
+   Layout
+========================= */
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -12,91 +23,92 @@ body {
 }
 
 .container {
-    margin-top: 65px;
+    margin-top: 90px;
     padding: 20px 0;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-h1 {
+/* =========================
+   Typography
+========================= */
+.container h1 {
     text-align: center;
+    margin: 0 0 24px 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
     color: #333;
-    margin-bottom: 30px;
-    padding: 0 20px;
 }
 
-.movement-calculator {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-bottom: 30px;
-    padding: 1rem;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    position: relative;
-}
-
-.row-result {
-    display: none;
-}
-
-.movement-column {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.movement-group {
-    background-color: #fafafa;
-    padding: 20px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #eee;
-    border-radius: 8px;
-}
-
+.container h2,
 .movement-group h2,
 .exercise-card h2 {
-    font-size: 1.2rem;
-    margin: 0 0 0.8rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 16px 0;
     color: #333;
-    font-weight: 500;
+    letter-spacing: -0.3px;
+    line-height: 1.4;
 }
 
-select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: white;
-    cursor: pointer;
+/* =========================
+   Header & Navigation
+========================= */
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    padding: 12px 0;
 }
 
-select:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+.nav-tabs {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 6px;
+    gap: 6px;
 }
 
-optgroup {
-    font-weight: bold;
+.nav-item {
+    flex: 1;
+    padding: 12px 24px;
+    text-align: center;
     color: #666;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
-option {
-    padding: 5px;
-    color: #333;
+.nav-item.active {
+    background: #0066ff;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,102,255,0.2);
 }
 
+.nav-item:hover:not(.active) {
+    background: rgba(0,102,255,0.1);
+    color: #0066ff;
+}
+
+/* =========================
+   Form Elements
+========================= */
+select, 
 input {
     width: 100%;
     padding: 10px;
@@ -104,9 +116,11 @@ input {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 10px;
+    background-color: white;
     box-sizing: border-box;
 }
 
+select:focus, 
 input:focus {
     outline: none;
     border-color: #007bff;
@@ -114,7 +128,7 @@ input:focus {
 }
 
 input[type="number"] {
-    -moz-appearance: textfield; /* Firefox */
+    -moz-appearance: textfield;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -123,339 +137,106 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/* input의 x 버튼 제거 */
-input[type="text"]::-webkit-search-cancel-button,
-input[type="text"]::-webkit-clear-button,
-input[type="number"]::-webkit-search-cancel-button,
-input[type="number"]::-webkit-clear-button {
-    -webkit-appearance: none;
-    display: none;
-}
-
-.movement-result {
-    margin-top: auto;
-    background-color: white;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #eee;
-}
-
-.movement-result div {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.movement-result div:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.movement-result p {
-    margin: 3px 0;
-}
-
-.movement-result:empty {
-    display: none;
-}
-
-.mt-10 {
-    margin-top: 10px;
-}
-
-.description {
-    margin-top: 0;
-    padding: 0 20px;
-}
-
-.description blockquote {
-    margin: 0;
-    padding: 15px;
-    border-left: 3px solid #007bff;
-    background-color: #f8f9fa;
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-
-.movement-group select,
-.movement-group input {
-    margin-bottom: 10px;
-}
-
-.movement-group:last-child {
-    margin-bottom: 0;
-}
-
-.movement-group-result {
-    grid-column: 1 / -1;
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-}
-
-.movement-group-result:last-child {
-    margin-bottom: 0;
-}
-
-.result-title {
-    grid-column: 1 / -1;
-    margin: 0 0 15px 0;
-    color: #007bff;
-    font-size: 18px;
-}
-
-/* 반응형 처리 수정 */
-@media (min-width: 1200px) {
-    /* PC */
-    .container {
-        max-width: 1200px;
-        padding: 40px;
-    }
-    
-    .movement-calculator {
-        padding: 0 40px;
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    /* 태블릿 */
-    .container {
-        max-width: 900px;
-        padding: 30px;
-        margin: 20px;
-    }
-    
-    .movement-calculator {
-        padding: 0 30px;
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 767px) {
-    /* 모바일 */
-    .container {
-        max-width: 100%;
-        margin: 0;
-        border-radius: 0;
-        padding-top: 20px;
-        padding-bottom: 80px;
-    }
-    
-    .movement-calculator {
-        padding: 0 15px;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 15px;
-    }
-
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-
-    .movement-group {
-        padding: 15px;
-    }
-
-    .movement-group h2,
-    .exercise-card h2 {
-        margin: 0 0 0.8rem 0;
-        font-size: 1.1rem;
-    }
-
-    .row {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .unit-selector {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .control-buttons {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: 0;
-        padding: 15px;
-        background-color: white;
-        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        z-index: 1000;
-        justify-content: center;
-    }
-
-    .storage-buttons {
-        display: flex;
-        gap: 10px;
-        width: 100%;
-        max-width: 300px; /* 버튼 최대 너비 제한 */
-    }
-
-    .save-btn, .load-btn {
-        flex: 1;
-        padding: 12px;
-        font-size: 14px;
-        white-space: nowrap;
-    }
-
-    .share-btn {
-        padding: 6px 12px;
-        font-size: 13px;
-    }
-
-    .description {
-        margin-top: 0;
-    }
-
-}
-
-@media (max-width: 480px) {
-    /* 작은 모바일 */
-    .movement-calculator {
-        padding: 0.8rem;
-        grid-template-columns: 1fr;
-    }
-
-    .row {
-        grid-template-columns: 1fr;
-    }
-
-    .container {
-        padding-bottom: 70px;
-    }
-
-    .control-buttons {
-        padding: 10px;
-    }
-
-    .save-btn, .load-btn {
-        padding: 10px;
-        font-size: 13px;
-    }
-}
-
-.unit-selector {
-    margin-top: 20px;  /* 상단 여백만 추가 */
-}
-
-.unit-buttons {
-    display: inline-flex;
-    background: #f0f0f0;
-    padding: 3px;
-    border-radius: 6px;
-}
-
-.unit-btn {
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    background: none;
-    color: #666;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.unit-btn.active {
-    background: white;
-    color: #007bff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.weight-input-group {
+.input-with-unit {
     position: relative;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    display: inline-block;
+    width: 100%;
 }
 
-.weight-input {
-    width: 100%;
-    padding: 10px;
-    padding-right: 50px; /* x 버튼과 단위 표시를 위한 여백 증가 */
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.input-with-unit input {
+    padding-right: 40px; /* 단위 표시 공간 확보 */
+    margin-bottom: 0;
 }
 
 .unit-display {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #666;
-    font-size: 14px;
-    pointer-events: none;
-}
-
-.converted-weight {
-    font-size: 13px;
-    color: #666;
-    margin-top: 5px;
-    text-align: right;
-    position: absolute;
-    right: 0;
-    bottom: -20px;
-}
-
-.control-buttons {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-}
-
-.storage-buttons {
-    display: inline-flex;
-    background: #f8f9fa;
-    padding: 4px;
-    border-radius: 8px;
-    gap: 4px;
-}
-
-.unit-buttons {
-    display: inline-flex;
-    background: #f8f9fa;
-    padding: 4px;
-    border-radius: 8px;
-    gap: 4px;
-}
-
-/* 모든 버튼의 기본 스타일 */
-.storage-buttons button,
-.unit-buttons button {
-    padding: 10px 20px;
     font-size: 14px;
     font-weight: 500;
+    pointer-events: none; /* 클릭 방지 */
+    z-index: 1;
+}
+
+/* exercise-input 내부의 input-with-unit */
+.exercise-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    align-items: stretch; /* 높이를 동일하게 맞춤 */
+}
+
+.exercise-input select {
+    flex: 1;
+    height: 42px; /* 고정 높이 설정 */
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.exercise-input .input-with-unit {
+    flex: 1;
+    width: 100%;
+    height: 42px; /* select와 동일한 높이 */
+}
+
+.exercise-input .input-with-unit input {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    padding-right: 35px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.exercise-input .unit-display {
+    right: 8px;
+    font-size: 0.85rem;
+}
+
+/* =========================
+   Buttons
+========================= */
+.save-btn, 
+.load-btn, 
+.share-btn {
+    color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: 500;
+    padding: 10px 20px;
+    font-size: 14px;
     transition: all 0.2s ease;
-    text-align: center;
 }
 
-/* 저장/열기 버튼 */
-.save-btn, .load-btn {
+.save-btn, 
+.load-btn {
     background: #0066ff;
-    color: white;
 }
 
-/* 공유 버튼 */
 .share-btn {
     background: #28a745;
-    color: white;
 }
 
-/* 단위 버튼 */
 .unit-btn {
     background: #f8f9fa;
     color: #666;
     border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .unit-btn.active {
@@ -464,7 +245,241 @@ input[type="number"]::-webkit-clear-button {
     border-color: #0066ff;
 }
 
-/* 토스트 관련 스타일 추가 */
+.calculate-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.calculate-btn:hover {
+    background: #0052cc;
+}
+
+/* =========================
+   Button Groups
+========================= */
+.unit-selector {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.storage-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.unit-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* =========================
+   Calculator Components
+========================= */
+.movement-calculator {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rm-calculator {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.exercise-card, 
+.movement-group {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.exercise-input select,
+.exercise-input .input-with-unit {
+    flex: 1;
+}
+
+.exercise-input .input-with-unit input {
+    width: 100%;
+    padding: 0.5rem;
+    padding-right: 35px; /* 단위 표시 공간 확보 */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.exercise-input .unit-display {
+    right: 8px;
+    font-size: 0.85rem;
+}
+
+/* =========================
+   Results Display
+========================= */
+.rm-results {
+    margin-top: 0.8rem;
+}
+
+.result-element {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.result-element:last-child {
+    border-bottom: none;
+}
+
+.movement-result {
+    margin-top: 1.2rem;
+}
+
+.movement-result-header,
+.movement-result-row {
+    display: grid;
+    grid-template-columns: 110px 100px 170px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7em 0.5em;
+    min-width: 0;
+}
+
+.movement-result-header {
+    font-weight: 600;
+    color: #222;
+    background: #f5f5f5;
+    border-bottom: 2px solid #e0e0e0;
+    font-size: 1.05em;
+    border-radius: 6px 6px 0 0;
+    text-align: left;
+    letter-spacing: -0.5px;
+}
+
+.movement-result-header span,
+.movement-result-row .result-name,
+.movement-result-row .result-percent,
+.movement-result-row .result-range {
+    display: block;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.movement-result-header span:nth-child(1),
+.movement-result-row .result-name {
+    text-align: left;
+    justify-self: start;
+}
+
+.movement-result-header span:nth-child(2),
+.movement-result-row .result-percent {
+    text-align: center;
+    justify-self: center;
+}
+
+.movement-result-header span:nth-child(3),
+.movement-result-row .result-range {
+    text-align: right;
+    justify-self: end;
+}
+
+.movement-result-row {
+    font-size: 1em;
+    background: transparent;
+    border-bottom: 1px solid #eee;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+
+.movement-result-row:last-child {
+    border-bottom: none;
+}
+
+.movement-result-row .result-name {
+    color: #222;
+}
+
+.movement-result-row .result-percent,
+.movement-result-row .result-range {
+    color: #222;
+}
+
+/* =========================
+   Coefficient Display
+========================= */
+.coefficient-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.coefficient-list li {
+    margin: 0.8rem 0;
+    line-height: 1.6;
+}
+
+.coefficient-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.coefficient-name {
+    font-weight: 500;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+.coefficient-values {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.coefficient-arrow {
+    color: #666;
+}
+
+/* =========================
+   Toast Notifications
+========================= */
 #toast-container {
     position: fixed;
     bottom: 90px;
@@ -489,13 +504,68 @@ input[type="number"]::-webkit-clear-button {
     opacity: 1;
 }
 
-@media (max-width: 767px) {
-    #toast-container {
-        bottom: 100px; /* 모바일에서 더 위로 */
-        width: 90%;
-    }
+/* =========================
+   Modal
+========================= */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1002;
 }
 
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 280px;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+#copy-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+#print-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.modal-btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   Info Text & Description
+========================= */
 .info-text {
     padding: 20px;
     line-height: 1.6;
@@ -522,387 +592,123 @@ input[type="number"]::-webkit-clear-button {
     margin: 1.5rem 0 1rem;
 }
 
-.info-text p {
-    margin: 1rem 0;
+.info-text p, 
+.info-text li {
     color: #333;
     font-size: 1rem;
     line-height: 1.6;
 }
 
-.info-text ul {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
+/* =========================
+   Responsive Design
+========================= */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        padding: 40px;
+    }
+    .movement-calculator {
+        padding: 0 40px;
+    }
+    .unit-selector {
+        padding: 0 40px;
+    }
 }
 
-.info-text ul ul {
-    margin: 0.5rem 0;
+@media (min-width: 769px) {
+    .rm-calculator {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.info-text li {
-    margin: 0.5rem 0;
-    color: #333;
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        max-width: 900px;
+        padding: 30px;
+        margin: 20px auto;
+        margin-top: 85px;
+    }
+    .movement-calculator {
+        padding: 0 30px;
+    }
+    .unit-selector {
+        max-width: 900px;
+        padding: 0 30px;
+    }
 }
 
-.info-text li li {
-    margin: 0.3rem 0;
-    color: #666;
+@media (min-width: 481px) and (max-width: 768px) {
+    .rm-calculator {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* 모바일 환경에서도 가독성 유지 */
 @media (max-width: 768px) {
+    .movement-calculator {
+        grid-template-columns: 1fr;
+        padding: 0.8rem;
+    }
+    .rm-calculator {
+        grid-template-columns: 1fr;
+    }
+    .unit-selector {
+        padding: 0 0.8rem;
+    }
+    .container h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .container h2,
+    .movement-group h2,
+    .exercise-card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+    }
     .info-text {
         padding: 15px;
     }
-
     .info-text h2 {
         font-size: 1.3rem;
     }
-
     .info-text h3 {
         font-size: 1.1rem;
     }
-
-    .info-text p {
-        font-size: 0.95rem;
-    }
-
+    .info-text p, 
     .info-text li {
         font-size: 0.95rem;
     }
 }
 
-/* 작은 모바일 화면에서도 가독성 유지 */
-@media (max-width: 480px) {
-    .info-text {
-        padding: 12px;
-    }
-
-    .info-text h2 {
-        font-size: 1.2rem;
-    }
-
-    .info-text h3 {
-        font-size: 1rem;
-    }
-
-    .info-text p {
-        font-size: 0.9rem;
-    }
-
-    .info-text li {
-        font-size: 0.9rem;
-    }
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1002;
-}
-
-.modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    min-width: 280px;  /* 최소 너비 설정 */
-}
-
-.share-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.modal-btn {
-    flex: 1;
-    padding: 12px 16px;  /* 패딩 조정 */
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;  /* 텍스트 줄바꿈 방지 */
-    font-size: 14px;  /* 글자 크기 조정 */
-}
-
-#copy-btn {
-    background-color: #007bff;
-    color: white;
-}
-
-#print-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-.modal-btn:hover {
-    opacity: 0.9;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* 모바일 대응 */
 @media (max-width: 767px) {
-    .modal-content {
-        width: 90%;
-        max-width: 320px;
-    }
-    
-    .modal-btn {
-        padding: 10px 14px;  /* 모바일에서 패딩 줄임 */
-        font-size: 13px;  /* 모바일에서 글자 크기 줄임 */
-    }
-}
-
-.header-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: white;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    padding: 12px 0;
-}
-
-.header-container .nav-tabs {
-    display: flex;
-    padding: 0 1rem;
-}
-
-.nav-tabs {
-    display: flex;
-    max-width: 600px;  /* 최대 너비 증가 */
-    margin: 0 auto;
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 6px;  /* 패딩 증가 */
-    gap: 6px;  /* 간격 증가 */
-}
-
-.nav-item {
-    flex: 1;
-    padding: 12px 24px;  /* 패딩 증가 */
-    text-align: center;
-    color: #666;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 16px;  /* 글자 크기 증가 */
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.nav-item.active {
-    background: #0066ff;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0,102,255,0.2);
-}
-
-.nav-item:hover:not(.active) {
-    background: rgba(0,102,255,0.1);
-    color: #0066ff;
-}
-
-/* 컨테이너 상단 여백 조정 */
-.container {
-    margin-top: 65px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    max-width: 1200px;
-}
-
-/* 모바일 환경 헤더 스타일 (768px 이하) */
-@media (max-width: 768px) {
     .wrapper {
         padding: 0 15px;
     }
-
     .container {
-        margin-top: 60px;
+        margin-top: 75px;
         padding: 15px 0;
     }
-
     .header-container {
         padding: 10px 0;
     }
-
     .nav-tabs {
-        max-width: calc(100% - 40px);  /* 양쪽 여백 확보 */
-        margin: 0 20px;  /* 좌우 여백 추가 */
+        max-width: calc(100% - 40px);
+        margin: 0 20px;
         padding: 4px;
     }
-    
-    .header-container .nav-tabs {
-        padding: 0;
-    }
-
     .nav-item {
         padding: 10px 16px;
         font-size: 15px;
     }
-}
-
-/* 작은 모바일 화면 (480px 이하) */
-@media (max-width: 480px) {
-    .wrapper {
-        padding: 0 10px;
-    }
-
-    .container {
-        margin-top: 55px;
-        padding: 10px 0;
-    }
-
-    .header-container {
-        padding: 8px 0;
-    }
-
-    .nav-tabs {
-        max-width: calc(100% - 20px);
-        margin: 0 10px;
-        padding: 3px;
-    }
-
-    .nav-item {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-}
-
-/* 1RM 계산기 스타일 */
-.rm-calculator {
-    display: grid;
-    gap: 1rem;
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* PC 환경에서 3열 그리드 */
-@media (min-width: 769px) {
-    .rm-calculator {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 1.5rem;
-    }
-}
-
-/* 태블릿 환경에서 2열 그리드 */
-@media (min-width: 481px) and (max-width: 768px) {
-    .rm-calculator {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 1rem;
-    }
-}
-
-/* 모바일 환경에서 1열 그리드 */
-@media (max-width: 480px) {
-    .rm-calculator {
-        grid-template-columns: 1fr;
-        padding: 0.8rem;
-    }
-}
-
-/* exercise-card 스타일 수정 */
-.exercise-card {
-    background: #fafafa;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: none;
-}
-
-.exercise-input {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.8rem;
-}
-
-.exercise-input select,
-.exercise-input input {
-    flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
-}
-
-.calculate-btn {
-    width: 100%;
-    padding: 0.6rem;
-    background: #0066ff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.calculate-btn:hover {
-    background: #0052cc;
-}
-
-.rm-results {
-    margin-top: 0.8rem;
-}
-
-.result-element {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.4rem;
-    border-bottom: 1px solid #eee;
-    font-size: 0.9rem;
-}
-
-.result-element:last-child {
-    border-bottom: none;
-}
-
-/* 모바일 반응형 유지 */
-@media (max-width: 768px) {
     .exercise-input {
         flex-direction: column;
     }
-    
-    .exercise-card {
+    .exercise-card, 
+    .movement-group {
         padding: 15px;
     }
-}
-
-/* PC 환경 스타일 (769px 이상) */
-@media (min-width: 769px) {
-    .control-buttons {
-        margin-bottom: 30px;
-        position: static;
-        background: none;
-        box-shadow: none;
+    .unit-selector {
+        padding: 0 15px;
     }
-
-    .storage-buttons button,
-    .unit-buttons button {
-        min-width: 80px;
-    }
-
-    .unit-buttons .unit-btn {
-        min-width: 60px;
-    }
-}
-
-/* 모바일 환경 스타일 (768px 이하) */
-@media (max-width: 768px) {
     .control-buttons {
         position: fixed;
         bottom: 0;
@@ -915,213 +721,152 @@ input[type="number"]::-webkit-clear-button {
         z-index: 1000;
         justify-content: center;
     }
-
     .storage-buttons {
         width: 100%;
         max-width: 300px;
     }
-
-    .storage-buttons button,
+    .storage-buttons button, 
     .unit-buttons button {
         min-width: 70px;
         padding: 8px 16px;
         font-size: 13px;
     }
+    #toast-container {
+        bottom: 100px;
+        width: 90%;
+    }
+    .modal-content {
+        width: 90%;
+        max-width: 320px;
+    }
+    .modal-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
 }
 
-/* 작은 모바일 환경 (480px 이하) */
+@media (max-width: 600px) {
+    .control-buttons {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+    .storage-buttons,
+    .unit-buttons {
+        width: auto;
+        justify-content: flex-start;
+    }
+    .movement-result-header {
+        display: none;
+    }
+    .movement-result-row {
+        display: block;
+        padding: 1rem 0.5rem;
+        border-bottom: 1px solid #eee;
+        font-size: 0.95em;
+    }
+    .movement-result-row .result-name::before {
+        content: "종목: ";
+        font-weight: 600;
+        color: #666;
+    }
+    .movement-result-row .result-percent::before {
+        content: "상관관계: ";
+        font-weight: 600;
+        color: #666;
+    }
+    .movement-result-row .result-range::before {
+        content: "수행가능 범위: ";
+        font-weight: 600;
+        color: #666;
+    }
+    .movement-result-row .result-name,
+    .movement-result-row .result-percent,
+    .movement-result-row .result-range {
+        display: block;
+        margin-bottom: 0.5rem;
+        text-align: left !important;
+        justify-self: start !important;
+    }
+    .movement-result-row .result-range {
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 480px) {
+    .wrapper {
+        padding: 0 10px;
+    }
+    .container {
+        margin-top: 70px;
+        padding: 10px 0;
+    }
+    .header-container {
+        padding: 8px 0;
+    }
+    .nav-tabs {
+        max-width: calc(100% - 20px);
+        margin: 0 10px;
+        padding: 3px;
+    }
+    .nav-item {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
     .control-buttons {
         padding: 10px;
     }
-}
-
-/* 운동 일지 설명 텍스트 스타일 */
-.description .info-text {
-    padding: 20px;
-    line-height: 1.6;
-}
-
-.description .info-text p {
-    margin: 12px 0;
-    color: #333;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-/* 모바일 환경에서도 가독성 유지 */
-@media (max-width: 768px) {
-    .description .info-text {
-        padding: 15px;
-    }
-
-    .description .info-text p {
-        font-size: 14px;
-        margin: 10px 0;
-    }
-}
-
-/* 작은 모바일 화면에서도 가독성 유지 */
-@media (max-width: 480px) {
-    .description .info-text p {
-        font-size: 13px;
-        margin: 8px 0;
-    }
-}
-
-/* 단위 토글 스위치 스타일 */
-.unit-toggle {
-    position: relative;
-    display: inline-block;
-}
-
-.toggle-input {
-    display: none;
-}
-
-.toggle-label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100px;
-    height: 34px;
-    background: #f0f0f0;
-    border-radius: 17px;
-    position: relative;
-    cursor: pointer;
-    padding: 0 5px;
-    transition: all 0.3s ease;
-}
-
-.toggle-label:before {
-    content: '';
-    position: absolute;
-    width: 46px;
-    height: 26px;
-    background: white;
-    border-radius: 13px;
-    left: 4px;
-    top: 4px;
-    transition: 0.3s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.toggle-kg, .toggle-lb {
-    color: #666;
-    font-size: 14px;
-    font-weight: 500;
-    z-index: 1;
-    padding: 0 8px;
-}
-
-.toggle-input:checked + .toggle-label {
-    background: #f0f0f0;
-}
-
-.toggle-input:checked + .toggle-label:before {
-    transform: translateX(46px);
-}
-
-.toggle-input:checked + .toggle-label .toggle-kg {
-    color: #666;
-}
-
-.toggle-input:checked + .toggle-label .toggle-lb {
-    color: #007bff;
-}
-
-.toggle-input:not(:checked) + .toggle-label .toggle-kg {
-    color: #007bff;
-}
-
-.toggle-input:not(:checked) + .toggle-label .toggle-lb {
-    color: #666;
-}
-
-/* 모바일 대응 */
-@media (max-width: 768px) {
-    .toggle-label {
-        width: 90px;
-        height: 30px;
-    }
-
-    .toggle-label:before {
-        width: 41px;
-        height: 22px;
-    }
-
-    .toggle-input:checked + .toggle-label:before {
-        transform: translateX(41px);
-    }
-
-    .toggle-kg, .toggle-lb {
+    .save-btn, 
+    .load-btn {
+        padding: 10px;
         font-size: 13px;
     }
-}
-
-/* PC 환경에서 패딩 조정 */
-@media (min-width: 769px) {
-    .movement-calculator {
-        padding: 1.5rem;
-    }
-}
-
-/* 태블릿 환경에서 패딩 조정 */
-@media (min-width: 481px) and (max-width: 768px) {
-    .movement-calculator {
-        padding: 1rem;
-    }
-}
-
-/* 모바일 환경에서 패딩 조정 */
-@media (max-width: 480px) {
-    .movement-calculator {
-        padding: 0.8rem;
-    }
-}
-
-.coefficient-list {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0;
-}
-
-.coefficient-list li {
-    margin: 0.8rem 0;
-    line-height: 1.6;
-}
-
-.coefficient-item {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.coefficient-name {
-    font-weight: 500;
-    margin-right: 0.5rem;
-    white-space: nowrap;
-}
-
-.coefficient-values {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.coefficient-arrow {
-    color: #666;
-}
-
-/* 모바일 환경에서의 계수 표시 스타일 */
-@media (max-width: 480px) {
     .coefficient-item {
         font-size: 0.9rem;
     }
-    
     .coefficient-values {
         gap: 0.3rem;
     }
+    .container h1 {
+        font-size: 1.3rem;
+        margin-bottom: 16px;
+        font-weight: 500;
+    }
+    .container h2,
+    .movement-group h2,
+    .exercise-card h2 {
+        font-size: 1rem;
+        margin-bottom: 12px;
+        font-weight: 500;
+    }
+    .info-text {
+        padding: 12px;
+    }
+    .info-text h2 {
+        font-size: 1.2rem;
+    }
+    .info-text h3 {
+        font-size: 1rem;
+    }
+    .info-text p, 
+    .info-text li {
+        font-size: 0.9rem;
+    }
+    .unit-selector {
+        padding: 0 10px;
+    }
 }
+
+.weight-input-group {
+    margin-bottom: 1rem;
+}
+
+.converted-weight {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.3rem;
+    font-weight: 500;
+}
+

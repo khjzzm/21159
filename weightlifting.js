@@ -51,26 +51,19 @@ function updateUnitDisplay() {
     document.querySelectorAll('.unit-display').forEach(span => {
         span.textContent = currentUnit.toLowerCase();
     });
-    updateAllConvertedWeights();
-}
-
-function updateAllConvertedWeights() {
-    document.querySelectorAll('.weight-input').forEach(input => {
-        updateConvertedWeight(input);
-    });
 }
 
 function updateConvertedWeight(input) {
     const weight = parseFloat(input.value);
-    const activeUnit = document.querySelector('.unit-btn.active').dataset.unit;
-    const convertedDiv = input.parentElement.querySelector('.converted-weight');
+    const convertedDiv = input.closest('.weight-input-group').querySelector('.converted-weight');
 
     if (weight && weight > 0) {
-        const otherUnit = activeUnit === 'kg' ? 'lb' : 'kg';
-        const convertedWeight = activeUnit === 'kg' ? 
+        const otherUnit = currentUnit === 'kg' ? 'lb' : 'kg';
+        const convertedWeight = currentUnit === 'kg' ? 
             convertWeight(weight, 'kg', 'lb') : 
             convertWeight(weight, 'lb', 'kg');
-        convertedDiv.textContent = `= ${convertedWeight.toFixed(1)}${otherUnit}`;
+        
+        convertedDiv.textContent = `= ${convertedWeight}${otherUnit}`;
     } else {
         convertedDiv.textContent = '';
     }
@@ -99,7 +92,13 @@ function updateResults() {
             }
             
             if (bToAMovements[movementName]) {
-                let resultHtml = '';
+                let resultHtml = `
+                    <div class="movement-result-header">
+                        <span>종목</span>
+                        <span>상관관계</span>
+                        <span>수행 가능 범위</span>
+                    </div>
+                `;
                 bToAMovements[movementName].forEach(data => {
                     const { minWeight, maxWeight } = calculateWeight(data['퍼센트'], calculatedWeight);
                     const displayMinWeight = currentUnit === 'lb' ? 
@@ -110,10 +109,10 @@ function updateResults() {
                         maxWeight;
                     
                     resultHtml += `
-                        <div>
-                            <p><strong>${data['A동작']}</strong></p>
-                            <p>상관관계: ${data['퍼센트']}</p>
-                            <p>수행 가능 범위: ${displayMinWeight}${currentUnit} ~ ${displayMaxWeight}${currentUnit}</p>
+                        <div class="movement-result-row">
+                            <span class="result-name">${data['A동작']}</span>
+                            <span class="result-percent">${data['퍼센트']}</span>
+                            <span class="result-range">${displayMinWeight}${currentUnit} ~ ${displayMaxWeight}${currentUnit}</span>
                         </div>
                     `;
                 });
@@ -148,21 +147,29 @@ $(document).ready(function() {
     updatePlaceholders();
     updateUnitDisplay();
     
+    // 저장된 데이터 불러오기
+    loadData();
+    
     // 무게 입력 이벤트
     $('.weight-input').on('input', function() {
+        updateConvertedWeight(this);
         updateResults();
     });
 
-    // 단위 변환 버튼 클릭 이벤트 수정
+    // 단위 변환 버튼 클릭 이벤트
     $('.unit-btn').click(function() {
-        if ($(this).hasClass('active')) return;
-        
         const newUnit = $(this).data('unit');
         const oldUnit = currentUnit;
-        
+
         // 버튼 활성화 상태 변경
         $('.unit-btn').removeClass('active');
         $(this).addClass('active');
+        
+        // currentUnit 업데이트
+        currentUnit = newUnit;
+        
+        // 단위 표시 업데이트
+        updateUnitDisplay();
         
         // 입력 필드 단위 변환
         $('.weight-input').each(function() {
@@ -170,11 +177,10 @@ $(document).ready(function() {
             if (weight) {
                 $(this).val(convertWeight(weight, oldUnit, newUnit));
             }
+            // 변환된 무게 표시도 업데이트
+            updateConvertedWeight(this);
         });
         
-        currentUnit = newUnit;
-        updatePlaceholders();
-        updateUnitDisplay();
         updateResults();
     });
 
@@ -238,20 +244,15 @@ $(document).ready(function() {
         $('.movement-group').each(function() {
             const title = $(this).find('h2').text();
             const weight = $(this).find('.weight-input').val();
-            const results = $(this).find('.movement-result div');
+            const results = $(this).find('.movement-result-row');
             
             if (weight) {
                 shareText += `[${title}] ${weight}${currentUnit.toUpperCase()}\n`;
                 results.each(function() {
-                    const resultText = $(this).text();
-                    const lines = resultText.split('\n').map(line => line.trim()).filter(line => line);
-                    
-                    // 첫 번째 줄은 동작 이름
-                    shareText += `${lines[0]}\n`;
-                    // 나머지 줄들은 상관관계와 수행 가능 범위
-                    for (let i = 1; i < lines.length; i++) {
-                        shareText += `${lines[i]}\n`;
-                    }
+                    const name = $(this).find('.result-name').text();
+                    const percent = $(this).find('.result-percent').text();
+                    const range = $(this).find('.result-range').text();
+                    shareText += `${name} ${percent} ${range}\n`;
                 });
                 shareText += '\n';
             }
@@ -259,6 +260,8 @@ $(document).ready(function() {
         
         navigator.clipboard.writeText(shareText).then(() => {
             showToast('클립보드에 복사되었습니다.');
+        }).catch(() => {
+            showToast('복사에 실패했습니다.');
         });
     });
 
@@ -271,6 +274,40 @@ $(document).ready(function() {
         }
     }
 });
+
+function loadData() {
+    const savedData = localStorage.getItem('weightlifting-data');
+    if (savedData) {
+        try {
+            const data = JSON.parse(savedData);
+            
+            // exercises 데이터가 있는지 확인
+            if (data.exercises) {
+                const exerciseData = data.exercises;
+                
+                // 저장된 단위 적용
+                if (exerciseData.unit) {
+                    currentUnit = exerciseData.unit;
+                    $('.unit-btn').removeClass('active');
+                    $(`.unit-btn[data-unit="${exerciseData.unit}"]`).addClass('active');
+                    updateUnitDisplay();
+                }
+                
+                // 저장된 운동 데이터 적용
+                Object.keys(exerciseData).forEach(key => {
+                    if (key !== 'unit' && exerciseData[key]) {
+                        $(`#${key}`).val(exerciseData[key]);
+                    }
+                });
+                
+                // 결과 업데이트
+                updateResults();
+            }
+        } catch (e) {
+            console.error('데이터 로드 실패:', e);
+        }
+    }
+}
 
 // 토스트 메시지 표시
 function showToast(message) {

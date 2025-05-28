@@ -43,37 +43,25 @@ function calculateRM(exercise) {
     }
 }
 
+function updateUnitDisplay() {
+    document.querySelectorAll('.unit-display').forEach(span => {
+        span.textContent = currentUnit;
+    });
+}
+
 // 단위 버튼 클릭 이벤트
 $('.unit-btn').click(function() {
     if ($(this).hasClass('active')) return;
     
-    const newUnit = $(this).data('unit');
-    const oldUnit = currentUnit;
-    
-    // 버튼 활성화 상태 변경
     $('.unit-btn').removeClass('active');
     $(this).addClass('active');
+    currentUnit = $(this).data('unit');
     
-    // 입력 필드 단위 변환 및 placeholder 업데이트
-    $('.weight-input').each(function() {
-        const weight = $(this).val();
-        if (weight) {
-            $(this).val(convertWeight(weight, oldUnit, newUnit));
-        }
-        // placeholder 텍스트 업데이트
-        $(this).attr('placeholder', `무게(${newUnit.toLowerCase()})`);
-    });
+    // 단위 표시 업데이트
+    updateUnitDisplay();
     
-    // 결과 단위 변환
-    $('.re-we').each(function() {
-        const weight = parseFloat($(this).text());
-        if (weight) {
-            $(this).text(convertWeight(weight, oldUnit, newUnit) + 
-                (newUnit === 'kg' ? 'KG' : 'LB'));
-        }
-    });
-    
-    currentUnit = newUnit;
+    // 결과 다시 계산
+    calculateAll();
 });
 
 // 저장 기능
@@ -327,9 +315,76 @@ $(document).ready(function() {
         }
     });
 
+    // 저장된 데이터 불러오기
+    loadData();
+    
+    // 단위 버튼 클릭 이벤트
+    $('.unit-btn').click(function() {
+        if ($(this).hasClass('active')) return;
+        
+        $('.unit-btn').removeClass('active');
+        $(this).addClass('active');
+        currentUnit = $(this).data('unit');
+        
+        // 단위 표시 업데이트
+        updateUnitDisplay();
+        
+        // 결과 다시 계산
+        calculateAll();
+    });
+    
     // 계산하기 버튼 이벤트 핸들러
     $('.calculate-btn').click(function() {
         const exercise = $(this).data('exercise');
         calculateRM(exercise);
     });
-}); 
+});
+
+function loadData() {
+    const savedData = localStorage.getItem('weightlifting-data');
+    if (savedData) {
+        try {
+            const data = JSON.parse(savedData);
+            
+            // rmCalculator 데이터가 있는지 확인
+            if (data.rmCalculator) {
+                const rmData = data.rmCalculator;
+                
+                // 저장된 단위 적용
+                if (rmData.unit) {
+                    currentUnit = rmData.unit;
+                    $('.unit-btn').removeClass('active');
+                    $(`.unit-btn[data-unit="${rmData.unit}"]`).addClass('active');
+                    updateUnitDisplay();
+                }
+                
+                // 저장된 운동 데이터 적용
+                if (rmData.exercises) {
+                    Object.keys(rmData.exercises).forEach(exercise => {
+                        const exerciseData = rmData.exercises[exercise];
+                        if (exerciseData.reps) {
+                            $(`select[name="${exercise}-reps"]`).val(exerciseData.reps);
+                        }
+                        if (exerciseData.weight) {
+                            $(`input[name="${exercise}-weight"]`).val(exerciseData.weight);
+                        }
+                    });
+                }
+                
+                calculateAll();
+            }
+        } catch (e) {
+            console.error('데이터 로드 실패:', e);
+        }
+    }
+}
+
+function calculateAll() {
+    ['squat', 'benchpress', 'deadlift'].forEach(exercise => {
+        const reps = $(`select[name="${exercise}-reps"]`).val();
+        const weight = $(`input[name="${exercise}-weight"]`).val();
+        if (reps && weight) {
+            calculateRM(exercise);
+        }
+    });
+} 

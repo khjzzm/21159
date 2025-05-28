@@ -32,87 +32,104 @@
         </div>
         <div class="movement-calculator">
             <div class="row">
-                <!-- 첫 번째 행 -->
                 <div class="movement-group">
                     <h2>클린 앤 저크</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="clean-and-jerk" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-
+                        <div class="input-with-unit">
+                            <input type="number" id="clean-and-jerk" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="clean-and-jerk-result"></div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="movement-group">
                     <h2>스내치</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="snatch" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-
+                        <div class="input-with-unit">
+                            <input type="number" id="snatch" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="snatch-result"></div>
                 </div>
             </div>
-
             <div class="row">
-                <!-- 두 번째 행 -->
                 <div class="movement-group">
                     <h2>클린</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="clean" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-        
+                        <div class="input-with-unit">
+                            <input type="number" id="clean" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="clean-result"></div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="movement-group">
                     <h2>저크</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="jerk" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-
+                        <div class="input-with-unit">
+                            <input type="number" id="jerk" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="jerk-result"></div>
                 </div>
             </div>
-
             <div class="row">
-                <!-- 세 번째 행 -->
                 <div class="movement-group">
                     <h2>백 스쿼트</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="back-squat" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-
+                        <div class="input-with-unit">
+                            <input type="number" id="back-squat" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="back-squat-result"></div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="movement-group">
                     <h2>프론트 스쿼트</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="front-squat" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-
+                        <div class="input-with-unit">
+                            <input type="number" id="front-squat" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="front-squat-result"></div>
                 </div>
             </div>
-
             <div class="row">
-                <!-- 네 번째 행 -->
                 <div class="movement-group">
                     <h2>데드리프트</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="deadlift" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-   
+                        <div class="input-with-unit">
+                            <input type="number" id="deadlift" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="deadlift-result"></div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="movement-group">
                     <h2>푸시 프레스</h2>
                     <div class="weight-input-group">
-                        <input type="number" id="push-press" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
-
+                        <div class="input-with-unit">
+                            <input type="number" id="push-press" class="weight-input" min="0" step="0.5">
+                            <span class="unit-display">kg</span>
+                        </div>
                         <div class="converted-weight"></div>
                     </div>
                     <div class="movement-result" id="push-press-result"></div>
@@ -120,15 +137,6 @@
             </div>
         </div>
         <div id="toast-container"></div>
-        <div id="share-modal" class="modal">
-            <div class="modal-content">
-                <h3>공유 방식 선택</h3>
-                <div class="share-buttons">
-                    <button id="copy-btn" class="modal-btn">클립보드 복사</button>
-                    <button id="print-btn" class="modal-btn">프린트 출력</button>
-                </div>
-            </div>
-        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="script.js"></script>
