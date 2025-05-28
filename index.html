@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="웨이트리프팅 동작 간의 상관관계를 계산하고 1RM을 추정하는 계산기입니다.">
+    <title>웨이트리프팅 계산기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header-container">
+            <nav class="nav-tabs">
+                <a href="index.html" class="nav-item active">소개</a>
+                <a href="weightlifting.html" class="nav-item">역도</a>
+                <a href="1rm.html" class="nav-item">1RM</a>
+            </nav>
+        </div>
+        
+        <div class="container">
+            <h1>웨이트리프팅 계산기</h1>
+            <div class="description">
+                <div class="info-text">
+                    <p class="intro-text">웨이트리프팅 동작 간의 상관관계를 계산하고, NSCA 공식을 기반으로 1RM을 추정하는 계산기입니다. 트레이닝 프로그램 설계와 목표 설정에 도움이 되는 가이드라인을 제공합니다.</p>
+                    
+                    <h2>웨이트리프팅 동작 상관관계</h2>
+                    <p>웨이트리프팅 동작들은 서로 밀접한 관련이 있으며, 각 동작 간의 일반적인 수행 비율이 존재합니다. 이 비율은 선수들의 경험과 연구를 통해 도출된 것으로, 효과적인 트레이닝 프로그램 설계에 도움이 됩니다.</p>
+                    
+                    <h3>주요 동작 간 상관관계</h3>
+                    <ul>
+                        <li>백 스쿼트를 기준으로 한 상관관계:
+                            <ul>
+                                <li>스내치: 60~65%</li>
+                                <li>클린 앤 저크: 80~85%</li>
+                                <li>프론트 스쿼트: 85~93%</li>
+                            </ul>
+                        </li>
+                        <li>클린 앤 저크를 기준으로 한 상관관계:
+                            <ul>
+                                <li>프론트 스쿼트: 85~90%</li>
+                                <li>스내치: 80~85%</li>
+                            </ul>
+                        </li>
+                        <li>기타 동작 간 상관관계:
+                            <ul>
+                                <li>파워 클린 → 클린: 80~90%</li>
+                                <li>파워 스내치 → 스내치: 80~85%</li>
+                                <li>푸시 프레스 → 저크: 75~85%</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h2>NSCA 1RM 계산법</h2>
+                    <p>NSCA(National Strength and Conditioning Association)에서 제시하는 1RM 계산법은 실제 무게와 반복 횟수를 기반으로 1회 최대 중량(1RM)을 예측하는 방법입니다.</p>
+                    
+                    <h3>동작별 계수</h3>
+                    <p>각 동작마다 반복 횟수에 따른 고유한 계수가 적용됩니다:</p>
+                    <ul class="coefficient-list">
+                        <li>
+                            <div class="coefficient-item">
+                                <span class="coefficient-name">스쿼트</span>
+                                <div class="coefficient-values">
+                                    <span>1회(1.00)</span>
+                                    <span class="coefficient-arrow">→</span>
+                                    <span>5회(1.20)</span>
+                                    <span class="coefficient-arrow">→</span>
+                                    <span>10회(1.41)</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="coefficient-item">
+                                <span class="coefficient-name">벤치프레스</span>
+                                <div class="coefficient-values">
+                                    <span>1회(1.00)</span>
+                                    <span class="coefficient-arrow">→</span>
+                                    <span>5회(1.15)</span>
+                                    <span class="coefficient-arrow">→</span>
+                                    <span>10회(1.33)</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="coefficient-item">
+                                <span class="coefficient-name">데드리프트</span>
+                                <div class="coefficient-values">
+                                    <span>1회(1.00)</span>
+                                    <span class="coefficient-arrow">→</span>
+                                    <span>5회(1.16)</span>
+                                    <span class="coefficient-arrow">→</span>
+                                    <span>10회(1.24)</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <p>※ 이 계산기는 트레이닝 가이드라인으로 활용할 수 있으며, 개인의 신체 조건과 훈련 경험에 따라 실제 수치는 다를 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

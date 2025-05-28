@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="수행한 종목과 횟수, 무게를 바탕으로 1rm부터 10rm을 계산해주는 웹페이지 입니다."/>
+    <title>NSCA 1RM 계산기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header-container">
+        <nav class="nav-tabs">
+            <a href="index.html" class="nav-item">소개</a>
+            <a href="weightlifting.html" class="nav-item">역도</a>
+            <a href="1rm.html" class="nav-item active">1RM</a>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <h1>NSCA 1RM 계산기</h1>
+        <div class="unit-selector">
+            <div class="control-buttons">
+                <div class="storage-buttons">
+                    <button type="button" class="save-btn">저장</button>
+                    <button type="button" class="load-btn">열기</button>
+                    <button type="button" class="share-btn">공유</button>
+                </div>
+                <div class="unit-buttons">
+                    <button type="button" class="unit-btn active" data-unit="kg">KG</button>
+                    <button type="button" class="unit-btn" data-unit="lb">LB</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="rm-calculator">
+            <div class="exercise-card">
+                <h2>스쿼트</h2>
+                <div class="exercise-input">
+                    <select name="squat-reps" class="reps-select">
+                        <option value="">반복횟수</option>
+                        <option value="1">1회</option>
+                        <option value="2">2회</option>
+                        <option value="3">3회</option>
+                        <option value="4">4회</option>
+                        <option value="5">5회</option>
+                        <option value="6">6회</option>
+                        <option value="7">7회</option>
+                        <option value="8">8회</option>
+                        <option value="9">9회</option>
+                        <option value="10">10회</option>
+                    </select>
+                    <input type="number" name="squat-weight" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
+                </div>
+                <button class="calculate-btn" data-exercise="squat">계산하기</button>
+                <div id="squat-results" class="rm-results"></div>
+            </div>
+
+            <div class="exercise-card">
+                <h2>벤치프레스</h2>
+                <div class="exercise-input">
+                    <select name="benchpress-reps" class="reps-select">
+                        <option value="">반복횟수</option>
+                        <option value="1">1회</option>
+                        <option value="2">2회</option>
+                        <option value="3">3회</option>
+                        <option value="4">4회</option>
+                        <option value="5">5회</option>
+                        <option value="6">6회</option>
+                        <option value="7">7회</option>
+                        <option value="8">8회</option>
+                        <option value="9">9회</option>
+                        <option value="10">10회</option>
+                    </select>
+                    <input type="number" name="benchpress-weight" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
+                </div>
+                <button class="calculate-btn" data-exercise="benchpress">계산하기</button>
+                <div id="benchpress-results" class="rm-results"></div>
+            </div>
+
+            <div class="exercise-card">
+                <h2>데드리프트</h2>
+                <div class="exercise-input">
+                    <select name="deadlift-reps" class="reps-select">
+                        <option value="">반복횟수</option>
+                        <option value="1">1회</option>
+                        <option value="2">2회</option>
+                        <option value="3">3회</option>
+                        <option value="4">4회</option>
+                        <option value="5">5회</option>
+                        <option value="6">6회</option>
+                        <option value="7">7회</option>
+                        <option value="8">8회</option>
+                        <option value="9">9회</option>
+                        <option value="10">10회</option>
+                    </select>
+                    <input type="number" name="deadlift-weight" class="weight-input" placeholder="무게(kg)" min="0" step="0.5">
+                </div>
+                <button class="calculate-btn" data-exercise="deadlift">계산하기</button>
+                <div id="deadlift-results" class="rm-results"></div>
+            </div>
+        </div>
+
+        <div id="toast-container"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+    <script src="1rm.js"></script>
+</body>
+</html> 
