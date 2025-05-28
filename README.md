@@ -30,7 +30,7 @@
 
 1. 저장소 클론
 ```bash
-git clone https://github.com/yourusername/weightlifting-calculator.git
+git clone https://github.com/khjzzm/weightlifting.git
 ```
 
 2. 웹 서버 실행
@@ -58,6 +58,6 @@ MIT License
 
 ## 연락처
 
-프로젝트 관리자 - [@yourusername](https://github.com/yourusername)
+프로젝트 관리자 - [@khjzzm](https://github.com/khjzzm)
 
-프로젝트 링크: [https://github.com/yourusername/weightlifting-calculator](https://github.com/yourusername/weightlifting-calculator) 
+프로젝트 링크: [https://github.com/khjzzm/weightlifting](https://github.com/khjzzm/weightlifting) 
