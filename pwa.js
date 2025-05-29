@@ -4,12 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('✅ PWA: Service Worker 등록 성공', registration.scope);
-                    
+                .then(registration => {                    
                     // 업데이트 체크
                     registration.addEventListener('updatefound', () => {
-                        console.log('🔄 PWA: 새 버전 발견');
                         const newWorker = registration.installing;
                         newWorker.addEventListener('statechange', () => {
                             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
@@ -20,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 })
                 .catch(error => {
-                    console.log('❌ PWA: Service Worker 등록 실패', error);
+                    console.error('❌ PWA: Service Worker 등록 실패', error);
                 });
         });
     }
@@ -29,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let deferredPrompt;
     
     window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('📱 PWA: 설치 가능');
         e.preventDefault();
         deferredPrompt = e;
         showInstallPrompt();
@@ -37,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 앱이 설치되었을 때
     window.addEventListener('appinstalled', (evt) => {
-        console.log('🎉 PWA: 설치 완료');
         hideInstallPrompt();
         showToast('21-15-9 앱이 설치되었습니다! 🎉');
     });
@@ -84,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
         
-        console.log(`PWA 설치 결과: ${outcome}`);
         deferredPrompt = null;
         hideInstallPrompt();
     }
