@@ -44,12 +44,15 @@ function calculateRM(exercise) {
         return;
     }
     
-    $(`#${exercise}-results`).empty();
+    const resultDiv = $(`#${exercise}-results`);
+    resultDiv.empty();
     
     var list = calculate(exercise, reps, weights);
     for (let i = 1; i < 11; i++) {
-        $(`#${exercise}-results`).append(result_element(i, list[i]));
+        resultDiv.append(result_element(i, list[i]));
     }
+    
+    resultDiv.addClass('has-results');
 }
 
 /**

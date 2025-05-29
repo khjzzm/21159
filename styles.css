@@ -6,6 +6,7 @@
     --bg-primary: #ffffff;
     --bg-secondary: #f8f9fa;
     --bg-tertiary: #fafafa;
+    --bg-body: #f1f3f5;
     --text-primary: #333333;
     --text-secondary: #666666;
     --text-tertiary: #999999;
@@ -37,6 +38,19 @@
     --border-medium: rgba(0, 0, 0, 0.2);
     --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
     --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-base: 1rem;    /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.25rem;   /* 20px */
+    --font-size-2xl: 1.5rem;   /* 24px */
+    
+    /* Line Heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
 }
 
 /* Dark Mode */
@@ -45,6 +59,7 @@
         --bg-primary: #1a1a1a;
         --bg-secondary: #2a2a2a;
         --bg-tertiary: #333333;
+        --bg-body: #121212;
         --text-primary: #ffffff;
         --text-secondary: #cccccc;
         --text-tertiary: #999999;
@@ -70,6 +85,7 @@
     --bg-primary: #1a1a1a;
     --bg-secondary: #2a2a2a;
     --bg-tertiary: #333333;
+    --bg-body: #121212;
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
     --text-tertiary: #999999;
@@ -98,54 +114,345 @@
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
     margin: 0;
-    padding: 20px;
-    background-color: var(--bg-secondary);
+    padding: 0;
+    background-color: var(--bg-body);
     color: var(--text-primary);
-    line-height: 1.6;
+    min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* =========================
-   Layout
-========================= */
 .wrapper {
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 42px auto 0;
     padding: 0 20px;
+    background: var(--bg-primary);
+    min-height: calc(100vh - 42px);
+    box-shadow: var(--shadow-light);
 }
 
 .container {
-    margin-top: 80px;
-    padding: 20px;
-    background-color: var(--bg-primary);
-    border-radius: 8px;
-    box-shadow: var(--shadow-light);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* SEO를 위한 h1 스타일 */
+.container h1 {
+    font-size: var(--font-size-2xl);
+    text-align: center;
+    margin: 0;
+    padding: 24px 0;
+    font-weight: 600;
+}
+
+/* 메인 페이지의 h1 변형 */
+.container h1 .seo-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.container h1 .visible-text {
+    display: block;
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+}
+
+/* 불필요한 장식 요소 제거 */
+.container h1::before,
+.container h1::after {
+    display: none;
+}
+
+/* 반응형 크기 조정 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container h1 {
+        padding: 20px 0;
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .container h1 {
+        padding: 16px 0;
+        font-size: var(--font-size-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .container h1 {
+        padding: 14px 0;
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* 섹션 공통 스타일 */
+.converter-section,
+.conversion-table-section,
+.common-weights,
+.movement-calculator .movement-group,
+.exercise-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .converter-section,
+[data-theme="dark"] .conversion-table-section,
+[data-theme="dark"] .common-weights,
+[data-theme="dark"] .movement-calculator .movement-group,
+[data-theme="dark"] .exercise-card {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 반응형 조정 */
+@media (min-width: 1200px) {
+    .wrapper {
+        padding: 0 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .wrapper {
+        max-width: 900px;
+        padding: 0 16px;
+        margin-top: 38px;
+        min-height: calc(100vh - 38px);
+    }
+
+    .container {
+        padding: 16px 0;
+    }
+
+    .container h1 {
+        padding: 28px 0;
+        font-size: var(--font-size-lg);
+    }
+
+    .container h1::before {
+        width: 50px;
+        height: 3.5px;
+    }
+
+    .container h1::after {
+        width: 36px;
+        height: 2.5px;
+    }
+
+    .converter-section,
+    .conversion-table-section,
+    .common-weights,
+    .movement-calculator .movement-group,
+    .exercise-card {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 0 12px;
+        margin-top: 38px;
+        min-height: calc(100vh - 38px);
+    }
+
+    .container {
+        padding: 12px 0;
+    }
+
+    .container h1 {
+        padding: 24px 0;
+        font-size: var(--font-size-base);
+    }
+
+    .container h1::before {
+        width: 40px;
+        height: 3px;
+    }
+
+    .container h1::after {
+        width: 32px;
+        height: 2px;
+    }
+
+    .converter-section,
+    .conversion-table-section,
+    .common-weights,
+    .movement-calculator .movement-group,
+    .exercise-card {
+        margin-bottom: 8px;
+    }
+
+    .exercise-card:last-child,
+    .movement-group:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 0 10px;
+        margin-top: 36px;
+        min-height: calc(100vh - 36px);
+    }
+
+    .container {
+        padding: 8px 0;
+    }
+
+    .container h1 {
+        padding: 20px 0;
+        font-size: var(--font-size-sm);
+    }
+
+    .container h1::before {
+        width: 32px;
+        height: 2.5px;
+    }
+
+    .converter-section,
+    .conversion-table-section,
+    .common-weights,
+    .movement-calculator .movement-group,
+    .exercise-card {
+        margin-bottom: 6px;
+    }
+
+    .exercise-card:last-child,
+    .movement-group:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* 기존 border-radius 제거 */
+.container,
+.exercise-card,
+.movement-group {
+    border-radius: 0;
+}
+
+/* 기존 box-shadow 제거 */
+.container {
+    box-shadow: none;
 }
 
 /* =========================
    Typography
 ========================= */
-.container h1 {
-    text-align: center;
-    margin: 0 0 24px 0;
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    line-height: 1.3;
-    color: var(--text-primary);
-}
-
 .container h2,
 .movement-group h2,
 .exercise-card h2 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin: 0 0 16px 0;
+    font-size: var(--font-size-lg);
+    margin-bottom: 10px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+}
+
+/* Description Styles */
+
+.description .info-text {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
     color: var(--text-primary);
-    letter-spacing: -0.3px;
-    line-height: 1.4;
+}
+
+.description h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin: 24px 0 12px;
+}
+
+.description h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: var(--text-primary);
+}
+
+.description p {
+    margin: 0 0 16px;
+    font-size: var(--font-size-sm);
+}
+
+.description strong {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+/* 태블릿 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .description {
+        padding: 0 16px 16px;
+    }
+
+    .description h2 {
+        font-size: var(--font-size-base);
+        margin: 20px 0 10px;
+    }
+
+    .description h3 {
+        font-size: var(--font-size-sm);
+        margin: 16px 0 8px;
+    }
+
+    .description p {
+        margin: 0 0 14px;
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .description {
+        padding: 0 12px 12px;
+    }
+
+    .description h2 {
+        font-size: var(--font-size-base);
+        margin: 16px 0 8px;
+    }
+
+    .description h3 {
+        font-size: var(--font-size-sm);
+        margin: 14px 0 6px;
+    }
+
+    .description p {
+        margin: 0 0 12px;
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* 작은 모바일 */
+@media (max-width: 480px) {
+    .description {
+        padding: 0 10px 10px;
+    }
+
+    .description h2 {
+        font-size: var(--font-size-sm);
+        margin: 14px 0 6px;
+    }
+
+    .description h3 {
+        font-size: var(--font-size-sm);
+        margin: 12px 0 4px;
+    }
+
+    .description p {
+        margin: 0 0 10px;
+        font-size: var(--font-size-sm);
+    }
 }
 
 /* Link Styles */
@@ -190,11 +497,10 @@ a:not(.nav-item):focus {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--border-light);
-    box-shadow: var(--shadow-light);
-    padding: 12px 0;
-    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    border-bottom: none;
+    padding: 0;
+    transition: background 0.3s ease;
 }
 
 .header-content {
@@ -203,40 +509,70 @@ a:not(.nav-item):focus {
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 16px;
     position: relative;
+    height: 42px;
 }
 
 .nav-tabs {
     display: flex;
-    max-width: 600px;
-    background: var(--nav-bg);
-    border-radius: 8px;
-    padding: 6px;
-    gap: 6px;
-    transition: background 0.3s ease;
+    align-items: center;
+    height: 100%;
+    gap: 24px;
+}
+
+.nav-item {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    padding: 0 4px;
+    position: relative;
+}
+
+.nav-item.active {
+    color: white;
+    font-weight: 600;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: white;
+}
+
+.nav-item:hover:not(.active) {
+    color: white;
 }
 
 .theme-toggle {
     position: absolute;
-    right: 20px;
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    width: 40px;
-    height: 40px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    font-size: 18px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .theme-toggle:hover {
-    background: var(--nav-hover);
-    border-color: var(--accent-primary);
-    transform: scale(1.05);
+    color: white;
 }
 
 .theme-icon {
@@ -247,28 +583,52 @@ a:not(.nav-item):focus {
     transform: rotate(180deg);
 }
 
-.nav-item {
-    flex: 1;
-    padding: 12px 24px;
-    text-align: center;
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    white-space: nowrap;
+/* 반응형 스타일 유지 */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 12px;
+        height: 38px;
+    }
+
+    .nav-tabs {
+        gap: 16px;
+    }
+
+    .nav-item {
+        height: 38px;
+        font-size: var(--font-size-sm);
+    }
+
+    .theme-toggle {
+        right: 12px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
 }
 
-.nav-item.active {
-    background: var(--nav-active);
-    color: white;
-    box-shadow: 0 2px 4px rgba(230, 0, 18, 0.3);
-}
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0 8px;
+        height: 36px;
+    }
 
-.nav-item:hover:not(.active) {
-    background: var(--nav-hover);
-    color: var(--accent-primary);
+    .nav-tabs {
+        gap: 12px;
+    }
+
+    .nav-item {
+        height: 36px;
+        font-size: var(--font-size-sm);
+        padding: 0 2px;
+    }
+
+    .theme-toggle {
+        right: 8px;
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
 }
 
 /* =========================
@@ -277,15 +637,16 @@ a:not(.nav-item):focus {
 select, 
 input {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 6px 8px;
+    font-size: var(--font-size-sm);
     border: 1px solid var(--border-light);
-    border-radius: 6px;
-    margin-bottom: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     box-sizing: border-box;
     transition: all 0.3s ease;
+    height: 36px;
 }
 
 select:focus, 
@@ -318,54 +679,121 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .unit-display {
     position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    pointer-events: none;
+}
+
+/* exercise-input 내부의 input-with-unit */
+.exercise-input {
+    padding: 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.exercise-input select {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.exercise-input .input-with-unit {
+    position: relative;
+    width: 100%;
+}
+
+.exercise-input .input-with-unit input {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 12px;
+    font-size: 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.exercise-input .unit-display {
+    position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-secondary);
     font-size: 14px;
     font-weight: 500;
-    pointer-events: none; /* 클릭 방지 */
+    pointer-events: none;
 }
 
-/* exercise-input 내부의 input-with-unit */
-.exercise-input {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.8rem;
-    align-items: stretch; /* 높이를 동일하게 맞춤 */
-}
-
-.exercise-input select {
-    flex: 1;
-    height: 42px; /* 고정 높이 설정 */
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    margin-bottom: 0;
-    box-sizing: border-box;
-}
-
-.exercise-input .input-with-unit {
-    flex: 1;
+.exercise-input .calculate-btn {
     width: 100%;
-    height: 42px; /* select와 동일한 높이 */
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background: var(--accent-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.exercise-input .input-with-unit input {
-    width: 100%;
-    height: 100%;
-    padding: 0.5rem;
-    padding-right: 35px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    margin-bottom: 0;
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .exercise-input {
+        padding: 16px 16px 0;
+        gap: 10px;
+    }
+
+    .exercise-input select,
+    .exercise-input .input-with-unit input,
+    .exercise-input .calculate-btn {
+        height: 36px;
+        font-size: 13px;
+    }
 }
 
-.exercise-input .unit-display {
-    right: 8px;
-    font-size: 0.85rem;
+/* Mobile */
+@media (max-width: 768px) {
+    .exercise-input {
+        padding: 16px 16px 0;
+        gap: 8px;
+    }
+
+    .exercise-input select,
+    .exercise-input .input-with-unit input,
+    .exercise-input .calculate-btn {
+        height: 36px;
+        font-size: 13px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .exercise-input {
+        padding: 12px 12px 0;
+        gap: 6px;
+    }
+
+    .exercise-input select,
+    .exercise-input .input-with-unit input,
+    .exercise-input .calculate-btn {
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .exercise-input .input-with-unit input {
+        padding: 0 32px 0 10px;
+    }
 }
 
 /* =========================
@@ -378,9 +806,9 @@ input[type="number"]::-webkit-outer-spin-button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-size: var(--font-size-sm);
     font-weight: 500;
     padding: 10px 20px;
-    font-size: 14px;
     transition: all 0.2s ease;
 }
 
@@ -411,7 +839,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--text-secondary);
     border: 1px solid var(--border-light);
     border-radius: 6px;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     font-weight: bold;
     padding: 8px 16px;
     transition: all 0.3s ease;
@@ -433,15 +861,16 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .calculate-btn {
     width: 100%;
-    padding: 0.6rem;
+    padding: 6px;
     background: var(--btn-primary);
     color: white;
     border: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    border-radius: 4px;
+    font-size: var(--font-size-sm);
     cursor: pointer;
     transition: all 0.2s ease;
     font-weight: 500;
+    height: 32px;
 }
 
 .calculate-btn:hover {
@@ -456,7 +885,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .unit-selector {
     width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 20px;
 }
 
 .control-buttons {
@@ -473,768 +902,503 @@ input[type="number"]::-webkit-outer-spin-button {
     gap: 8px;
 }
 
+.storage-buttons button {
+    min-width: 80px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
 .unit-buttons {
     display: flex;
     gap: 4px;
-    background: #f1f3f4;
+    background: var(--bg-secondary);
     border-radius: 6px;
     padding: 2px;
 }
 
-[data-theme="dark"] .unit-buttons {
-    background: #444444;
-}
-
 .unit-buttons button {
-    min-width: 40px;
-    padding: 6px 12px;
-    font-size: 12px;
+    min-width: 48px;
+    padding: 8px 12px;
+    font-size: 14px;
     font-weight: 600;
     border-radius: 4px;
     background: transparent;
     border: none;
-    color: #666;
+    color: var(--text-secondary);
     transition: all 0.2s ease;
 }
 
+.unit-buttons button.active {
+    background: var(--bg-primary);
+    color: var(--accent-primary);
+    box-shadow: var(--shadow-light);
+}
+
+/* 태블릿 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .unit-selector {
+        padding: 0 16px;
+    }
+
+    .control-buttons {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .storage-buttons {
+        gap: 6px;
+    }
+
+    .storage-buttons button {
+        min-width: 72px;
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+
+    .unit-buttons {
+        gap: 3px;
+    }
+
+    .unit-buttons button {
+        min-width: 44px;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .unit-selector {
+        padding: 0 12px;
+    }
+
+    .control-buttons {
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .storage-buttons {
+        gap: 4px;
+    }
+
+    .storage-buttons button {
+        min-width: 64px;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+
+    .unit-buttons {
+        gap: 2px;
+        padding: 2px;
+    }
+
+    .unit-buttons button {
+        min-width: 40px;
+        padding: 6px 8px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+}
+
+/* 작은 모바일 */
+@media (max-width: 480px) {
+    .unit-selector {
+        padding: 0 8px;
+    }
+
+    .control-buttons {
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+
+    .storage-buttons {
+        gap: 3px;
+    }
+
+    .storage-buttons button {
+        min-width: 56px;
+        padding: 6px 8px;
+        font-size: 11px;
+        border-radius: 4px;
+    }
+
+    .unit-buttons {
+        gap: 2px;
+        padding: 1px;
+    }
+
+    .unit-buttons button {
+        min-width: 36px;
+        padding: 5px 6px;
+        font-size: 11px;
+        border-radius: 3px;
+    }
+}
+
 /* =========================
-   Calculator Components
+   Calculator Grid Layout
 ========================= */
-.movement-calculator {
+.calculator-grid {
+    display: grid;
+    gap: var(--grid-gap, 24px);
+    padding: var(--container-padding, 20px);
+    width: 100%;
+}
+
+.calculator-grid--movement,
+.calculator-grid--rm {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: auto;
-    gap: 1rem;
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.rm-calculator {
-    display: grid;
-    gap: 1rem;
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.exercise-card, 
-.movement-group {
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
+    gap: 20px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.exercise-input {
-    flex-direction: column;
-}
-
-.exercise-input select,
-.exercise-input .input-with-unit {
-    flex: 1;
-}
-
-.exercise-input .input-with-unit input {
     width: 100%;
-    height: 100%;
-    padding: 0.5rem;
-    padding-right: 35px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
+}
+
+.calculator-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+}
+
+/* 1RM 계산기 카드 스타일 */
+.calculator-card--rm {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    padding: 0;
+}
+
+.calculator-card--rm .section-header {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.calculator-card--rm .calculator-input {
+    padding: 12px;
+}
+
+.calculator-card--rm .calculator-results {
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-card--rm .result-element {
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.calculator-card--rm .result-element:last-child {
     margin-bottom: 0;
 }
 
-.exercise-input .unit-display {
-    right: 8px;
+.calculator-card--rm .result-element p {
+    margin: 0;
     font-size: 0.85rem;
 }
 
-/* =========================
-   Results Display
-========================= */
-.rm-results {
-    margin-top: 0.8rem;
+.calculator-card--rm .re-rm {
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 45px;
 }
 
-.result-element {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.4rem;
-    border-bottom: 1px solid var(--border-light);
-    font-size: 0.9rem;
+.calculator-card--rm .re-we {
     color: var(--text-primary);
+    font-weight: 600;
 }
 
-.result-element:last-child {
-    border-bottom: none;
+/* 각 운동별 포인트 컬러 */
+.calculator-card--squat {
+    border-top: 3px solid #4CAF50;
+}
+
+.calculator-card--benchpress {
+    border-top: 3px solid #795548;
+}
+
+.calculator-card--deadlift {
+    border-top: 3px solid #FF5722;
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .calculator-card {
+    background: var(--bg-primary);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .calculator-card--rm {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+    .calculator-card {
+        margin-bottom: 12px;
+    }
+
+    .calculator-card--rm .section-header {
+        height: 36px;
+        padding: 0 10px;
+    }
+
+    .calculator-card--rm .calculator-input,
+    .calculator-card--rm .calculator-results {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-card {
+        margin-bottom: 8px;
+    }
+
+    .calculator-card--rm .section-header {
+        height: 32px;
+        padding: 0 8px;
+    }
+
+    .calculator-card--rm .calculator-input,
+    .calculator-card--rm .calculator-results {
+        padding: 8px;
+    }
+}
+
+/* Input Styles */
+.calculator-input {
+    padding: var(--content-padding, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.calculator-input select,
+.calculator-input .input-with-unit input {
+    width: 100%;
+    height: 36px;
+    padding: 0 12px;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.calculator-input select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8.825L1.175 4 2.238 2.938 6 6.7l3.763-3.763L10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+}
+
+.calculator-input .input-with-unit {
+    position: relative;
+}
+
+.calculator-input .unit-display {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    pointer-events: none;
+}
+
+.calculator-input .calculate-btn {
+    width: 100%;
+    height: 36px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: white;
+    background: var(--accent-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calculator-input .calculate-btn:hover {
+    background: var(--accent-secondary);
+}
+
+.calculator-results {
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
 }
 
 .movement-result-header,
 .movement-result-row {
     display: grid;
-    grid-template-columns: 110px 100px 170px;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7em 0.5em;
-    min-width: 0;
+    grid-template-columns: 1fr 0.8fr 1.2fr;
+    gap: 8px;
+    padding: 8px;
+    font-size: var(--font-size-sm);
 }
 
 .movement-result-header {
-    font-weight: 600;
-    color: var(--text-primary);
-    background: var(--bg-tertiary);
-    border-bottom: 2px solid var(--border-medium);
-    font-size: 1.05em;
-    border-radius: 6px 6px 0 0;
-    text-align: left;
-    letter-spacing: -0.5px;
-}
-
-.movement-result-header span,
-.movement-result-row .result-name,
-.movement-result-row .result-percent,
-.movement-result-row .result-range {
-    display: block;
-    min-width: 0;
-    overflow-wrap: break-word;
-}
-
-.movement-result-header span:nth-child(1),
-.movement-result-row .result-name {
-    text-align: left;
-    justify-self: start;
-}
-
-.movement-result-header span:nth-child(2),
-.movement-result-row .result-percent {
-    text-align: center;
-    justify-self: center;
-}
-
-.movement-result-header span:nth-child(3),
-.movement-result-row .result-range {
-    text-align: right;
-    justify-self: end;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 .movement-result-row {
-    font-size: 1em;
-    background: transparent;
-    border-bottom: 1px solid var(--border-light);
+    border-top: 1px solid var(--border-light);
+}
+
+.result-name {
+    color: var(--text-primary);
+}
+
+.result-percent {
+    color: var(--accent-primary);
     font-weight: 500;
-    letter-spacing: -0.5px;
+    text-align: center;
 }
 
-.movement-result-row:last-child {
-    border-bottom: none;
-}
-
-.movement-result-row .result-name {
-    color: var(--text-primary);
-}
-
-.movement-result-row .result-percent,
-.movement-result-row .result-range {
-    color: var(--text-primary);
-}
-
-/* =========================
-   Coefficient Display
-========================= */
-.coefficient-list {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0;
-}
-
-.coefficient-list li {
-    margin: 0.8rem 0;
-    line-height: 1.6;
-}
-
-.coefficient-item {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    font-size: 1rem;
-}
-
-.coefficient-name {
-    font-weight: 500;
-    margin-right: 0.5rem;
-    white-space: nowrap;
-    color: var(--text-primary);
-}
-
-.coefficient-values {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.coefficient-arrow {
+.result-range {
     color: var(--text-secondary);
-}
-
-/* =========================
-   Toast Notifications
-========================= */
-#toast-container {
-    position: fixed;
-    bottom: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-}
-
-.toast {
-    padding: 12px 24px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    text-align: center;
-}
-
-.toast.show {
-    opacity: 1;
-}
-
-/* =========================
-   Modal
-========================= */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1002;
-}
-
-.modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 6px;
-    text-align: center;
-    min-width: 280px;
-}
-
-.share-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.modal-btn {
-    flex: 1;
-    padding: 12px 16px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    font-size: 14px;
-}
-
-#copy-btn {
-    background-color: #007bff;
-    color: white;
-}
-
-#print-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-.modal-btn:hover {
-    opacity: 0.9;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* =========================
-   Info Text & Description
-========================= */
-.info-text {
-    padding: 20px;
-    line-height: 1.6;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    border-radius: 8px;
-    box-shadow: var(--shadow-light);
-    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-text h2 {
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    margin: 2rem 0 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent-primary);
-}
-
-.info-text h2:first-child {
-    margin-top: 0;
-}
-
-.info-text h3 {
-    color: var(--text-primary);
-    font-size: 1.2rem;
-    margin: 1.5rem 0 1rem;
-}
-
-.info-text p, 
-.info-text li {
-    color: var(--text-primary);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* =========================
-   Responsive Design
-========================= */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1200px;
-        padding: 40px;
-    }
-    .movement-calculator {
-        padding: 0 40px;
-    }
-    .unit-selector {
-        padding: 0 40px;
-    }
-}
-
-@media (min-width: 769px) {
-    .rm-calculator {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .container {
-        max-width: 900px;
-        padding: 30px;
-        margin: 20px auto;
-        margin-top: 85px;
-    }
-    .movement-calculator {
-        padding: 0 30px;
-    }
-    .unit-selector {
-        max-width: 900px;
-        padding: 0 30px;
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .rm-calculator {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    text-align: right;
 }
 
 @media (max-width: 768px) {
-    .movement-calculator {
-        grid-template-columns: 1fr;
-        padding: 0.8rem;
+    .calculator-results {
+        padding: 10px;
     }
-    .rm-calculator {
-        grid-template-columns: 1fr;
-    }
-    .unit-selector {
-        padding: 8px 10px;
-        top: 62px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    }
-    [data-theme="dark"] .unit-selector {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .container h1 {
-        font-size: 1.5rem;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .container h2,
-    .movement-group h2,
-    .exercise-card h2 {
-        font-size: 1.1rem;
-        margin-bottom: 14px;
-    }
-    .info-text {
-        padding: 15px;
-    }
-    .info-text h2 {
-        font-size: 1.3rem;
-    }
-    .info-text h3 {
-        font-size: 1.1rem;
-    }
-    .info-text p, 
-    .info-text li {
-        font-size: 0.95rem;
-    }
-}
 
-@media (max-width: 767px) {
-    .wrapper {
-        padding: 0 10px;
-    }
-    .container {
-        margin-top: 65px;
-        padding: 15px;
-    }
-    .header-container {
-        padding: 10px 0;
-    }
-    .header-content {
-        padding: 0 5px;
-        gap: 5px;
-    }
-    .nav-tabs {
-        flex: 1;
-        max-width: none;
-        padding: 4px;
-    }
-    .theme-toggle {
-        right: auto;
-        position: static;
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
-        flex-shrink: 0;
-    }
-    .nav-item {
-        padding: 10px 4px;
-        font-size: 14px;
-    }
-    .exercise-input {
-        flex-direction: column;
-    }
-    .exercise-input select {
-        height: 50px;
-        font-size: 16px;
-        padding: 12px;
-        margin-bottom: 8px;
-    }
-    .exercise-input .input-with-unit {
-        height: 50px;
-    }
-    .exercise-input .input-with-unit input {
-        height: 100%;
-        font-size: 16px;
-        padding: 12px;
-        padding-right: 40px;
-    }
-    .exercise-card, 
-    .movement-group {
-        padding: 15px;
-    }
-    .control-buttons {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        margin: 0;
-        padding: 0;
-        background: none;
-        box-shadow: none;
-        position: static;
-    }
-    .storage-buttons {
-        display: flex;
-        gap: 6px;
-        flex: 1;
-    }
-    .storage-buttons button {
-        flex: 1;
-        min-width: auto;
-        padding: 8px 12px;
-        font-size: 12px;
-        border-radius: 8px;
-        font-weight: 600;
-    }
-    .unit-buttons {
-        display: flex;
-        gap: 4px;
-        background: #f1f3f4;
-        border-radius: 6px;
-        padding: 2px;
-    }
-    [data-theme="dark"] .unit-buttons {
-        background: #444444;
-    }
-    .unit-buttons button {
-        min-width: 40px;
-        padding: 6px 12px;
-        font-size: 12px;
-        font-weight: 600;
-        border-radius: 4px;
-        background: transparent;
-        border: none;
-        color: #666;
-        transition: all 0.2s ease;
-    }
-    [data-theme="dark"] .unit-buttons button {
-        color: #ccc;
-    }
-    .unit-buttons button.active {
-        background: white;
-        color: var(--accent-primary);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    [data-theme="dark"] .unit-buttons button.active {
-        background: #555555;
-        color: var(--accent-primary);
-    }
-    #toast-container {
-        bottom: 30px;
-        width: 90%;
-    }
-    .modal-content {
-        width: 90%;
-        max-width: 320px;
-    }
-    .modal-btn {
-        padding: 10px 14px;
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 600px) {
-    .control-buttons {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-    }
-    .storage-buttons,
-    .unit-buttons {
-        width: auto;
-        justify-content: flex-start;
-    }
-    .movement-result-header {
-        display: none;
-    }
+    .movement-result-header,
     .movement-result-row {
-        display: block;
-        padding: 1rem 0.5rem;
-        border-bottom: 1px solid #eee;
-        font-size: 0.95em;
-    }
-    .movement-result-row .result-name::before {
-        content: "종목: ";
-        font-weight: 600;
-        color: #666;
-    }
-    .movement-result-row .result-percent::before {
-        content: "상관관계: ";
-        font-weight: 600;
-        color: #666;
-    }
-    .movement-result-row .result-range::before {
-        content: "수행가능 범위: ";
-        font-weight: 600;
-        color: #666;
-    }
-    .movement-result-row .result-name,
-    .movement-result-row .result-percent,
-    .movement-result-row .result-range {
-        display: block;
-        margin-bottom: 0.5rem;
-        text-align: left !important;
-        justify-self: start !important;
-    }
-    .movement-result-row .result-range {
-        margin-bottom: 0;
+        font-size: var(--font-size-sm);
+        padding: 6px;
+        gap: 6px;
     }
 }
 
 @media (max-width: 480px) {
-    .wrapper {
-        padding: 0 8px;
+    .calculator-results {
+        padding: 8px;
     }
-    .container {
-        margin-top: 60px;
-        padding: 10px;
-    }
-    .nav-tabs {
-        flex: 1;
-        max-width: none;
-        margin: 0;
-        padding: 3px;
-    }
-    .nav-item {
-        padding: 8px 4px;
-        font-size: 12px;
-    }
-    .unit-selector {
-        padding: 8px 10px;
-        top: 62px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    }
-    .control-buttons {
-        gap: 8px;
-    }
-    .storage-buttons button {
-        padding: 6px 8px;
-        font-size: 11px;
-    }
-    .unit-buttons button {
-        min-width: 35px;
-        padding: 5px 10px;
-        font-size: 11px;
-    }
-    .coefficient-item {
-        font-size: 0.9rem;
-    }
-    .coefficient-values {
-        gap: 0.3rem;
-    }
-    .container h1 {
-        font-size: 1.3rem;
-        margin-top: 10px;
-        margin-bottom: 16px;
-        font-weight: 500;
-    }
-    .container h2,
-    .movement-group h2,
-    .exercise-card h2 {
-        font-size: 1rem;
-        margin-bottom: 12px;
-        font-weight: 500;
-    }
-    .info-text {
-        padding: 12px;
-    }
-    .info-text h2 {
-        font-size: 1.2rem;
-    }
-    .info-text h3 {
-        font-size: 1rem;
-    }
-    .info-text p, 
-    .info-text li {
-        font-size: 0.9rem;
-    }
-}
 
-.converted-weight {
-    text-align: right;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-top: 0.3rem;
-    font-weight: 500;
+    .movement-result-header,
+    .movement-result-row {
+        font-size: var(--font-size-sm);
+        padding: 4px;
+        gap: 4px;
+    }
 }
 
 /* ===== SCALES PAGE STYLES ===== */
 
 /* 변환기 섹션 */
 .converter-section {
-    background: var(--card-background);
-    border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 30px;
-    border: 1px solid var(--border-color);
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .converter-section {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 .converter-grid {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     gap: 20px;
-    align-items: end;
-    margin-top: 20px;
+    align-items: flex-end;
+    margin-top: 16px;
+}
+
+.converter-input {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .converter-input label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    font-size: var(--font-size-sm);
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--text-primary);
 }
 
 .converter-arrow {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--crossfit-red);
-    text-align: center;
-    margin-bottom: 10px;
+    font-size: var(--font-size-xl);
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 10px;
 }
 
 /* 변환표 섹션 */
 .conversion-table-section {
-    background: var(--card-background);
-    border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 30px;
-    border: 1px solid var(--border-color);
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .conversion-table-section {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 .table-controls {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin: 20px 0;
+    gap: 8px;
+    margin: 16px 0;
 }
 
 .table-toggle {
-    background: var(--button-secondary);
+    background: var(--bg-tertiary);
     color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 10px 8px;
-    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-size: 13px;
     text-align: center;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+[data-theme="dark"] .table-toggle {
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 .table-toggle:hover {
-    background: var(--button-hover);
-    transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .table-toggle:hover {
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .table-toggle.active {
-    background: var(--crossfit-red);
-    border-color: var(--crossfit-red);
-    font-weight: 600;
-    box-shadow: 0 2px 4px rgba(230, 0, 18, 0.3);
-}
-
-/* 라이트모드에서 active 버튼 - 검정 글씨 */
-[data-theme="light"] .table-toggle.active,
-:root:not([data-theme="dark"]) .table-toggle.active {
-    color: #000;
-}
-
-/* 다크모드에서 active 버튼 - 흰색 글씨 */
-[data-theme="dark"] .table-toggle.active {
-    color: #fff;
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: white;
 }
 
 .conversion-table-wrapper {
     overflow-x: auto;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .conversion-table {
@@ -1244,154 +1408,195 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .conversion-table th {
-    background: var(--button-secondary);
+    background: rgba(0, 0, 0, 0.02);
     color: var(--text-color);
-    padding: 12px 8px;
+    padding: 10px 8px;
     text-align: center;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     font-weight: 600;
+}
+
+[data-theme="dark"] .conversion-table th {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .conversion-table td {
     padding: 8px;
     text-align: center;
-    border: 1px solid var(--border-color);
-    cursor: pointer;
-    transition: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background-color 0.2s ease;
+}
+
+[data-theme="dark"] .conversion-table td {
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .kg-cell {
-    background: rgba(230, 0, 18, 0.1);
+    background: rgba(230, 0, 18, 0.04);
     font-weight: 500;
 }
 
+[data-theme="dark"] .kg-cell {
+    background: rgba(230, 0, 18, 0.1);
+}
+
 .lb-cell {
-    background: rgba(26, 26, 26, 0.1);
+    background: rgba(26, 26, 26, 0.04);
+}
+
+[data-theme="dark"] .lb-cell {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* 변환표 hover 효과 */
+.conversion-table tr:hover td {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .conversion-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .conversion-table tr:hover .kg-cell {
+    background: rgba(230, 0, 18, 0.15);
+}
+
+[data-theme="dark"] .conversion-table tr:hover .lb-cell {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* 공통 변환값 */
 .common-weights {
-    background: var(--card-background);
-    border-radius: 8px;
-    padding: 25px;
-    border: 1px solid var(--border-color);
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .common-weights {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 .common-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
 .common-item {
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 15px;
+    position: relative;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    padding: 12px;
     text-align: center;
-    cursor: pointer;
-    transition: none;
+    overflow: hidden;
 }
 
-.common-kg, .common-lb {
-    font-weight: 600;
-    font-size: 16px;
+.common-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
 }
 
+/* 바벨 스타일 */
+.barbell-item::before {
+    background: linear-gradient(to bottom, #666666, #888888);
+}
+
+/* 플레이트 색상 */
+.red-plate::before {
+    background: #FF0000;
+}
+
+.blue-plate::before {
+    background: #0066CC;
+}
+
+.yellow-plate::before {
+    background: #FFD700;
+}
+
+.green-plate::before {
+    background: #00AA00;
+}
+
+.white-plate::before {
+    background: #FFFFFF;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .common-item {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .white-plate::before {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 내부 텍스트 스타일 */
 .common-kg {
-    color: var(--crossfit-red);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--font-size-base);
 }
 
 .common-lb {
-    color: var(--crossfit-black);
-}
-
-/* 다크모드에서 lb 색상 개선 */
-[data-theme="dark"] .common-lb {
-    color: var(--text-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--font-size-base);
 }
 
 .common-arrow {
-    margin: 0 8px;
-    color: var(--text-color);
+    margin: 0 6px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
 }
 
 .common-item small {
     display: block;
-    margin-top: 5px;
+    margin-top: 4px;
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: var(--font-size-xs);
 }
 
-/* 바벨 배경 */
-.barbell-item {
-    background: linear-gradient(135deg, rgba(128, 128, 128, 0.1), rgba(105, 105, 105, 0.1));
-    border-color: rgba(128, 128, 128, 0.3);
-}
-
-/* 플레이트 색상별 배경 */
-.red-plate {
-    background: linear-gradient(135deg, rgba(220, 20, 60, 0.08), rgba(255, 69, 58, 0.08));
-    border-color: rgba(220, 20, 60, 0.2);
-}
-
-.blue-plate {
-    background: linear-gradient(135deg, rgba(30, 144, 255, 0.08), rgba(70, 130, 180, 0.08));
-    border-color: rgba(30, 144, 255, 0.2);
-}
-
-.yellow-plate {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.1));
-    border-color: rgba(255, 215, 0, 0.3);
-}
-
-.green-plate {
-    background: linear-gradient(135deg, rgba(34, 139, 34, 0.08), rgba(46, 204, 113, 0.08));
-    border-color: rgba(34, 139, 34, 0.2);
-}
-
-.white-plate {
-    background: linear-gradient(135deg, rgba(240, 240, 240, 0.1), rgba(211, 211, 211, 0.1));
-    border-color: rgba(169, 169, 169, 0.3);
-}
-
-/* 다크모드에서 흰 플레이트 조정 */
-[data-theme="dark"] .white-plate {
-    background: linear-gradient(135deg, rgba(70, 70, 70, 0.1), rgba(90, 90, 90, 0.1));
-    border-color: rgba(130, 130, 130, 0.3);
-}
-
-/* Scales 페이지 모바일 반응형 */
 @media (max-width: 768px) {
+    .converter-section,
+    .conversion-table-section,
+    .common-weights {
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+
     .converter-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 12px;
     }
 
     .converter-arrow {
-        order: 1;
-        margin: 0;
-        font-size: 20px;
+        transform: rotate(90deg);
+        height: auto;
+        padding: 10px;
     }
 
     .table-toggle {
         font-size: 12px;
-        padding: 8px 6px;
-    }
-
-    .conversion-table {
-        font-size: 12px;
-    }
-
-    .conversion-table th,
-    .conversion-table td {
-        padding: 6px 4px;
+        padding: 6px;
     }
 
     .common-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
+    }
+
+    .common-item {
+        padding: 10px;
     }
 }
 
@@ -1399,42 +1604,34 @@ input[type="number"]::-webkit-outer-spin-button {
     .converter-section,
     .conversion-table-section,
     .common-weights {
-        padding: 15px;
-        margin-bottom: 20px;
+        padding: 12px;
+        margin-bottom: 8px;
+    }
+
+    .converter-grid {
+        gap: 8px;
     }
 
     .table-toggle {
         font-size: 11px;
-        padding: 8px 4px;
+        padding: 6px 4px;
+    }
+
+    .common-grid {
+        gap: 6px;
     }
 
     .common-item {
-        padding: 12px;
+        padding: 8px;
     }
 
-    .common-kg, .common-lb {
-        font-size: 14px;
+    .common-kg,
+    .common-lb {
+        font-size: var(--font-size-base);
     }
-}
 
-/* 매우 작은 화면을 위한 축약 텍스트 */
-@media (max-width: 360px) {
-    .table-toggle[data-range="light"]::after {
-        content: "WOD";
-    }
-    .table-toggle[data-range="medium"]::after {
-        content: "RX+";
-    }
-    .table-toggle[data-range="heavy"]::after {
-        content: "경기";
-    }
-    .table-toggle[data-range="light"],
-    .table-toggle[data-range="medium"],
-    .table-toggle[data-range="heavy"] {
-        font-size: 0;
-    }
-    .table-toggle::after {
-        font-size: 12px;
+    .converter-arrow {
+        padding: 5px;
     }
 }
 
@@ -1442,125 +1639,38 @@ input[type="number"]::-webkit-outer-spin-button {
    Google AdSense Ads
 ========================= */
 .ad-container {
-    width: 100%;
-    display: none; /* 애드센스 승인 전 임시 숨김 */
-    justify-content: center;
-    margin: 20px 0;
-    position: relative;
-}
-
-/* PC에서 사이드바 광고 */
-.ad-sidebar {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 20px;
-    z-index: 999;
-    display: none; /* 기본적으로 숨김 */
-}
-
-/* 사이드바 광고 명시적 숨김 */
-.ad-container.ad-sidebar {
     display: none !important; /* 애드센스 승인 전까지 강제 숨김 */
 }
 
 .ad-header {
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-light);
-    margin: 20px 0;
-    padding: 15px 0;
-    display: none; /* PC에서 숨김 */
-    position: relative;
-    z-index: 998; /* header-container보다 낮게 */
-    margin-top: 70px; /* header 높이만큼 여백 확보 */
+    display: none !important; /* 애드센스 승인 전까지 강제 숨김 */
+}
+
+.ad-sidebar {
+    display: none !important; /* 애드센스 승인 전까지 강제 숨김 */
 }
 
 .ad-content {
-    margin: 30px 0;
-    padding: 20px 0;
+    display: none !important; /* 애드센스 승인 전까지 강제 숨김 */
 }
 
-.ad-placeholder {
-    background: var(--bg-tertiary);
-    border: 2px dashed var(--border-light);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    color: var(--text-secondary);
-    font-family: monospace;
-    position: relative;
-    min-height: 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.ad-placeholder:hover {
-    border-color: var(--accent-primary);
-    background: rgba(230, 0, 18, 0.05);
-}
-
-.ad-label {
-    font-size: 10px;
-    background: var(--text-secondary);
-    color: var(--bg-primary);
-    padding: 2px 8px;
-    border-radius: 3px;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.ad-content {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* PC에서 사이드바 광고 표시 */
+/* 기존 미디어 쿼리에서 display 관련 속성 제거 */
 @media (min-width: 1200px) {
-    .ad-sidebar {
-        display: none; /* 애드센스 승인 전까지 숨김 */
-    }
-    
-    /* 사이드바 광고 완전 숨김 */
-    .ad-container.ad-sidebar {
-        display: none !important;
-    }
-    
     .ad-sidebar .ad-placeholder {
         width: 160px;
         height: 600px;
         min-height: 600px;
     }
-    
-    .ad-header {
-        display: none;
-    }
-    
 }
 
-/* 태블릿에서는 콘텐츠 중간에만 */
 @media (min-width: 768px) and (max-width: 1199px) {
-    .ad-header {
-        display: none;
-    }
-    
     .ad-content .ad-placeholder {
         width: 336px;
         height: 280px;
     }
 }
 
-/* 모바일에서 상하단 광고 표시 */
 @media (max-width: 767px) {
-    .ad-header {
-        display: flex;
-    }
-    
     .ad-header .ad-placeholder {
         width: 320px;
         height: 50px;
@@ -1600,5 +1710,593 @@ input[type="number"]::-webkit-outer-spin-button {
 [data-theme="dark"] .ad-placeholder:hover {
     border-color: var(--accent-primary);
     background: rgba(230, 0, 18, 0.1);
+}
+
+/* Grid Layout */
+.calculator-grid {
+    display: grid;
+    gap: var(--grid-gap, 24px);
+    padding: var(--container-padding, 20px);
+    width: 100%;
+}
+
+.calculator-grid--movement,
+.calculator-grid--rm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.calculator-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+}
+
+/* Responsive Grid Layout */
+@media (min-width: 769px) and (max-width: 1199px) {
+    :root {
+        --grid-gap: 16px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    :root {
+        --grid-gap: 12px;
+    }
+
+    .calculator-grid--movement {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-grid--rm {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --grid-gap: 8px;
+    }
+
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.section-header {
+    margin: 0;
+    padding: 0 var(--content-padding, 20px);
+    height: var(--header-height, 48px);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-primary), transparent);
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 12px;
+}
+
+.section-header h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 16px;
+    background: var(--accent-primary);
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        height: var(--header-height, 44px);
+    }
+    
+    .section-header h2 {
+        font-size: 0.9rem;
+    }
+
+    .section-header h2::before {
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        height: var(--header-height, 40px);
+    }
+    
+    .section-header h2 {
+        font-size: 0.85rem;
+    }
+
+    .section-header h2::before {
+        height: 12px;
+    }
+}
+
+.converted-weight {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .converted-weight {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .converted-weight {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calculator-grid--movement,
+    .calculator-grid--rm {
+        gap: 16px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-grid--movement,
+    .calculator-grid--rm {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-grid--movement,
+    .calculator-grid--rm {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .calculator-input,
+    .calculator-results {
+        padding: var(--content-padding, 16px);
+    }
+}
+
+/* Toast Message Styles */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.toast {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-theme="dark"] .toast {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+    #toast-container {
+        bottom: 16px;
+    }
+
+    .toast {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    #toast-container {
+        bottom: 12px;
+        width: calc(100% - 24px);
+    }
+
+    .toast {
+        width: 100%;
+        text-align: center;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+/* 1RM 계산기 결과 스타일 */
+.calculator-card--rm .calculator-results {
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-card--rm .result-element {
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calculator-card--rm .result-element:not(:last-child) {
+    border-bottom: none;
+}
+
+.calculator-card--rm .result-element:first-child {
+    border-radius: 4px 4px 0 0;
+}
+
+.calculator-card--rm .result-element:last-child {
+    border-radius: 0 0 4px 4px;
+}
+
+.calculator-card--rm .result-element p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.calculator-card--rm .re-rm {
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 45px;
+}
+
+.calculator-card--rm .re-we {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* 웨이트리프팅 동작 계산기 결과 스타일 */
+.calculator-card--movement .calculator-results {
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-card--movement .movement-result-header,
+.calculator-card--movement .movement-result-row {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1.2fr;
+    gap: 8px;
+    padding: 8px;
+    font-size: 0.85rem;
+}
+
+.calculator-card--movement .movement-result-header {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.calculator-card--movement .movement-result-row {
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-card--movement .result-name {
+    color: var(--text-primary);
+}
+
+.calculator-card--movement .result-percent {
+    color: var(--accent-primary);
+    font-weight: 500;
+    text-align: center;
+}
+
+.calculator-card--movement .result-range {
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .calculator-card--rm .calculator-results,
+    .calculator-card--movement .calculator-results {
+        padding: 10px;
+    }
+
+    .calculator-card--rm .result-element {
+        padding: 6px 10px;
+    }
+
+    .calculator-card--rm .result-element p {
+        font-size: 0.8rem;
+    }
+
+    .calculator-card--movement .movement-result-header,
+    .calculator-card--movement .movement-result-row {
+        font-size: 0.8rem;
+        padding: 6px;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-card--rm .calculator-results,
+    .calculator-card--movement .calculator-results {
+        padding: 8px;
+    }
+
+    .calculator-card--rm .result-element {
+        padding: 6px 8px;
+    }
+
+    .calculator-card--rm .result-element p {
+        font-size: 0.75rem;
+    }
+
+    .calculator-card--movement .movement-result-header,
+    .calculator-card--movement .movement-result-row {
+        font-size: 0.75rem;
+        padding: 4px;
+        gap: 4px;
+    }
+}
+
+.calculator-results--rm,
+.calculator-results--movement {
+    display: none;
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-results--rm.has-results,
+.calculator-results--movement.has-results {
+    display: block;
+}
+
+/* 상관관계 섹션 스타일 */
+.correlation-section {
+    margin: 24px 0;
+}
+
+.correlation-grid,
+.coefficient-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.correlation-card,
+.coefficient-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.correlation-header,
+.coefficient-header {
+    background: var(--bg-secondary);
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.correlation-item,
+.coefficient-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+}
+
+.correlation-item:not(:last-child),
+.coefficient-row:not(:last-child) {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.correlation-item .movement {
+    color: var(--text-primary);
+}
+
+.correlation-item .percentage {
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+.coefficient-row .reps {
+    color: var(--text-primary);
+}
+
+.coefficient-row .value {
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .correlation-grid,
+    .coefficient-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 16px 0;
+    }
+
+    .correlation-header,
+    .coefficient-header {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .correlation-item,
+    .coefficient-row {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .correlation-grid,
+    .coefficient-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+    .correlation-header,
+    .coefficient-header {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .correlation-item,
+    .coefficient-row {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+    }
+}
+
+/* 페이지 설명 섹션 구분선 */
+.description .info-text > h2 {
+    position: relative;
+    padding-top: 32px;
+    margin-top: 32px;
+}
+
+.description .info-text > h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-light);
+}
+
+.description .info-text > h2:first-child {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.description .info-text > h2:first-child::before {
+    display: none;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .description .info-text > h2 {
+        padding-top: 24px;
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .description .info-text > h2 {
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+}
+
+/* 설명 섹션 구분선 */
+.description-section {
+    position: relative;
+    padding: 40px 0;
+    margin: 0;
+}
+
+.description-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    border-bottom: 1px dashed var(--border-light);
+}
+
+.description-section:first-child {
+    padding-top: 0;
+}
+
+.description-section:last-child {
+    padding-bottom: 0;
+}
+
+.description-section:last-child::after {
+    display: none;
+}
+
+.description-section h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .description-section {
+        padding: 32px 0;
+    }
+
+    .description-section::after {
+        width: 160px;
+    }
+
+    .description-section h2 {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .description-section {
+        padding: 24px 0;
+    }
+
+    .description-section::after {
+        width: 120px;
+    }
+
+    .description-section h2 {
+        margin-bottom: 10px;
+    }
 }
 

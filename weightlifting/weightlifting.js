@@ -53,8 +53,9 @@ function calculateWeight(percent, weight) {
  * 입력 필드의 변환된 무게 표시 업데이트
  */
 function updateConvertedWeight(input) {
-    const weight = parseFloat(input.value);
-    const convertedDiv = input.closest('.weight-input-group').querySelector('.converted-weight');
+    const $input = $(input);
+    const weight = parseFloat($input.val());
+    const $convertedDiv = $input.closest('.calculator-input').find('.converted-weight');
 
     if (weight && weight > 0) {
         const otherUnit = currentUnit === 'kg' ? 'lb' : 'kg';
@@ -62,9 +63,9 @@ function updateConvertedWeight(input) {
             convertWeight(weight, 'kg', 'lb') : 
             convertWeight(weight, 'lb', 'kg');
         
-        convertedDiv.textContent = `= ${convertedWeight}${otherUnit}`;
+        $convertedDiv.text(`= ${convertedWeight}${otherUnit.toUpperCase()}`);
     } else {
-        convertedDiv.textContent = '';
+        $convertedDiv.text('');
     }
 }
 
@@ -108,7 +109,6 @@ function updateResults() {
                         convertWeight(maxWeight, 'kg', 'lb') : 
                         maxWeight;
                     
-                    // 소수점은 유지하고 단위만 뒤에 괄호로 표시
                     const unitDisplay = currentUnit.toUpperCase();
                     
                     resultHtml += `
@@ -120,9 +120,11 @@ function updateResults() {
                     `;
                 });
                 resultDiv.html(resultHtml);
+                resultDiv.addClass('has-results');
             }
         } else {
             resultDiv.empty();
+            resultDiv.removeClass('has-results');
         }
 
         const convertedWeight = weight ? convertWeight(
@@ -159,6 +161,7 @@ function loadData() {
                 Object.keys(exerciseData).forEach(key => {
                     if (key !== 'unit' && exerciseData[key]) {
                         $(`#${key}`).val(exerciseData[key]);
+                        updateConvertedWeight($(`#${key}`)[0]);
                     }
                 });
                 

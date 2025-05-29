@@ -34,7 +34,7 @@
     <meta name="twitter:image" content="https://21-15-9.com/og-image.svg">
     <meta name="twitter:image:alt" content="21-15-9 1RM 계산기">
     
-    <title>NSCA 1RM 계산기 | 21-15-9</title>
+    <title>NSCA 1RM | 21-15-9</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -84,7 +84,7 @@
         </div>
         
         <div class="container">
-            <h1>NSCA 1RM 계산기</h1>
+            <h1>NSCA 기반 1RM 최대중량 | 21-15-9</h1>
             <div class="unit-selector">
                 <div class="control-buttons">
                     <div class="storage-buttons">
@@ -99,10 +99,12 @@
                 </div>
             </div>
 
-            <div class="rm-calculator">
-                <div class="exercise-card">
-                    <h2>스쿼트</h2>
-                    <div class="exercise-input">
+            <div class="calculator-grid calculator-grid--rm">
+                <section class="calculator-card calculator-card--movement calculator-card--squat">
+                    <header class="section-header">
+                        <h2>스쿼트</h2>
+                    </header>
+                    <div class="calculator-input">
                         <select name="squat-reps" class="reps-select">
                             <option value="">반복횟수</option>
                             <option value="1">1회</option>
@@ -117,17 +119,19 @@
                             <option value="10">10회</option>
                         </select>
                         <div class="input-with-unit">
-                            <input type="number" name="squat-weight" class="weight-input" min="0" step="0.5">
+                            <input type="number" name="squat-weight" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
                             <span class="unit-display">kg</span>
                         </div>
+                        <button class="calculate-btn" data-exercise="squat">계산하기</button>
                     </div>
-                    <button class="calculate-btn" data-exercise="squat">계산하기</button>
-                    <div id="squat-results" class="rm-results"></div>
-                </div>
+                    <div id="squat-results" class="calculator-results calculator-results--rm"></div>
+                </section>
 
-                <div class="exercise-card">
-                    <h2>벤치프레스</h2>
-                    <div class="exercise-input">
+                <section class="calculator-card calculator-card--movement calculator-card--benchpress">
+                    <header class="section-header">
+                        <h2>벤치프레스</h2>
+                    </header>
+                    <div class="calculator-input">
                         <select name="benchpress-reps" class="reps-select">
                             <option value="">반복횟수</option>
                             <option value="1">1회</option>
@@ -142,17 +146,19 @@
                             <option value="10">10회</option>
                         </select>
                         <div class="input-with-unit">
-                            <input type="number" name="benchpress-weight" class="weight-input" min="0" step="0.5">
+                            <input type="number" name="benchpress-weight" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
                             <span class="unit-display">kg</span>
                         </div>
+                        <button class="calculate-btn" data-exercise="benchpress">계산하기</button>
                     </div>
-                    <button class="calculate-btn" data-exercise="benchpress">계산하기</button>
-                    <div id="benchpress-results" class="rm-results"></div>
-                </div>
+                    <div id="benchpress-results" class="calculator-results calculator-results--rm"></div>
+                </section>
 
-                <div class="exercise-card">
-                    <h2>데드리프트</h2>
-                    <div class="exercise-input">
+                <section class="calculator-card calculator-card--movement calculator-card--deadlift">
+                    <header class="section-header">
+                        <h2>데드리프트</h2>
+                    </header>
+                    <div class="calculator-input">
                         <select name="deadlift-reps" class="reps-select">
                             <option value="">반복횟수</option>
                             <option value="1">1회</option>
@@ -167,13 +173,13 @@
                             <option value="10">10회</option>
                         </select>
                         <div class="input-with-unit">
-                            <input type="number" name="deadlift-weight" class="weight-input" min="0" step="0.5">
+                            <input type="number" name="deadlift-weight" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
                             <span class="unit-display">kg</span>
                         </div>
+                        <button class="calculate-btn" data-exercise="deadlift">계산하기</button>
                     </div>
-                    <button class="calculate-btn" data-exercise="deadlift">계산하기</button>
-                    <div id="deadlift-results" class="rm-results"></div>
-                </div>
+                    <div id="deadlift-results" class="calculator-results calculator-results--rm"></div>
+                </section>
             </div>
             <div id="toast-container"></div>
             

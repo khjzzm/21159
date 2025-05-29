@@ -34,7 +34,7 @@
     <meta name="twitter:image" content="https://21-15-9.com/og-image.svg">
     <meta name="twitter:image:alt" content="21-15-9 웨이트리프팅 동작 계산기">
     
-    <title>웨이트리프팅 동작 계산기 | 21-15-9</title>
+    <title>웨이트리프팅 동작 상관관계 | 21-15-9</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -84,7 +84,7 @@
         </div>
         
         <div class="container">
-            <h1>웨이트리프팅 동작 계산기</h1>
+            <h1>웨이트리프팅 동작 상관관계 | 21-15-9</h1>
             <div class="unit-selector">
                 <div class="control-buttons">
                     <div class="storage-buttons">
@@ -98,111 +98,206 @@
                     </div>
                 </div>
             </div>
-            <div class="movement-calculator">
-                <div class="row">
-                    <div class="movement-group">
+            <div class="calculator-grid calculator-grid--movement">
+                <section class="calculator-card calculator-card--movement calculator-card--clean-and-jerk">
+                    <header class="section-header">
                         <h2>클린 앤 저크</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="clean-and-jerk" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="clean-and-jerk" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="clean-and-jerk-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="movement-group">
+                    <div class="calculator-results calculator-results--movement" id="clean-and-jerk-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">스내치</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="calculator-card calculator-card--movement calculator-card--snatch">
+                    <header class="section-header">
                         <h2>스내치</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="snatch" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="snatch" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="snatch-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="movement-group">
+                    <div class="calculator-results calculator-results--movement" id="snatch-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">클린 앤 저크</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="calculator-card calculator-card--movement calculator-card--clean">
+                    <header class="section-header">
                         <h2>클린</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="clean" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="clean" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="clean-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="movement-group">
+                    <div class="calculator-results calculator-results--movement" id="clean-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">클린 앤 저크</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="calculator-card calculator-card--movement calculator-card--jerk">
+                    <header class="section-header">
                         <h2>저크</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="jerk" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="jerk" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="jerk-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="movement-group">
+                    <div class="calculator-results calculator-results--movement" id="jerk-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">클린 앤 저크</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="calculator-card calculator-card--movement calculator-card--squat">
+                    <header class="section-header">
                         <h2>백 스쿼트</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="back-squat" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="back-squat" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="back-squat-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="movement-group">
+                    <div class="calculator-results calculator-results--movement" id="back-squat-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">클린 앤 저크</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="calculator-card calculator-card--movement calculator-card--squat">
+                    <header class="section-header">
                         <h2>프론트 스쿼트</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="front-squat" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="front-squat" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="front-squat-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="movement-group">
+                    <div class="calculator-results calculator-results--movement" id="front-squat-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">클린 앤 저크</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="calculator-card calculator-card--movement calculator-card--deadlift">
+                    <header class="section-header">
                         <h2>데드리프트</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="deadlift" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="deadlift" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="deadlift-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="movement-group">
+                    <div class="calculator-results calculator-results--movement" id="deadlift-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">클린 앤 저크</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="calculator-card calculator-card--movement calculator-card--push-press">
+                    <header class="section-header">
                         <h2>푸시 프레스</h2>
-                        <div class="weight-input-group">
-                            <div class="input-with-unit">
-                                <input type="number" id="push-press" class="weight-input" min="0" step="0.5">
-                                <span class="unit-display">kg</span>
-                            </div>
-                            <div class="converted-weight"></div>
+                    </header>
+                    <div class="calculator-input">
+                        <div class="input-with-unit">
+                            <input type="number" id="push-press" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <span class="unit-display">kg</span>
                         </div>
-                        <div class="movement-result" id="push-press-result"></div>
+                        <div class="converted-weight"></div>
                     </div>
-                </div>
+                    <div class="calculator-results calculator-results--movement" id="push-press-result">
+                        <div class="movement-result-header">
+                            <span>종목</span>
+                            <span>상관관계</span>
+                            <span>수행 가능 범위</span>
+                        </div>
+                        <div class="movement-result-row">
+                            <span class="result-name">클린 앤 저크</span>
+                            <span class="result-percent">80~85%</span>
+                            <span class="result-range">17.6~18.7 (KG)</span>
+                        </div>
+                    </div>
+                </section>
             </div>
             <div id="toast-container"></div>
             
