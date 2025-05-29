@@ -1,0 +1,56 @@
+{
+  "name": "21-15-9 CrossFit & 웨이트리프팅 계산기",
+  "short_name": "21-15-9",
+  "description": "Fran부터 1RM까지, CrossFit과 웨이트리프팅을 위한 종합 계산기",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#e60012",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.svg", 
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["health", "fitness", "sports", "utilities"],
+  "shortcuts": [
+    {
+      "name": "웨이트리프팅 계산기",
+      "short_name": "웨이트리프팅",
+      "description": "동작 간 상관관계 계산",
+      "url": "/weightlifting",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "1RM 계산기", 
+      "short_name": "1RM",
+      "description": "최대중량 계산",
+      "url": "/1rm",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "kg ↔ lb 변환기",
+      "short_name": "변환기", 
+      "description": "무게 단위 변환",
+      "url": "/scales",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ]
+} 

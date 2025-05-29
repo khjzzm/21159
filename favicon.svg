@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- 숫자 45 (검정색) -->
-  <text x="16" y="22" text-anchor="middle" fill="black" font-family="Arial Black, sans-serif" font-size="16" font-weight="900">45</text>
+  <!-- 흰색 네모 배경 -->
+  <rect x="1" y="1" width="30" height="30" rx="3" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <!-- 21-15-9 가로 배치 (검정 글씨) -->
+  <text x="16" y="19" text-anchor="middle" fill="black" font-family="Arial Black, sans-serif" font-size="12" font-weight="900">45</text>
 </svg> 
