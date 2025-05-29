@@ -11,6 +11,21 @@ function convertWeight(weight, fromUnit, toUnit) {
         : (weight * LB_TO_KG).toFixed(2);
 }
 
+/**
+ * 모든 단위 표시 요소 업데이트
+ */
+function updateUnitDisplay() {
+    document.querySelectorAll('.unit-display').forEach(span => {
+        // weightlifting.js에서는 소문자, 1rm.js에서는 그대로 사용
+        // 페이지별로 다르게 처리
+        if (window.location.pathname.includes('weightlifting.html')) {
+            span.textContent = currentUnit.toLowerCase();
+        } else {
+            span.textContent = currentUnit;
+        }
+    });
+}
+
 // 토스트 메시지 표시 함수
 function showToast(message) {
     const toast = $('<div class="toast"></div>').text(message);
@@ -71,10 +86,14 @@ $(document).ready(function() {
         
         currentUnit = newUnit;
         updatePlaceholders();
+        updateUnitDisplay();
         
         // 페이지별 추가 업데이트 함수 호출
         if (typeof updateResults === 'function') {
             updateResults();
+        }
+        if (typeof calculateAll === 'function') {
+            calculateAll();
         }
     });
 

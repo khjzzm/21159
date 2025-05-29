@@ -19,7 +19,7 @@ body {
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0px;
 }
 
 .container {
@@ -365,10 +365,6 @@ input[type="number"]::-webkit-outer-spin-button {
     border-bottom: none;
 }
 
-.movement-result {
-    margin-top: 1.2rem;
-}
-
 .movement-result-header,
 .movement-result-row {
     display: grid;
@@ -681,7 +677,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (max-width: 767px) {
     .wrapper {
-        padding: 0 15px;
+        padding: 0px;
     }
     .container {
         margin-top: 75px;
@@ -858,9 +854,6 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
-.weight-input-group {
-    margin-bottom: 1rem;
-}
 
 .converted-weight {
     text-align: right;

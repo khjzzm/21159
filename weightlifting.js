@@ -39,7 +39,9 @@ const movementIds = {
     '저크': 'jerk'
 };
 
-// 퍼센트 범위로 무게 계산
+/**
+ * 퍼센트 범위를 바탕으로 최소/최대 무게 계산
+ */
 function calculateWeight(percent, weight) {
     const [min, max] = percent.replace('%', '').split('~').map(Number);
     const minWeight = (weight * min / 100).toFixed(1);
@@ -47,12 +49,9 @@ function calculateWeight(percent, weight) {
     return { minWeight, maxWeight };
 }
 
-function updateUnitDisplay() {
-    document.querySelectorAll('.unit-display').forEach(span => {
-        span.textContent = currentUnit.toLowerCase();
-    });
-}
-
+/**
+ * 입력 필드의 변환된 무게 표시 업데이트
+ */
 function updateConvertedWeight(input) {
     const weight = parseFloat(input.value);
     const convertedDiv = input.closest('.weight-input-group').querySelector('.converted-weight');
@@ -69,7 +68,9 @@ function updateConvertedWeight(input) {
     }
 }
 
-// 결과 업데이트 함수
+/**
+ * 모든 운동의 결과 업데이트
+ */
 function updateResults() {
     $('.weight-input').each(function() {
         const id = $(this).attr('id');
@@ -82,7 +83,6 @@ function updateResults() {
                 calculatedWeight = convertWeight(weight, 'lb', 'kg');
             }
 
-            // 동작 이름 찾기
             let movementName = '';
             for (const [key, value] of Object.entries(movementIds)) {
                 if (value === id) {
@@ -122,7 +122,6 @@ function updateResults() {
             resultDiv.empty();
         }
 
-        // 단위 변환 표시 업데이트
         const convertedWeight = weight ? convertWeight(
             weight, 
             currentUnit, 
@@ -135,61 +134,74 @@ function updateResults() {
     });
 }
 
-function updatePlaceholders() {
-    document.querySelectorAll('.weight-input').forEach(input => {
-        input.placeholder = `무게(${currentUnit.toLowerCase()})`;
-    });
+/**
+ * 로컬스토리지에서 저장된 데이터 불러오기
+ */
+function loadData() {
+    const savedData = localStorage.getItem('weightlifting-data');
+    if (savedData) {
+        try {
+            const data = JSON.parse(savedData);
+            
+            if (data.exercises) {
+                const exerciseData = data.exercises;
+                
+                if (exerciseData.unit) {
+                    currentUnit = exerciseData.unit;
+                    $('.unit-btn').removeClass('active');
+                    $(`.unit-btn[data-unit="${exerciseData.unit}"]`).addClass('active');
+                    updateUnitDisplay();
+                }
+                
+                Object.keys(exerciseData).forEach(key => {
+                    if (key !== 'unit' && exerciseData[key]) {
+                        $(`#${key}`).val(exerciseData[key]);
+                    }
+                });
+                
+                updateResults();
+            }
+        } catch (e) {
+            console.error('데이터 로드 실패:', e);
+        }
+    }
 }
 
 // 이벤트 핸들러
 $(document).ready(function() {
-    // 초기 설정
-    updatePlaceholders();
-    updateUnitDisplay();
-    
-    // 저장된 데이터 불러오기
     loadData();
     
-    // 무게 입력 이벤트
-    $('.weight-input').on('input', function() {
-        updateConvertedWeight(this);
-        updateResults();
-    });
-
     // 단위 변환 버튼 클릭 이벤트
     $('.unit-btn').click(function() {
         const newUnit = $(this).data('unit');
         const oldUnit = currentUnit;
 
-        // 버튼 활성화 상태 변경
         $('.unit-btn').removeClass('active');
         $(this).addClass('active');
         
-        // currentUnit 업데이트
         currentUnit = newUnit;
         
-        // 단위 표시 업데이트
-        updateUnitDisplay();
-        
-        // 입력 필드 단위 변환
         $('.weight-input').each(function() {
             const weight = $(this).val();
             if (weight) {
                 $(this).val(convertWeight(weight, oldUnit, newUnit));
             }
-            // 변환된 무게 표시도 업데이트
             updateConvertedWeight(this);
         });
         
         updateResults();
     });
 
+    // 계산하기 이벤트
+    $('.weight-input').on('input', function() {
+        updateConvertedWeight(this);
+        updateResults();
+    });
+
     // 저장 버튼
     $('.save-btn').click(function() {
-        // 기존 저장된 데이터 불러오기
         const existingData = JSON.parse(localStorage.getItem('weightlifting-data') || '{}');
         
-        // 새로운 weightlifting 데이터
         const weightData = {
             exercises: {
                 unit: currentUnit,
@@ -202,7 +214,6 @@ $(document).ready(function() {
                 'deadlift': $('#deadlift').val() || '',
                 'push-press': $('#push-press').val() || ''
             },
-            // 기존 rmCalculator 데이터 유지
             rmCalculator: existingData.rmCalculator || {
                 unit: 'kg',
                 exercises: {
@@ -240,7 +251,6 @@ $(document).ready(function() {
     $('.share-btn').click(function() {
         let shareText = '웨이트리프팅 동작 계산 결과\n\n';
         
-        // 각 동작별로 결과 수집
         $('.movement-group').each(function() {
             const title = $(this).find('h2').text();
             const weight = $(this).find('.weight-input').val();
@@ -275,50 +285,3 @@ $(document).ready(function() {
     }
 });
 
-function loadData() {
-    const savedData = localStorage.getItem('weightlifting-data');
-    if (savedData) {
-        try {
-            const data = JSON.parse(savedData);
-            
-            // exercises 데이터가 있는지 확인
-            if (data.exercises) {
-                const exerciseData = data.exercises;
-                
-                // 저장된 단위 적용
-                if (exerciseData.unit) {
-                    currentUnit = exerciseData.unit;
-                    $('.unit-btn').removeClass('active');
-                    $(`.unit-btn[data-unit="${exerciseData.unit}"]`).addClass('active');
-                    updateUnitDisplay();
-                }
-                
-                // 저장된 운동 데이터 적용
-                Object.keys(exerciseData).forEach(key => {
-                    if (key !== 'unit' && exerciseData[key]) {
-                        $(`#${key}`).val(exerciseData[key]);
-                    }
-                });
-                
-                // 결과 업데이트
-                updateResults();
-            }
-        } catch (e) {
-            console.error('데이터 로드 실패:', e);
-        }
-    }
-}
-
-// 토스트 메시지 표시
-function showToast(message) {
-    const toast = $('<div class="toast"></div>').text(message);
-    $('#toast-container').append(toast);
-    
-    setTimeout(() => {
-        toast.addClass('show');
-        setTimeout(() => {
-            toast.removeClass('show');
-            setTimeout(() => toast.remove(), 300);
-        }, 2000);
-    }, 100);
-}
