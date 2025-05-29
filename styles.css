@@ -534,9 +534,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .exercise-input {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.8rem;
+    flex-direction: column;
 }
 
 .exercise-input select,
@@ -928,6 +926,21 @@ input[type="number"]::-webkit-outer-spin-button {
     }
     .exercise-input {
         flex-direction: column;
+    }
+    .exercise-input select {
+        height: 50px;
+        font-size: 16px;
+        padding: 12px;
+        margin-bottom: 8px;
+    }
+    .exercise-input .input-with-unit {
+        height: 50px;
+    }
+    .exercise-input .input-with-unit input {
+        height: 100%;
+        font-size: 16px;
+        padding: 12px;
+        padding-right: 40px;
     }
     .exercise-card, 
     .movement-group {
