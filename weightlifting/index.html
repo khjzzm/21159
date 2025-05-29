@@ -36,164 +36,166 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <div class="header-container">
-        <div class="header-content">
-            <nav class="nav-tabs">
-                <a href="/" class="nav-item">21-15-9</a>
-                <a href="/weightlifting" class="nav-item active">weightlifting</a>
-                <a href="/1rm" class="nav-item">1rm</a>
-                <a href="/scales" class="nav-item">scales</a>
-            </nav>
-            <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
-                <span class="theme-icon">🌙</span>
-            </button>
-        </div>
-    </div>
-    
-    <!-- PC용 사이드바 광고 -->
-    <div class="ad-container ad-sidebar">
-        <div class="ad-placeholder">
-            <span class="ad-label">광고</span>
-            <div class="ad-content">Google AdSense<br>160x600</div>
-        </div>
-    </div>
-    
-    <!-- 모바일용 헤더 아래 -->
-    <div class="ad-container ad-header">
-        <div class="ad-placeholder">
-            <span class="ad-label">광고</span>
-            <div class="ad-content">Google AdSense - 320x50</div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <h1>웨이트리프팅 동작 계산기</h1>
-        <div class="unit-selector">
-            <div class="control-buttons">
-                <div class="storage-buttons">
-                    <button type="button" class="save-btn">저장</button>
-                    <button type="button" class="load-btn">열기</button>
-                    <button type="button" class="share-btn">공유</button>
-                </div>
-                <div class="unit-buttons">
-                    <button type="button" class="unit-btn active" data-unit="kg">KG</button>
-                    <button type="button" class="unit-btn" data-unit="lb">LB</button>
-                </div>
+    <div class="wrapper">
+        <div class="header-container">
+            <div class="header-content">
+                <nav class="nav-tabs">
+                    <a href="/" class="nav-item">21-15-9</a>
+                    <a href="/weightlifting" class="nav-item active">weightlifting</a>
+                    <a href="/1rm" class="nav-item">1rm</a>
+                    <a href="/scales" class="nav-item">scales</a>
+                </nav>
+                <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
+                    <span class="theme-icon">🌙</span>
+                </button>
             </div>
         </div>
-        <div class="movement-calculator">
-            <div class="row">
-                <div class="movement-group">
-                    <h2>클린 앤 저크</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="clean-and-jerk" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="clean-and-jerk-result"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="movement-group">
-                    <h2>스내치</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="snatch" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="snatch-result"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="movement-group">
-                    <h2>클린</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="clean" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="clean-result"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="movement-group">
-                    <h2>저크</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="jerk" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="jerk-result"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="movement-group">
-                    <h2>백 스쿼트</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="back-squat" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="back-squat-result"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="movement-group">
-                    <h2>프론트 스쿼트</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="front-squat" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="front-squat-result"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="movement-group">
-                    <h2>데드리프트</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="deadlift" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="deadlift-result"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="movement-group">
-                    <h2>푸시 프레스</h2>
-                    <div class="weight-input-group">
-                        <div class="input-with-unit">
-                            <input type="number" id="push-press" class="weight-input" min="0" step="0.5">
-                            <span class="unit-display">kg</span>
-                        </div>
-                        <div class="converted-weight"></div>
-                    </div>
-                    <div class="movement-result" id="push-press-result"></div>
-                </div>
-            </div>
-        </div>
-        <div id="toast-container"></div>
         
-        <!-- 광고 영역: 하단 -->
-        <div class="ad-container ad-content">
+        <!-- PC용 사이드바 광고 -->
+        <div class="ad-container ad-sidebar">
             <div class="ad-placeholder">
                 <span class="ad-label">광고</span>
-                <div class="ad-content">Google AdSense - Responsive</div>
+                <div class="ad-content">Google AdSense<br>160x600</div>
+            </div>
+        </div>
+        
+        <!-- 모바일용 헤더 아래 -->
+        <div class="ad-container ad-header">
+            <div class="ad-placeholder">
+                <span class="ad-label">광고</span>
+                <div class="ad-content">Google AdSense - 320x50</div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h1>웨이트리프팅 동작 계산기</h1>
+            <div class="unit-selector">
+                <div class="control-buttons">
+                    <div class="storage-buttons">
+                        <button type="button" class="save-btn">저장</button>
+                        <button type="button" class="load-btn">열기</button>
+                        <button type="button" class="share-btn">공유</button>
+                    </div>
+                    <div class="unit-buttons">
+                        <button type="button" class="unit-btn active" data-unit="kg">KG</button>
+                        <button type="button" class="unit-btn" data-unit="lb">LB</button>
+                    </div>
+                </div>
+            </div>
+            <div class="movement-calculator">
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>클린 앤 저크</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="clean-and-jerk" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="clean-and-jerk-result"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>스내치</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="snatch" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="snatch-result"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>클린</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="clean" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="clean-result"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>저크</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="jerk" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="jerk-result"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>백 스쿼트</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="back-squat" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="back-squat-result"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>프론트 스쿼트</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="front-squat" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="front-squat-result"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>데드리프트</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="deadlift" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="deadlift-result"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="movement-group">
+                        <h2>푸시 프레스</h2>
+                        <div class="weight-input-group">
+                            <div class="input-with-unit">
+                                <input type="number" id="push-press" class="weight-input" min="0" step="0.5">
+                                <span class="unit-display">kg</span>
+                            </div>
+                            <div class="converted-weight"></div>
+                        </div>
+                        <div class="movement-result" id="push-press-result"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="toast-container"></div>
+            
+            <!-- 광고 영역: 하단 -->
+            <div class="ad-container ad-content">
+                <div class="ad-placeholder">
+                    <span class="ad-label">광고</span>
+                    <div class="ad-content">Google AdSense - Responsive</div>
+                </div>
             </div>
         </div>
     </div>

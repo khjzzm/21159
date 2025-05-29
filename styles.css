@@ -112,18 +112,15 @@ body {
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0px;
+    padding: 0 20px;
 }
 
 .container {
     margin-top: 80px;
-    padding: 20px 0;
+    padding: 20px;
     background-color: var(--bg-primary);
     border-radius: 8px;
     box-shadow: var(--shadow-light);
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -328,7 +325,6 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 14px;
     font-weight: 500;
     pointer-events: none; /* 클릭 방지 */
-    z-index: 1;
 }
 
 /* exercise-input 내부의 input-with-unit */
@@ -458,9 +454,8 @@ input[type="number"]::-webkit-outer-spin-button {
    Button Groups
 ========================= */
 .unit-selector {
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
 }
 
 .control-buttons {
@@ -864,7 +859,12 @@ input[type="number"]::-webkit-outer-spin-button {
         grid-template-columns: 1fr;
     }
     .unit-selector {
-        padding: 0 0.8rem;
+        padding: 8px 10px;
+        top: 62px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    [data-theme="dark"] .unit-selector {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .container h1 {
         font-size: 1.5rem;
@@ -894,11 +894,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (max-width: 767px) {
     .wrapper {
-        padding: 0px;
+        padding: 0 10px;
     }
     .container {
         margin-top: 65px;
-        padding: 15px 0;
+        padding: 15px;
     }
     .header-container {
         padding: 10px 0;
@@ -945,21 +945,6 @@ input[type="number"]::-webkit-outer-spin-button {
     .exercise-card, 
     .movement-group {
         padding: 15px;
-    }
-    .unit-selector {
-        padding: 0 15px;
-        position: sticky;
-        top: 62px;
-        background: rgba(255, 255, 255, 0.99);
-        z-index: 999;
-        padding: 10px 15px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        box-shadow: none;
-    }
-    [data-theme="dark"] .unit-selector {
-        background: rgba(42, 42, 42, 0.99);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .control-buttons {
         flex-direction: row;
@@ -1083,11 +1068,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (max-width: 480px) {
     .wrapper {
-        padding: 0px;
+        padding: 0 8px;
     }
     .container {
         margin-top: 60px;
-        padding: 10px 0;
+        padding: 10px;
     }
     .nav-tabs {
         flex: 1;
@@ -1101,7 +1086,7 @@ input[type="number"]::-webkit-outer-spin-button {
     }
     .unit-selector {
         padding: 8px 10px;
-        top: 50px;
+        top: 62px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
     .control-buttons {
@@ -1545,9 +1530,6 @@ input[type="number"]::-webkit-outer-spin-button {
         display: none;
     }
     
-    .container {
-        margin-right: 200px; /* 사이드바 공간 확보 */
-    }
 }
 
 /* 태블릿에서는 콘텐츠 중간에만 */
