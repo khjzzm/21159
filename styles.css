@@ -1999,7 +1999,24 @@ input[type="number"]::-webkit-outer-spin-button {
     border-top: 1px solid var(--border-light);
 }
 
-.calculator-card--movement .movement-result-header,
+.calculator-card--movement .movement-result-header {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.calculator-card--movement .movement-result-header span:first-child {
+    text-align: left;
+}
+
+.calculator-card--movement .movement-result-header span:nth-child(2) {
+    text-align: center;
+    font-weight: 600;
+}
+
+.calculator-card--movement .movement-result-header span:last-child {
+    text-align: right;
+}
+
 .calculator-card--movement .movement-result-row {
     display: grid;
     grid-template-columns: 1fr 0.8fr 1.2fr;
@@ -2008,17 +2025,9 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 0.85rem;
 }
 
-.calculator-card--movement .movement-result-header {
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.calculator-card--movement .movement-result-row {
-    border-top: 1px solid var(--border-light);
-}
-
 .calculator-card--movement .result-name {
     color: var(--text-primary);
+    text-align: left;
 }
 
 .calculator-card--movement .result-percent {
