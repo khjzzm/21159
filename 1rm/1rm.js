@@ -23,7 +23,7 @@ function calculate(exercise, reps, weights) {
 function result_element(rm, weights) {
     return `<div class='result-element'>
         <p class='re-rm'>${rm}RM</p>
-        <p class='re-we'>${weights}${currentUnit.toUpperCase()}</p>
+        <p class='re-we'>${weights} ${currentUnit.toUpperCase()}</p>
     </div>`;
 }
 

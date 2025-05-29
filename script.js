@@ -3,6 +3,43 @@ const KG_TO_LB = 2.20462;
 const LB_TO_KG = 0.453592;
 let currentUnit = 'kg';
 
+// 다크모드 관련 함수
+function initTheme() {
+    // 저장된 테마 불러오기 또는 시스템 설정 확인
+    const savedTheme = localStorage.getItem('theme');
+    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+    } else if (systemDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeIcon('dark');
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+    
+    // 테마 변경 애니메이션 효과
+    document.body.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+        document.body.style.transition = '';
+    }, 300);
+}
+
+function updateThemeIcon(theme) {
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+}
+
 // 단위 변환 함수
 function convertWeight(weight, fromUnit, toUnit) {
     if (fromUnit === toUnit) return weight;
@@ -63,6 +100,23 @@ function updatePlaceholders() {
 
 // 공통 이벤트 핸들러
 $(document).ready(function() {
+    // 다크모드 초기화
+    initTheme();
+    
+    // 다크모드 토글 버튼 이벤트
+    $('#theme-toggle').click(function() {
+        toggleTheme();
+    });
+    
+    // 시스템 다크모드 변경 감지
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+    });
+    
     // 초기 placeholder 설정
     updatePlaceholders();
 

@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
 Sitemap: https://21-15-9.com/sitemap.xml
 
 # 검색 엔진이 모든 페이지를 크롤링할 수 있도록 허용
-# CSS, JavaScript, 이미지 파일도 크롤링 허용 
+# CSS, JavaScript, 이미지 파일도 크롤링 허용
+# 크롤링 속도 조절 (선택사항)
+Crawl-delay: 1 

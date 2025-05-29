@@ -108,11 +108,14 @@ function updateResults() {
                         convertWeight(maxWeight, 'kg', 'lb') : 
                         maxWeight;
                     
+                    // 소수점은 유지하고 단위만 뒤에 괄호로 표시
+                    const unitDisplay = currentUnit.toUpperCase();
+                    
                     resultHtml += `
                         <div class="movement-result-row">
                             <span class="result-name">${data['A동작']}</span>
                             <span class="result-percent">${data['퍼센트']}</span>
-                            <span class="result-range">${displayMinWeight}${currentUnit} ~ ${displayMaxWeight}${currentUnit}</span>
+                            <span class="result-range">${displayMinWeight}~${displayMaxWeight} (${unitDisplay})</span>
                         </div>
                     `;
                 });
