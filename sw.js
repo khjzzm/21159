@@ -20,7 +20,6 @@ const urlsToCache = [
 
 // Service Worker 설치
 self.addEventListener('install', event => {
-  console.log('Service Worker: 설치 중...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -34,14 +33,12 @@ self.addEventListener('install', event => {
 
 // Service Worker 활성화
 self.addEventListener('activate', event => {
-  console.log('Service Worker: 활성화됨');
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           // 이전 버전 캐시 삭제
           if (cacheName !== CACHE_NAME) {
-            console.log('Service Worker: 이전 캐시 삭제', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -57,12 +54,10 @@ self.addEventListener('fetch', event => {
       .then(response => {
         // 캐시에 있으면 캐시에서 반환
         if (response) {
-          console.log('Service Worker: 캐시에서 제공', event.request.url);
           return response;
         }
 
         // 캐시에 없으면 네트워크에서 가져오기
-        console.log('Service Worker: 네트워크에서 가져오기', event.request.url);
         return fetch(event.request).then(response => {
           // 응답이 유효하지 않으면 그대로 반환
           if (!response || response.status !== 200 || response.type !== 'basic') {
@@ -80,7 +75,6 @@ self.addEventListener('fetch', event => {
         });
       }).catch(() => {
         // 오프라인이고 캐시에도 없는 경우
-        console.log('Service Worker: 오프라인 상태, 기본 페이지 제공');
         return caches.match('/');
       })
   );

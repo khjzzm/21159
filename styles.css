@@ -116,7 +116,7 @@ body {
 }
 
 .container {
-    margin-top: 90px;
+    margin-top: 80px;
     padding: 20px 0;
     background-color: var(--bg-primary);
     border-radius: 8px;
@@ -897,7 +897,7 @@ input[type="number"]::-webkit-outer-spin-button {
         padding: 0px;
     }
     .container {
-        margin-top: 75px;
+        margin-top: 65px;
         padding: 15px 0;
     }
     .header-container {
@@ -1086,11 +1086,8 @@ input[type="number"]::-webkit-outer-spin-button {
         padding: 0px;
     }
     .container {
-        margin-top: 70px;
+        margin-top: 60px;
         padding: 10px 0;
-    }
-    .header-container {
-        padding: 8px 0;
     }
     .nav-tabs {
         flex: 1;
@@ -1453,5 +1450,162 @@ input[type="number"]::-webkit-outer-spin-button {
     .table-toggle::after {
         font-size: 12px;
     }
+}
+
+/* =========================
+   Google AdSense Ads
+========================= */
+.ad-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+/* PC에서 사이드바 광고 */
+.ad-sidebar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    z-index: 999;
+    display: none; /* 기본적으로 숨김 */
+}
+
+.ad-header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+    margin: 20px 0;
+    padding: 15px 0;
+    display: none; /* PC에서 숨김 */
+    position: relative;
+    z-index: 998; /* header-container보다 낮게 */
+    margin-top: 70px; /* header 높이만큼 여백 확보 */
+}
+
+.ad-content {
+    margin: 30px 0;
+    padding: 20px 0;
+}
+
+.ad-placeholder {
+    background: var(--bg-tertiary);
+    border: 2px dashed var(--border-light);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-family: monospace;
+    position: relative;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.ad-placeholder:hover {
+    border-color: var(--accent-primary);
+    background: rgba(230, 0, 18, 0.05);
+}
+
+.ad-label {
+    font-size: 10px;
+    background: var(--text-secondary);
+    color: var(--bg-primary);
+    padding: 2px 8px;
+    border-radius: 3px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ad-content {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* PC에서 사이드바 광고 표시 */
+@media (min-width: 1200px) {
+    .ad-sidebar {
+        display: block;
+    }
+    
+    .ad-sidebar .ad-placeholder {
+        width: 160px;
+        height: 600px;
+        min-height: 600px;
+    }
+    
+    .ad-header {
+        display: none;
+    }
+    
+    .container {
+        margin-right: 200px; /* 사이드바 공간 확보 */
+    }
+}
+
+/* 태블릿에서는 콘텐츠 중간에만 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .ad-header {
+        display: none;
+    }
+    
+    .ad-content .ad-placeholder {
+        width: 336px;
+        height: 280px;
+    }
+}
+
+/* 모바일에서 상하단 광고 표시 */
+@media (max-width: 767px) {
+    .ad-header {
+        display: flex;
+    }
+    
+    .ad-header .ad-placeholder {
+        width: 320px;
+        height: 50px;
+        min-height: 50px;
+    }
+    
+    .ad-content .ad-placeholder {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ad-header .ad-placeholder {
+        width: 280px;
+        height: 50px;
+    }
+    
+    .ad-content .ad-placeholder {
+        width: 280px;
+        height: 200px;
+    }
+}
+
+/* 실제 애드센스 광고를 위한 스타일 */
+.adsbygoogle {
+    display: block;
+    margin: 20px auto;
+}
+
+/* 다크모드에서 광고 영역 */
+[data-theme="dark"] .ad-placeholder {
+    background: var(--bg-secondary);
+    border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .ad-placeholder:hover {
+    border-color: var(--accent-primary);
+    background: rgba(230, 0, 18, 0.1);
 }
 
