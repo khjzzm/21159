@@ -257,18 +257,17 @@ $(document).ready(function() {
     $('.share-btn').click(function() {
         let shareText = '웨이트리프팅 동작 계산 결과\n\n';
         
-        $('.movement-group').each(function() {
+        $('.calculator-card--movement').each(function() {
             const title = $(this).find('h2').text();
             const weight = $(this).find('.weight-input').val();
-            const results = $(this).find('.movement-result-row');
             
             if (weight) {
                 shareText += `[${title}] ${weight}${currentUnit.toUpperCase()}\n`;
-                results.each(function() {
+                $(this).find('.movement-result-row').each(function() {
                     const name = $(this).find('.result-name').text();
                     const percent = $(this).find('.result-percent').text();
                     const range = $(this).find('.result-range').text();
-                    shareText += `${name} ${percent} ${range}\n`;
+                    shareText += `- ${name}: ${percent} | ${range}\n`;
                 });
                 shareText += '\n';
             }
