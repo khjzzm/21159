@@ -77,6 +77,9 @@ function showToast(message) {
     }, 100);
 }
 
+// PWA에서 사용할 수 있도록 백업
+window.originalShowToast = showToast;
+
 // 백분율 계산 함수
 function calculatePercentage(value, total) {
     return ((value / total) * 100).toFixed(1);

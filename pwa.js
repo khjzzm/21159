@@ -141,9 +141,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 토스트 메시지 (기존 함수 재사용)
 function showToast(message) {
-    // 기존 토스트 시스템 활용
-    if (typeof window.showToast === 'function') {
-        window.showToast(message);
+    // script.js의 showToast 함수가 있는지 확인하고 사용
+    if (typeof window.originalShowToast === 'function') {
+        window.originalShowToast(message);
+    } else if (document.getElementById('toast-container')) {
+        // 직접 토스트 생성
+        const toastContainer = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast show';
+        toast.textContent = message;
+        
+        toastContainer.appendChild(toast);
+        
+        // 3초 후 제거
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 300);
+        }, 3000);
     } else {
         console.log('PWA:', message);
     }
