@@ -1443,7 +1443,7 @@ input[type="number"]::-webkit-outer-spin-button {
 ========================= */
 .ad-container {
     width: 100%;
-    display: flex;
+    display: none; /* 애드센스 승인 전 임시 숨김 */
     justify-content: center;
     margin: 20px 0;
     position: relative;
