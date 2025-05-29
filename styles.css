@@ -119,7 +119,7 @@ body {
     margin-top: 90px;
     padding: 20px 0;
     background-color: var(--bg-primary);
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: var(--shadow-light);
     max-width: 1200px;
     margin-left: auto;
@@ -214,7 +214,7 @@ a:not(.nav-item):focus {
     display: flex;
     max-width: 600px;
     background: var(--nav-bg);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 6px;
     gap: 6px;
     transition: background 0.3s ease;
@@ -225,7 +225,7 @@ a:not(.nav-item):focus {
     right: 20px;
     background: var(--bg-tertiary);
     border: 1px solid var(--border-light);
-    border-radius: 8px;
+    border-radius: 6px;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -256,7 +256,7 @@ a:not(.nav-item):focus {
     text-align: center;
     color: var(--text-secondary);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 16px;
     font-weight: 500;
     transition: all 0.2s ease;
@@ -283,7 +283,7 @@ input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid var(--border-light);
-    border-radius: 5px;
+    border-radius: 6px;
     margin-bottom: 10px;
     background-color: var(--bg-primary);
     color: var(--text-primary);
@@ -414,7 +414,7 @@ input[type="number"]::-webkit-outer-spin-button {
     background: var(--bg-tertiary);
     color: var(--text-secondary);
     border: 1px solid var(--border-light);
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 14px;
     font-weight: bold;
     padding: 8px 16px;
@@ -479,7 +479,26 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .unit-buttons {
     display: flex;
-    gap: 8px;
+    gap: 4px;
+    background: #f1f3f4;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+[data-theme="dark"] .unit-buttons {
+    background: #444444;
+}
+
+.unit-buttons button {
+    min-width: 40px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: #666;
+    transition: all 0.2s ease;
 }
 
 /* =========================
@@ -527,8 +546,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .exercise-input .input-with-unit input {
     width: 100%;
+    height: 100%;
     padding: 0.5rem;
-    padding-right: 35px; /* 단위 표시 공간 확보 */
+    padding-right: 35px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 0.9rem;
@@ -684,7 +704,7 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 12px 24px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
-    border-radius: 8px;
+    border-radius: 6px;
     margin-bottom: 10px;
     font-size: 14px;
     opacity: 0;
@@ -717,7 +737,7 @@ input[type="number"]::-webkit-outer-spin-button {
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 6px;
     text-align: center;
     min-width: 280px;
 }
@@ -763,7 +783,7 @@ input[type="number"]::-webkit-outer-spin-button {
     line-height: 1.6;
     background: var(--bg-primary);
     color: var(--text-primary);
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: var(--shadow-light);
     transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -886,17 +906,21 @@ input[type="number"]::-webkit-outer-spin-button {
         padding: 10px 0;
     }
     .header-content {
-        padding: 0 15px;
+        padding: 0 5px;
+        gap: 5px;
     }
     .nav-tabs {
-        max-width: calc(100% - 60px);
+        flex: 1;
+        max-width: none;
         padding: 4px;
     }
     .theme-toggle {
-        right: 15px;
+        right: auto;
+        position: static;
         width: 36px;
         height: 36px;
         font-size: 16px;
+        flex-shrink: 0;
     }
     .nav-item {
         padding: 10px 4px;
@@ -952,7 +976,7 @@ input[type="number"]::-webkit-outer-spin-button {
         display: flex;
         gap: 4px;
         background: #f1f3f4;
-        border-radius: 8px;
+        border-radius: 6px;
         padding: 2px;
     }
     [data-theme="dark"] .unit-buttons {
@@ -963,7 +987,7 @@ input[type="number"]::-webkit-outer-spin-button {
         padding: 6px 12px;
         font-size: 12px;
         font-weight: 600;
-        border-radius: 6px;
+        border-radius: 4px;
         background: transparent;
         border: none;
         color: #666;
@@ -974,7 +998,7 @@ input[type="number"]::-webkit-outer-spin-button {
     }
     .unit-buttons button.active {
         background: white;
-        color: #0066ff;
+        color: var(--accent-primary);
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     [data-theme="dark"] .unit-buttons button.active {
@@ -1056,8 +1080,9 @@ input[type="number"]::-webkit-outer-spin-button {
         padding: 8px 0;
     }
     .nav-tabs {
-        max-width: calc(100% - 60px);
-        margin: 0 10px;
+        flex: 1;
+        max-width: none;
+        margin: 0;
         padding: 3px;
     }
     .nav-item {
@@ -1121,5 +1146,299 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--text-secondary);
     margin-top: 0.3rem;
     font-weight: 500;
+}
+
+/* ===== SCALES PAGE STYLES ===== */
+
+/* 변환기 섹션 */
+.converter-section {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.converter-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: end;
+    margin-top: 20px;
+}
+
+.converter-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.converter-arrow {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--crossfit-red);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* 변환표 섹션 */
+.conversion-table-section {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.table-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.table-toggle {
+    background: var(--button-secondary);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-toggle:hover {
+    background: var(--button-hover);
+    transform: translateY(-1px);
+}
+
+.table-toggle.active {
+    background: var(--crossfit-red);
+    border-color: var(--crossfit-red);
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(230, 0, 18, 0.3);
+}
+
+/* 라이트모드에서 active 버튼 - 검정 글씨 */
+[data-theme="light"] .table-toggle.active,
+:root:not([data-theme="dark"]) .table-toggle.active {
+    color: #000;
+}
+
+/* 다크모드에서 active 버튼 - 흰색 글씨 */
+[data-theme="dark"] .table-toggle.active {
+    color: #fff;
+}
+
+.conversion-table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.conversion-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.conversion-table th {
+    background: var(--button-secondary);
+    color: var(--text-color);
+    padding: 12px 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+}
+
+.conversion-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: none;
+}
+
+.kg-cell {
+    background: rgba(230, 0, 18, 0.1);
+    font-weight: 500;
+}
+
+.lb-cell {
+    background: rgba(26, 26, 26, 0.1);
+}
+
+/* 공통 변환값 */
+.common-weights {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+}
+
+.common-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.common-item {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: none;
+}
+
+.common-kg, .common-lb {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.common-kg {
+    color: var(--crossfit-red);
+}
+
+.common-lb {
+    color: var(--crossfit-black);
+}
+
+/* 다크모드에서 lb 색상 개선 */
+[data-theme="dark"] .common-lb {
+    color: var(--text-color);
+}
+
+.common-arrow {
+    margin: 0 8px;
+    color: var(--text-color);
+}
+
+.common-item small {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* 바벨 배경 */
+.barbell-item {
+    background: linear-gradient(135deg, rgba(128, 128, 128, 0.1), rgba(105, 105, 105, 0.1));
+    border-color: rgba(128, 128, 128, 0.3);
+}
+
+/* 플레이트 색상별 배경 */
+.red-plate {
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.08), rgba(255, 69, 58, 0.08));
+    border-color: rgba(220, 20, 60, 0.2);
+}
+
+.blue-plate {
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.08), rgba(70, 130, 180, 0.08));
+    border-color: rgba(30, 144, 255, 0.2);
+}
+
+.yellow-plate {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.1));
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.green-plate {
+    background: linear-gradient(135deg, rgba(34, 139, 34, 0.08), rgba(46, 204, 113, 0.08));
+    border-color: rgba(34, 139, 34, 0.2);
+}
+
+.white-plate {
+    background: linear-gradient(135deg, rgba(240, 240, 240, 0.1), rgba(211, 211, 211, 0.1));
+    border-color: rgba(169, 169, 169, 0.3);
+}
+
+/* 다크모드에서 흰 플레이트 조정 */
+[data-theme="dark"] .white-plate {
+    background: linear-gradient(135deg, rgba(70, 70, 70, 0.1), rgba(90, 90, 90, 0.1));
+    border-color: rgba(130, 130, 130, 0.3);
+}
+
+/* Scales 페이지 모바일 반응형 */
+@media (max-width: 768px) {
+    .converter-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .converter-arrow {
+        order: 1;
+        margin: 0;
+        font-size: 20px;
+    }
+
+    .table-toggle {
+        font-size: 12px;
+        padding: 8px 6px;
+    }
+
+    .conversion-table {
+        font-size: 12px;
+    }
+
+    .conversion-table th,
+    .conversion-table td {
+        padding: 6px 4px;
+    }
+
+    .common-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .converter-section,
+    .conversion-table-section,
+    .common-weights {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .table-toggle {
+        font-size: 11px;
+        padding: 8px 4px;
+    }
+
+    .common-item {
+        padding: 12px;
+    }
+
+    .common-kg, .common-lb {
+        font-size: 14px;
+    }
+}
+
+/* 매우 작은 화면을 위한 축약 텍스트 */
+@media (max-width: 360px) {
+    .table-toggle[data-range="light"]::after {
+        content: "WOD";
+    }
+    .table-toggle[data-range="medium"]::after {
+        content: "RX+";
+    }
+    .table-toggle[data-range="heavy"]::after {
+        content: "경기";
+    }
+    .table-toggle[data-range="light"],
+    .table-toggle[data-range="medium"],
+    .table-toggle[data-range="heavy"] {
+        font-size: 0;
+    }
+    .table-toggle::after {
+        font-size: 12px;
+    }
 }
 

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Basic SEO Meta Tags -->
+    <meta name="description" content="kg ↔ lb 변환기 - 킬로그램과 파운드를 자유롭게 변환하고 5lb~500lb 변환표를 확인하세요. CrossFit과 웨이트리프팅을 위한 필수 도구">
+    <meta name="keywords" content="kg lb 변환, 킬로그램 파운드, 무게 변환기, CrossFit 변환표, 웨이트리프팅 단위 변환, kg to lb, lb to kg">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="kg ↔ lb 변환기 | 21-15-9">
+    <meta property="og:description" content="킬로그램과 파운드를 자유롭게 변환하고 5lb~500lb 변환표를 확인하세요">
+    <meta property="og:url" content="https://21-15-9.com/scales">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://21-15-9.com/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <title>kg ↔ lb 변환기 | 21-15-9</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    
+    <link rel="canonical" href="https://21-15-9.com/scales">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header-container">
+        <div class="header-content">
+            <nav class="nav-tabs">
+                <a href="/" class="nav-item">21-15-9</a>
+                <a href="/weightlifting" class="nav-item">weightlifting</a>
+                <a href="/1rm" class="nav-item">1rm</a>
+                <a href="/scales" class="nav-item active">scales</a>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>kg ↔ lb 변환기</h1>
+        
+        <!-- 실시간 변환기 섹션 -->
+        <div class="converter-section">
+            <h2>🔄 실시간 변환</h2>
+            <div class="converter-grid">
+                <div class="converter-input">
+                    <label for="lb-input">파운드 (lb)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="lb-input" class="weight-input" min="0" step="0.01" placeholder="lb 입력">
+                        <span class="unit-display">lb</span>
+                    </div>
+                </div>
+                <div class="converter-arrow">↔</div>
+                <div class="converter-input">
+                    <label for="kg-input">킬로그램 (kg)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="kg-input" class="weight-input" min="0" step="0.01" placeholder="kg 입력">
+                        <span class="unit-display">kg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 변환표 섹션 -->
+        <div class="conversion-table-section">
+            <h2>📊 변환표 (5lb ~ 500lb)</h2>
+            <div class="table-controls">
+                <button class="table-toggle active" data-range="light">일반 WOD (5-220lb)</button>
+                <button class="table-toggle" data-range="medium">RX+ 레벨 (225-350lb)</button>
+                <button class="table-toggle" data-range="heavy">컴피티션 (355-500lb)</button>
+            </div>
+            
+            <div class="conversion-table-wrapper">
+                <table class="conversion-table" id="conversion-table">
+                    <thead>
+                        <tr>
+                            <th>lb</th>
+                            <th>kg</th>
+                            <th>lb</th>
+                            <th>kg</th>
+                            <th>lb</th>
+                            <th>kg</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- JavaScript로 동적 생성 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 공통 변환값 -->
+        <div class="common-weights">
+            <h3>🎯 자주 사용하는 변환값</h3>
+            <div class="common-grid">
+                <div class="common-item barbell-item">
+                    <span class="common-kg">20kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">44.1lb</span>
+                    <small>남자 바벨</small>
+                </div>
+                <div class="common-item barbell-item">
+                    <span class="common-kg">15kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">33.1lb</span>
+                    <small>여자 바벨</small>
+                </div>
+                <div class="common-item white-plate">
+                    <span class="common-kg">2.5kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">5.5lb</span>
+                    <small>조임쇠</small>
+                </div>
+                <div class="common-item red-plate">
+                    <span class="common-kg">25kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">55.1lb</span>
+                    <small>빨간 플레이트</small>
+                </div>
+                <div class="common-item blue-plate">
+                    <span class="common-kg">20kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">44.1lb</span>
+                    <small>파란 플레이트</small>
+                </div>
+                <div class="common-item yellow-plate">
+                    <span class="common-kg">15kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">33.1lb</span>
+                    <small>노란 플레이트</small>
+                </div>
+                <div class="common-item green-plate">
+                    <span class="common-kg">10kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">22.0lb</span>
+                    <small>초록 플레이트</small>
+                </div>
+                <div class="common-item white-plate">
+                    <span class="common-kg">5kg</span>
+                    <span class="common-arrow">→</span>
+                    <span class="common-lb">11.0lb</span>
+                    <small>흰 플레이트</small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../script.js"></script>
+    <script src="scales.js"></script>
+</body>
+</html> 
