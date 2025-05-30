@@ -1,0 +1,285 @@
+/* =========================
+   Main Page (Index) Specific Styles
+========================= */
+
+/* 상관관계 섹션 스타일 */
+.correlation-section {
+    margin: 24px 0;
+}
+
+.correlation-grid,
+.coefficient-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.correlation-card,
+.coefficient-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.correlation-card:hover,
+.coefficient-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.correlation-header,
+.coefficient-header {
+    background: var(--bg-secondary);
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+}
+
+.correlation-header::after,
+.coefficient-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-primary), transparent);
+}
+
+.correlation-item,
+.coefficient-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+}
+
+.correlation-item:hover,
+.coefficient-row:hover {
+    background: var(--bg-secondary);
+}
+
+.correlation-item:not(:last-child),
+.coefficient-row:not(:last-child) {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.correlation-item .movement {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.correlation-item .percentage {
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.coefficient-row .reps {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.coefficient-row .value {
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* 페이지 설명 섹션 구분선 */
+.description .info-text > h2 {
+    position: relative;
+    padding-top: 32px;
+    margin-top: 32px;
+}
+
+.description .info-text > h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-light);
+}
+
+.description .info-text > h2:first-child {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.description .info-text > h2:first-child::before {
+    display: none;
+}
+
+/* 설명 섹션 구분선 */
+.description-section {
+    position: relative;
+    padding: 40px 0;
+    margin: 0;
+}
+
+.description-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    border-bottom: 1px dashed var(--border-light);
+}
+
+.description-section:first-child {
+    padding-top: 0;
+}
+
+.description-section:last-child {
+    padding-bottom: 0;
+}
+
+.description-section:last-child::after {
+    display: none;
+}
+
+.description-section h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* 메인 페이지 인트로 텍스트 */
+.intro-text {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+/* 어드센스 광고 스타일 (향후 사용) */
+.ad-container {
+    display: none !important; /* 애드센스 승인 전까지 강제 숨김 */
+}
+
+.ad-header {
+    display: none !important;
+}
+
+.ad-sidebar {
+    display: none !important;
+}
+
+.ad-content {
+    display: none !important;
+}
+
+/* 실제 애드센스 광고를 위한 스타일 */
+.adsbygoogle {
+    display: block;
+    margin: 20px auto;
+}
+
+/* 다크모드에서 광고 영역 */
+[data-theme="dark"] .ad-placeholder {
+    background: var(--bg-secondary);
+    border-color: var(--border-medium);
+}
+
+[data-theme="dark"] .ad-placeholder:hover {
+    border-color: var(--accent-primary);
+    background: rgba(230, 0, 18, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .correlation-grid,
+    .coefficient-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 16px 0;
+    }
+
+    .correlation-header,
+    .coefficient-header {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .correlation-item,
+    .coefficient-row {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .description .info-text > h2 {
+        padding-top: 24px;
+        margin-top: 24px;
+    }
+
+    .description-section {
+        padding: 32px 0;
+    }
+
+    .description-section::after {
+        width: 160px;
+    }
+
+    .description-section h2 {
+        margin-bottom: 12px;
+    }
+
+    .intro-text {
+        font-size: var(--font-size-sm);
+        margin-bottom: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .correlation-grid,
+    .coefficient-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+    .correlation-header,
+    .coefficient-header {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .correlation-item,
+    .coefficient-row {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+    }
+
+    .description .info-text > h2 {
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+
+    .description-section {
+        padding: 24px 0;
+    }
+
+    .description-section::after {
+        width: 120px;
+    }
+
+    .description-section h2 {
+        margin-bottom: 10px;
+    }
+
+    .intro-text {
+        font-size: var(--font-size-sm);
+        margin-bottom: 12px;
+    }
+} 

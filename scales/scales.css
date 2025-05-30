@@ -1,0 +1,316 @@
+/* =========================
+   Scales (kg/lb Converter) Specific Styles
+========================= */
+
+/* 변환기 섹션 */
+.converter-section {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .converter-section {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.converter-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: flex-end;
+    margin-top: 16px;
+}
+
+.converter-input {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.converter-input label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.converter-arrow {
+    font-size: var(--font-size-xl);
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 10px;
+}
+
+/* 변환표 섹션 */
+.conversion-table-section {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .conversion-table-section {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.table-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.table-toggle {
+    background: var(--bg-tertiary);
+    color: var(--text-color);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+[data-theme="dark"] .table-toggle {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.table-toggle:hover {
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .table-toggle:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.table-toggle.active {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: white;
+}
+
+.conversion-table-wrapper {
+    overflow-x: auto;
+    margin-top: 16px;
+}
+
+.conversion-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.conversion-table th {
+    background: rgba(0, 0, 0, 0.02);
+    color: var(--text-color);
+    padding: 10px 8px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+
+[data-theme="dark"] .conversion-table th {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.conversion-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background-color 0.2s ease;
+}
+
+[data-theme="dark"] .conversion-table td {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.kg-cell {
+    background: rgba(230, 0, 18, 0.04);
+    font-weight: 500;
+}
+
+[data-theme="dark"] .kg-cell {
+    background: rgba(230, 0, 18, 0.1);
+}
+
+.lb-cell {
+    background: rgba(26, 26, 26, 0.04);
+}
+
+[data-theme="dark"] .lb-cell {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* 변환표 hover 효과 */
+.conversion-table tr:hover td {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .conversion-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .conversion-table tr:hover .kg-cell {
+    background: rgba(230, 0, 18, 0.15);
+}
+
+[data-theme="dark"] .conversion-table tr:hover .lb-cell {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 공통 변환값 */
+.common-weights {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .common-weights {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.common-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.common-item {
+    position: relative;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    padding: 12px;
+    text-align: center;
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .common-item {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 내부 텍스트 스타일 */
+.common-kg {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+}
+
+.common-lb {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+}
+
+.common-arrow {
+    margin: 0 6px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.common-item small {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+}
+
+/* 섹션 공통 스타일 */
+.converter-section,
+.conversion-table-section,
+.common-weights {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .converter-section,
+[data-theme="dark"] .conversion-table-section,
+[data-theme="dark"] .common-weights {
+    background: var(--bg-primary);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .converter-section,
+    .conversion-table-section,
+    .common-weights {
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+
+    .converter-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .converter-arrow {
+        transform: rotate(90deg);
+        height: auto;
+        padding: 10px;
+    }
+
+    .table-toggle {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .common-grid {
+        gap: 8px;
+    }
+
+    .common-item {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .converter-section,
+    .conversion-table-section,
+    .common-weights {
+        padding: 12px;
+        margin-bottom: 8px;
+    }
+
+    .converter-grid {
+        gap: 8px;
+    }
+
+    .table-toggle {
+        font-size: 11px;
+        padding: 6px 4px;
+    }
+
+    .common-grid {
+        gap: 6px;
+    }
+
+    .common-item {
+        padding: 8px;
+    }
+
+    .common-kg,
+    .common-lb {
+        font-size: var(--font-size-base);
+    }
+
+    .converter-arrow {
+        padding: 5px;
+    }
+} 

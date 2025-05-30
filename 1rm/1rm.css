@@ -1,0 +1,468 @@
+/* =========================
+   1RM Calculator Specific Styles
+========================= */
+
+/* Calculator Grid Layout */
+.calculator-grid {
+    display: grid;
+    gap: var(--grid-gap, 24px);
+    padding: var(--container-padding, 20px);
+    width: 100%;
+}
+
+.calculator-grid--rm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.calculator-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+}
+
+/* 1RM 계산기 카드 스타일 */
+.calculator-card--rm {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    padding: 0;
+}
+
+.calculator-card--rm .section-header {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.calculator-card--rm .calculator-input {
+    padding: 12px;
+}
+
+.calculator-card--rm .calculator-results {
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.section-header {
+    margin: 0;
+    padding: 0 var(--content-padding, 20px);
+    height: var(--header-height, 48px);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Input Styles */
+.calculator-input {
+    padding: var(--content-padding, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.calculator-input select,
+.calculator-input .input-with-unit input {
+    width: 100%;
+    height: 36px;
+    padding: 0 12px;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.calculator-input select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8.825L1.175 4 2.238 2.938 6 6.7l3.763-3.763L10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+}
+
+.calculator-input .input-with-unit {
+    position: relative;
+}
+
+.calculator-input .unit-display {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    pointer-events: none;
+}
+
+.calculator-input .calculate-btn {
+    width: 100%;
+    height: 36px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: white;
+    background: var(--accent-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calculator-input .calculate-btn:hover {
+    background: var(--accent-secondary);
+}
+
+/* exercise-input 내부의 input-with-unit */
+.exercise-input {
+    padding: 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.exercise-input select {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.exercise-input .input-with-unit {
+    position: relative;
+    width: 100%;
+}
+
+.exercise-input .input-with-unit input {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 12px;
+    font-size: 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.exercise-input .unit-display {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.exercise-input .calculate-btn {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background: var(--accent-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Results Styles */
+.calculator-results {
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-results--rm,
+.calculator-results--movement {
+    display: none;
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-results--rm.has-results,
+.calculator-results--movement.has-results {
+    display: block;
+}
+
+/* 1RM 결과 리스트 스타일 개선 */
+.calculator-results--rm .result-element {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.calculator-results--rm .result-element:last-child {
+    border-bottom: none;
+}
+
+/* 입력한 회수에 해당하는 RM 강조 */
+.calculator-results--rm .result-element.selected {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent-primary);
+    padding-left: 9px;
+}
+
+.calculator-results--rm .result-element.selected .re-rm {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.calculator-results--rm .result-element.selected .re-we {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.calculator-results--rm .re-rm {
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 45px;
+    font-size: 0.85rem;
+}
+
+.calculator-results--rm .re-we {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: right;
+    min-width: 180px;
+}
+
+.calculator-results--rm .result-element p {
+    margin: 0;
+}
+
+.calculator-card--rm .result-element {
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.calculator-card--rm .result-element:last-child {
+    margin-bottom: 0;
+}
+
+.calculator-card--rm .result-element p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.calculator-card--rm .re-rm {
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 45px;
+}
+
+.calculator-card--rm .re-we {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .calculator-card {
+    background: var(--bg-primary);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .calculator-card--rm {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+}
+
+/* Responsive Grid Layout */
+@media (min-width: 769px) and (max-width: 1199px) {
+    :root {
+        --grid-gap: 16px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    :root {
+        --grid-gap: 12px;
+    }
+
+    .calculator-grid--rm {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --grid-gap: 8px;
+    }
+
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calculator-grid--rm {
+        gap: 16px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-grid--rm {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .calculator-card {
+        margin-bottom: 12px;
+    }
+
+    .calculator-card--rm .section-header {
+        height: 36px;
+        padding: 0 10px;
+    }
+
+    .calculator-card--rm .calculator-input,
+    .calculator-card--rm .calculator-results {
+        padding: 10px;
+    }
+
+    .section-header {
+        height: var(--header-height, 44px);
+    }
+    
+    .section-header h2 {
+        font-size: 0.9rem;
+    }
+
+    .section-header h2::before {
+        height: 14px;
+    }
+
+    .calculator-results--rm .result-element {
+        padding: 6px 10px;
+    }
+
+    .calculator-results--rm .result-element.selected {
+        padding-left: 7px;
+    }
+
+    .calculator-results--rm .re-rm,
+    .calculator-results--rm .re-we {
+        font-size: 0.8rem;
+    }
+
+    .exercise-input {
+        padding: 16px 16px 0;
+        gap: 10px;
+    }
+
+    .exercise-input select,
+    .exercise-input .input-with-unit input,
+    .exercise-input .calculate-btn {
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .calculator-card--rm .re-we {
+        min-width: 150px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-grid--rm {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .calculator-input,
+    .calculator-results {
+        padding: var(--content-padding, 16px);
+    }
+
+    .calculator-card {
+        margin-bottom: 8px;
+    }
+
+    .calculator-card--rm .section-header {
+        height: 32px;
+        padding: 0 8px;
+    }
+
+    .calculator-card--rm .calculator-input,
+    .calculator-card--rm .calculator-results {
+        padding: 8px;
+    }
+
+    .section-header {
+        height: var(--header-height, 40px);
+    }
+    
+    .section-header h2 {
+        font-size: 0.85rem;
+    }
+
+    .section-header h2::before {
+        height: 12px;
+    }
+
+    .calculator-results--rm .result-element {
+        padding: 6px 8px;
+    }
+
+    .calculator-results--rm .result-element.selected {
+        padding-left: 5px;
+    }
+
+    .calculator-results--rm .re-rm,
+    .calculator-results--rm .re-we {
+        font-size: 0.75rem;
+    }
+
+    .exercise-input {
+        padding: 12px 12px 0;
+        gap: 6px;
+    }
+
+    .exercise-input select,
+    .exercise-input .input-with-unit input,
+    .exercise-input .calculate-btn {
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .exercise-input .input-with-unit input {
+        padding: 0 32px 0 10px;
+    }
+
+    .calculator-card--rm .re-we {
+        min-width: 140px;
+        font-size: 0.75rem;
+    }
+} 

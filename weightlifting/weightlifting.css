@@ -1,0 +1,473 @@
+/* =========================
+   Weightlifting Calculator Specific Styles
+========================= */
+
+/* Section Header Styles */
+.section-header {
+    margin: 0;
+    padding: 0 var(--content-padding, 20px);
+    height: var(--header-height, 48px);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Calculator Grid Layout */
+.calculator-grid--movement {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.calculator-card--movement {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+}
+
+/* Movement Calculator Input */
+.calculator-card--movement .calculator-input {
+    padding: var(--content-padding, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 입력 필드와 변환 무게를 감싸는 컨테이너 추가 */
+.calculator-card--movement .weight-input-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calculator-card--movement .calculator-input .input-with-unit {
+    position: relative;
+    flex: 1;
+}
+
+.calculator-card--movement .converted-weight {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.calculator-card--movement .calculator-input .input-with-unit input {
+    width: 100%;
+    height: 36px;
+    padding: 0 40px 0 12px;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.calculator-card--movement .calculator-input .unit-display {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    pointer-events: none;
+}
+
+/* Movement Calculator Results */
+.calculator-card--movement .calculator-results {
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-results--movement {
+    display: none;
+    padding: var(--content-padding, 12px);
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-results--movement.has-results {
+    display: block;
+}
+
+.calculator-card--movement .movement-result-header {
+    color: var(--text-secondary);
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1.2fr;
+    gap: 8px;
+    padding: 8px;
+    font-size: 0.85rem;
+}
+
+.calculator-card--movement .movement-result-header span:first-child {
+    text-align: left;
+}
+
+.calculator-card--movement .movement-result-header span:nth-child(2) {
+    text-align: center;
+    font-weight: 600;
+}
+
+.calculator-card--movement .movement-result-header span:last-child {
+    text-align: right;
+}
+
+.calculator-card--movement .movement-result-row {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1.2fr;
+    gap: 8px;
+    padding: 8px;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.calculator-card--movement .result-name {
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.calculator-card--movement .result-percent {
+    color: var(--accent-primary);
+    font-weight: 500;
+    text-align: center;
+}
+
+.calculator-card--movement .result-range {
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+/* Weight Conversion Display */
+.converted-weight {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* 상관관계 섹션 스타일 */
+.correlation-section {
+    margin: 24px 0;
+}
+
+.correlation-grid,
+.coefficient-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.correlation-card,
+.coefficient-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.correlation-header,
+.coefficient-header {
+    background: var(--bg-secondary);
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.correlation-item,
+.coefficient-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+}
+
+.correlation-item:not(:last-child),
+.coefficient-row:not(:last-child) {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.correlation-item .movement {
+    color: var(--text-primary);
+}
+
+.correlation-item .percentage {
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+.coefficient-row .reps {
+    color: var(--text-primary);
+}
+
+.coefficient-row .value {
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+/* 페이지 설명 섹션 구분선 */
+.description .info-text > h2 {
+    position: relative;
+    padding-top: 32px;
+    margin-top: 32px;
+}
+
+.description .info-text > h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-light);
+}
+
+.description .info-text > h2:first-child {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.description .info-text > h2:first-child::before {
+    display: none;
+}
+
+/* 설명 섹션 구분선 */
+.description-section {
+    position: relative;
+    padding: 40px 0;
+    margin: 0;
+}
+
+.description-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    border-bottom: 1px dashed var(--border-light);
+}
+
+.description-section:first-child {
+    padding-top: 0;
+}
+
+.description-section:last-child {
+    padding-bottom: 0;
+}
+
+.description-section:last-child::after {
+    display: none;
+}
+
+.description-section h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .calculator-grid--movement {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .calculator-card--movement .calculator-results {
+        padding: 10px;
+    }
+
+    .calculator-card--movement .movement-result-header,
+    .calculator-card--movement .movement-result-row {
+        font-size: 0.8rem;
+        padding: 6px;
+        gap: 6px;
+    }
+
+    .converted-weight {
+        font-size: 0.75rem;
+        margin-top: 2px;
+    }
+
+    .section-header {
+        height: var(--header-height, 44px);
+    }
+    
+    .section-header h2 {
+        font-size: 0.9rem;
+    }
+
+    .section-header h2::before {
+        height: 14px;
+    }
+
+    .correlation-grid,
+    .coefficient-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 16px 0;
+    }
+
+    .correlation-header,
+    .coefficient-header {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .correlation-item,
+    .coefficient-row {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .description .info-text > h2 {
+        padding-top: 24px;
+        margin-top: 24px;
+    }
+
+    .description-section {
+        padding: 32px 0;
+    }
+
+    .description-section::after {
+        width: 160px;
+    }
+
+    .description-section h2 {
+        margin-bottom: 12px;
+    }
+
+    .calculator-card--movement .calculator-input {
+        padding: 12px;
+        gap: 8px;
+    }
+    
+    .calculator-card--movement .weight-input-container {
+        gap: 6px;
+    }
+    
+    .calculator-card--movement .converted-weight {
+        font-size: 0.75rem;
+    }
+    
+    .calculator-card--movement .calculator-input .input-with-unit input {
+        height: 34px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-grid--movement {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .calculator-card--movement .calculator-input,
+    .calculator-card--movement .calculator-results {
+        padding: var(--content-padding, 16px);
+    }
+
+    .calculator-card--movement .movement-result-header,
+    .calculator-card--movement .movement-result-row {
+        font-size: 0.75rem;
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .converted-weight {
+        font-size: 0.7rem;
+        margin-top: 2px;
+    }
+
+    .section-header {
+        height: var(--header-height, 40px);
+    }
+    
+    .section-header h2 {
+        font-size: 0.85rem;
+    }
+
+    .section-header h2::before {
+        height: 12px;
+    }
+
+    .correlation-grid,
+    .coefficient-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+    .correlation-header,
+    .coefficient-header {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .correlation-item,
+    .coefficient-row {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+    }
+
+    .description .info-text > h2 {
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+
+    .description-section {
+        padding: 24px 0;
+    }
+
+    .description-section::after {
+        width: 120px;
+    }
+
+    .description-section h2 {
+        margin-bottom: 10px;
+    }
+
+    .calculator-card--movement .calculator-input {
+        padding: 8px;
+        gap: 6px;
+    }
+    
+    .calculator-card--movement .weight-input-container {
+        gap: 4px;
+    }
+    
+    .calculator-card--movement .converted-weight {
+        font-size: 0.7rem;
+    }
+    
+    .calculator-card--movement .calculator-input .input-with-unit input {
+        height: 32px;
+        font-size: 13px;
+        padding: 0 35px 0 10px;
+    }
+    
+    .calculator-card--movement .calculator-input .unit-display {
+        right: 8px;
+        font-size: 12px;
+    }
+} 

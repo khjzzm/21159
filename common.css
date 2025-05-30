@@ -1,0 +1,997 @@
+/* =========================
+   CSS Variables & Color Themes
+========================= */
+:root {
+    /* CrossFit Light Theme */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #fafafa;
+    --bg-body: #f1f3f5;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    
+    /* CrossFit Brand Colors */
+    --accent-primary: #e60012;
+    --accent-secondary: #c40010;
+    --accent-tertiary: #ff1a2b;
+    --crossfit-black: #1a1a1a;
+    --crossfit-dark: #2a2a2a;
+    
+    /* Navigation & UI */
+    --nav-bg: #f8f9fa;
+    --nav-active: var(--accent-primary);
+    --nav-hover: rgba(230, 0, 18, 0.1);
+    
+    /* Buttons */
+    --btn-primary: var(--accent-primary);
+    --btn-primary-hover: var(--accent-secondary);
+    --btn-secondary: var(--crossfit-black);
+    --btn-secondary-hover: var(--crossfit-dark);
+    
+    /* Links */
+    --link-color: var(--accent-primary);
+    --link-hover: var(--accent-secondary);
+    
+    /* Borders & Shadows */
+    --border-light: rgba(0, 0, 0, 0.1);
+    --border-medium: rgba(0, 0, 0, 0.2);
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-base: 1rem;    /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.25rem;   /* 20px */
+    --font-size-2xl: 1.5rem;   /* 24px */
+    
+    /* Line Heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2a2a2a;
+        --bg-tertiary: #333333;
+        --bg-body: #121212;
+        --text-primary: #ffffff;
+        --text-secondary: #cccccc;
+        --text-tertiary: #999999;
+        
+        --nav-bg: #2a2a2a;
+        --nav-active: var(--accent-primary);
+        --nav-hover: rgba(230, 0, 18, 0.2);
+        
+        --btn-primary: var(--accent-primary);
+        --btn-primary-hover: var(--accent-tertiary);
+        --btn-secondary: #444444;
+        --btn-secondary-hover: #555555;
+        
+        --border-light: rgba(255, 255, 255, 0.1);
+        --border-medium: rgba(255, 255, 255, 0.2);
+        --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.3);
+        --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Manual Dark Mode Class */
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --bg-tertiary: #333333;
+    --bg-body: #121212;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-tertiary: #999999;
+    
+    --nav-bg: #2a2a2a;
+    --nav-active: var(--accent-primary);
+    --nav-hover: rgba(230, 0, 18, 0.2);
+    
+    --btn-primary: var(--accent-primary);
+    --btn-primary-hover: var(--accent-tertiary);
+    --btn-secondary: #444444;
+    --btn-secondary-hover: #555555;
+    
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-medium: rgba(255, 255, 255, 0.2);
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   Reset & Base Styles
+========================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 42px auto 0;
+    padding: 0 20px;
+    background: var(--bg-primary);
+    min-height: calc(100vh - 42px);
+    box-shadow: var(--shadow-light);
+}
+
+.container {
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* SEO를 위한 h1 스타일 */
+.container h1 {
+    font-size: var(--font-size-2xl);
+    text-align: center;
+    margin: 0;
+    padding: 24px 0;
+    font-weight: 600;
+}
+
+/* 메인 페이지의 h1 변형 */
+.container h1 .seo-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.container h1 .visible-text {
+    display: block;
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+}
+
+/* =========================
+   Header & Navigation
+========================= */
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    border-bottom: none;
+    padding: 0;
+    transition: background 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    height: 42px;
+}
+
+.nav-tabs {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 24px;
+}
+
+.nav-item {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    padding: 0 4px;
+    position: relative;
+}
+
+.nav-item.active {
+    color: white;
+    font-weight: 600;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: white;
+}
+
+.nav-item:hover:not(.active) {
+    color: white;
+}
+
+.theme-toggle {
+    position: absolute;
+    right: 16px;
+    background: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.theme-toggle:hover {
+    color: white;
+}
+
+.theme-icon {
+    transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .theme-icon {
+    transform: rotate(180deg);
+}
+
+/* =========================
+   Typography
+========================= */
+.container h2,
+.movement-group h2,
+.exercise-card h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: 10px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+}
+
+/* Description Styles */
+.description .info-text {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-primary);
+}
+
+.description h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin: 24px 0 12px;
+}
+
+.description h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: var(--text-primary);
+}
+
+.description p {
+    margin: 0 0 16px;
+    font-size: var(--font-size-sm);
+}
+
+.description strong {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+/* Link Styles */
+a:not(.nav-item) {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+a:not(.nav-item):hover {
+    color: var(--link-hover);
+    background-color: rgba(230, 0, 18, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+a:not(.nav-item):focus {
+    outline: 2px solid rgba(230, 0, 18, 0.3);
+    outline-offset: 2px;
+}
+
+/* Info text specific links */
+.info-text a {
+    color: var(--link-color);
+    border-bottom: 1px solid rgba(230, 0, 18, 0.3);
+    padding-bottom: 1px;
+}
+
+.info-text a:hover {
+    color: var(--link-hover);
+    border-bottom-color: rgba(196, 0, 16, 0.6);
+    background-color: rgba(230, 0, 18, 0.08);
+}
+
+/* =========================
+   Form Elements
+========================= */
+select, 
+input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    height: 36px;
+}
+
+select:focus, 
+input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(230, 0, 18, 0.25);
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-with-unit {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.input-with-unit input {
+    padding-right: 40px;
+    margin-bottom: 0;
+}
+
+.unit-display {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    pointer-events: none;
+}
+
+/* =========================
+   Buttons
+========================= */
+.save-btn, 
+.load-btn, 
+.share-btn {
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+.save-btn, 
+.load-btn {
+    background: var(--btn-primary);
+}
+
+.save-btn:hover,
+.load-btn:hover {
+    background: var(--btn-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(230, 0, 18, 0.3);
+}
+
+.share-btn {
+    background: var(--btn-secondary);
+}
+
+.share-btn:hover {
+    background: var(--btn-secondary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(26, 26, 26, 0.3);
+}
+
+.unit-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.unit-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 4px rgba(230, 0, 18, 0.3);
+}
+
+.unit-btn:hover:not(.active) {
+    background: var(--nav-hover);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: 6px;
+    background: var(--btn-primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    height: 32px;
+}
+
+.calculate-btn:hover {
+    background: var(--btn-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(230, 0, 18, 0.3);
+}
+
+/* =========================
+   Button Groups
+========================= */
+.unit-selector {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.storage-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.storage-buttons button {
+    min-width: 80px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.unit-buttons {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.unit-buttons button {
+    min-width: 48px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.unit-buttons button.active {
+    background: var(--bg-primary);
+    color: var(--accent-primary);
+    box-shadow: var(--shadow-light);
+}
+
+/* =========================
+   Toast Messages
+========================= */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.toast {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-theme="dark"] .toast {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+/* =========================
+   Responsive Styles
+========================= */
+@media (min-width: 1200px) {
+    .wrapper {
+        padding: 0 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .wrapper {
+        max-width: 900px;
+        padding: 0 16px;
+        margin-top: 38px;
+        min-height: calc(100vh - 38px);
+    }
+
+    .container {
+        padding: 16px 0;
+    }
+
+    .container h1 {
+        padding: 20px 0;
+        font-size: var(--font-size-lg);
+    }
+
+    .header-content {
+        padding: 0 12px;
+        height: 38px;
+    }
+
+    .nav-tabs {
+        gap: 16px;
+    }
+
+    .nav-item {
+        height: 38px;
+        font-size: var(--font-size-sm);
+    }
+
+    .theme-toggle {
+        right: 12px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .unit-selector {
+        padding: 0 16px;
+    }
+
+    .control-buttons {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .storage-buttons {
+        gap: 6px;
+    }
+
+    .storage-buttons button {
+        min-width: 72px;
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+
+    .unit-buttons {
+        gap: 3px;
+    }
+
+    .unit-buttons button {
+        min-width: 44px;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+    .description {
+        padding: 0 16px 16px;
+    }
+
+    .description h2 {
+        font-size: var(--font-size-base);
+        margin: 20px 0 10px;
+    }
+
+    .description h3 {
+        font-size: var(--font-size-sm);
+        margin: 16px 0 8px;
+    }
+
+    .description p {
+        margin: 0 0 14px;
+        font-size: var(--font-size-sm);
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 0 12px;
+        margin-top: 38px;
+        min-height: calc(100vh - 38px);
+    }
+
+    .container {
+        padding: 12px 0;
+    }
+
+    .container h1 {
+        padding: 16px 0;
+        font-size: var(--font-size-base);
+    }
+
+    .header-content {
+        padding: 0 12px;
+        height: 38px;
+    }
+
+    .nav-tabs {
+        gap: 16px;
+    }
+
+    .nav-item {
+        height: 38px;
+        font-size: var(--font-size-sm);
+    }
+
+    .theme-toggle {
+        right: 12px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .unit-selector {
+        padding: 0 12px;
+    }
+
+    .control-buttons {
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .storage-buttons {
+        gap: 4px;
+    }
+
+    .storage-buttons button {
+        min-width: 64px;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+
+    .unit-buttons {
+        gap: 2px;
+        padding: 2px;
+    }
+
+    .unit-buttons button {
+        min-width: 40px;
+        padding: 6px 8px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+
+    .description {
+        padding: 0 12px 12px;
+    }
+
+    .description h2 {
+        font-size: var(--font-size-base);
+        margin: 16px 0 8px;
+    }
+
+    .description h3 {
+        font-size: var(--font-size-sm);
+        margin: 14px 0 6px;
+    }
+
+    .description p {
+        margin: 0 0 12px;
+        font-size: var(--font-size-sm);
+    }
+
+    #toast-container {
+        bottom: 16px;
+    }
+
+    .toast {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 0 10px;
+        margin-top: 36px;
+        min-height: calc(100vh - 36px);
+    }
+
+    .container {
+        padding: 8px 0;
+    }
+
+    .container h1 {
+        padding: 14px 0;
+        font-size: var(--font-size-sm);
+    }
+
+    .header-content {
+        padding: 0 8px;
+        height: 36px;
+    }
+
+    .nav-tabs {
+        gap: 12px;
+    }
+
+    .nav-item {
+        height: 36px;
+        font-size: var(--font-size-sm);
+        padding: 0 2px;
+    }
+
+    .theme-toggle {
+        right: 8px;
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+
+    .unit-selector {
+        padding: 0 8px;
+    }
+
+    .control-buttons {
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+
+    .storage-buttons {
+        gap: 3px;
+    }
+
+    .storage-buttons button {
+        min-width: 56px;
+        padding: 6px 8px;
+        font-size: 11px;
+        border-radius: 4px;
+    }
+
+    .unit-buttons {
+        gap: 2px;
+        padding: 1px;
+    }
+
+    .unit-buttons button {
+        min-width: 36px;
+        padding: 5px 6px;
+        font-size: 11px;
+        border-radius: 3px;
+    }
+
+    .description {
+        padding: 0 10px 10px;
+    }
+
+    .description h2 {
+        font-size: var(--font-size-sm);
+        margin: 14px 0 6px;
+    }
+
+    .description h3 {
+        font-size: var(--font-size-sm);
+        margin: 12px 0 4px;
+    }
+
+    .description p {
+        margin: 0 0 10px;
+        font-size: var(--font-size-sm);
+    }
+
+    #toast-container {
+        bottom: 12px;
+        width: calc(100% - 24px);
+    }
+
+    .toast {
+        width: 100%;
+        text-align: center;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+/* =========================
+   광고 영역 스타일
+========================= */
+
+/* 광고 컨테이너 기본 스타일 */
+.ad-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* PC 사이드바 광고 */
+.ad-sidebar {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 600px;
+    display: none;
+}
+
+/* 모바일 헤더 광고 */
+.ad-header {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 16px;
+    display: none;
+}
+
+/* 컨텐츠 하단 광고 */
+.ad-content {
+    width: 100%;
+    min-height: 250px;
+    margin: 32px 0;
+}
+
+/* 광고 플레이스홀더 (임시 표시) */
+.ad-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-secondary);
+    border: 2px dashed var(--border-light);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 광고 레이블 */
+.ad-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--accent-primary);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* 광고 컨텐츠 텍스트 */
+.ad-placeholder .ad-content {
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* 반응형 디자인 */
+@media (min-width: 1400px) {
+    .ad-sidebar {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .ad-header {
+        display: flex;
+    }
+    
+    .ad-content {
+        min-height: 200px;
+        margin: 24px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .ad-header {
+        height: 50px;
+        margin-bottom: 12px;
+    }
+    
+    .ad-content {
+        min-height: 150px;
+        margin: 16px 0;
+    }
+    
+    .ad-placeholder {
+        border-width: 1px;
+    }
+    
+    .ad-label {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+    
+    .ad-placeholder .ad-content {
+        font-size: 12px;
+    }
+}
+
+/* 다크 모드 대응 */
+[data-theme="dark"] .ad-placeholder {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .ad-placeholder .ad-content {
+    color: var(--text-secondary);
+} 
