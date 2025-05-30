@@ -2098,6 +2098,87 @@ input[type="number"]::-webkit-outer-spin-button {
     display: block;
 }
 
+/* 1RM 결과 리스트 스타일 개선 */
+.calculator-results--rm .result-element {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.calculator-results--rm .result-element:last-child {
+    border-bottom: none;
+}
+
+/* 입력한 회수에 해당하는 RM 강조 */
+.calculator-results--rm .result-element.selected {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent-primary);
+    padding-left: 9px;
+}
+
+.calculator-results--rm .result-element.selected .re-rm {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.calculator-results--rm .result-element.selected .re-we {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.calculator-results--rm .re-rm {
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 45px;
+    font-size: 0.85rem;
+}
+
+.calculator-results--rm .re-we {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.calculator-results--rm .result-element p {
+    margin: 0;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .calculator-results--rm .result-element {
+        padding: 6px 10px;
+    }
+
+    .calculator-results--rm .result-element.selected {
+        padding-left: 7px;
+    }
+
+    .calculator-results--rm .re-rm,
+    .calculator-results--rm .re-we {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-results--rm .result-element {
+        padding: 6px 8px;
+    }
+
+    .calculator-results--rm .result-element.selected {
+        padding-left: 5px;
+    }
+
+    .calculator-results--rm .re-rm,
+    .calculator-results--rm .re-we {
+        font-size: 0.75rem;
+    }
+}
+
 /* 상관관계 섹션 스타일 */
 .correlation-section {
     margin: 24px 0;

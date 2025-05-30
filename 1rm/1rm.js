@@ -20,8 +20,9 @@ function calculate(exercise, reps, weights) {
 /**
  * RM 결과를 표시할 HTML 요소 생성
  */
-function result_element(rm, weights) {
-    return `<div class='result-element'>
+function result_element(rm, weights, inputReps) {
+    const isSelected = rm === inputReps ? 'selected' : '';
+    return `<div class='result-element ${isSelected}'>
         <p class='re-rm'>${rm}RM</p>
         <p class='re-we'>${weights} ${currentUnit.toUpperCase()}</p>
     </div>`;
@@ -49,7 +50,7 @@ function calculateRM(exercise) {
     
     var list = calculate(exercise, reps, weights);
     for (let i = 1; i < 11; i++) {
-        resultDiv.append(result_element(i, list[i]));
+        resultDiv.append(result_element(i, list[i], reps));
     }
     
     resultDiv.addClass('has-results');
