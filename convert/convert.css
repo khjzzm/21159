@@ -339,3 +339,7 @@
         grid-column: span 1;
     }
 }
+
+input, input:focus, input:active {
+    touch-action: manipulation;
+}

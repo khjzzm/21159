@@ -130,11 +130,10 @@ $(document).ready(function() {
         $('#lb-input').val(lbValue).trigger('input');
     });
 
-    function showToast(msg) {
-        const $toast = $('#toast');
-        $toast.text(msg).addClass('show');
-        setTimeout(() => {
-            $toast.removeClass('show');
-        }, 1800);
-    }
+    // 모바일 input 더블탭 확대 방지
+    $("input[type='number']").on('touchstart', function(e) {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    });
 }); 
