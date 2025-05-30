@@ -129,4 +129,12 @@ $(document).ready(function() {
         const lbValue = $(this).text();
         $('#lb-input').val(lbValue).trigger('input');
     });
+
+    function showToast(msg) {
+        const $toast = $('#toast');
+        $toast.text(msg).addClass('show');
+        setTimeout(() => {
+            $toast.removeClass('show');
+        }, 1800);
+    }
 }); 

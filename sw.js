@@ -8,6 +8,8 @@ const urlsToCache = [
   '/1rm/index.html',
   '/convert/',
   '/convert/index.html',
+  '/plates/',
+  '/plates/index.html',
   '/styles.css',
   '/script.js',
   '/weightlifting/weightlifting.js',

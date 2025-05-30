@@ -313,4 +313,29 @@
     .converter-arrow {
         padding: 5px;
     }
-} 
+}
+
+/* WOD 2열 그리드 */
+.wod-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.wod-grid-2col .common-item {
+    margin: 0;
+}
+
+.wod-grid-2col .common-item[style*="span 2"] {
+    grid-column: span 2;
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+    .wod-grid-2col {
+        grid-template-columns: 1fr;
+    }
+    .wod-grid-2col .common-item[style*="span 2"] {
+        grid-column: span 1;
+    }
+}

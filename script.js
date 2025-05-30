@@ -96,6 +96,11 @@ function hideShareModal() {
 
 // placeholder 업데이트 함수
 function updatePlaceholders() {
+    // convert 페이지에서는 실행하지 않음
+    if (window.location.pathname.includes('convert')) {
+        return;
+    }
+    
     $('.weight-input').each(function() {
         $(this).attr('placeholder', `무게(${currentUnit.toLowerCase()})`);
     });
@@ -125,6 +130,11 @@ $(document).ready(function() {
 
     // 단위 버튼 클릭 이벤트
     $('.unit-btn').click(function() {
+        // convert 페이지에서는 실행하지 않음
+        if (window.location.pathname.includes('convert')) {
+            return;
+        }
+        
         if ($(this).hasClass('active')) return;
         
         const newUnit = $(this).data('unit');

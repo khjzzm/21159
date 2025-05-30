@@ -51,6 +51,13 @@
       "description": "무게 단위 변환",
       "url": "/convert",
       "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "플레이트 시각화",
+      "short_name": "플레이트", 
+      "description": "바벨 플레이트 이미지 보기",
+      "url": "/plates",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
     }
   ]
 } 
