@@ -34,26 +34,55 @@ function result_element(rm, weights, inputReps) {
 }
 
 /**
+ * 입력값 유효성 검사
+ */
+function validateInput(weight, reps) {
+    // 빈 값 또는 숫자가 아닌 값 체크
+    if (!weight || isNaN(weight) || !reps || isNaN(reps)) {
+        showToast("올바른 무게와 반복 횟수를 입력해주세요.");
+        return false;
+    }
+
+    // 소수점 자릿수 체크
+    if (weight.toString().includes('.') && weight.toString().split('.')[1].length > 2) {
+        showToast("무게는 소수점 둘째 자리까지만 입력 가능합니다.");
+        return false;
+    }
+
+    if (weight <= 0) {
+        showToast("무게는 0보다 커야 합니다.");
+        return false;
+    }
+
+    const maxWeight = currentUnit === 'kg' ? 1000 : 2200;
+    if (weight > maxWeight) {
+        showToast(`무게는 최대 ${maxWeight}${currentUnit} 까지 입력 가능합니다.`);
+        return false;
+    }
+
+    if (reps < 1 || reps > 10) {
+        showToast("반복 횟수는 1~10회 사이여야 합니다.");
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * 특정 운동의 RM 계산 및 결과 표시
  */
 function calculateRM(exercise) {
     const reps = parseInt($(`select[name=${exercise}-reps]`).val());
-    const weights = parseFloat($(`input[name=${exercise}-weight]`).val());
+    const weight = parseFloat($(`input[name=${exercise}-weight]`).val());
     
-    if (!reps || !weights) {
-        showToast("반복횟수와 무게를 모두 입력해주세요");
-        return;
-    }
-    
-    if (weights < 0) {
-        showToast("무게는 양수만 가능합니다.");
+    if (!validateInput(weight, reps)) {
         return;
     }
     
     const resultDiv = $(`#${exercise}-results`);
     resultDiv.empty();
     
-    var list = calculate(exercise, reps, weights);
+    var list = calculate(exercise, reps, weight);
     for (let i = 1; i < 11; i++) {
         resultDiv.append(result_element(i, list[i], reps));
     }
@@ -244,5 +273,70 @@ $(document).ready(function() {
             $(`.unit-btn[data-unit="${data.rmCalculator.unit}"]`).click();
         }
     }
+
+    // 입력 필드 이벤트 핸들러
+    setupInputValidation();
 });
+
+/**
+ * 입력 필드 이벤트 핸들러
+ */
+function setupInputValidation() {
+    $('input[type="number"]').on('input', function() {
+        let value = $(this).val();
+        
+        // 숫자와 소수점만 허용
+        value = value.replace(/[^0-9.]/g, '');
+        
+        // 소수점이 여러 개인 경우 첫 번째만 유지
+        const decimalCount = (value.match(/\./g) || []).length;
+        if (decimalCount > 1) {
+            value = value.replace(/\./g, function(match, index, original) {
+                return index === original.indexOf('.') ? match : '';
+            });
+        }
+
+        $(this).val(value);
+
+        const numValue = parseFloat(value);
+        const max = currentUnit === 'kg' ? 1000 : 2200;
+
+        if (numValue < 0) {
+            $(this).val(0);
+        } else if (numValue > max) {
+            $(this).val(max);
+            showToast(`최대 ${max}${currentUnit} 까지 입력 가능합니다.`);
+        }
+
+        // 실시간으로 소수점 자릿수 제한
+        if (value.includes('.') && value.split('.')[1].length > 2) {
+            $(this).val(parseFloat(value).toFixed(2));
+        }
+    });
+
+    // 포커스 아웃 시 추가 검증
+    $('input[type="number"]').on('blur', function() {
+        const value = $(this).val();
+        
+        if (value === '') return;
+        
+        // 숫자가 아닌 경우
+        if (isNaN(value)) {
+            $(this).val('');
+            showToast("올바른 숫자를 입력해주세요.");
+            return;
+        }
+
+        // 소수점으로 끝나는 경우 처리
+        if (value.endsWith('.')) {
+            $(this).val(value.slice(0, -1));
+        }
+
+        // 불필요한 0 제거 및 소수점 자릿수 정리
+        const numValue = parseFloat(value);
+        if (!isNaN(numValue)) {
+            $(this).val(numValue.toFixed(numValue % 1 === 0 ? 0 : 2));
+        }
+    });
+}
 

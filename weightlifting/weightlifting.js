@@ -173,6 +173,115 @@ function loadData() {
     }
 }
 
+/**
+ * 입력값 유효성 검사
+ */
+function validateInput(weight) {
+    if (!weight || isNaN(weight)) {
+        showToast("올바른 무게를 입력해주세요.");
+        return false;
+    }
+
+    if (weight.toString().includes('.') && weight.toString().split('.')[1].length > 2) {
+        showToast("무게는 소수점 둘째 자리까지만 입력 가능합니다.");
+        return false;
+    }
+
+    if (weight <= 0) {
+        showToast("무게는 0보다 커야 합니다.");
+        return false;
+    }
+
+    const maxWeight = currentUnit === 'kg' ? 1000 : 2200;
+    if (weight > maxWeight) {
+        showToast(`무게는 최대 ${maxWeight}${currentUnit} 까지 입력 가능합니다.`);
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * 입력 필드 이벤트 핸들러
+ */
+function setupInputValidation() {
+    $('.weight-input').on('input', function() {
+        let value = $(this).val();
+        
+        // 숫자와 소수점만 허용
+        if (value.startsWith('.')) {
+            value = '0' + value;
+        }
+        value = value.replace(/[^0-9.]/g, '');
+        
+        // 소수점이 여러 개인 경우 첫 번째만 유지
+        const decimalCount = (value.match(/\./g) || []).length;
+        if (decimalCount > 1) {
+            value = value.replace(/\./g, function(match, index, original) {
+                return index === original.indexOf('.') ? match : '';
+            });
+        }
+
+        // 현재 입력된 값 유지 (소수점 입력 허용)
+        $(this).val(value);
+
+        // 숫자로 변환 가능하고 소수점으로 끝나지 않는 경우에만 검증
+        if (value !== '' && value !== '.' && !value.endsWith('.')) {
+            const numValue = parseFloat(value);
+            const max = currentUnit === 'kg' ? 1000 : 2200;
+
+            if (numValue < 0) {
+                $(this).val(0);
+            } else if (numValue > max) {
+                $(this).val(max);
+                showToast(`최대 ${max}${currentUnit} 까지 입력 가능합니다.`);
+            }
+
+            // 소수점 자릿수가 2자리를 초과할 때만 제한
+            if (value.includes('.') && value.split('.')[1].length > 2) {
+                $(this).val(parseFloat(value).toFixed(2));
+            }
+        }
+
+        // 변환된 무게와 결과 업데이트
+        updateConvertedWeight(this);
+        updateResults();
+    });
+
+    // 포커스 아웃 시 추가 검증
+    $('.weight-input').on('blur', function() {
+        const value = $(this).val();
+        
+        // 빈 값이거나 단순 소수점만 있는 경우
+        if (value === '' || value === '.') {
+            $(this).val('');
+            return;
+        }
+        
+        // 숫자가 아닌 경우
+        if (isNaN(value)) {
+            $(this).val('');
+            showToast("올바른 숫자를 입력해주세요.");
+            return;
+        }
+
+        // 소수점으로 끝나는 경우 처리
+        if (value.endsWith('.')) {
+            $(this).val(value.slice(0, -1));
+        }
+
+        // 불필요한 0 제거 및 소수점 자릿수 정리
+        const numValue = parseFloat(value);
+        if (!isNaN(numValue)) {
+            $(this).val(numValue.toFixed(numValue % 1 === 0 ? 0 : 2));
+        }
+
+        // 변환된 무게와 결과 업데이트
+        updateConvertedWeight(this);
+        updateResults();
+    });
+}
+
 // 이벤트 핸들러
 $(document).ready(function() {
     loadData();
@@ -288,5 +397,7 @@ $(document).ready(function() {
             $(`.unit-btn[data-unit="${data.exercises.unit}"]`).click();
         }
     }
+
+    setupInputValidation();
 });
 

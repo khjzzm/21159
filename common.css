@@ -51,6 +51,10 @@
     --line-height-tight: 1.25;
     --line-height-normal: 1.5;
     --line-height-relaxed: 1.75;
+
+    /* 트랜지션 변수 추가 */
+    --theme-transition-duration: 0.3s;
+    --theme-transition-timing: ease;
 }
 
 /* Dark Mode */
@@ -121,7 +125,9 @@ body {
     background-color: var(--bg-body);
     color: var(--text-primary);
     min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: 
+        background-color var(--theme-transition-duration) var(--theme-transition-timing),
+        color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 .wrapper {
@@ -132,6 +138,9 @@ body {
     background: var(--bg-primary);
     min-height: calc(100vh - 42px);
     box-shadow: var(--shadow-light);
+    transition: 
+        background-color var(--theme-transition-duration) var(--theme-transition-timing),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 .container {
@@ -179,7 +188,9 @@ body {
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
     border-bottom: none;
     padding: 0;
-    transition: background 0.3s ease;
+    transition: 
+        background-color var(--theme-transition-duration) var(--theme-transition-timing),
+        border-bottom var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 .header-content {
@@ -209,7 +220,9 @@ body {
     text-decoration: none;
     font-size: var(--font-size-sm);
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: 
+        color var(--theme-transition-duration) var(--theme-transition-timing),
+        font-weight var(--theme-transition-duration) var(--theme-transition-timing);
     white-space: nowrap;
     padding: 0 4px;
     position: relative;
@@ -245,7 +258,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: 
+        color var(--theme-transition-duration) var(--theme-transition-timing),
+        background-color var(--theme-transition-duration) var(--theme-transition-timing);
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
 }
@@ -255,7 +270,7 @@ body {
 }
 
 .theme-icon {
-    transition: transform 0.3s ease;
+    transition: transform var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 [data-theme="dark"] .theme-icon {
@@ -351,7 +366,9 @@ input {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     box-sizing: border-box;
-    transition: all 0.3s ease;
+    transition: 
+        background-color var(--theme-transition-duration) var(--theme-transition-timing),
+        border-color var(--theme-transition-duration) var(--theme-transition-timing);
     height: 36px;
 }
 
@@ -994,4 +1011,51 @@ input[type="number"]::-webkit-outer-spin-button {
 
 [data-theme="dark"] .ad-placeholder .ad-content {
     color: var(--text-secondary);
+}
+
+/* 트랜지션이 필요한 속성들에 애니메이션 추가 */
+body,
+.wrapper,
+.header-container,
+.nav-item,
+.calculator-card,
+.input-with-unit input,
+select,
+button,
+.theme-toggle,
+.result-element,
+.description,
+.ad-placeholder {
+    transition: 
+        background-color var(--theme-transition-duration) var(--theme-transition-timing),
+        color var(--theme-transition-duration) var(--theme-transition-timing),
+        border-color var(--theme-transition-duration) var(--theme-transition-timing),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* 테마 토글 버튼 아이콘 회전 애니메이션 */
+.theme-toggle .theme-icon {
+    transition: transform var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+[data-theme="dark"] .theme-toggle .theme-icon {
+    transform: rotate(360deg);
+}
+
+/* 다크모드 전환 시 부드러운 오버레이 효과 */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    pointer-events: none;
+    z-index: 9999;
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+[data-theme="dark"] body::after {
+    background: rgba(0, 0, 0, 0.1);
 } 

@@ -90,7 +90,7 @@
                     <a href="/" class="nav-item active">21-15-9</a>
                     <a href="/weightlifting" class="nav-item">weightlifting</a>
                     <a href="/1rm" class="nav-item">1rm</a>
-                    <a href="/scales" class="nav-item">scales</a>
+                    <a href="/convert" class="nav-item">convert</a>
                 </nav>
                 <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
                     <span class="theme-icon">🌙</span>
@@ -128,7 +128,9 @@
 
                     <section class="description-section">
                         <h2>🏋️‍♂️ 웨이트리프팅 & CrossFit 동작 상관관계</h2>
-                        <p>CrossFit과 웨이트리프팅 동작들은 서로 밀접한 관련이 있으며, 각 동작 간의 일반적인 수행 비율이 존재합니다. 이 비율은 엘리트 선수들의 경험과 연구를 통해 도출된 것으로, Fran, Grace, Isabel 같은 벤치마크 워크아웃과 효과적인 트레이닝 프로그램 설계에 도움이 됩니다. <a href="/weightlifting">웨이트리프팅 계산기로 바로 이동하기</a></p>
+                        <p>웨이트리프팅과 CrossFit 동작들은 서로 밀접한 관련이 있습니다. 예를 들어, 백 스쿼트가 150kg인 선수는 일반적으로 120kg 정도의 클린 앤 저크를 수행할 수 있습니다. 이러한 동작 간의 비율은 수천 명의 엘리트 선수들의 데이터를 기반으로 도출되었으며, 효과적인 트레이닝 프로그램 설계에 도움이 됩니다.</p>
+                        
+                        <p>특히 CrossFit에서는 이 비율이 중요한데, Fran이나 Grace 같은 벤치마크 워크아웃의 무게 설정이나, 스트렝스 사이클을 계획할 때 활용할 수 있습니다. <a href="/weightlifting">웨이트리프팅 계산기로 바로 이동하기</a></p>
                         
                         <div class="correlation-grid">
                             <div class="correlation-card">
@@ -179,64 +181,32 @@
 
                     <section class="description-section">
                         <h2>📊 NSCA 1RM 계산법</h2>
-                        <p>NSCA(National Strength and Conditioning Association)에서 제시하는 1RM 계산법은 실제 무게와 반복 횟수를 기반으로 1회 최대 중량(1RM)을 예측하는 방법입니다. Fran에서 더 무거운 스러스터를 들고 싶거나, Grace에서 클린 앤 저크 무게를 늘리고 싶을 때 활용하세요. <a href="/1rm">1RM 계산기로 바로 이동하기</a></p>
+                        <p>NSCA의 1RM 계산법은 실제 무게와 반복 횟수를 기반으로 1회 최대 중량을 예측합니다. 예를 들어, 스쿼트 100kg을 5회 수행했다면 이는 약 120kg의 1RM을 의미합니다. 이 계산법의 정확도는 반복 횟수가 적을수록(1-5회) 높아지며, 10회 이상에서는 오차가 커질 수 있습니다.</p>
                         
-                        <div class="coefficient-grid">
-                            <div class="coefficient-card">
-                                <div class="coefficient-header">스쿼트</div>
-                                <div class="coefficient-row">
-                                    <span class="reps">1회</span>
-                                    <span class="value">1.00</span>
-                                </div>
-                                <div class="coefficient-row">
-                                    <span class="reps">5회</span>
-                                    <span class="value">1.20</span>
-                                </div>
-                                <div class="coefficient-row">
-                                    <span class="reps">10회</span>
-                                    <span class="value">1.41</span>
-                                </div>
-                            </div>
-
-                            <div class="coefficient-card">
-                                <div class="coefficient-header">벤치프레스</div>
-                                <div class="coefficient-row">
-                                    <span class="reps">1회</span>
-                                    <span class="value">1.00</span>
-                                </div>
-                                <div class="coefficient-row">
-                                    <span class="reps">5회</span>
-                                    <span class="value">1.15</span>
-                                </div>
-                                <div class="coefficient-row">
-                                    <span class="reps">10회</span>
-                                    <span class="value">1.33</span>
-                                </div>
-                            </div>
-
-                            <div class="coefficient-card">
-                                <div class="coefficient-header">데드리프트</div>
-                                <div class="coefficient-row">
-                                    <span class="reps">1회</span>
-                                    <span class="value">1.00</span>
-                                </div>
-                                <div class="coefficient-row">
-                                    <span class="reps">5회</span>
-                                    <span class="value">1.16</span>
-                                </div>
-                                <div class="coefficient-row">
-                                    <span class="reps">10회</span>
-                                    <span class="value">1.24</span>
-                                </div>
-                            </div>
-                        </div>
+                        <p>이 계산기는 다음과 같은 상황에서 특히 유용합니다:</p>
+                        <ul>
+                            <li>실제 1RM 테스트가 어려운 초보자의 운동 강도 설정</li>
+                            <li>부상 위험 없이 안전하게 1RM 추정</li>
+                            <li>WOD에서 처방된 무게의 적정성 평가</li>
+                        </ul>
+                        
+                        <p><a href="/1rm">1RM 계산기로 바로 이동하기</a></p>
                     </section>
 
                     <section class="description-section">
                         <h2>⚖️ lb ↔ kg 변환기</h2>
-                        <p>CrossFit 박스에서는 미터법(kg)을, 일반 체육관에서는 야드파운드법(lb)을 사용하는 경우가 많습니다. 빠른 변환과 5lb~500lb까지의 포괄적인 변환표로 어떤 환경에서든 정확한 무게 설정이 가능합니다. <a href="/scales">lb ↔ kg 변환기로 바로 이동하기</a></p>
+                        <p>CrossFit 박스와 일반 체육관에서는 서로 다른 단위를 사용합니다. 미국의 CrossFit 프로그래밍은 대부분 파운드(lb)로 제공되며, 국내 체육관은 킬로그램(kg)을 사용합니다. 이 변환기는 다음과 같은 기능을 제공합니다:</p>
+                        
+                        <ul>
+                            <li>실시간 lb ↔ kg 변환</li>
+                            <li>바벨 플레이트 조합 추천</li>
+                            <li>자주 사용되는 CrossFit 표준 무게 변환표</li>
+                            <li>5lb ~ 500lb 범위의 상세 변환표</li>
+                        </ul>
 
-                        <p><strong>💡 Tip:</strong> 이 계산기는 트레이닝 가이드라인으로 활용할 수 있으며, 개인의 신체 조건과 훈련 경험에 따라 실제 수치는 다를 수 있습니다. </p>
+                        <p><a href="/convert">lb ↔ kg 변환기로 바로 이동하기</a></p>
+
+                        <p><strong>💡 Tip:</strong> 이 계산기의 수치들은 일반적인 가이드라인입니다. 개인의 체격, 훈련 경험, 기술적 숙련도에 따라 실제 수행 능력은 다를 수 있으며, 반드시 단계적인 진행이 필요합니다.</p>
                     </section>
                 </div>
             </div>

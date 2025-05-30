@@ -49,7 +49,7 @@
       "name": "lb ↔ kg 변환기",
       "short_name": "변환기", 
       "description": "무게 단위 변환",
-      "url": "/scales",
+      "url": "/convert",
       "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
     }
   ]

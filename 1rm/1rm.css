@@ -238,17 +238,19 @@
 
 .calculator-results--rm .re-rm {
     color: var(--text-secondary);
-    font-weight: 500;
     min-width: 45px;
     font-size: 0.85rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
 }
 
 .calculator-results--rm .re-we {
     color: var(--text-primary);
-    font-weight: 600;
     font-size: 0.85rem;
     text-align: right;
-    min-width: 180px;
+    min-width: 220px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
 }
 
 .calculator-results--rm .result-element p {
@@ -276,13 +278,11 @@
 
 .calculator-card--rm .re-rm {
     color: var(--text-secondary);
-    font-weight: 500;
     min-width: 45px;
 }
 
 .calculator-card--rm .re-we {
     color: var(--text-primary);
-    font-weight: 600;
     font-size: 0.85rem;
 }
 
@@ -465,4 +465,10 @@
         min-width: 140px;
         font-size: 0.75rem;
     }
+}
+
+/* 선택된 결과값도 동일한 정렬 유지 */
+.calculator-results--rm .result-element.selected .re-rm,
+.calculator-results--rm .result-element.selected .re-we {
+    color: var(--accent-primary);
 } 

@@ -26,8 +26,8 @@
 
 .correlation-card:hover,
 .coefficient-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
+    transform: none;
+    box-shadow: none;
 }
 
 .correlation-header,
@@ -64,7 +64,7 @@
 
 .correlation-item:hover,
 .coefficient-row:hover {
-    background: var(--bg-secondary);
+    background: transparent;
 }
 
 .correlation-item:not(:last-child),
