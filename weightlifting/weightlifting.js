@@ -63,7 +63,7 @@ function updateConvertedWeight(input) {
             convertWeight(weight, 'kg', 'lb') : 
             convertWeight(weight, 'lb', 'kg');
         
-        $convertedDiv.text(`= ${convertedWeight}${otherUnit.toUpperCase()}`);
+        $convertedDiv.text(` = ${convertedWeight}${otherUnit}`);
     } else {
         $convertedDiv.text('');
     }
@@ -109,13 +109,13 @@ function updateResults() {
                         convertWeight(maxWeight, 'kg', 'lb') : 
                         maxWeight;
                     
-                    const unitDisplay = currentUnit.toUpperCase();
+                    const unitDisplay = currentUnit;
                     
                     resultHtml += `
                         <div class="movement-result-row">
                             <span class="result-name">${data['A동작']}</span>
                             <span class="result-percent">${data['퍼센트']}</span>
-                            <span class="result-range">${displayMinWeight}~${displayMaxWeight} (${unitDisplay})</span>
+                            <span class="result-range">${displayMinWeight} ~ ${displayMaxWeight} (${unitDisplay})</span>
                         </div>
                     `;
                 });
@@ -262,7 +262,7 @@ $(document).ready(function() {
             const weight = $(this).find('.weight-input').val();
             
             if (weight) {
-                shareText += `[${title}] ${weight}${currentUnit.toUpperCase()}\n`;
+                shareText += `[${title}] ${weight}${currentUnit}\n`;
                 $(this).find('.movement-result-row').each(function() {
                     const name = $(this).find('.result-name').text();
                     const percent = $(this).find('.result-percent').text();

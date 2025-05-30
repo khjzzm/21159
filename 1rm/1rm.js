@@ -22,9 +22,14 @@ function calculate(exercise, reps, weights) {
  */
 function result_element(rm, weights, inputReps) {
     const isSelected = rm === inputReps ? 'selected' : '';
+    const convertedWeight = currentUnit === 'kg' ? 
+        convertWeight(weights, 'kg', 'lb') : 
+        convertWeight(weights, 'lb', 'kg');
+    const otherUnit = currentUnit === 'kg' ? 'lb' : 'kg';
+    
     return `<div class='result-element ${isSelected}'>
         <p class='re-rm'>${rm}RM</p>
-        <p class='re-we'>${weights} ${currentUnit.toUpperCase()}</p>
+        <p class='re-we'>${weights} ${currentUnit} (${convertedWeight} ${otherUnit})</p>
     </div>`;
 }
 
@@ -214,7 +219,7 @@ $(document).ready(function() {
                     'deadlift': '데드리프트'
                 };
                 
-                shareText += `[${exerciseNames[exercise]}] ${weight}${currentUnit.toUpperCase()}, ${reps}회\n`;
+                shareText += `[${exerciseNames[exercise]}] ${weight}${currentUnit}, ${reps}회\n`;
                 results.each(function() {
                     const rmText = $(this).find('.re-rm').text();
                     const weightText = $(this).find('.re-we').text();
