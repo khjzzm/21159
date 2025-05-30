@@ -90,6 +90,9 @@ $(document).ready(function() {
 
         if (isCollar) {
             state.collarAdded = true;
+            // 버튼 비활성화 코드를 제거하세요!
+            // $('.plate-btn').not('.collar-btn').prop('disabled', true);
+            // $('.collar-btn').prop('disabled', true);
         }
         updateDisplay();
     });
@@ -206,6 +209,13 @@ $(document).ready(function() {
             $('.plate-btn').prop('disabled', false); // 혹시 모를 disabled 해제
             updateDisplay();
             showToast('조임쇠가 해제되었습니다.');
+        }
+    });
+
+    // 플레이트 더블탭 확대 방지 (모바일)
+    $('.plate-btn').on('touchstart', function(e) {
+        if (e.touches.length > 1) {
+            e.preventDefault();
         }
     });
 }); 

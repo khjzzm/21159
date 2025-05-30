@@ -794,3 +794,7 @@
     opacity: 0.18;
 }
 
+.plate-btn, .plate-btn:active, .plate-btn:focus {
+    touch-action: manipulation;
+}
+
