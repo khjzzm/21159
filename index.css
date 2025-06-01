@@ -201,21 +201,20 @@
 @media (max-width: 768px) {
     .correlation-grid,
     .coefficient-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 12px;
-        margin: 16px 0;
     }
 
     .correlation-header,
     .coefficient-header {
-        padding: 10px;
         font-size: 0.85rem;
+        padding: 10px;
     }
 
     .correlation-item,
     .coefficient-row {
-        padding: 8px 10px;
         font-size: 0.8rem;
+        padding: 8px 10px;
     }
 
     .description .info-text > h2 {
@@ -228,7 +227,7 @@
     }
 
     .description-section::after {
-        width: 160px;
+        width: 150px;
     }
 
     .description-section h2 {
@@ -236,8 +235,8 @@
     }
 
     .intro-text {
-        font-size: var(--font-size-sm);
-        margin-bottom: 14px;
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
 }
 
@@ -246,19 +245,18 @@
     .coefficient-grid {
         grid-template-columns: 1fr;
         gap: 8px;
-        margin: 12px 0;
     }
 
     .correlation-header,
     .coefficient-header {
-        padding: 8px;
         font-size: 0.8rem;
+        padding: 8px;
     }
 
     .correlation-item,
     .coefficient-row {
-        padding: 6px 8px;
         font-size: 0.75rem;
+        padding: 6px 8px;
     }
 
     .description .info-text > h2 {
@@ -271,7 +269,7 @@
     }
 
     .description-section::after {
-        width: 120px;
+        width: 100px;
     }
 
     .description-section h2 {
@@ -279,7 +277,7 @@
     }
 
     .intro-text {
-        font-size: var(--font-size-sm);
-        margin-bottom: 12px;
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 } 
