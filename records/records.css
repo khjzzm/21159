@@ -1,0 +1,437 @@
+/* Records Toggle */
+.records-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    gap: 8px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 4px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    gap: 0;
+    background: linear-gradient(135deg, #e60012, #c2185b);
+    border-radius: 12px 12px 0 0;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.toggle-btn:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.toggle-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: none;
+}
+
+.toggle-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+/* Records Section */
+.records-section {
+    display: none;
+}
+
+.records-section.active {
+    display: block;
+}
+
+.records-section h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: var(--bg-primary);
+    margin-bottom: 32px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) transparent;
+}
+
+.table-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 3px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    min-width: 600px;
+}
+
+.records-table th {
+    background: linear-gradient(135deg, #e60012, #c2185b);
+    color: white !important;
+    padding: 15px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.records-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+}
+
+.records-table tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+/* Table Cell Specific Styles */
+.weight-class {
+    background-color: #f8f9fa !important;
+    font-weight: 700;
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+    vertical-align: middle;
+}
+
+.lift-type {
+    font-weight: 600;
+    padding: 8px 12px !important;
+}
+
+.snatch-row {
+    background-color: #fff8e7;
+}
+
+.clean-jerk-row {
+    background-color: #e7f8ff;
+}
+
+.total-row {
+    background-color: #f0fff0;
+}
+
+.lift-type:before {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+td.lift-type:contains("인상") {
+    color: #d97706;
+}
+
+td.lift-type:contains("용상") {
+    color: #0369a1;
+}
+
+td.lift-type:contains("합계") {
+    color: #059669;
+}
+
+.snatch, .clean-jerk, .total {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.snatch {
+    color: #d97706;
+}
+
+.clean-jerk {
+    color: #0369a1;
+}
+
+.total {
+    color: #059669;
+}
+
+.athlete {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.country {
+    font-weight: 500;
+}
+
+.competition {
+    font-size: 12px;
+    color: #4b5563;
+}
+
+.date {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+/* Description Styles */
+.description ul {
+    padding-left: 20px;
+    margin: 16px 0;
+}
+
+.description li {
+    margin-bottom: 8px;
+    line-height: var(--line-height-relaxed);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .records-table {
+        font-size: var(--font-size-xs);
+    }
+    
+    .records-table th,
+    .records-table td {
+        padding: 10px 8px;
+    }
+    
+    .competition {
+        font-size: 10px;
+    }
+    
+    .date {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .records-toggle {
+        margin-bottom: 24px;
+        max-width: 280px;
+    }
+    
+    .toggle-container {
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .toggle-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    
+    .records-section h2 {
+        font-size: var(--font-size-lg);
+        margin-bottom: 20px;
+    }
+    
+    .table-container {
+        margin-bottom: 24px;
+        border-radius: 0 0 8px 8px;
+    }
+    
+    .records-table {
+        font-size: 11px;
+    }
+    
+    .records-table th {
+        padding: 12px 4px;
+        font-size: 10px;
+    }
+    
+    .records-table td {
+        padding: 8px 4px;
+    }
+    
+    .competition {
+        font-size: 8px;
+        line-height: 1.2;
+    }
+    
+    .date {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .records-toggle {
+        margin-bottom: 20px;
+        max-width: 260px;
+        gap: 4px;
+        padding: 3px;
+    }
+    
+    .toggle-container {
+        border-radius: 6px 6px 0 0;
+    }
+    
+    .toggle-btn {
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+    
+    .records-section h2 {
+        font-size: var(--font-size-base);
+        margin-bottom: 16px;
+    }
+    
+    .table-container {
+        margin-bottom: 20px;
+        border-radius: 0 0 6px 6px;
+    }
+    
+    .records-table {
+        font-size: 9px;
+    }
+    
+    .records-table th {
+        padding: 8px 2px;
+        font-size: 8px;
+    }
+    
+    .records-table td {
+        padding: 6px 2px;
+    }
+    
+    .competition {
+        font-size: 7px;
+        line-height: 1.1;
+    }
+    
+    .date {
+        font-size: 7px;
+    }
+    
+    .weight-class {
+        font-size: 8px;
+    }
+    
+    .lift-type {
+        font-size: 8px;
+    }
+    
+    .snatch, .clean-jerk, .total {
+        font-size: 9px;
+    }
+    
+    .athlete {
+        font-size: 8px;
+    }
+    
+    .country {
+        font-size: 7px;
+    }
+}
+
+/* 다크모드 */
+.dark-mode .records-table {
+    background: #1f2937;
+    color: #f9fafb;
+}
+
+.dark-mode .records-table th {
+    background: linear-gradient(135deg, #dc2626, #be185d);
+    color: white !important;
+}
+
+.dark-mode .records-table td {
+    border-bottom-color: #374151;
+}
+
+.dark-mode .records-table tbody tr:hover {
+    background-color: #374151;
+}
+
+.dark-mode .weight-class {
+    background-color: #374151 !important;
+    color: var(--primary-light) !important;
+}
+
+.dark-mode .lift-type {
+    color: #f9fafb;
+}
+
+.dark-mode .athlete {
+    color: #f9fafb;
+}
+
+.dark-mode .country {
+    color: #d1d5db;
+}
+
+.dark-mode .date {
+    color: #9ca3af;
+}
+
+.dark-mode .competition {
+    color: #9ca3af;
+}
+
+.dark-mode .snatch-row {
+    background-color: rgba(217, 119, 6, 0.1);
+}
+
+.dark-mode .clean-jerk-row {
+    background-color: rgba(3, 105, 161, 0.1);
+}
+
+.dark-mode .total-row {
+    background-color: rgba(5, 150, 105, 0.1);
+}
+
+/* 체급별 구분선 */
+.weight-class[rowspan="3"] {
+    border-top: 3px solid var(--primary-color);
+}
+
+/* 다크모드 토글 버튼 */
+.dark-mode .toggle-container {
+    background: linear-gradient(135deg, #dc2626, #be185d);
+}
+
+.dark-mode .toggle-btn {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.dark-mode .toggle-btn.active {
+    color: white;
+} 

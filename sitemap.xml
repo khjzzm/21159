@@ -13,6 +13,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://21-15-9.com/records</loc>
+        <lastmod>2025-06-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://21-15-9.com/1rm</loc>
         <lastmod>2025-06-02</lastmod>
         <changefreq>monthly</changefreq>

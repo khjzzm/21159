@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>역도 세계 기록 | 21-15-9</title>
+    <meta name="description" content="최신 남녀 역도 세계 기록 현황 - 인상, 용상, 합계 기록과 선수 정보">
+    <meta name="keywords" content="역도, 세계기록, 올림픽, 인상, 용상, 합계, 웨이트리프팅">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="역도 세계 기록 | 21-15-9">
+    <meta property="og:description" content="최신 남녀 역도 세계 기록 현황 - 인상, 용상, 합계 기록과 선수 정보">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://21159.dev/records">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../common.css?v=1748848934">
+    <link rel="stylesheet" href="records.css?v=1748852583">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#e60012">
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../script.js?v=1748848934"></script>
+    <script src="records.js?v=1748852583"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-container">
+        <div class="header-content">
+            <nav class="nav-tabs">
+                <a href="/" class="nav-item">21-15-9</a>
+                <a href="/weightlifting" class="nav-item">역도</a>
+                <a href="/records" class="nav-item active">기록</a>
+                <a href="/1rm" class="nav-item">원알엠</a>
+                <a href="/convert" class="nav-item">파운드</a>
+                <a href="/plates" class="nav-item">플레이트</a>
+                <a href="/open" class="nav-item">오픈</a>
+                <a href="/timer" class="nav-item">타이머</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="다크모드 전환">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="wrapper">
+        <div class="container">
+            <h1>역도 세계 기록</h1>
+            
+            <!-- 토글 버튼 -->
+            <div class="toggle-container">
+                <button id="men-btn" class="toggle-btn active" data-gender="men">남자</button>
+                <button id="women-btn" class="toggle-btn" data-gender="women">여자</button>
+            </div>
+
+            <!-- 남자 기록 테이블 -->
+            <div id="men-records" class="records-section active">
+                <div class="table-container">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>체급</th>
+                                <th>부문</th>
+                                <th>기록</th>
+                                <th>선수</th>
+                                <th>국가</th>
+                                <th>대회</th>
+                                <th>날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 61kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">61kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">146kg</td>
+                                <td class="athlete">리파빈</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">쿼터대회 (태국 푸켓)</td>
+                                <td class="date">2024.04.03</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">176kg</td>
+                                <td class="athlete">햄프턴 모리스</td>
+                                <td class="country">🇺🇸 미국</td>
+                                <td class="competition">쿼터대회 (태국 푸켓)</td>
+                                <td class="date">2024.04.03</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">318kg</td>
+                                <td class="athlete">리파빈</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">쿼터대회 (태국 푸켓)</td>
+                                <td class="date">2024.04.03</td>
+                            </tr>
+                            <!-- 67kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">67kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">155kg</td>
+                                <td class="athlete">황민하오</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">올림픽</td>
+                                <td class="date">2019.07.06</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">190kg</td>
+                                <td class="athlete">리원주</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.08</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">339kg</td>
+                                <td class="athlete">천리쥔</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2019.04.21</td>
+                            </tr>
+                            <!-- 73kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">73kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">169kg</td>
+                                <td class="athlete">스즈융</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2021.04.20</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">204kg</td>
+                                <td class="athlete">라맛 어윈 압둘라</td>
+                                <td class="country">🇮🇩 인도네시아</td>
+                                <td class="competition">아시안 챔피언십</td>
+                                <td class="date">2024.02.06</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">365kg</td>
+                                <td class="athlete">리즈키 주니안샤</td>
+                                <td class="country">🇮🇩 인도네시아</td>
+                                <td class="competition">쿼터대회</td>
+                                <td class="date">2024.04.04</td>
+                            </tr>
+                            <!-- 81kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">81kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">175kg</td>
+                                <td class="athlete">리다인</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2021.04.21</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">209kg</td>
+                                <td class="athlete">라맛 어윈 압둘라</td>
+                                <td class="country">🇮🇩 인도네시아</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2023.09.11</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">378kg</td>
+                                <td class="athlete">뤼샤오쥔</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2019.09.22</td>
+                            </tr>
+                            <!-- 89kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">89kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">182kg</td>
+                                <td class="athlete">제이슨 로페즈</td>
+                                <td class="country">🇨🇴 콜롬비아</td>
+                                <td class="competition">쿼터대회</td>
+                                <td class="date">2024.04.06</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">223kg</td>
+                                <td class="athlete">카를로스 나사</td>
+                                <td class="country">🇧🇬 불가리아</td>
+                                <td class="competition">카타르컵</td>
+                                <td class="date">2023.12.10</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">396kg</td>
+                                <td class="athlete">리다인</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2023.05.10</td>
+                            </tr>
+                            <!-- 96kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">96kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">174kg</td>
+                                <td class="athlete">누르기사 아디레툴리</td>
+                                <td class="country">🇰🇿 카자흐스탄</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">214kg</td>
+                                <td class="athlete">누르기사 아디레툴리</td>
+                                <td class="country">🇰🇿 카자흐스탄</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">388kg</td>
+                                <td class="athlete">누르기사 아디레툴리</td>
+                                <td class="country">🇰🇿 카자흐스탄</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <!-- 102kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">102kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">180kg</td>
+                                <td class="athlete">류환화</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">IWF 월드컵 (태국 푸켓)</td>
+                                <td class="date">2024.04.08</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">230kg</td>
+                                <td class="athlete">류환화</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">IWF 월드컵 (태국 푸켓)</td>
+                                <td class="date">2024.04.08</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">410kg</td>
+                                <td class="athlete">류환화</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">IWF 월드컵 (태국 푸켓)</td>
+                                <td class="date">2024.04.08</td>
+                            </tr>
+                            <!-- 109kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">109kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">200kg</td>
+                                <td class="athlete">양제</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2021.04.24</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">241kg</td>
+                                <td class="athlete">누루디노프</td>
+                                <td class="country">🇺🇿 우즈베키스탄</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2021.04.24</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">435kg</td>
+                                <td class="athlete">마르티로시안</td>
+                                <td class="country">🇦🇲 아르메니아</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2018.11.09</td>
+                            </tr>
+                            <!-- +109kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">+109kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">225kg</td>
+                                <td class="athlete">라샤 탈라카제</td>
+                                <td class="country">🇬🇪 조지아</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2021.12.17</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">267kg</td>
+                                <td class="athlete">라샤 탈라카제</td>
+                                <td class="country">🇬🇪 조지아</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2021.12.17</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">492kg</td>
+                                <td class="athlete">라샤 탈라카제</td>
+                                <td class="country">🇬🇪 조지아</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2021.12.17</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 여자 기록 테이블 -->
+            <div id="women-records" class="records-section">
+                <div class="table-container">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>체급</th>
+                                <th>부문</th>
+                                <th>기록</th>
+                                <th>선수</th>
+                                <th>국가</th>
+                                <th>대회</th>
+                                <th>날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 45kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">45kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">87kg</td>
+                                <td class="athlete">원현심</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">쿼터대회 (태국 푸켓)</td>
+                                <td class="date">2024.03.31</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">109kg</td>
+                                <td class="athlete">원현심</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">쿼터대회 (태국 푸켓)</td>
+                                <td class="date">2024.03.31</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">196kg</td>
+                                <td class="athlete">원현심</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">쿼터대회 (태국 푸켓)</td>
+                                <td class="date">2024.03.31</td>
+                            </tr>
+                            <!-- 49kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">49kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">97kg</td>
+                                <td class="athlete">허우즈후이</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">쿼터대회 (태국 파타야)</td>
+                                <td class="date">2024.04.01</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">125kg</td>
+                                <td class="athlete">리성금</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">쿼터대회 (태국 푸켓)</td>
+                                <td class="date">2024.04.01</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">221kg</td>
+                                <td class="athlete">허우즈후이</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">쿼터대회 (태국 파타야)</td>
+                                <td class="date">2024.04.01</td>
+                            </tr>
+                            <!-- 59kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">59kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">111kg</td>
+                                <td class="athlete">김일경</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">148kg</td>
+                                <td class="athlete">송국향</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">259kg</td>
+                                <td class="athlete">김일경</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <!-- 64kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">64kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">115kg</td>
+                                <td class="athlete">리숙</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.11</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">149kg</td>
+                                <td class="athlete">리숙</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.11</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">264kg</td>
+                                <td class="athlete">리숙</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.11</td>
+                            </tr>
+                            <!-- 76kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">76kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">116kg</td>
+                                <td class="athlete">송국향</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">148kg</td>
+                                <td class="athlete">송국향</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">264kg</td>
+                                <td class="athlete">송국향</td>
+                                <td class="country">🇰🇵 북한</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2024.12.13</td>
+                            </tr>
+                            <!-- 87kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">87kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">140kg</td>
+                                <td class="athlete">리옌</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2025.05.15</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">170kg</td>
+                                <td class="athlete">리옌</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2025.05.15</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">310kg</td>
+                                <td class="athlete">리옌</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">아시아선수권</td>
+                                <td class="date">2025.05.15</td>
+                            </tr>
+                            <!-- +87kg -->
+                            <tr>
+                                <td class="weight-class" rowspan="3">+87kg</td>
+                                <td class="lift-type">인상</td>
+                                <td class="snatch">148kg</td>
+                                <td class="athlete">리원원</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2019.09.22</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">용상</td>
+                                <td class="clean-jerk">187kg</td>
+                                <td class="athlete">리원원</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2019.09.22</td>
+                            </tr>
+                            <tr>
+                                <td class="lift-type">합계</td>
+                                <td class="total">335kg</td>
+                                <td class="athlete">리원원</td>
+                                <td class="country">🇨🇳 중국</td>
+                                <td class="competition">세계선수권</td>
+                                <td class="date">2019.09.22</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- PWA Scripts -->
+    <script src="../pwa.js?v=1748845623"></script>
+    <script src="../visitor-counter.js?v=1748845623"></script>
+</body>
+</html> 
