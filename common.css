@@ -256,6 +256,7 @@ body {
     background: transparent !important;
     border: none !important;
     transform: none;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .nav-tabs {
@@ -312,7 +313,9 @@ body {
     box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
     z-index: 1001;
     transition: left 0.3s ease;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .sidebar-nav.open {
@@ -344,6 +347,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-shrink: 0;
 }
 
 .sidebar-title {
@@ -362,6 +366,38 @@ body {
 
 .sidebar-content {
     padding: 20px 0;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* 스크롤바 스타일링 */
+.sidebar-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+    opacity: 1;
+}
+
+/* Firefox 스크롤바 */
+.sidebar-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--bg-secondary);
 }
 
 .nav-group {
@@ -477,21 +513,21 @@ body {
 }
 
 /* Link Styles */
-a:not(.nav-item) {
+a:not(.nav-item):not(.sidebar-nav-item) {
     color: var(--link-color);
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 500;
 }
 
-a:not(.nav-item):hover {
+a:not(.nav-item):not(.sidebar-nav-item):hover {
     color: var(--link-hover);
     background-color: rgba(230, 0, 18, 0.1);
     padding: 2px 4px;
     border-radius: 4px;
 }
 
-a:not(.nav-item):focus {
+a:not(.nav-item):not(.sidebar-nav-item):focus {
     outline: 2px solid rgba(230, 0, 18, 0.3);
     outline-offset: 2px;
 }
@@ -1468,4 +1504,5 @@ body::after {
     background: transparent !important;
     border: none !important;
     transform: none;
+    color: rgba(255, 255, 255, 0.8);
 } 
