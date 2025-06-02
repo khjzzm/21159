@@ -207,18 +207,55 @@ body {
 /* 햄버거 메뉴 버튼 (모바일 전용) */
 .hamburger-menu {
     display: none;
-    background: transparent;
-    border: none;
+    background: transparent !important;
+    border: none !important;
     color: rgba(255, 255, 255, 0.8);
     font-size: 18px;
     cursor: pointer;
     padding: 8px;
+    margin: 0;
     margin-right: 12px;
-    transition: color 0.3s ease;
+    transition: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+    flex-shrink: 0;
+    position: relative;
+    transform: none;
+}
+
+.hamburger-menu:focus {
+    outline: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 8px;
+    margin: 0;
+    margin-right: 12px;
+    transform: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hamburger-menu:active {
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 8px;
+    margin: 0;
+    margin-right: 12px;
+    transform: none;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .hamburger-menu:hover {
-    color: white;
+    background: transparent !important;
+    border: none !important;
+    transform: none;
 }
 
 .nav-tabs {
@@ -1400,8 +1437,35 @@ body::after {
 /* 다크 모드 햄버거 메뉴 */
 [data-theme="dark"] .hamburger-menu {
     color: rgba(255, 255, 255, 0.8);
+    background: transparent !important;
+    border: none !important;
+    transform: none;
+}
+
+[data-theme="dark"] .hamburger-menu:focus {
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    padding: 8px;
+    margin: 0;
+    margin-right: 12px;
+    transform: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .hamburger-menu:active {
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    padding: 8px;
+    margin: 0;
+    margin-right: 12px;
+    transform: none;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme="dark"] .hamburger-menu:hover {
-    color: white;
+    background: transparent !important;
+    border: none !important;
+    transform: none;
 } 
