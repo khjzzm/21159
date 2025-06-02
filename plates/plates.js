@@ -21,8 +21,9 @@ $(document).ready(function() {
         state.barbellWeight = Number($(this).data('weight'));
         state.barbellWeightKg = Number($(this).data('kg'));
         
-        // 바벨 이미지 클래스 변경
-        const isMale = state.barbellWeight === 45;
+        // 바벨 이미지 클래스 변경 - 45lb와 20kg는 male, 35lb와 15kg는 female
+        const weightLb = state.barbellWeight;
+        const isMale = (weightLb >= 44); // 44lb 이상이면 male (45lb, 44.09lb)
         $('.barbell-image')
             .removeClass('male female')
             .addClass(isMale ? 'male' : 'female');
@@ -164,15 +165,29 @@ $(document).ready(function() {
         const platesWeightKg = state.leftPlates.reduce((sum, plate) => {
             return sum + plate.kg;
         }, 0) * 2;
-        return Math.round((state.barbellWeightKg + platesWeightKg) * 10) / 10;
+        const total = state.barbellWeightKg + platesWeightKg;
+        return Math.round(total * 100) / 100; // 소수점 둘째 자리까지 정확히
     }
 
     // 총 무게 계산 (lb 변환)
     function calculateTotalWeight() {
-        // kg로 합산한 뒤 lb로 변환
+        // 정확한 kg 값에서 lb로 변환
         const totalKg = calculateTotalWeightKg();
-        const totalLb = totalKg * 2.20462;
-        return Math.round(totalLb * 10) / 10;
+        
+        // 바벨이 lb 기준이면 바벨만 원래 lb 값 사용, 플레이트는 변환
+        let totalLb;
+        if (state.barbellWeight && (state.barbellWeight === 45 || state.barbellWeight === 35)) {
+            // 45lb, 35lb 바벨의 경우 정확한 lb 값 사용
+            const platesWeightKg = state.leftPlates.reduce((sum, plate) => {
+                return sum + plate.kg;
+            }, 0) * 2;
+            totalLb = state.barbellWeight + (platesWeightKg * 2.20462262);
+        } else {
+            // kg 바벨의 경우 전체를 변환
+            totalLb = totalKg * 2.20462262;
+        }
+        
+        return Math.round(totalLb * 10) / 10; // 소수점 첫째 자리까지
     }
 
     // HTML 초기화 시 바벨 구조 생성
