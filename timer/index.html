@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 캐시 방지 메타 태그 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7V24WCSR0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M7V24WCSR0');
+    </script>
+    
+    <!-- Basic SEO Meta Tags -->
+    <meta name="description" content="크로스핏 타이머 - AMRAP, For Time, EMOM, Tabata 등 다양한 크로스핏 워크아웃을 위한 전문 타이머">
+    <meta name="keywords" content="크로스핏 타이머, AMRAP 타이머, EMOM 타이머, Tabata 타이머, For Time, CrossFit timer, 운동 타이머, 인터벌 타이머">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="크로스핏 타이머 | 21-15-9">
+    <meta property="og:description" content="AMRAP, For Time, EMOM, Tabata 등 모든 크로스핏 워크아웃을 위한 전문 타이머">
+    <meta property="og:url" content="https://21-15-9.com/timer">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://21-15-9.com/og-image.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="21-15-9 크로스핏 타이머">
+    <meta property="og:site_name" content="21-15-9">
+    <meta property="og:locale" content="ko_KR">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="크로스핏 타이머 | 21-15-9">
+    <meta name="twitter:description" content="AMRAP, For Time, EMOM, Tabata 등 모든 크로스핏 워크아웃을 위한 전문 타이머">
+    <meta name="twitter:image" content="https://21-15-9.com/og-image.svg">
+    <meta name="twitter:image:alt" content="21-15-9 크로스핏 타이머">
+    
+    <title>크로스핏 타이머 | 21-15-9</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e60012">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="21-15-9">
+    
+    <link rel="canonical" href="https://21-15-9.com/timer">
+    <link rel="stylesheet" href="../common.css?v=1748845623">
+    <link rel="stylesheet" href="timer.css?v=1748846789">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header-container">
+            <div class="header-content">
+                <nav class="nav-tabs">
+                    <a href="/" class="nav-item">21-15-9</a>
+                    <a href="/weightlifting" class="nav-item">역도</a>
+                    <a href="/1rm" class="nav-item">원알엠</a>
+                    <a href="/convert" class="nav-item">파운드</a>
+                    <a href="/plates" class="nav-item">플레이트</a>
+                    <a href="/open" class="nav-item">오픈</a>
+                    <a href="/timer" class="nav-item active">타이머</a>
+                </nav>
+                <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- PC용 사이드바 광고 -->
+        <div class="ad-container ad-sidebar">
+            <div class="ad-placeholder">
+                <span class="ad-label">광고</span>
+                <div class="ad-content">Google AdSense<br>160x600</div>
+            </div>
+        </div>
+        
+        <!-- 모바일용 헤더 아래 -->
+        <div class="ad-container ad-header">
+            <div class="ad-placeholder">
+                <span class="ad-label">광고</span>
+                <div class="ad-content">Google AdSense - 320x50</div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h1>크로스핏 타이머</h1>
+            
+            <!-- 타이머 모드 선택 -->
+            <div class="timer-mode-selector">
+                <button class="mode-btn active" data-mode="countdown">For Time</button>
+                <button class="mode-btn" data-mode="amrap">AMRAP</button>
+                <button class="mode-btn" data-mode="emom">EMOM</button>
+                <button class="mode-btn" data-mode="tabata">TABATA</button>
+            </div>
+
+            <!-- 공통 준비시간 설정 -->
+            <!-- <div class="timer-settings">
+                <div class="setting-group">
+                    <h3>⏱️ 준비시간</h3>
+                    <div class="time-input-group">
+                        <label>타이머 시작 전 준비시간:</label>
+                        <input type="number" id="prepTime" min="0" max="30" value="10" placeholder="10"> 초
+                    </div>
+                    <p>시작 버튼을 누른 후 실제 타이머가 시작되기까지의 대기시간입니다.</p>
+                </div>
+            </div> -->
+
+            <!-- 타이머 디스플레이 -->
+            <div class="timer-display">
+                <div class="timer-main">
+                    <div class="time-display" id="timeDisplay">00:00</div>
+                    <div class="timer-label" id="timerLabel">준비</div>
+                </div>
+                
+                <!-- 라운드/세트 정보 -->
+                <div class="round-info" id="roundInfo" style="display: none;">
+                    <div class="current-round">
+                        <span class="round-label">라운드</span>
+                        <span class="round-number" id="currentRound">1</span>
+                        <span class="round-total">/ <span id="totalRounds">8</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 설정 패널 -->
+            <div class="timer-settings" id="timerSettings">
+                <!-- For Time 설정 (기본으로 표시) -->
+                <div class="setting-group" id="countdownSettings">
+                    <h3>For Time 설정</h3>
+                    <div class="time-input-group">
+                        <label>Time Cap (제한 시간):</label>
+                        <div class="time-inputs">
+                            <input type="number" id="countdownMinutes" min="0" max="60" value="15" placeholder="분">
+                            <span>:</span>
+                            <input type="number" id="countdownSeconds" min="0" max="59" value="0" placeholder="초">
+                        </div>
+                    </div>
+                    <p>주어진 워크아웃을 최대한 빨리 완료하세요. Time Cap에 도달하면 자동 종료됩니다.</p>
+                </div>
+
+                <!-- AMRAP 설정 -->
+                <div class="setting-group" id="amrapSettings" style="display: none;">
+                    <h3>AMRAP 설정</h3>
+                    <div class="time-input-group">
+                        <label>운동 시간:</label>
+                        <div class="time-inputs">
+                            <input type="number" id="amrapMinutes" min="0" max="60" value="15" placeholder="분">
+                            <span>:</span>
+                            <input type="number" id="amrapSeconds" min="0" max="59" value="0" placeholder="초">
+                        </div>
+                    </div>
+                    <p>설정된 시간 동안 최대한 많은 라운드를 수행하세요.</p>
+                </div>
+
+                <!-- EMOM 설정 -->
+                <div class="setting-group" id="emomSettings" style="display: none;">
+                    <h3>EMOM 설정</h3>
+                    <div class="time-input-group">
+                        <label>총 라운드:</label>
+                        <input type="number" id="emomRounds" min="1" max="30" value="10" placeholder="라운드">
+                    </div>
+                    <div class="time-input-group">
+                        <label>라운드당 시간:</label>
+                        <input type="number" id="emomWork" min="10" max="60" value="60" placeholder="60"> 초
+                    </div>
+                    <p>설정한 시간마다 새로운 라운드가 시작됩니다. 각 라운드는 설정한 시간 동안 진행됩니다.</p>
+                </div>
+
+                <!-- TABATA 설정 -->
+                <div class="setting-group" id="tabataSettings" style="display: none;">
+                    <h3>TABATA 설정</h3>
+                    <div class="time-input-group">
+                        <label>운동 시간:</label>
+                        <input type="number" id="tabataWork" min="10" max="60" value="20" placeholder="20">
+                    </div>
+                    <div class="time-input-group">
+                        <label>휴식 시간:</label>
+                        <input type="number" id="tabataRest" min="5" max="60" value="10" placeholder="10">
+                    </div>
+                    <div class="time-input-group">
+                        <label>라운드 수:</label>
+                        <input type="number" id="tabataRounds" min="1" max="20" value="8" placeholder="라운드">
+                    </div>
+                    <p>고강도 인터벌 트레이닝을 위한 타이머입니다.</p>
+                </div>
+            </div>
+
+            <!-- 컨트롤 버튼 -->
+            <div class="timer-controls">
+                <button class="control-btn start-btn" id="startBtn">시작</button>
+                <button class="control-btn pause-btn" id="pauseBtn" style="display: none;">일시정지</button>
+                <button class="control-btn reset-btn" id="resetBtn">리셋</button>
+            </div>
+
+            <!-- 사운드 설정 -->
+            <div class="sound-settings">
+                <label class="sound-toggle">
+                    <input type="checkbox" id="soundEnabled" checked>
+                    <span class="sound-label">🔊 사운드 알림</span>
+                </label>
+            </div>
+        </div>
+        
+        <!-- 광고 영역: 하단 -->
+        <div class="ad-container ad-content">
+            <div class="ad-placeholder">
+                <span class="ad-label">광고</span>
+                <div class="ad-content">Google AdSense - Responsive</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast" class="toast-message"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../script.js?v=1748845623"></script>
+    <script src="../pwa.js?v=1748845623"></script>
+    <script src="../visitor-counter.js?v=1748845623"></script>
+    <script src="timer.js?v=1748847890"></script>
+</body>
+</html> 

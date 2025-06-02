@@ -1,7 +1,7 @@
 {
   "name": "21-15-9",
   "short_name": "21-15-9",
-  "description": "Fran부터 1RM까지, CrossFit과 웨이트리프팅을 위한 종합 계산기",
+  "description": "Fran부터 1RM까지, CrossFit과 웨이트리프팅을 위한 종합 계산기. AMRAP/EMOM/TABATA 타이머 포함",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",
@@ -64,6 +64,13 @@
       "short_name": "오픈", 
       "description": "2011-2025 Open 워크아웃",
       "url": "/open",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "크로스핏 타이머",
+      "short_name": "타이머", 
+      "description": "AMRAP, EMOM, TABATA, For Time 타이머",
+      "url": "/timer",
       "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
     }
   ]

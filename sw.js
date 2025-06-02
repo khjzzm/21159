@@ -12,6 +12,8 @@ const urlsToCache = [
   '/plates/index.html',
   '/open/',
   '/open/index.html',
+  '/timer/',
+  '/timer/index.html',
   '/styles.css',
   '/script.js',
   '/weightlifting/weightlifting.js',
@@ -19,6 +21,8 @@ const urlsToCache = [
   '/convert/convert.js',
   '/open/open.js',
   '/open/open.css',
+  '/timer/timer.js',
+  '/timer/timer.css',
   '/favicon.svg',
   '/og-image.svg',
   'https://code.jquery.com/jquery-3.5.1.min.js'

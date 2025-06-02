@@ -1,0 +1,484 @@
+/* 타이머 모드 선택 */
+.timer-mode-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.mode-btn {
+    padding: 12px 20px;
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.mode-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(230, 0, 18, 0.2);
+}
+
+.mode-btn.active {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(230, 0, 18, 0.2);
+}
+
+/* 타이머 디스플레이 */
+.timer-display {
+    text-align: center;
+    margin: 40px 0;
+    padding: 40px 20px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.timer-main {
+    margin-bottom: 20px;
+}
+
+.time-display {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(230, 0, 18, 0.3);
+}
+
+.timer-label {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 라운드 정보 */
+.round-info {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--bg-light);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.current-round {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.round-label {
+    color: var(--text-secondary);
+    margin-right: 8px;
+}
+
+.round-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0 5px;
+}
+
+.round-total {
+    color: var(--text-secondary);
+}
+
+/* 설정 패널 */
+.timer-settings {
+    margin: 30px 0;
+    padding: 25px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.setting-group h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.setting-group p {
+    margin: 10px 0 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.time-input-group {
+    margin-bottom: 15px;
+}
+
+.time-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.time-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.time-inputs input {
+    width: 70px;
+    padding: 10px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: #ffffff;
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.time-inputs input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(230, 0, 18, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.time-inputs input:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.time-inputs span {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* 컨트롤 버튼 */
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.pause-btn {
+    background: linear-gradient(135deg, #ffc107, #fd7e14);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.pause-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+/* 사운드 설정 */
+.sound-settings {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.sound-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.sound-toggle:hover {
+    background: var(--bg-light);
+}
+
+.sound-toggle input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.sound-label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* 애니메이션 효과 */
+.timer-display.pulse {
+    animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.timer-display.warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border-color: #ffc107;
+}
+
+.timer-display.warning .time-display {
+    color: #856404;
+    text-shadow: 0 2px 4px rgba(255, 193, 7, 0.3);
+    animation: warning-pulse 1s ease-in-out infinite;
+}
+
+.timer-display.danger {
+    background: linear-gradient(135deg, #f8d7da, #ff7675);
+    border-color: #dc3545;
+}
+
+.timer-display.danger .time-display {
+    color: #721c24;
+    text-shadow: 0 2px 4px rgba(220, 53, 69, 0.4);
+    animation: danger-pulse 0.5s ease-in-out infinite;
+}
+
+@keyframes warning-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes danger-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .timer-mode-selector {
+        gap: 6px;
+    }
+    
+    .mode-btn {
+        padding: 10px 16px;
+        font-size: 16px;
+    }
+    
+    .timer-display {
+        margin: 30px 0;
+        padding: 30px 15px;
+    }
+    
+    .time-display {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+    
+    .timer-settings {
+        padding: 20px;
+    }
+    
+    .timer-controls {
+        gap: 10px;
+    }
+    
+    .control-btn {
+        padding: 12px 24px;
+        min-width: 100px;
+        font-size: 16px;
+    }
+    
+    .time-inputs {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mode-btn {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+    
+    .timer-display {
+        padding: 20px 10px;
+    }
+    
+    .control-btn {
+        padding: 10px 20px;
+        min-width: 90px;
+        font-size: 16px;
+    }
+    
+    .timer-settings {
+        padding: 15px;
+    }
+}
+
+/* 다크모드 스타일 추가 */
+[data-theme="dark"] .timer-display {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .round-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .timer-settings {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .sound-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .sound-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 다크모드에서 input 색상 명확히 설정 */
+[data-theme="dark"] .time-inputs input {
+    background: #2a2a2a;
+    color: #ffffff;
+    border-color: #444;
+}
+
+[data-theme="dark"] .time-inputs input:hover {
+    border-color: var(--primary-color);
+    background: #333;
+}
+
+[data-theme="dark"] .time-inputs input:focus {
+    background: #333;
+}
+
+/* 다크모드 경고 효과 */
+[data-theme="dark"] .timer-display.warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.3));
+    border-color: #ffc107;
+}
+
+[data-theme="dark"] .timer-display.warning .time-display {
+    color: #ffd60a;
+    text-shadow: 0 2px 8px rgba(255, 193, 7, 0.5);
+}
+
+[data-theme="dark"] .timer-display.danger {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.2), rgba(220, 53, 69, 0.3));
+    border-color: #dc3545;
+}
+
+[data-theme="dark"] .timer-display.danger .time-display {
+    color: #ff6b6b;
+    text-shadow: 0 2px 8px rgba(220, 53, 69, 0.5);
+}
+
+/* 모바일 가로 모드 - 시간만 표시 */
+@media (max-width: 1024px) and (orientation: landscape) {
+    /* 모든 요소 숨기기 */
+    .header-container,
+    h1,
+    .timer-mode-selector,
+    .timer-settings,
+    .timer-controls,
+    .sound-settings,
+    .ad-container {
+        display: none !important;
+    }
+    
+    /* 컨테이너 전체 화면 사용 */
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+    
+    /* 타이머 디스플레이만 중앙에 크게 */
+    .timer-display {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 0;
+        background: var(--bg-color);
+        box-sizing: border-box;
+    }
+    
+    .time-display {
+        font-size: clamp(2.5rem, 18vw, 8rem);
+        margin-bottom: 8px;
+    }
+    
+    .timer-label {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+    
+    .round-info {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    }
+    
+    .round-number {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+    }
+} 

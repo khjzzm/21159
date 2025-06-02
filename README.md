@@ -1,6 +1,6 @@
 # 21-15-9 | CrossFit & 웨이트리프팅 계산기
 
-**Fran부터 1RM까지** - CrossFit의 가장 유명한 벤치마크 워크아웃 "Fran"의 rep scheme에서 영감을 받은 종합 트레이닝 계산기입니다. 웨이트리프팅 동작 간의 상관관계를 계산하고 NSCA 공식을 기반으로 1RM을 추정하여 CrossFit 박스와 웨이트룸에서의 성과를 극대화하세요.
+**Fran부터 1RM까지** - CrossFit의 가장 유명한 벤치마크 워크아웃 "Fran"의 rep scheme에서 영감을 받은 종합 트레이닝 계산기입니다. 웨이트리프팅 동작 간의 상관관계를 계산하고 NSCA 공식을 기반으로 1RM을 추정하며, AMRAP/EMOM/TABATA 등 다양한 크로스핏 타이머를 제공하여 CrossFit 박스와 웨이트룸에서의 성과를 극대화하세요.
 
 🌐 **Live Site**: [21-15-9.com](https://21-15-9.com)
 
@@ -42,6 +42,14 @@
 - 계산 결과 저장 및 불러오기
 - 결과 공유 및 클립보드 복사 기능
 - 로컬 스토리지를 활용한 데이터 보관
+
+### ⏱️ 크로스핏 타이머 (NEW!)
+- **다양한 타이머 모드**: For Time, AMRAP, EMOM, TABATA 지원
+- **준비시간 기능**: 시작 전 10초 준비시간으로 첫 라운드 놓치지 않기
+- **시각적/청각적 알림**: 경고 색상 변화 및 비프음으로 시간 알림
+- **키보드 단축키**: 스페이스바(시작/일시정지), R키(리셋), 1-4키(모드 변경)
+- **모바일 최적화**: 가로 모드에서 전체 화면 타이머 경험
+- **배경 동기화**: 다른 앱 사용 중에도 정확한 시간 동기화
 
 ## 기술 스택
 
@@ -126,23 +134,6 @@ resetVisitorCounters()      // 방문자 카운터 초기화 (관리자용)
 ├── convert/                # lb↔kg 변환기
 ├── plates/                 # 플레이트 계산기
 ├── open/                   # 크로스핏 오픈 아카이브
+├── timer/                  # 크로스핏 타이머
 └── [기타 에셋들]
 ```
-
-## 라이선스
-
-MIT License
-
-## 기여하기
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 연락처
-
-프로젝트 관리자 - [@khjzzm](https://github.com/khjzzm)
-
-프로젝트 링크: [https://github.com/khjzzm/21159](https://github.com/khjzzm/21159) 
