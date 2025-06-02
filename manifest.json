@@ -58,6 +58,13 @@
       "description": "바벨 플레이트 이미지 보기",
       "url": "/plates",
       "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "크로스핏 오픈",
+      "short_name": "오픈", 
+      "description": "2011-2025 Open 워크아웃",
+      "url": "/open",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
     }
   ]
 } 
