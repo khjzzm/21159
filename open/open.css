@@ -1,0 +1,287 @@
+/* 연도 필터 스타일 */
+.year-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.year-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-right: 8px;
+}
+
+.year-select {
+    padding: 10px 16px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    min-width: 150px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.year-select:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--accent-primary);
+}
+
+.year-select:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(230,0,18,0.1);
+}
+
+/* option 스타일 */
+.year-select option {
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* 워크아웃 컨테이너 */
+.workouts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.workout-year {
+    margin-bottom: 48px;
+}
+
+.workout-year.hidden {
+    display: none;
+}
+
+.year-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--accent-primary);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent-primary);
+}
+
+/* 워크아웃 그리드 */
+.workout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* 워크아웃 카드 */
+.workout-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.workout-card:hover {
+    box-shadow: 0 4px 16px rgba(230,0,18,0.1);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* 워크아웃 헤더 */
+.workout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.workout-number {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--accent-primary);
+}
+
+.workout-type {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 워크아웃 내용 */
+.workout-content {
+    line-height: 1.6;
+}
+
+.workout-content p {
+    margin-bottom: 12px;
+}
+
+.workout-content p:last-child {
+    margin-bottom: 0;
+}
+
+.workout-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* 페이지 설명 */
+.description {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+}
+
+.description p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .year-filter {
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px 0;
+    }
+    
+    .year-label {
+        font-size: 14px;
+        margin-right: 0;
+        margin-bottom: 4px;
+    }
+    
+    .year-select {
+        min-width: 200px;
+        font-size: 14px;
+        padding: 8px 12px;
+        padding-right: 36px;
+    }
+    
+    .workout-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .workout-card {
+        padding: 20px;
+    }
+    
+    .year-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .workout-year {
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .year-filter {
+        gap: 6px;
+        padding: 12px 0;
+    }
+    
+    .year-label {
+        font-size: 13px;
+    }
+    
+    .year-select {
+        min-width: 180px;
+        font-size: 13px;
+        padding: 6px 10px;
+        padding-right: 32px;
+        background-size: 14px;
+        background-position: right 10px center;
+    }
+    
+    .workout-card {
+        padding: 16px;
+    }
+    
+    .workout-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .workout-number {
+        font-size: 18px;
+    }
+    
+    .year-title {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .description {
+        padding: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .description p {
+        font-size: 14px;
+    }
+}
+
+/* 다크 모드 대응 */
+@media (prefers-color-scheme: dark) {
+    .workout-type {
+        background: var(--bg-quaternary);
+    }
+}
+
+[data-theme="dark"] .workout-type {
+    background: var(--bg-quaternary);
+}
+
+/* 애니메이션 */
+.workout-card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 필터 적용 시 부드러운 전환 */
+.workout-year {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.workout-year.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+} 
