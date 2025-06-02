@@ -176,4 +176,121 @@ $(document).ready(function() {
         window.print();
         hideShareModal();
     });
-}); 
+
+    // 햄버거 메뉴 및 사이드바 기능
+    initSidebarNavigation();
+});
+
+// 사이드바 네비게이션 초기화
+function initSidebarNavigation() {
+    // HTML에 사이드바 구조 추가
+    const sidebarHTML = `
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <div class="sidebar-header">
+                <span class="sidebar-title">21-15-9</span>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+            <div class="sidebar-content">
+                <div class="nav-group">
+                    <div class="nav-group-title">홈</div>
+                    <a href="/" class="sidebar-nav-item">21-15-9</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-title">계산기</div>
+                    <a href="/weightlifting" class="sidebar-nav-item">웨이트리프팅 동작 상관관계</a>
+                    <a href="/1rm" class="sidebar-nav-item">1RM 계산기</a>
+                    <a href="/convert" class="sidebar-nav-item">KG-파운드 변환기</a>
+                    <a href="/plates" class="sidebar-nav-item">바벨 플레이트 계산기</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-title">도구</div>
+                    <a href="/open" class="sidebar-nav-item">CrossFit Open 아카이브</a>
+                    <a href="/timer" class="sidebar-nav-item">크로스핏 타이머</a>
+                </div>
+            </div>
+        </nav>
+    `;
+    
+    // 페이지에 사이드바 추가
+    document.body.insertAdjacentHTML('beforeend', sidebarHTML);
+    
+    // 헤더에 햄버거 버튼 추가
+    const headerContent = document.querySelector('.header-content');
+    if (headerContent) {
+        const hamburgerButton = document.createElement('button');
+        hamburgerButton.className = 'hamburger-menu';
+        hamburgerButton.id = 'hamburgerMenu';
+        hamburgerButton.innerHTML = '☰';
+        hamburgerButton.setAttribute('aria-label', '메뉴 열기');
+        
+        headerContent.insertBefore(hamburgerButton, headerContent.firstChild);
+    }
+    
+    // 현재 페이지에 맞는 active 상태 설정
+    setActiveSidebarItem();
+    
+    // 이벤트 리스너 등록
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const sidebarClose = document.getElementById('sidebarClose');
+    const sidebarNav = document.getElementById('sidebarNav');
+    
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', openSidebar);
+    }
+    
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+    
+    if (sidebarClose) {
+        sidebarClose.addEventListener('click', closeSidebar);
+    }
+    
+    // ESC 키로 사이드바 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebarNav && sidebarNav.classList.contains('open')) {
+            closeSidebar();
+        }
+    });
+}
+
+// 사이드바 열기
+function openSidebar() {
+    const sidebarNav = document.getElementById('sidebarNav');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    
+    if (sidebarNav && sidebarOverlay) {
+        sidebarNav.classList.add('open');
+        sidebarOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// 사이드바 닫기
+function closeSidebar() {
+    const sidebarNav = document.getElementById('sidebarNav');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    
+    if (sidebarNav && sidebarOverlay) {
+        sidebarNav.classList.remove('open');
+        sidebarOverlay.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+}
+
+// 현재 페이지에 맞는 사이드바 active 상태 설정
+function setActiveSidebarItem() {
+    const currentPath = window.location.pathname;
+    const sidebarItems = document.querySelectorAll('.sidebar-nav-item');
+    
+    sidebarItems.forEach(item => {
+        const href = item.getAttribute('href');
+        if (href === currentPath || (currentPath === '/' && href === '/')) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+} 
