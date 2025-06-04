@@ -1102,7 +1102,10 @@ input[type="number"]::-webkit-outer-spin-button {
     transform: translateY(-50%);
     width: 160px;
     height: 600px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* 모바일 헤더 광고 */
@@ -1110,7 +1113,10 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100%;
     height: 50px;
     margin-bottom: 16px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* 컨텐츠 하단 광고 */
@@ -1118,6 +1124,8 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100%;
     min-height: 250px;
     margin: 32px 0;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* 광고 플레이스홀더 (임시 표시) */
@@ -1160,13 +1168,17 @@ input[type="number"]::-webkit-outer-spin-button {
 /* 반응형 디자인 */
 @media (min-width: 1400px) {
     .ad-sidebar {
-        display: flex;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 
 @media (max-width: 768px) {
     .ad-header {
-        display: flex;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
     }
     
     .ad-content {
