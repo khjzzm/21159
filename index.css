@@ -163,21 +163,29 @@
     margin-bottom: 16px;
 }
 
-/* 어드센스 광고 스타일 (향후 사용) */
+/* 어드센스 광고 스타일 */
 .ad-container {
-    display: none !important; /* 애드센스 승인 전까지 강제 숨김 */
+    display: block;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .ad-header {
-    display: none !important;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .ad-sidebar {
-    display: none !important;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .ad-content {
-    display: none !important;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
 }
 
 /* 실제 애드센스 광고를 위한 스타일 */
