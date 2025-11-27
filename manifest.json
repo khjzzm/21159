@@ -68,9 +68,16 @@
     },
     {
       "name": "크로스핏 타이머",
-      "short_name": "타이머", 
+      "short_name": "타이머",
       "description": "AMRAP, EMOM, TABATA, For Time 타이머",
       "url": "/timer",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "역도 세계 기록",
+      "short_name": "기록",
+      "description": "남녀 역도 세계 기록 현황",
+      "url": "/records",
       "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
     }
   ]

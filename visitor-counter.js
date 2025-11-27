@@ -104,7 +104,6 @@ class VisitorCounter {
         Object.values(this.storageKeys).forEach(key => {
             localStorage.removeItem(key);
         });
-        console.log('방문자수 카운터가 초기화되었습니다.');
         this.initCounter();
     }
 
@@ -123,13 +122,10 @@ class VisitorCounter {
 document.addEventListener('DOMContentLoaded', function() {
     // 전역 변수로 카운터 인스턴스 생성 (개발자 도구에서 접근 가능)
     window.visitorCounter = new VisitorCounter();
-    
+
     // 개발자 도구에서 사용할 수 있는 유틸리티 함수들을 전역에 등록
     window.getVisitorStats = () => window.visitorCounter.getStats();
     window.resetVisitorCounters = () => window.visitorCounter.resetCounters();
-    
-    console.log('21-15-9 방문자수 추적 시스템이 초기화되었습니다.');
-    console.log('현재 통계:', window.visitorCounter.getStats());
 });
 
 // 페이지 이탈 시 마지막 방문 시간 업데이트

@@ -1,9 +1,9 @@
-const CACHE_NAME = '21-15-9-v1.0.0';
+const CACHE_NAME = '21-15-9-v1.0.1';
 const urlsToCache = [
   '/',
   '/index.html',
   '/weightlifting/',
-  '/weightlifting/index.html', 
+  '/weightlifting/index.html',
   '/1rm/',
   '/1rm/index.html',
   '/convert/',
@@ -14,18 +14,27 @@ const urlsToCache = [
   '/open/index.html',
   '/timer/',
   '/timer/index.html',
-  '/styles.css',
+  '/records/',
+  '/records/index.html',
+  '/common.css',
+  '/index.css',
   '/script.js',
   '/weightlifting/weightlifting.js',
+  '/weightlifting/weightlifting.css',
   '/1rm/1rm.js',
+  '/1rm/1rm.css',
   '/convert/convert.js',
+  '/convert/convert.css',
   '/open/open.js',
   '/open/open.css',
   '/timer/timer.js',
   '/timer/timer.css',
+  '/records/records.js',
+  '/records/records.css',
+  '/plates/plates.js',
+  '/plates/plates.css',
   '/favicon.svg',
-  '/og-image.svg',
-  'https://code.jquery.com/jquery-3.5.1.min.js'
+  '/og-image.svg'
 ];
 
 // Service Worker 설치
