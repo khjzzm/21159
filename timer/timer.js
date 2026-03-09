@@ -534,16 +534,6 @@ $(document).ready(function() {
         }
     }
 
-    // 토스트 메시지
-    function showToast(message) {
-        const $toast = $('#toast');
-        $toast.text(message).addClass('show');
-        
-        setTimeout(() => {
-            $toast.removeClass('show');
-        }, 3000);
-    }
-
     // 설정 값 변경 감지
     $('#countdownMinutes, #countdownSeconds').on('input', function() {
         if (!isRunning && currentMode === 'countdown') {

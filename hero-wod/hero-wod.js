@@ -173,35 +173,22 @@
                 '<div class="wod-tribute-inner">' + escapeHtml(wod.t) + '</div>' +
             '</div>';
 
-        card.addEventListener('click', function() {
+        // Tribute 토글은 해당 영역만
+        card.querySelector('.wod-tribute-toggle').addEventListener('click', function(e) {
+            e.stopPropagation();
             card.classList.toggle('expanded');
         });
 
-        card.addEventListener('dblclick', function(e) {
-            e.preventDefault();
+        // 카드 클릭 시 복사
+        card.addEventListener('click', function() {
             let text = wod.n + '\n' + wod.w;
             if (wod.rx) text += '\n' + wod.rx;
             navigator.clipboard.writeText(text).then(function() {
-                showCopyToast('복사됨!');
+                showToast('Copied to clipboard');
             });
         });
 
         return card;
-    }
-
-    function showCopyToast(msg) {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.textContent = msg;
-        container.appendChild(toast);
-        setTimeout(function() {
-            toast.classList.add('show');
-            setTimeout(function() {
-                toast.classList.remove('show');
-                setTimeout(function() { toast.remove(); }, 300);
-            }, 1500);
-        }, 50);
     }
 
     var currentSort = 'default';

@@ -9,7 +9,7 @@ $(document).ready(function() {
         // 통계 탭 전환 시 바 애니메이션 트리거
         if (tab === 'stats') {
             chartAnimated = false;
-            animateBars();
+            setTimeout(animateBars, 50);
         }
     });
 
@@ -24,10 +24,10 @@ $(document).ready(function() {
             }, 300);
         }
     });
-    
+
     // 페이지 로드 시 모든 워크아웃 표시
     $('.workout-year').show();
-    
+
     // 카드 호버 효과 개선
     $('.workout-card').hover(
         function() {
@@ -37,7 +37,7 @@ $(document).ready(function() {
             $(this).removeClass('hovered');
         }
     );
-    
+
     // 워크아웃 카드 클릭 시 클립보드 복사
     $('.workout-card').click(function() {
         const $card = $(this);
@@ -63,14 +63,14 @@ $(document).ready(function() {
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            showToast('복사됨!');
+            showToast('Copied to clipboard');
         } catch(e) {
             navigator.clipboard.writeText(copyText).then(function() {
-                showToast('복사됨!');
+                showToast('Copied to clipboard');
             });
         }
     });
-    
+
     // 검색 + 연도 필터 통합
     function filterWorkouts() {
         const selectedYear = $('#year-select').val();
@@ -244,17 +244,17 @@ $(document).ready(function() {
     $('#search-input').on('blur', function() {
         setTimeout(hideOpenAutocomplete, 150);
     });
-    
+
     // 반응형 체크
     function checkMobile() {
         return window.innerWidth <= 768;
     }
-    
+
     // 창 크기 변경 시 레이아웃 조정
     $(window).resize(function() {
         // 필요한 경우 레이아웃 재조정
     });
-    
+
     // 동작 통계 바 차트
     var movementData = [
         { name: 'Double-unders', count: 15, cat: 'cardio' },
@@ -316,7 +316,9 @@ $(document).ready(function() {
     var chartAnimated = false;
     function animateBars() {
         if (chartAnimated) return;
-        var chartTop = $chart.offset().top;
+        var offset = $chart.offset();
+        if (!offset) return;
+        var chartTop = offset.top;
         var scrollBottom = $(window).scrollTop() + $(window).height();
         if (scrollBottom > chartTop + 60) {
             chartAnimated = true;
@@ -330,4 +332,4 @@ $(document).ready(function() {
     }
     $(window).on('scroll', animateBars);
     animateBars();
-}); 
+});
