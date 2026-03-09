@@ -149,6 +149,16 @@
     margin-bottom: 24px;
     padding-bottom: 12px;
     border-bottom: 2px solid var(--accent-primary);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.year-sponsor {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    letter-spacing: 0.5px;
 }
 
 /* 워크아웃 그리드 */
