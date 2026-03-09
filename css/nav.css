@@ -123,9 +123,14 @@
 .nav-trigger {
     cursor: pointer;
     user-select: none;
+    color: rgba(255, 255, 255, 0.45);
 }
 
 a.nav-trigger:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+a.nav-trigger.active {
     color: #e0fd53 !important;
 }
 
