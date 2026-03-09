@@ -40,9 +40,6 @@ function showToast(message) {
     }, 100);
 }
 
-// PWA에서 사용할 수 있도록 백업
-window.originalShowToast = showToast;
-
 // 백분율 계산 함수
 function calculatePercentage(value, total) {
     return ((value / total) * 100).toFixed(1);
@@ -141,7 +138,7 @@ function initSidebarNavigation() {
                 <div class="nav-group">
                     <div class="nav-group-title">Strength</div>
                     <a href="/weightlifting/" class="sidebar-nav-item">웨이트리프팅 동작 상관관계</a>
-                    <a href="/1rm/" class="sidebar-nav-item">NSCA 기반 1RM 최대중량</a>
+                    <a href="/nsca/" class="sidebar-nav-item">NSCA 기반 1RM 최대중량</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">Convert</div>
@@ -150,9 +147,9 @@ function initSidebarNavigation() {
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">Archive</div>
-                    <a href="/open/" class="sidebar-nav-item">CrossFit Open</a>
+                    <a href="/crossfit-wod/" class="sidebar-nav-item">CrossFit Open</a>
                     <a href="/hero-wod/" class="sidebar-nav-item">Hero & Tribute Workouts</a>
-                    <a href="/records/" class="sidebar-nav-item">Weightlifting World Record</a>
+                    <a href="/weightlifting-world-record/" class="sidebar-nav-item">Weightlifting World Record</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">Tools</div>

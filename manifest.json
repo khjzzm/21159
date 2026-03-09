@@ -1,7 +1,7 @@
 {
   "name": "21-15-9",
   "short_name": "21-15-9",
-  "description": "Fran부터 1RM까지, CrossFit과 웨이트리프팅을 위한 종합 계산기. AMRAP/EMOM/TABATA 타이머 포함",
+  "description": "CrossFit과 웨이트리프팅을 위한 종합 도구. 동작 상관관계, NSCA 1RM, 단위 변환, 플레이트 계산, 오픈 워크아웃, 히어로 WOD, 세계 기록, 타이머까지 한곳에서.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",
@@ -11,19 +11,19 @@
   "lang": "ko",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/assets/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-192.svg",
+      "src": "/assets/icon-192.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.svg", 
+      "src": "/assets/icon-512.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"
@@ -32,53 +32,67 @@
   "categories": ["health", "fitness", "sports", "utilities"],
   "shortcuts": [
     {
-      "name": "웨이트리프팅 계산기",
+      "name": "웨이트리프팅 동작 상관관계",
       "short_name": "웨이트리프팅",
-      "description": "동작 간 상관관계 계산",
+      "description": "백 스쿼트, 클린 앤 저크, 스내치 등 웨이트리프팅 동작 간 상관관계 계산기",
       "url": "/weightlifting",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "1RM 계산기", 
+      "name": "NSCA 기반 1RM 최대중량",
       "short_name": "1RM",
-      "description": "최대중량 계산",
-      "url": "/1rm",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+      "description": "NSCA 공식 기반 스쿼트, 벤치프레스, 데드리프트 1RM~10RM 최대중량 계산기",
+      "url": "/nsca",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "lb ↔ kg 변환기",
-      "short_name": "변환기", 
-      "description": "무게 단위 변환",
+      "name": "LB / KG Converter",
+      "short_name": "변환기",
+      "description": "파운드와 킬로그램 무게 단위 변환기",
       "url": "/convert",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "플레이트 시각화",
-      "short_name": "플레이트", 
-      "description": "바벨 플레이트 이미지 보기",
+      "name": "Plate Calculator",
+      "short_name": "플레이트",
+      "description": "올림픽 규격 바벨 플레이트 조합 계산기",
       "url": "/plates",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "크로스핏 오픈",
-      "short_name": "오픈", 
-      "description": "2011-2025 Open 워크아웃",
-      "url": "/open",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+      "name": "CrossFit Open",
+      "short_name": "오픈",
+      "description": "2011년부터 2026년까지 크로스핏 오픈 워크아웃 전체 아카이브",
+      "url": "/crossfit-wod",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "크로스핏 타이머",
+      "name": "Hero & Tribute Workouts",
+      "short_name": "Hero WOD",
+      "description": "243개 크로스핏 히어로 & 트리뷰트 워크아웃 전체 아카이브",
+      "url": "/hero-wod",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Weightlifting World Record",
+      "short_name": "세계기록",
+      "description": "IWF 남녀 역도 세계 기록 현황",
+      "url": "/weightlifting-world-record",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Timer",
       "short_name": "타이머",
-      "description": "AMRAP, EMOM, TABATA, For Time 타이머",
+      "description": "For Time, AMRAP, EMOM, TABATA 크로스핏 타이머",
       "url": "/timer",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "역도 세계 기록",
-      "short_name": "기록",
-      "description": "남녀 역도 세계 기록 현황",
-      "url": "/records",
-      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+      "name": "Random WOD",
+      "short_name": "Random WOD",
+      "description": "랜덤 크로스핏 워크아웃 생성기",
+      "url": "/random-wod",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     }
   ]
-} 
+}

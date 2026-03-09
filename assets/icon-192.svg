@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="32" fill="#1a1a1a"/>
+  <text x="96" y="88" text-anchor="middle" fill="#e0fd53" font-family="Arial Black, Impact, sans-serif" font-size="48" font-weight="900" letter-spacing="-1">21-15-9</text>
+  <line x1="56" y1="102" x2="136" y2="102" stroke="#e0fd53" stroke-width="2" opacity="0.4"/>
+  <text x="96" y="126" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="500" opacity="0.7">CROSSFIT TOOLS</text>
+</svg>

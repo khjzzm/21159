@@ -1,69 +1,95 @@
 # 21-15-9 | CrossFit & 웨이트리프팅 계산기
 
-**Fran부터 1RM까지** - CrossFit의 가장 유명한 벤치마크 워크아웃 "Fran"의 rep scheme에서 영감을 받은 종합 트레이닝 계산기입니다. 웨이트리프팅 동작 간의 상관관계를 계산하고 NSCA 공식을 기반으로 1RM을 추정하며, AMRAP/EMOM/TABATA 등 다양한 크로스핏 타이머를 제공하여 CrossFit 박스와 웨이트룸에서의 성과를 극대화하세요.
+**Fran부터 1RM까지** - CrossFit의 가장 유명한 벤치마크 워크아웃 "Fran"의 rep scheme에서 영감을 받은 종합 트레이닝 도구입니다. 웨이트리프팅 동작 간의 상관관계를 계산하고, NSCA 공식을 기반으로 1RM을 추정하며, 오픈 워크아웃 아카이브부터 히어로 WOD, 역도 세계 기록, 크로스핏 타이머까지 CrossFit 박스와 웨이트룸에서 필요한 모든 도구를 제공합니다.
 
 🌐 **Live Site**: [21-15-9.com](https://21-15-9.com)
 
 ## 주요 기능
 
-### 🏆 역도 세계 기록 아카이브
-- **최신 세계 기록**: 2024-2025년 최신 남녀 역도 세계 기록 완전 수록
-- **체급별 상세 정보**: 61kg부터 +109kg(남자), 45kg부터 +87kg(여자) 모든 체급
-- **3개 부문 완전 분리**: 인상, 용상, 합계 각각의 선수, 국가, 대회, 날짜 정보
+### 🏋️‍♂️ 웨이트리프팅 동작 상관관계
+- 백 스쿼트 기준 상관관계 (스내치 60~65%, 클린 앤 저크 80~85%, 프론트 스쿼트 85~93%)
+- 클린 앤 저크 기준 상관관계 (프론트 스쿼트 85~90%, 스내치 80~85%)
+- CrossFit 특화 동작 간 상관관계 (파워 클린→클린, 파워 스내치→스내치, 푸시 프레스→저크)
+- 클린, 저크, 데드리프트, 푸시 프레스 등 8개 동작 지원
+- 입력 즉시 모든 연관 동작의 수행 가능 범위 자동 계산
+- KG/LB 실시간 단위 변환 및 변환 무게 동시 표시
 
+### 📊 NSCA 기반 1RM 최대중량
+- 스쿼트, 벤치프레스, 데드리프트의 1RM부터 10RM까지 추정
+- NSCA(National Strength and Conditioning Association) 공식 기반 정확한 계산
+- 반복 횟수(1~10회)와 무게 입력으로 모든 RM 값 자동 산출
+- 입력한 반복 횟수에 해당하는 RM 결과 강조 표시
+- KG/LB 단위 변환 지원 및 변환 무게 동시 표시
 
-### 🏆 크로스핏 오픈 워크아웃 아카이브
-- **오픈 와드**: 2011년부터 2025년까지 모든 CrossFit Open 워크아웃
-- **연도별 필터링**: 드롭다운으로 원하는 연도 워크아웃만 보기
-- **정확한 남녀 중량**: 모든 워크아웃의 남녀별 중량/박스 높이 구분
-- **워크아웃 타입 표시**: AMRAP, For Time, For Load 등 명확한 분류
-- **시간 제한 표기**: 각 워크아웃의 정확한 time cap 정보
+### ⚖️ LB / KG Converter
+- 파운드(LB)와 킬로그램(KG) 간 실시간 무게 단위 변환
+- 소수점 둘째 자리까지 정밀한 변환 결과 제공
 
+### 🔩 Plate Calculator
+- 올림픽 규격 바벨 플레이트 조합 시각화
+- 목표 무게에 필요한 플레이트 조합 자동 계산
+- KG/LB 바벨 규격 모두 지원
 
-### 🏋️‍♂️ 웨이트리프팅 & CrossFit 동작 상관관계 계산
-- 백 스쿼트 기준 상관관계 (스내치, 클린 앤 저크, 프론트 스쿼트)
-- 클린 앤 저크 기준 상관관계 (프론트 스쿼트, 스내치)
-- CrossFit 특화 동작 간 상관관계 (파워 클린/스내치, 푸시 프레스)
-- Fran, Grace, Isabel 등 벤치마크 워크아웃에 최적화
+### 🏆 CrossFit Open 워크아웃 아카이브
+- 2011년부터 2026년까지 모든 CrossFit Open 워크아웃 완전 수록
+- 연도별 드롭다운 필터링으로 원하는 연도 워크아웃만 보기
+- 모든 워크아웃의 남녀별 중량 및 박스 높이 정확하게 구분
+- AMRAP, For Time, For Load 등 워크아웃 타입 명확한 분류
+- 각 워크아웃의 정확한 Time Cap 정보 표기
+- 카드 클릭으로 워크아웃 내용 클립보드 복사
 
-### 📊 NSCA 1RM 계산기
-- 스쿼트, 벤치프레스, 데드리프트의 1RM-10RM 추정
-- NSCA 공식 기반 정확한 계산
-- KG/LB 단위 변환 지원
-- CrossFit 워크아웃 스케일링에 활용
+### 🧑‍🚒 Hero & Tribute Workouts
+- 243개 크로스핏 히어로 & 트리뷰트 워크아웃 전체 아카이브
+- 워크아웃 이름 또는 운동 동작으로 실시간 검색
+- 각 워크아웃의 헌정 대상(Tribute) 및 배경 스토리 토글 표시
+- RX 기준 무게 및 동작 표기
+- 더블 클릭으로 워크아웃 내용 클립보드 복사
 
-### 👥 방문자수 추적 시스템
-- **실시간 방문자 카운터**: 오늘 방문자수 및 총 방문자수 표시
-- **중복 방문 방지**: 30분 세션 타임아웃으로 정확한 집계
-- **Google Analytics 4 연동**: 상세한 웹사이트 분석 및 통계
-- **프라이버시 친화적**: LocalStorage 기반 클라이언트 사이드 추적
+### 🥇 Weightlifting World Record
+- IWF 남녀 역도 세계 기록 현황 완전 수록
+- 체급별 상세 정보: 남자 61kg부터 +109kg, 여자 45kg부터 +87kg 모든 체급
+- 인상(Snatch), 용상(Clean & Jerk), 합계(Total) 3개 부문 완전 분리
+- 각 기록의 선수, 국가, 대회, 날짜 정보 제공
 
-### 🚫 사용자 친화적 404 페이지
-- **CrossFit 테마 디자인**: 브랜드 일관성 유지
-- **빠른 네비게이션**: 메인 페이지 및 인기 페이지 바로가기
-- **에러 추적**: Google Analytics로 404 에러 분석
-- **반응형 디자인**: 모든 디바이스에서 최적화된 경험
+### ⏱️ Timer
+- For Time, AMRAP, EMOM, TABATA 4가지 타이머 모드 지원
+- 시작 전 10초 준비시간(Countdown) 기능
+- 경고 색상 변화 및 비프음으로 시간 알림
+- 키보드 단축키: 스페이스바(시작/일시정지), R키(리셋), 1~4키(모드 변경)
+- 모바일 가로 모드에서 전체 화면 타이머 경험
+- 백그라운드 탭 전환 시에도 정확한 시간 동기화
+
+### 🎲 Random WOD
+- 랜덤 크로스핏 워크아웃 생성기 (준비중)
 
 ### 💾 데이터 관리
-- 계산 결과 저장 및 불러오기
+- 계산 결과 로컬 스토리지 저장 및 불러오기
 - 결과 공유 및 클립보드 복사 기능
-- 로컬 스토리지를 활용한 데이터 보관
+- 웨이트리프팅과 1RM 데이터 독립적 저장/관리
 
-### ⏱️ 크로스핏 타이머 (NEW!)
-- **다양한 타이머 모드**: For Time, AMRAP, EMOM, TABATA 지원
-- **준비시간 기능**: 시작 전 10초 준비시간으로 첫 라운드 놓치지 않기
-- **시각적/청각적 알림**: 경고 색상 변화 및 비프음으로 시간 알림
-- **키보드 단축키**: 스페이스바(시작/일시정지), R키(리셋), 1-4키(모드 변경)
-- **모바일 최적화**: 가로 모드에서 전체 화면 타이머 경험
-- **배경 동기화**: 다른 앱 사용 중에도 정확한 시간 동기화
+### 📱 PWA (Progressive Web App)
+- 앱 설치 프롬프트 지원
+- Service Worker 기반 오프라인 캐싱
+- 오프라인/온라인 상태 감지 및 알림
+
+### 👥 방문자수 추적 시스템
+- 실시간 오늘 방문자수 및 총 방문자수 표시
+- 30분 세션 타임아웃으로 중복 방문 방지
+- Google Analytics 4 연동 상세 분석
+- LocalStorage 기반 클라이언트 사이드 추적
+
+### 🚫 404 페이지
+- CrossFit 테마 디자인으로 브랜드 일관성 유지
+- 메인 페이지 및 인기 페이지 바로가기 제공
 
 ## 기술 스택
 
 - HTML5
 - CSS3 (반응형 디자인)
 - JavaScript (ES6+)
-- jQuery 3.5.1
+- jQuery 3.7.1
 - Google Analytics 4
+- PWA (Service Worker)
 
 ## 설치 및 실행
 
@@ -76,10 +102,6 @@ git clone https://github.com/khjzzm/21159.git
 - 로컬 웹 서버를 사용하여 프로젝트 실행
 - 또는 `index.html` 파일을 브라우저에서 직접 열기
 
-3. Google Analytics 설정 (선택사항)
-- `ANALYTICS_SETUP.md` 파일의 가이드를 따라 Google Analytics 설정
-- `index.html`에서 `GA_MEASUREMENT_ID`를 실제 측정 ID로 교체
-
 ## 브라우저 지원
 
 - Chrome (최신 버전)
@@ -87,60 +109,63 @@ git clone https://github.com/khjzzm/21159.git
 - Safari (최신 버전)
 - Edge (최신 버전)
 
-## CrossFit 벤치마크 워크아웃 & Open
-
-이 계산기는 다음과 같은 CrossFit 벤치마크 워크아웃에 도움이 됩니다:
-
-- **Fran**: 21-15-9 스러스터 & 풀업
-- **Grace**: 30 클린 앤 저크 for time
-- **Isabel**: 30 스내치 for time
-- **Helen**: 3라운드 - 400m 런, 21 케틀벨 스윙, 12 풀업
-
-### CrossFit Open 아카이브
-
-**2011-2025년 완전 기록**을 제공하는 Open 워크아웃 섹션:
-- 모든 연도별 워크아웃 상세 정보
-- 정확한 남녀 중량 및 박스 높이
-- 시간 제한 및 워크아웃 타입 명시
-- 연도별 필터링으로 쉬운 탐색
-
-## 방문자수 추적 기능
-
-### 로컬 카운터
-- 실시간 오늘 방문자수 및 총 방문자수 표시
-- 브라우저 LocalStorage를 활용한 데이터 저장
-- 30분 세션 타임아웃으로 중복 방문 방지
-
-### 개발자 도구 명령어
-```javascript
-getVisitorStats()           // 현재 방문자 통계 조회
-resetVisitorCounters()      // 방문자 카운터 초기화 (관리자용)
-```
-
-### Google Analytics
-- 상세한 방문자 분석 및 행동 패턴 추적
-- 실시간 데이터 및 히스토리컬 리포트
-- 페이지별, 디바이스별, 지역별 통계
-- 404 에러 추적 및 분석
-
 ## 파일 구조
 
 ```
 21-15-9/
-├── index.html              # 메인 페이지
-├── 404.html                # 사용자 친화적 404 에러 페이지
-├── visitor-counter.js      # 방문자수 추적 시스템
-├── ANALYTICS_SETUP.md      # Google Analytics 설정 가이드
-├── common.css              # 공통 스타일
-├── index.css               # 메인 페이지 스타일
-├── script.js               # 메인 JavaScript
-├── pwa.js                  # PWA 기능
-├── weightlifting/          # 웨이트리프팅 계산기
-├── 1rm/                    # 1RM 계산기
-├── convert/                # lb↔kg 변환기
-├── plates/                 # 플레이트 계산기
-├── records/                # 역도 세계 기록 아카이브
-├── open/                   # 크로스핏 오픈 아카이브
+├── index.html              # 랜딩 페이지
+├── 404.html                # 404 에러 페이지
+├── sw.js                   # Service Worker (오프라인 캐싱)
+├── manifest.json           # PWA 매니페스트
+├── css/                    # 공통 스타일
+│   ├── common.css          # 변수, 리셋, 기본 요소
+│   ├── nav.css             # 네비게이션 및 사이드바
+│   └── index.css           # 랜딩 페이지
+├── js/                     # 공통 스크립트
+│   ├── script.js           # 단위 변환, 토스트, 사이드바
+│   ├── landing.js          # 랜딩 페이지 애니메이션
+│   ├── input-validation.js # 입력 필드 유효성 검사
+│   ├── pwa.js              # PWA 설치 프롬프트, 업데이트 알림
+│   └── visitor-counter.js  # 방문자수 추적
+├── assets/                 # 이미지 및 아이콘
+│   ├── favicon.svg         # 파비콘
+│   ├── icon-192.svg        # PWA 아이콘 192x192
+│   ├── icon-512.svg        # PWA 아이콘 512x512
+│   └── og-image.svg        # Open Graph 이미지
+├── weightlifting/          # 웨이트리프팅 동작 상관관계
+│   ├── index.html
+│   ├── weightlifting.js
+│   └── weightlifting.css
+├── nsca/                   # NSCA 기반 1RM 최대중량
+│   ├── index.html
+│   ├── 1rm.js
+│   └── 1rm.css
+├── convert/                # LB / KG Converter
+│   ├── index.html
+│   ├── convert.js
+│   └── convert.css
+├── plates/                 # Plate Calculator
+│   ├── index.html
+│   ├── plates.js
+│   └── plates.css
+├── crossfit-wod/           # CrossFit Open 워크아웃 아카이브
+│   ├── index.html
+│   ├── open.js
+│   └── open.css
+├── hero-wod/               # Hero & Tribute Workouts
+│   ├── index.html
+│   ├── hero-wod.js
+│   ├── hero-wod.css
+│   └── hero_data.js
+├── weightlifting-world-record/  # Weightlifting World Record
+│   ├── index.html
+│   ├── records.js
+│   └── records.css
 ├── timer/                  # 크로스핏 타이머
-└── [기타 에셋들]
+│   ├── index.html
+│   ├── timer.js
+│   └── timer.css
+└── random-wod/             # Random WOD (준비중)
+    ├── index.html
+    └── random-wod.css
 ```

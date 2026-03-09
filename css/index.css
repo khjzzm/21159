@@ -436,32 +436,112 @@
    푸터 섹션
 ========================= */
 .footer-section {
-    min-height: 40vh;
-    background: #191f28;
+    min-height: auto;
+    background: #121417;
+    padding: 0 24px 48px;
+    position: relative;
+}
+
+.footer-accent-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e0fd53, transparent);
+    margin-bottom: 64px;
 }
 
 .footer-inner {
+    max-width: 960px;
+    width: 100%;
+}
+
+.footer-brand {
     text-align: center;
-    max-width: 480px;
+    margin-bottom: 48px;
 }
 
 .footer-title {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 800;
     color: #f9fafb;
     margin-bottom: 8px;
+    letter-spacing: -1px;
 }
 
 .footer-desc {
     font-size: 15px;
+    color: #6b7684;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col-title {
+    font-size: 13px;
+    font-weight: 700;
     color: #8b95a1;
-    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.footer-col a {
+    font-size: 14px;
+    color: #6b7684;
+    text-decoration: none;
+    cursor: default;
+}
+
+.footer-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 32px;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
 }
 
 .footer-tip {
-    font-size: 13px;
-    color: #6b7684;
+    font-size: 12px;
+    color: #4e5968;
     line-height: 1.6;
+    flex: 1;
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.footer-social a {
+    color: #4e5968;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.footer-social a:hover {
+    color: #e0fd53;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: #4e5968;
+    flex-shrink: 0;
 }
 
 /* =========================
@@ -533,6 +613,20 @@
     .hl-card {
         border-radius: 12px;
     }
+
+    .footer-accent-line {
+        margin-bottom: 48px;
+    }
+
+    .footer-brand {
+        margin-bottom: 36px;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 24px;
+        margin-bottom: 36px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -570,5 +664,28 @@
 
     .footer-title {
         font-size: 24px;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 24px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-tip {
+        order: 1;
+    }
+
+    .footer-social {
+        order: 2;
+    }
+
+    .footer-copy {
+        order: 3;
     }
 }

@@ -1,0 +1,166 @@
+/* =========================
+   Hero WOD Page Styles
+========================= */
+
+/* Search Area */
+.search-area {
+    padding: 16px 0;
+    position: sticky;
+    top: 56px;
+    z-index: 10;
+    background: var(--bg-primary);
+}
+
+.search-count {
+    text-align: right;
+    padding: 8px 4px 0;
+}
+
+/* WOD Grid */
+.wod-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    padding: 8px 0 40px;
+}
+
+/* WOD Card */
+.wod-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: pointer;
+}
+
+.wod-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.wod-card-header {
+    padding: 20px 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wod-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent-primary);
+    letter-spacing: -0.3px;
+}
+
+.wod-date {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+}
+
+.wod-body {
+    padding: 12px 20px 16px;
+}
+
+.wod-workout {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    white-space: pre-line;
+    margin: 0;
+}
+
+.wod-rx {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+.wod-tribute-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-light);
+    font-size: 13px;
+    color: var(--text-tertiary);
+    transition: color 0.2s;
+}
+
+.wod-card:hover .wod-tribute-toggle {
+    color: var(--text-secondary);
+}
+
+.toggle-arrow {
+    transition: transform 0.2s;
+    font-size: 10px;
+}
+
+.wod-card.expanded .toggle-arrow {
+    transform: rotate(90deg);
+}
+
+.wod-tribute {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.wod-card.expanded .wod-tribute {
+    max-height: 500px;
+}
+
+.wod-tribute-inner {
+    padding: 0 20px 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Copy toast (page-specific override) */
+.toast-container {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+.toast {
+    background: var(--accent-primary);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wod-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+
+    .search-area {
+        top: 48px;
+    }
+
+    .wod-name {
+        font-size: 20px;
+    }
+}

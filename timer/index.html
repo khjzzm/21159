@@ -33,7 +33,7 @@
     <meta property="og:description" content="AMRAP, For Time, EMOM, Tabata 등 모든 크로스핏 워크아웃을 위한 전문 타이머">
     <meta property="og:url" content="https://21-15-9.com/timer">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://21-15-9.com/og-image.svg">
+    <meta property="og:image" content="https://21-15-9.com/assets/og-image.svg">
     <meta property="og:image:type" content="image/svg+xml">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -45,15 +45,15 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="크로스핏 타이머 | 21-15-9">
     <meta name="twitter:description" content="AMRAP, For Time, EMOM, Tabata 등 모든 크로스핏 워크아웃을 위한 전문 타이머">
-    <meta name="twitter:image" content="https://21-15-9.com/og-image.svg">
+    <meta name="twitter:image" content="https://21-15-9.com/assets/og-image.svg">
     <meta name="twitter:image:alt" content="21-15-9 크로스핏 타이머">
     
     <title>크로스핏 타이머 | 21-15-9</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/favicon.svg">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -63,7 +63,8 @@
     <meta name="apple-mobile-web-app-title" content="21-15-9">
     
     <link rel="canonical" href="https://21-15-9.com/timer">
-    <link rel="stylesheet" href="/common.css?v=1773019964">
+    <link rel="stylesheet" href="/css/common.css?v=1773019964">
+    <link rel="stylesheet" href="/css/nav.css?v=1773019964">
     <link rel="stylesheet" href="timer.css?v=1773019964">
 </head>
 <body>
@@ -75,13 +76,13 @@
                     <div class="nav-mega-wrapper">
                         <a href="/weightlifting/" class="nav-item nav-trigger">Strength</a>
                         <a href="/convert/" class="nav-item nav-trigger">Convert</a>
-                        <a href="/records/" class="nav-item nav-trigger">Archive</a>
+                        <a href="/weightlifting-world-record/" class="nav-item nav-trigger">Archive</a>
                         <a href="/timer/" class="nav-item nav-trigger active">Tools</a>
                         <div class="mega-menu">
                             <div class="mega-col">
                                 <div class="mega-col-title">Strength</div>
                                 <a href="/weightlifting/" class="mega-item">웨이트리프팅 동작 상관관계</a>
-                                <a href="/1rm/" class="mega-item">NSCA 기반 1RM 최대중량</a>
+                                <a href="/nsca/" class="mega-item">NSCA 기반 1RM 최대중량</a>
                             </div>
                             <div class="mega-col">
                                 <div class="mega-col-title">Convert</div>
@@ -90,8 +91,8 @@
                             </div>
                             <div class="mega-col">
                                 <div class="mega-col-title">Archive</div>
-                                <a href="/records/" class="mega-item">Weightlifting World Record</a>
-                                <a href="/open/" class="mega-item">CrossFit Open</a>
+                                <a href="/weightlifting-world-record/" class="mega-item">Weightlifting World Record</a>
+                                <a href="/crossfit-wod/" class="mega-item">CrossFit Open</a>
                                 <a href="/hero-wod/" class="mega-item">Hero & Tribute Workouts</a>
                             </div>
                             <div class="mega-col">
@@ -110,7 +111,10 @@
         <!-- 모바일용 헤더 아래 배너 제거 -->
         
         <div class="container">
-            <h1>크로스핏 타이머</h1>
+            <div class="page-header">
+                <h1>Timer</h1>
+                <p>CrossFit Workout Timer</p>
+            </div>
             
             <!-- 타이머 모드 선택 -->
             <div class="timer-mode-selector">
@@ -234,9 +238,9 @@
     
     <div id="toast" class="toast-message"></div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/script.js?v=1773019964"></script>
-    <script src="/pwa.js?v=1773019964"></script>
-    <script src="/visitor-counter.js?v=1773019964"></script>
+    <script src="/js/script.js?v=1773019964"></script>
+    <script src="/js/pwa.js?v=1773019964"></script>
+    <script src="/js/visitor-counter.js?v=1773019964"></script>
     <script src="timer.js?v=1773019964"></script>
 </body>
 </html> 

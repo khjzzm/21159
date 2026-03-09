@@ -1,8 +1,124 @@
 /* =========================
-   Weightlifting Calculator Specific Styles
+   Calculator Controls
 ========================= */
 
-/* Section Header Styles */
+/* Buttons */
+.save-btn,
+.load-btn,
+.share-btn {
+    color: #1a1a1a;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+.save-btn,
+.load-btn {
+    background: var(--btn-primary);
+}
+
+.save-btn:hover,
+.load-btn:hover {
+    background: var(--btn-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(224, 253, 83, 0.3);
+}
+
+.share-btn {
+    background: var(--btn-secondary);
+    color: white;
+}
+
+.share-btn:hover {
+    background: var(--btn-secondary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(26, 26, 26, 0.3);
+}
+
+.unit-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.unit-btn.active {
+    background: var(--accent-primary);
+    color: #1a1a1a;
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 4px rgba(224, 253, 83, 0.3);
+}
+
+.unit-btn:hover:not(.active) {
+    background: var(--nav-hover);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Button Groups */
+.unit-selector {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.storage-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.storage-buttons button {
+    min-width: 80px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.unit-buttons {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.unit-buttons button {
+    min-width: 48px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.unit-buttons button.active {
+    background: var(--bg-primary);
+    color: var(--accent-primary);
+    box-shadow: var(--shadow-light);
+}
+
+/* Section Header */
 .section-header {
     margin: 0;
     padding: 0 var(--content-padding, 20px);
@@ -20,6 +136,10 @@
     font-weight: 600;
     color: var(--text-primary);
 }
+
+/* =========================
+   Weightlifting Calculator Specific Styles
+========================= */
 
 /* Calculator Grid Layout */
 .calculator-grid--movement {
@@ -309,18 +429,6 @@
         margin-top: 2px;
     }
 
-    .section-header {
-        height: var(--header-height, 44px);
-    }
-    
-    .section-header h2 {
-        font-size: 0.9rem;
-    }
-
-    .section-header h2::before {
-        height: 14px;
-    }
-
     .correlation-grid,
     .coefficient-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -399,18 +507,6 @@
         margin-top: 2px;
     }
 
-    .section-header {
-        height: var(--header-height, 40px);
-    }
-    
-    .section-header h2 {
-        font-size: 0.85rem;
-    }
-
-    .section-header h2::before {
-        height: 12px;
-    }
-
     .correlation-grid,
     .coefficient-grid {
         grid-template-columns: 1fr;
@@ -469,5 +565,131 @@
     .calculator-card--movement .calculator-input .unit-display {
         right: 8px;
         font-size: 12px;
+    }
+}
+
+/* =========================
+   Calculator Controls Responsive
+========================= */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .unit-selector {
+        padding: 0 16px;
+    }
+
+    .control-buttons {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .storage-buttons {
+        gap: 6px;
+    }
+
+    .storage-buttons button {
+        min-width: 72px;
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+
+    .unit-buttons {
+        gap: 3px;
+    }
+
+    .unit-buttons button {
+        min-width: 44px;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .unit-selector {
+        padding: 0 12px;
+    }
+
+    .control-buttons {
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .storage-buttons {
+        gap: 6px;
+    }
+
+    .storage-buttons button {
+        min-width: 64px;
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+
+    .unit-buttons {
+        gap: 4px;
+        padding: 2px;
+    }
+
+    .unit-buttons button {
+        min-width: 44px;
+        padding: 8px 10px;
+        font-size: 13px;
+        border-radius: 5px;
+    }
+
+    .section-header {
+        height: var(--header-height, 44px);
+    }
+
+    .section-header h2 {
+        font-size: 0.9rem;
+    }
+
+    .section-header h2::before {
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .unit-selector {
+        padding: 0 8px;
+    }
+
+    .control-buttons {
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+
+    .storage-buttons {
+        gap: 3px;
+    }
+
+    .storage-buttons button {
+        min-width: 56px;
+        padding: 6px 8px;
+        font-size: 11px;
+        border-radius: 4px;
+    }
+
+    .unit-buttons {
+        gap: 2px;
+        padding: 1px;
+    }
+
+    .unit-buttons button {
+        min-width: 36px;
+        padding: 5px 6px;
+        font-size: 11px;
+        border-radius: 3px;
+    }
+
+    .section-header {
+        height: var(--header-height, 40px);
+    }
+
+    .section-header h2 {
+        font-size: 0.85rem;
+    }
+
+    .section-header h2::before {
+        height: 12px;
     }
 } 

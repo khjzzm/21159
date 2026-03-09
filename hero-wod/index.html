@@ -32,16 +32,16 @@
     <meta property="og:description" content="CrossFit Hero & Tribute Workouts 243개 전체 아카이브">
     <meta property="og:url" content="https://21-15-9.com/hero-wod">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://21-15-9.com/og-image.svg">
+    <meta property="og:image" content="https://21-15-9.com/assets/og-image.svg">
     <meta property="og:site_name" content="21-15-9">
     <meta property="og:locale" content="ko_KR">
 
     <title>Hero & Tribute Workouts | 21-15-9</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/favicon.svg">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -51,267 +51,9 @@
     <meta name="apple-mobile-web-app-title" content="21-15-9">
 
     <link rel="canonical" href="https://21-15-9.com/hero-wod">
-    <link rel="stylesheet" href="/common.css?v=1773019964">
-    <style>
-        .hero-wod-header {
-            text-align: center;
-            padding: 32px 0 8px;
-        }
-
-        .hero-wod-header h1 {
-            font-size: 28px;
-            font-weight: 800;
-            color: #e0fd53;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 0 8px;
-        }
-
-        .hero-wod-header p {
-            font-size: 14px;
-            color: var(--text-tertiary);
-            margin: 0;
-        }
-
-        /* Search */
-        .search-area {
-            padding: 16px 0;
-            position: sticky;
-            top: 56px;
-            z-index: 10;
-            background: var(--bg-primary);
-        }
-
-        .search-box {
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 14px 16px 14px 44px;
-            border: 1px solid var(--border-medium);
-            border-radius: 12px;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            font-size: 15px;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .search-box input:focus {
-            border-color: var(--accent-primary);
-        }
-
-        .search-box input::placeholder {
-            color: var(--text-tertiary);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 43%;
-            transform: translateY(-50%);
-            color: var(--text-tertiary);
-            pointer-events: none;
-        }
-
-        .search-count {
-            text-align: right;
-            font-size: 13px;
-            color: var(--text-tertiary);
-            padding: 8px 4px 0;
-        }
-
-        /* WOD Grid */
-        .wod-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 16px;
-            padding: 8px 0 40px;
-        }
-
-        /* WOD Card */
-        .wod-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: 14px;
-            overflow: hidden;
-            transition: border-color 0.2s, transform 0.15s;
-            cursor: pointer;
-        }
-
-        .wod-card:hover {
-            border-color: var(--accent-primary);
-            transform: translateY(-2px);
-        }
-
-        .wod-card-header {
-            padding: 20px 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .wod-name {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--accent-primary);
-            letter-spacing: -0.3px;
-        }
-
-        .wod-date {
-            font-size: 12px;
-            color: var(--text-tertiary);
-            white-space: nowrap;
-        }
-
-        .wod-body {
-            padding: 12px 20px 16px;
-        }
-
-        .wod-workout {
-            font-size: 14px;
-            color: var(--text-primary);
-            line-height: 1.6;
-            white-space: pre-line;
-            margin: 0;
-        }
-
-        .wod-rx {
-            margin-top: 10px;
-            padding: 8px 12px;
-            background: var(--bg-tertiary);
-            border-radius: 8px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            white-space: pre-line;
-            line-height: 1.5;
-        }
-
-        .wod-tribute-toggle {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 12px 20px;
-            border-top: 1px solid var(--border-light);
-            font-size: 13px;
-            color: var(--text-tertiary);
-            transition: color 0.2s;
-        }
-
-        .wod-card:hover .wod-tribute-toggle {
-            color: var(--text-secondary);
-        }
-
-        .toggle-arrow {
-            transition: transform 0.2s;
-            font-size: 10px;
-        }
-
-        .wod-card.expanded .toggle-arrow {
-            transform: rotate(90deg);
-        }
-
-        .wod-tribute {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .wod-card.expanded .wod-tribute {
-            max-height: 500px;
-        }
-
-        .wod-tribute-inner {
-            padding: 0 20px 16px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Copy toast */
-        .toast-container {
-            position: fixed;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-        }
-
-        .toast {
-            background: var(--accent-primary);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.3s;
-            white-space: nowrap;
-        }
-
-        .toast.show {
-            opacity: 1;
-        }
-
-        /* No results */
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-tertiary);
-            font-size: 16px;
-            grid-column: 1 / -1;
-        }
-
-        /* Scroll to top */
-        .scroll-top-btn {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--accent-primary);
-            color: #000;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            z-index: 100;
-            transition: transform 0.2s;
-        }
-
-        .scroll-top-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .scroll-top-btn.visible {
-            display: flex;
-        }
-
-        @media (max-width: 768px) {
-            .wod-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .hero-wod-header h1 {
-                font-size: 22px;
-            }
-
-            .search-area {
-                top: 48px;
-            }
-
-            .wod-name {
-                font-size: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/css/common.css?v=1773019964">
+    <link rel="stylesheet" href="/css/nav.css?v=1773019964">
+    <link rel="stylesheet" href="hero-wod.css?v=1773019964">
 </head>
 <body>
     <div class="wrapper">
@@ -322,13 +64,13 @@
                     <div class="nav-mega-wrapper">
                         <a href="/weightlifting/" class="nav-item nav-trigger">Strength</a>
                         <a href="/convert/" class="nav-item nav-trigger">Convert</a>
-                        <a href="/records/" class="nav-item nav-trigger active">Archive</a>
+                        <a href="/weightlifting-world-record/" class="nav-item nav-trigger active">Archive</a>
                         <a href="/timer/" class="nav-item nav-trigger">Tools</a>
                         <div class="mega-menu">
                             <div class="mega-col">
                                 <div class="mega-col-title">Strength</div>
                                 <a href="/weightlifting/" class="mega-item">웨이트리프팅 동작 상관관계</a>
-                                <a href="/1rm/" class="mega-item">NSCA 기반 1RM 최대중량</a>
+                                <a href="/nsca/" class="mega-item">NSCA 기반 1RM 최대중량</a>
                             </div>
                             <div class="mega-col">
                                 <div class="mega-col-title">Convert</div>
@@ -337,8 +79,8 @@
                             </div>
                             <div class="mega-col">
                                 <div class="mega-col-title">Archive</div>
-                                <a href="/records/" class="mega-item">Weightlifting World Record</a>
-                                <a href="/open/" class="mega-item">CrossFit Open</a>
+                                <a href="/weightlifting-world-record/" class="mega-item">Weightlifting World Record</a>
+                                <a href="/crossfit-wod/" class="mega-item">CrossFit Open</a>
                                 <a href="/hero-wod/" class="mega-item active">Hero & Tribute Workouts</a>
                             </div>
                             <div class="mega-col">
@@ -353,7 +95,7 @@
         </div>
 
         <div class="container">
-            <div class="hero-wod-header">
+            <div class="page-header">
                 <h1>Hero & Tribute WODs</h1>
                 <p>CrossFit Hero & Tribute Workouts Archive</p>
             </div>
@@ -375,132 +117,9 @@
 
     <script src="hero_data.js?v=1773019964"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/script.js?v=1773019964"></script>
-    <script src="/pwa.js?v=1773019964"></script>
-    <script src="/visitor-counter.js?v=1773019964"></script>
-    <script>
-    (function() {
-        const grid = document.getElementById('wod-grid');
-        const searchInput = document.getElementById('search-input');
-        const searchCount = document.getElementById('search-count');
-        const scrollTopBtn = document.getElementById('scroll-top');
-
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
-
-        function createCard(wod) {
-            const card = document.createElement('div');
-            card.className = 'wod-card';
-            card.setAttribute('data-name', wod.n.toLowerCase());
-            card.setAttribute('data-workout', wod.w.toLowerCase());
-
-            let rxHtml = '';
-            if (wod.rx) {
-                rxHtml = '<div class="wod-rx">' + escapeHtml(wod.rx) + '</div>';
-            }
-
-            let dateHtml = '';
-            if (wod.d) {
-                dateHtml = '<span class="wod-date">' + escapeHtml(wod.d) + '</span>';
-            }
-
-            card.innerHTML =
-                '<div class="wod-card-header">' +
-                    '<span class="wod-name">' + escapeHtml(wod.n) + '</span>' +
-                    dateHtml +
-                '</div>' +
-                '<div class="wod-body">' +
-                    '<p class="wod-workout">' + escapeHtml(wod.w) + '</p>' +
-                    rxHtml +
-                '</div>' +
-                '<div class="wod-tribute-toggle">' +
-                    '<span class="toggle-arrow">&#9654;</span>' +
-                    '<span>Tribute</span>' +
-                '</div>' +
-                '<div class="wod-tribute">' +
-                    '<div class="wod-tribute-inner">' + escapeHtml(wod.t) + '</div>' +
-                '</div>';
-
-            card.addEventListener('click', function(e) {
-                card.classList.toggle('expanded');
-            });
-
-            // Long press or double-click to copy workout
-            card.addEventListener('dblclick', function(e) {
-                e.preventDefault();
-                let text = wod.n + '\n' + wod.w;
-                if (wod.rx) text += '\n' + wod.rx;
-                navigator.clipboard.writeText(text).then(function() {
-                    showCopyToast('복사됨!');
-                });
-            });
-
-            return card;
-        }
-
-        function showCopyToast(msg) {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.textContent = msg;
-            container.appendChild(toast);
-            setTimeout(function() {
-                toast.classList.add('show');
-                setTimeout(function() {
-                    toast.classList.remove('show');
-                    setTimeout(function() { toast.remove(); }, 300);
-                }, 1500);
-            }, 50);
-        }
-
-        function renderWods(filter) {
-            grid.innerHTML = '';
-            const q = (filter || '').toLowerCase().trim();
-            let count = 0;
-
-            HERO_WODS.forEach(function(wod) {
-                if (q && wod.n.toLowerCase().indexOf(q) === -1 && wod.w.toLowerCase().indexOf(q) === -1) {
-                    return;
-                }
-                grid.appendChild(createCard(wod));
-                count++;
-            });
-
-            if (count === 0) {
-                grid.innerHTML = '<div class="no-results">검색 결과가 없습니다.</div>';
-            }
-
-            searchCount.textContent = count + ' / ' + HERO_WODS.length + ' WODs';
-        }
-
-        // Initial render
-        renderWods('');
-
-        // Search
-        let debounceTimer;
-        searchInput.addEventListener('input', function() {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(function() {
-                renderWods(searchInput.value);
-            }, 200);
-        });
-
-        // Scroll to top button
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 600) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    })();
-    </script>
+    <script src="/js/script.js?v=1773019964"></script>
+    <script src="/js/pwa.js?v=1773019964"></script>
+    <script src="/js/visitor-counter.js?v=1773019964"></script>
+    <script src="hero-wod.js?v=1773019964"></script>
 </body>
 </html>

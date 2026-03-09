@@ -275,68 +275,6 @@ $(document).ready(function() {
     }
 
     // 입력 필드 이벤트 핸들러
-    setupInputValidation();
+    setupInputValidation('.weight-input');
 });
-
-/**
- * 입력 필드 이벤트 핸들러
- */
-function setupInputValidation() {
-    $('input[type="number"]').on('input', function() {
-        let value = $(this).val();
-        
-        // 숫자와 소수점만 허용
-        value = value.replace(/[^0-9.]/g, '');
-        
-        // 소수점이 여러 개인 경우 첫 번째만 유지
-        const decimalCount = (value.match(/\./g) || []).length;
-        if (decimalCount > 1) {
-            value = value.replace(/\./g, function(match, index, original) {
-                return index === original.indexOf('.') ? match : '';
-            });
-        }
-
-        $(this).val(value);
-
-        const numValue = parseFloat(value);
-        const max = currentUnit === 'kg' ? 1000 : 2200;
-
-        if (numValue < 0) {
-            $(this).val(0);
-        } else if (numValue > max) {
-            $(this).val(max);
-            showToast(`최대 ${max}${currentUnit} 까지 입력 가능합니다.`);
-        }
-
-        // 실시간으로 소수점 자릿수 제한
-        if (value.includes('.') && value.split('.')[1].length > 2) {
-            $(this).val(parseFloat(value).toFixed(2));
-        }
-    });
-
-    // 포커스 아웃 시 추가 검증
-    $('input[type="number"]').on('blur', function() {
-        const value = $(this).val();
-        
-        if (value === '') return;
-        
-        // 숫자가 아닌 경우
-        if (isNaN(value)) {
-            $(this).val('');
-            showToast("올바른 숫자를 입력해주세요.");
-            return;
-        }
-
-        // 소수점으로 끝나는 경우 처리
-        if (value.endsWith('.')) {
-            $(this).val(value.slice(0, -1));
-        }
-
-        // 불필요한 0 제거 및 소수점 자릿수 정리
-        const numValue = parseFloat(value);
-        if (!isNaN(numValue)) {
-            $(this).val(numValue.toFixed(numValue % 1 === 0 ? 0 : 2));
-        }
-    });
-}
 

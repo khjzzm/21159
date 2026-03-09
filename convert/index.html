@@ -33,7 +33,7 @@
     <meta property="og:description" content="정확한 킬로그램과 파운드 변환 도구. CrossFit과 웨이트리프팅을 위한 무게 단위 변환표와 빠른 계산기">
     <meta property="og:url" content="https://21-15-9.com/convert">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://21-15-9.com/og-image.svg">
+    <meta property="og:image" content="https://21-15-9.com/assets/og-image.svg">
     <meta property="og:image:type" content="image/svg+xml">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -43,22 +43,22 @@
     <meta property="og:updated_time" content="2024-05-29T00:00:00+09:00">
     
     <!-- 카카오톡 최적화 -->
-    <meta property="og:image:secure_url" content="https://21-15-9.com/og-image.svg">
-    <meta name="thumbnail" content="https://21-15-9.com/og-image.svg">
+    <meta property="og:image:secure_url" content="https://21-15-9.com/assets/og-image.svg">
+    <meta name="thumbnail" content="https://21-15-9.com/assets/og-image.svg">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="lb ↔ kg 변환기 | 21-15-9">
     <meta name="twitter:description" content="정확한 킬로그램과 파운드 변환 도구. CrossFit과 웨이트리프팅을 위한 무게 단위 변환표">
-    <meta name="twitter:image" content="https://21-15-9.com/og-image.svg">
+    <meta name="twitter:image" content="https://21-15-9.com/assets/og-image.svg">
     <meta name="twitter:image:alt" content="21-15-9 kg lb 변환기">
     
     <title>lb ↔ kg 변환 | 21-15-9</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/favicon.svg">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -68,7 +68,8 @@
     <meta name="apple-mobile-web-app-title" content="21-15-9">
     
     <link rel="canonical" href="https://21-15-9.com/convert">
-    <link rel="stylesheet" href="/common.css?v=1773019964">
+    <link rel="stylesheet" href="/css/common.css?v=1773019964">
+    <link rel="stylesheet" href="/css/nav.css?v=1773019964">
     <link rel="stylesheet" href="convert.css?v=1773019964">
 </head>
 <body>
@@ -80,13 +81,13 @@
                     <div class="nav-mega-wrapper">
                         <a href="/weightlifting/" class="nav-item nav-trigger">Strength</a>
                         <a href="/convert/" class="nav-item nav-trigger active">Convert</a>
-                        <a href="/records/" class="nav-item nav-trigger">Archive</a>
+                        <a href="/weightlifting-world-record/" class="nav-item nav-trigger">Archive</a>
                         <a href="/timer/" class="nav-item nav-trigger">Tools</a>
                         <div class="mega-menu">
                             <div class="mega-col">
                                 <div class="mega-col-title">Strength</div>
                                 <a href="/weightlifting/" class="mega-item">웨이트리프팅 동작 상관관계</a>
-                                <a href="/1rm/" class="mega-item">NSCA 기반 1RM 최대중량</a>
+                                <a href="/nsca/" class="mega-item">NSCA 기반 1RM 최대중량</a>
                             </div>
                             <div class="mega-col">
                                 <div class="mega-col-title">Convert</div>
@@ -95,8 +96,8 @@
                             </div>
                             <div class="mega-col">
                                 <div class="mega-col-title">Archive</div>
-                                <a href="/records/" class="mega-item">Weightlifting World Record</a>
-                                <a href="/open/" class="mega-item">CrossFit Open</a>
+                                <a href="/weightlifting-world-record/" class="mega-item">Weightlifting World Record</a>
+                                <a href="/crossfit-wod/" class="mega-item">CrossFit Open</a>
                                 <a href="/hero-wod/" class="mega-item">Hero & Tribute Workouts</a>
                             </div>
                             <div class="mega-col">
@@ -115,7 +116,10 @@
         <!-- 모바일용 헤더 아래 배너 제거 -->
         
         <div class="container">
-            <h1>lb ↔ kg 무게 변환</h1>
+            <div class="page-header">
+                <h1>LB / KG Converter</h1>
+                <p>파운드와 킬로그램 무게 단위 변환기</p>
+            </div>
             
             <div class="converter-section">
                 <h2>🔄 실시간 변환</h2>
@@ -249,9 +253,9 @@
     </div>
     <div id="toast" class="toast-message"></div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/script.js?v=1773019964"></script>
-    <script src="/pwa.js?v=1773019964"></script>
-    <script src="/visitor-counter.js?v=1773019964"></script>
+    <script src="/js/script.js?v=1773019964"></script>
+    <script src="/js/pwa.js?v=1773019964"></script>
+    <script src="/js/visitor-counter.js?v=1773019964"></script>
     <script src="convert.js?v=1773019964"></script>
 </body>
 </html> 
