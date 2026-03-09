@@ -198,22 +198,22 @@ function initSidebarNavigation() {
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">PR</div>
-                    <a href="/weightlifting" class="sidebar-nav-item">보조운동·역도 상관관계</a>
-                    <a href="/1rm" class="sidebar-nav-item">1RM</a>
+                    <a href="/weightlifting/" class="sidebar-nav-item">보조운동·역도 상관관계</a>
+                    <a href="/1rm/" class="sidebar-nav-item">1RM</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">1lb = 0.453592kg</div>
-                    <a href="/convert" class="sidebar-nav-item">파운드 킬로 변환기</a>
-                    <a href="/plates" class="sidebar-nav-item">바벨 플레이트 계산기</a>
+                    <a href="/convert/" class="sidebar-nav-item">파운드 킬로 변환기</a>
+                    <a href="/plates/" class="sidebar-nav-item">바벨 플레이트 계산기</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">아카이브</div>
-                    <a href="/open" class="sidebar-nav-item">CrossFit Open</a>
-                    <a href="/records" class="sidebar-nav-item">역도 세계 기록</a>
+                    <a href="/open/" class="sidebar-nav-item">CrossFit Open</a>
+                    <a href="/records/" class="sidebar-nav-item">역도 세계 기록</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">도구</div>
-                    <a href="/timer" class="sidebar-nav-item">크로스핏 타이머</a>
+                    <a href="/timer/" class="sidebar-nav-item">크로스핏 타이머</a>
                 </div>
             </div>
         </nav>

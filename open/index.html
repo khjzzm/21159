@@ -35,13 +35,13 @@
             <div class="header-content">
                 <nav class="nav-tabs">
                     <a href="/" class="nav-item">21-15-9</a>
-                    <a href="/weightlifting" class="nav-item">역도</a>
-                    <a href="/records" class="nav-item">기록</a>
-                    <a href="/1rm" class="nav-item">원알엠</a>
-                    <a href="/convert" class="nav-item">파운드</a>
-                    <a href="/plates" class="nav-item">플레이트</a>
-                    <a href="/open" class="nav-item active">오픈</a>
-                    <a href="/timer" class="nav-item">타이머</a>
+                    <a href="/weightlifting/" class="nav-item">역도</a>
+                    <a href="/records/" class="nav-item">기록</a>
+                    <a href="/1rm/" class="nav-item">원알엠</a>
+                    <a href="/convert/" class="nav-item">파운드</a>
+                    <a href="/plates/" class="nav-item">플레이트</a>
+                    <a href="/open/" class="nav-item active">오픈</a>
+                    <a href="/timer/" class="nav-item">타이머</a>
                 </nav>
                 <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
                     <span class="theme-icon">🌙</span>
@@ -56,13 +56,14 @@
         <div class="container">
             <h1>크로스핏 오픈 워크아웃</h1>
             <div class="description">
-                <p>2011년부터 2025년까지의 크로스핏 오픈 워크아웃들을 연도별로 확인하세요.</p>
+                <p>2011년부터 2026년까지의 크로스핏 오픈 워크아웃들을 연도별로 확인하세요.</p>
             </div>
 
             <!-- 연도 필터 -->
             <div class="year-filter">
                 <select id="year-select" class="year-select">
-                    <option value="all">전체 보기 (2011-2025)</option>
+                    <option value="all">전체 보기 (2011-2026)</option>
+                    <option value="2026">2026년</option>
                     <option value="2025">2025년</option>
                     <option value="2024">2024년</option>
                     <option value="2023">2023년</option>
@@ -83,6 +84,62 @@
 
             <!-- 워크아웃 목록 -->
             <div class="workouts-container">
+                <!-- 2026년 워크아웃 -->
+                <div class="workout-year" data-year="2026">
+                    <h2 class="year-title">2026년</h2>
+                    <div class="workout-grid">
+                        <div class="workout-card">
+                            <div class="workout-header">
+                                <span class="workout-number">26.1</span>
+                                <span class="workout-type">For Time</span>
+                            </div>
+                            <div class="workout-content">
+                                <p><strong>For Time:</strong></p>
+                                <p>20 wall-ball shots<br>
+                                18 box step-overs<br>
+                                30 wall-ball shots<br>
+                                18 box step-overs<br>
+                                40 wall-ball shots<br>
+                                18 medicine-ball box step-overs<br>
+                                66 wall-ball shots<br>
+                                18 medicine-ball box step-overs<br>
+                                40 wall-ball shots<br>
+                                18 box step-overs<br>
+                                30 wall-ball shots<br>
+                                18 box step-overs<br>
+                                20 wall-ball shots</p>
+                                <p><strong>Time cap:</strong> 12 minutes</p>
+                                <p><strong>♀</strong> 10-lb (4-kg) medicine ball to a 9-foot target, 20-inch box<br>
+                                <strong>♂</strong> 14-lb (6-kg) medicine ball to a 10-foot target, 20-inch box</p>
+                                <p><strong>*The load, box height, and target height are suggested starting points. If you are completing all the workouts in the Foundations division, you are free to decrease or increase the loads and/or heights as your skill level allows.</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="workout-card">
+                            <div class="workout-header">
+                                <span class="workout-number">26.2</span>
+                                <span class="workout-type">For Time</span>
+                            </div>
+                            <div class="workout-content">
+                                <p><strong>For Time:</strong></p>
+                                <p>80-foot walking lunge<br>
+                                20 alternating dumbbell snatches<br>
+                                20 bent-over rows<br>
+                                80-foot walking lunge<br>
+                                20 alternating dumbbell snatches<br>
+                                20 ring rows<br>
+                                80-foot walking lunge<br>
+                                20 alternating dumbbell snatches<br>
+                                20 jumping pull-ups</p>
+                                <p><strong>Time cap:</strong> 15 minutes</p>
+                                <p><strong>♀</strong> 20-lb (10-kg) dumbbell<br>
+                                <strong>♂</strong> 35-lb (15-kg) dumbbell</p>
+                                <p><strong>*The loads are a suggested starting point. If you are completing all the workouts in the Foundations division, you are free to decrease or increase the load as your skill level allows.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 2025년 워크아웃 -->
                 <div class="workout-year" data-year="2025">
                     <h2 class="year-title">2025년</h2>
@@ -1210,6 +1267,7 @@
                     </div>
                 </div>
             </div>
+            <div id="toast-container"></div>
         </div>
     </div>
 

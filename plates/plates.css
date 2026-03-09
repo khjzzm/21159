@@ -1,3 +1,8 @@
+/* 하단 고정 버튼에 가려지지 않도록 여백 확보 */
+.container {
+    padding-bottom: 64px;
+}
+
 /* 바벨 선택 영역 */
 .barbell-selector {
     display: flex;

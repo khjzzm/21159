@@ -32,9 +32,37 @@ $(document).ready(function() {
         }
     );
     
-    // 워크아웃 카드 클릭 시 확장/축소 기능 (선택사항)
+    // 워크아웃 카드 클릭 시 클립보드 복사
     $('.workout-card').click(function() {
-        $(this).toggleClass('expanded');
+        const $card = $(this);
+        const lines = [$card.find('.workout-number').text()];
+        $card.find('.workout-content p').each(function() {
+            const lineText = $(this).html()
+                .replace(/<br\s*\/?>/gi, '\n')
+                .replace(/<strong>/gi, '')
+                .replace(/<\/strong>/gi, '')
+                .replace(/&amp;/g, '&')
+                .replace(/<[^>]+>/g, '')
+                .trim();
+            if (lineText) lines.push(lineText);
+        });
+        const copyText = lines.join('\n');
+
+        try {
+            const textarea = document.createElement('textarea');
+            textarea.value = copyText;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('복사됨!');
+        } catch(e) {
+            navigator.clipboard.writeText(copyText).then(function() {
+                showToast('복사됨!');
+            });
+        }
     });
     
     // 검색 기능 (향후 추가 가능)
