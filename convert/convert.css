@@ -4,16 +4,10 @@
 
 /* 변환기 섹션 */
 .converter-section {
-    background: #ffffff;
+    background: var(--bg-primary);
     padding: 20px;
     margin-bottom: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: border-color 0.2s ease;
-}
-
-[data-theme="dark"] .converter-section {
-    background: var(--bg-primary);
-    border-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-light);
 }
 
 .converter-grid {
@@ -50,16 +44,10 @@
 
 /* 변환표 섹션 */
 .conversion-table-section {
-    background: #ffffff;
+    background: var(--bg-primary);
     padding: 20px;
     margin-bottom: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: border-color 0.2s ease;
-}
-
-[data-theme="dark"] .conversion-table-section {
-    background: var(--bg-primary);
-    border-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-light);
 }
 
 .table-controls {
@@ -71,8 +59,8 @@
 
 .table-toggle {
     background: var(--bg-tertiary);
-    color: var(--text-color);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -81,22 +69,14 @@
     white-space: nowrap;
 }
 
-[data-theme="dark"] .table-toggle {
-    border-color: rgba(255, 255, 255, 0.08);
-}
-
 .table-toggle:hover {
-    border-color: rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .table-toggle:hover {
     border-color: rgba(255, 255, 255, 0.15);
 }
 
 .table-toggle.active {
     background: var(--accent-primary);
     border-color: var(--accent-primary);
-    color: white;
+    color: #1a1a1a;
 }
 
 .conversion-table-wrapper {
@@ -111,75 +91,48 @@
 }
 
 .conversion-table th {
-    background: rgba(0, 0, 0, 0.02);
-    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
     padding: 10px 8px;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     font-weight: 600;
-}
-
-[data-theme="dark"] .conversion-table th {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .conversion-table td {
     padding: 8px;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: background-color 0.2s ease;
 }
 
-[data-theme="dark"] .conversion-table td {
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
 .kg-cell {
-    background: rgba(49, 130, 246, 0.04);
+    background: rgba(224, 253, 83, 0.1);
     font-weight: 500;
 }
 
-[data-theme="dark"] .kg-cell {
-    background: rgba(49, 130, 246, 0.1);
-}
-
 .lb-cell {
-    background: rgba(26, 26, 26, 0.04);
-}
-
-[data-theme="dark"] .lb-cell {
     background: rgba(255, 255, 255, 0.02);
 }
 
 /* 변환표 hover 효과 */
 .conversion-table tr:hover td {
-    background-color: rgba(0, 0, 0, 0.02);
-}
-
-[data-theme="dark"] .conversion-table tr:hover td {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-[data-theme="dark"] .conversion-table tr:hover .kg-cell {
-    background: rgba(49, 130, 246, 0.15);
+.conversion-table tr:hover .kg-cell {
+    background: rgba(224, 253, 83, 0.15);
 }
 
-[data-theme="dark"] .conversion-table tr:hover .lb-cell {
+.conversion-table tr:hover .lb-cell {
     background: rgba(255, 255, 255, 0.05);
 }
 
 /* 공통 변환값 */
 .common-weights {
-    background: #ffffff;
-    padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: border-color 0.2s ease;
-}
-
-[data-theme="dark"] .common-weights {
     background: var(--bg-primary);
-    border-color: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border: 1px solid var(--border-light);
 }
 
 .common-grid {
@@ -195,12 +148,6 @@
     border: 1px solid var(--border-light);
     padding: 12px;
     text-align: center;
-}
-
-/* 다크모드 대응 */
-[data-theme="dark"] .common-item {
-    background: var(--bg-primary);
-    border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* 내부 텍스트 스타일 */
@@ -236,14 +183,6 @@
     background: var(--bg-primary);
     border: 1px solid var(--border-light);
     margin-bottom: 16px;
-    transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .converter-section,
-[data-theme="dark"] .conversion-table-section,
-[data-theme="dark"] .common-weights {
-    background: var(--bg-primary);
-    border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Responsive Styles */

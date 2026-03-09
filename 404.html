@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- 캐시 방지 메타 태그 -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7V24WCSR0"></script>
     <script>
@@ -18,14 +18,14 @@
 
       gtag('config', 'G-M7V24WCSR0');
     </script>
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4264698057039767" crossorigin="anonymous"></script>
-    
+
     <!-- Basic SEO Meta Tags -->
     <meta name="description" content="페이지를 찾을 수 없습니다 - 21-15-9 CrossFit & 웨이트리프팅 계산기">
     <meta name="robots" content="noindex, nofollow">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="404 - 페이지를 찾을 수 없습니다 | 21-15-9">
     <meta property="og:description" content="요청하신 페이지를 찾을 수 없습니다. 21-15-9 메인으로 돌아가세요.">
@@ -33,301 +33,169 @@
     <meta property="og:url" content="https://21-15-9.com/404">
     <meta property="og:image" content="https://21-15-9.com/og-image.svg">
     <meta property="og:site_name" content="21-15-9">
-    
-    <title>404 - 페이지를 찾을 수 없습니다 | 21-15-9</title>
-    
+
+    <title>NO REP! | 21-15-9</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/favicon.svg">
-    
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#3182f6">
+    <meta name="theme-color" content="#e0fd53">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="21-15-9">
-    
+
     <link rel="stylesheet" href="common.css?v=1773019964">
     <style>
-        /* common.css의 a:not(.nav-item) 스타일 무효화 */
-        .action-btn,
-        .page-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--accent-primary);
-            color: #ffffff !important;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            box-shadow: 0 2px 8px rgba(230, 0, 18, 0.2);
-        }
-        
-        .action-btn:hover,
-        .page-link:hover {
-            padding: 12px 24px !important; /* action-btn 원래 패딩 유지 */
-            background: #cc0010 !important;
-            color: #ffffff !important;
-            box-shadow: 0 4px 12px rgba(230, 0, 18, 0.4) !important;
-        }
-        
-        .page-link {
-            padding: 10px 16px;
-            background: var(--bg-secondary);
-            color: var(--text-primary) !important;
-            border: 1px solid var(--border-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-shadow: none;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .page-link:hover {
-            padding: 10px 16px !important; /* page-link 원래 패딩 유지 */
-            background: var(--accent-primary) !important;
-            color: #ffffff !important;
-            border-color: var(--accent-primary) !important;
-            box-shadow: 0 2px 8px rgba(230, 0, 18, 0.3) !important;
-        }
-        
-        .error-container {
-            min-height: 70vh;
+        .no-rep-wrapper {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #121417;
             padding: 40px 20px;
         }
-        
-        .error-code {
-            font-size: 8rem;
+
+        .no-rep-inner {
+            text-align: center;
+            max-width: 560px;
+        }
+
+        .no-rep-code {
+            font-size: 120px;
             font-weight: 900;
-            color: var(--accent-primary);
+            color: #e0fd53;
             line-height: 1;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -4px;
+            margin-bottom: 24px;
         }
-        
-        .error-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 16px;
+
+        .no-rep-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f9fafb;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 0 16px;
         }
-        
-        .error-message {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 600px;
+
+        .no-rep-desc {
+            font-size: 16px;
+            color: #6b7684;
+            margin: 0 0 48px;
             line-height: 1.6;
         }
-        
-        .crossfit-message {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            padding: 20px;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-primary);
-            max-width: 500px;
-        }
-        
-        .action-buttons {
+
+        .no-rep-actions {
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-        
-        .action-btn:visited {
-            color: #ffffff !important;
-        }
-        
-        .action-btn:link {
-            color: #ffffff !important;
-        }
-        
-        .action-btn.secondary {
-            background: var(--bg-secondary);
-            color: var(--text-primary) !important;
-            border: 1px solid var(--border-light);
-            text-shadow: none;
-            font-weight: 600;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .action-btn.secondary:hover {
-            padding: 12px 24px !important;
-            background: var(--bg-tertiary) !important;
-            border-color: var(--accent-primary) !important;
-            box-shadow: 0 2px 8px rgba(230, 0, 18, 0.2) !important;
-        }
-        
-        .action-btn.secondary:visited {
-            color: var(--text-primary) !important;
-        }
-        
-        .action-btn.secondary:link {
-            color: var(--text-primary) !important;
-        }
-        
-        .popular-pages {
-            margin-top: 20px;
-        }
-        
-        .popular-pages h3 {
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-        
-        .page-links {
-            display: flex;
-            flex-wrap: wrap;
             gap: 12px;
             justify-content: center;
         }
-        
-        /* 네비게이션 hover 효과 */
-        .nav-item:hover:not(.active) {
-            color: var(--accent-primary);
-            border-bottom-color: var(--accent-primary);
+
+        .no-rep-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-    
-        
-        /* 모바일 반응형 */
+
+        .no-rep-btn.primary {
+            background: #e0fd53;
+            color: #1a1a1a;
+        }
+
+        .no-rep-btn.primary:hover {
+            background: #c8e019;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(224, 253, 83, 0.3);
+        }
+
+        .no-rep-btn.secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: #b0b8c1;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .no-rep-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #f9fafb;
+        }
+
         @media (max-width: 768px) {
-            .error-code {
-                font-size: 5rem;
+            .no-rep-wrapper {
+                min-height: 100vh;
             }
-            
-            .error-title {
-                font-size: 1.5rem;
+
+            .no-rep-code {
+                font-size: 80px;
+                letter-spacing: -2px;
             }
-            
-            .error-message {
-                font-size: 1rem;
+
+            .no-rep-title {
+                font-size: 22px;
+                letter-spacing: 1px;
             }
-            
-            .action-buttons {
+
+            .no-rep-desc {
+                font-size: 14px;
+                margin-bottom: 36px;
+            }
+
+            .no-rep-actions {
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .action-btn {
+
+            .no-rep-btn {
                 width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-            
-            .page-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .page-link {
-                width: 100%;
-                max-width: 200px;
-                justify-content: center;
+                max-width: 260px;
+                padding: 12px 24px;
+                font-size: 14px;
             }
         }
-        
+
         @media (max-width: 480px) {
-            .error-code {
-                font-size: 4rem;
+            .no-rep-code {
+                font-size: 64px;
             }
-            
-            .error-title {
-                font-size: 1.3rem;
-            }
-            
-            .crossfit-message {
-                margin: 0 10px 30px;
-                padding: 16px;
+
+            .no-rep-title {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header-container">
-            <div class="header-content">
-                <nav class="nav-tabs">
-                    <a href="/" class="nav-item">21-15-9</a>
-                    <a href="/weightlifting/" class="nav-item">역도</a>
-                    <a href="/records/" class="nav-item">WR</a>
-                    <a href="/1rm/" class="nav-item">1RM</a>
-                    <a href="/convert/" class="nav-item">파운드</a>
-                    <a href="/plates/" class="nav-item">플레이트</a>
-                    <a href="/open/" class="nav-item">오픈</a>
-                    <a href="/timer/" class="nav-item">타이머</a>
-                </nav>
-                <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
-                    <span class="theme-icon">🌙</span>
-                </button>
-            </div>
-        </div>
-        
-        <div class="container">
-            <div class="error-container">
-                <div class="error-code">404</div>
-                <h1 class="error-title">페이지를 찾을 수 없습니다</h1>
-                <p class="error-message">
-                    찾고 계신 페이지가 삭제되었거나 주소가 변경되었을 수 있습니다.<br>
-                    아래 링크를 통해 원하시는 페이지로 이동해보세요.
-                </p>
-                
-                <div class="crossfit-message">
-                    🏋️‍♂️ <strong>실패한 세트도 성장의 한 부분입니다!</strong><br>
-                    404 에러도 마찬가지예요. 다시 시도해보세요! 💪
-                </div>
-                
-                <div class="action-buttons">
-                    <a href="/" class="action-btn">
-                        🏠 메인으로 돌아가기
-                    </a>
-                    <button onclick="history.back()" class="action-btn secondary">
-                        ↩️ 이전 페이지로
-                    </button>
-                </div>
-                
-                <div class="popular-pages">
-                    <h3>인기 페이지</h3>
-                    <div class="page-links">
-                        <a href="/weightlifting/" class="page-link">
-                            🏋️‍♂️ 웨이트리프팅
-                        </a>
-                        <a href="/1rm/" class="page-link">
-                            📊 1RM 계산기
-                        </a>
-                        <a href="/plates/" class="page-link">
-                            🥇 플레이트 계산기
-                        </a>
-                    </div>
-                </div>
+    <div class="no-rep-wrapper">
+        <div class="no-rep-inner">
+            <div class="no-rep-code">404</div>
+            <h1 class="no-rep-title">Sorry, that's a "No Rep!"</h1>
+            <p class="no-rep-desc">This page does not exist.</p>
+            <div class="no-rep-actions">
+                <a href="/" class="no-rep-btn primary">Go Home</a>
             </div>
         </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="script.js?v=1773019964"></script>
     <script src="pwa.js?v=1773019964"></script>
     <script src="visitor-counter.js?v=1773019964"></script>
-    
+
     <script>
-        // 404 페이지 접근 이벤트 추적
         if (typeof gtag !== 'undefined') {
             gtag('event', '404_error', {
                 page_title: document.title,
@@ -335,10 +203,8 @@
                 page_referrer: document.referrer
             });
         }
-        
-        // 404 페이지에서는 방문자 카운터 UI를 숨김 (추적은 유지)
+
         document.addEventListener('DOMContentLoaded', function() {
-            // 방문자 카운터가 있다면 숨김
             const visitorStats = document.querySelector('.visitor-stats');
             if (visitorStats) {
                 visitorStats.style.display = 'none';
@@ -346,4 +212,4 @@
         });
     </script>
 </body>
-</html> 
+</html>

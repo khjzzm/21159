@@ -84,7 +84,7 @@
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#3182f6">
+    <meta name="theme-color" content="#e0fd53">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="21-15-9">
@@ -109,9 +109,6 @@
                     <a href="/open/" class="nav-item">오픈</a>
                     <a href="/timer/" class="nav-item">타이머</a>
                 </nav>
-                <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
-                    <span class="theme-icon">🌙</span>
-                </button>
             </div>
         </div>
 
@@ -138,41 +135,48 @@
             <div class="features-inner">
                 <span class="section-label reveal">Tools</span>
                 <h2 class="section-title reveal reveal-delay-1">필요한 모든 도구</h2>
-                <div class="features-grid">
-                    <a href="/weightlifting/" class="feature-card reveal reveal-delay-1">
+                <div class="features-row features-row-left">
+                    <a href="/weightlifting/" class="feature-card">
                         <div class="feature-icon">🏋️</div>
                         <h3>동작 상관관계</h3>
                         <p>백스쿼트, 클린, 스내치 등 동작 간 비율을 계산하세요.</p>
                     </a>
-                    <a href="/1rm/" class="feature-card reveal reveal-delay-2">
+                    <a href="/1rm/" class="feature-card">
                         <div class="feature-icon">📊</div>
                         <h3>1RM 계산기</h3>
                         <p>NSCA 공식 기반으로 안전하게 최대 중량을 추정합니다.</p>
                     </a>
-                    <a href="/convert/" class="feature-card reveal reveal-delay-3">
+                    <a href="/convert/" class="feature-card">
                         <div class="feature-icon">⚖️</div>
                         <h3>lb ↔ kg 변환</h3>
                         <p>파운드와 킬로그램을 빠르게 변환하세요.</p>
                     </a>
-                    <a href="/plates/" class="feature-card reveal reveal-delay-4">
+                    <a href="/plates/" class="feature-card">
                         <div class="feature-icon">🔴</div>
                         <h3>플레이트 계산기</h3>
                         <p>올림픽 규격 바벨 플레이트 조합을 확인하세요.</p>
                     </a>
-                    <a href="/open/" class="feature-card reveal reveal-delay-5">
+                </div>
+                <div class="features-row features-row-right">
+                    <a href="/open/" class="feature-card">
                         <div class="feature-icon">🚪</div>
                         <h3>오픈 워크아웃</h3>
                         <p>2011~2026 크로스핏 오픈 전체 아카이브.</p>
                     </a>
-                    <a href="/records/" class="feature-card reveal reveal-delay-6">
+                    <a href="/records/" class="feature-card">
                         <div class="feature-icon">🥇</div>
                         <h3>세계 기록</h3>
                         <p>IWF 역도 세계 기록을 실시간 확인하세요.</p>
                     </a>
-                    <a href="/timer/" class="feature-card reveal reveal-delay-7">
+                    <a href="/timer/" class="feature-card">
                         <div class="feature-icon">⏱️</div>
                         <h3>타이머</h3>
                         <p>AMRAP, EMOM, For Time 등 와드 타이머.</p>
+                    </a>
+                    <a href="/random-wod/" class="feature-card">
+                        <div class="feature-icon">🎲</div>
+                        <h3>Random WOD</h3>
+                        <p>랜덤 크로스핏 워크아웃을 생성하세요.</p>
                     </a>
                 </div>
             </div>
@@ -238,38 +242,47 @@
             });
         }, 100);
 
-        // features-grid 무한 롤링
-        var grid = document.querySelector('.features-grid');
-        if (grid) {
-            // 카드 복제하여 이어붙이기
-            var cards = grid.querySelectorAll('.feature-card');
+        // features-row 무한 롤링 (CSS transform 방식)
+        document.querySelectorAll('.features-row').forEach(function(row) {
+            // 카드 복제
+            var cards = row.querySelectorAll('.feature-card');
             cards.forEach(function(card) {
-                var clone = card.cloneNode(true);
-                clone.classList.remove('reveal');
-                clone.classList.add('visible');
-                grid.appendChild(clone);
+                row.appendChild(card.cloneNode(true));
             });
 
-            var speed = 0.5; // px per frame
+            var isLeft = row.classList.contains('features-row-left');
+            var speed = isLeft ? 0.5 : -0.5;
+            var pos = isLeft ? 0 : -(row.scrollWidth / 2);
             var paused = false;
             var animId = null;
+            var halfWidth = row.scrollWidth / 2;
+
+            row.style.overflow = 'hidden';
+
+            // 내부 래퍼 생성
+            var track = document.createElement('div');
+            track.style.display = 'flex';
+            track.style.gap = '20px';
+            track.style.willChange = 'transform';
+            while (row.firstChild) track.appendChild(row.firstChild);
+            row.appendChild(track);
+            halfWidth = track.scrollWidth / 2;
+            if (!isLeft) pos = -halfWidth;
 
             function roll() {
                 if (!paused) {
-                    grid.scrollLeft += speed;
-                    // 절반 지점(원본 끝) 넘으면 처음으로
-                    var half = (grid.scrollWidth - grid.clientWidth) / 2;
-                    if (grid.scrollLeft >= half) {
-                        grid.scrollLeft = 0;
-                    }
+                    pos -= speed;
+                    if (isLeft && Math.abs(pos) >= halfWidth) pos = 0;
+                    if (!isLeft && pos >= 0) pos = -halfWidth;
+                    track.style.transform = 'translateX(' + pos + 'px)';
                 }
                 animId = requestAnimationFrame(roll);
             }
 
-            grid.addEventListener('mouseenter', function() { paused = true; });
-            grid.addEventListener('mouseleave', function() { paused = false; });
-            grid.addEventListener('touchstart', function() { paused = true; });
-            grid.addEventListener('touchend', function() { paused = false; });
+            row.addEventListener('mouseenter', function() { paused = true; });
+            row.addEventListener('mouseleave', function() { paused = false; });
+            row.addEventListener('touchstart', function() { paused = true; });
+            row.addEventListener('touchend', function() { paused = false; });
 
             var featuresObs = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting) {
@@ -279,7 +292,7 @@
                 }
             }, { root: wrapper, threshold: 0.3 });
             featuresObs.observe(document.querySelector('.features-section'));
-        }
+        });
     })();
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

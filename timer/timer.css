@@ -9,9 +9,9 @@
 
 .mode-btn {
     padding: 12px 20px;
-    border: 2px solid var(--border-color);
-    background: var(--card-bg);
-    color: var(--text-color);
+    border: 2px solid var(--border-light);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
@@ -22,14 +22,14 @@
 
 .mode-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(49, 130, 246, 0.2);
+    box-shadow: 0 4px 15px rgba(224, 253, 83, 0.2);
 }
 
 .mode-btn.active {
-    background: var(--card-bg);
-    color: var(--text-color);
-    border: 3px solid var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(49, 130, 246, 0.2);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 3px solid var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(224, 253, 83, 0.2);
 }
 
 /* 타이머 디스플레이 */
@@ -37,10 +37,10 @@
     text-align: center;
     margin: 40px 0;
     padding: 40px 20px;
-    background: var(--card-bg);
+    background: var(--bg-secondary);
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-light);
 }
 
 .timer-main {
@@ -50,10 +50,10 @@
 .time-display {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--accent-primary);
     font-family: 'Courier New', monospace;
     margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(49, 130, 246, 0.3);
+    text-shadow: 0 2px 10px rgba(224, 253, 83, 0.3);
 }
 
 .timer-label {
@@ -68,14 +68,14 @@
 .round-info {
     margin-top: 20px;
     padding: 15px;
-    background: var(--bg-light);
+    background: var(--bg-tertiary);
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-light);
 }
 
 .current-round {
     font-size: 1.1rem;
-    color: var(--text-color);
+    color: var(--text-primary);
 }
 
 .round-label {
@@ -86,7 +86,7 @@
 .round-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--accent-primary);
     margin: 0 5px;
 }
 
@@ -98,14 +98,14 @@
 .timer-settings {
     margin: 30px 0;
     padding: 25px;
-    background: var(--card-bg);
+    background: var(--bg-secondary);
     border-radius: 15px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-light);
 }
 
 .setting-group h3 {
     margin: 0 0 15px 0;
-    color: var(--text-color);
+    color: var(--text-primary);
     font-size: 1.3rem;
     font-weight: 600;
 }
@@ -124,7 +124,7 @@
 .time-input-group label {
     display: block;
     margin-bottom: 8px;
-    color: var(--text-color);
+    color: var(--text-primary);
     font-weight: 500;
 }
 
@@ -138,10 +138,10 @@
 .time-inputs input {
     width: 70px;
     padding: 10px 8px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-light);
     border-radius: 12px;
-    background: #ffffff;
-    color: #333;
+    background: #2a2a2a;
+    color: #ffffff;
     font-size: 16px;
     text-align: center;
     transition: all 0.3s ease;
@@ -151,13 +151,15 @@
 
 .time-inputs input:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(49, 130, 246, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-primary);
+    background: #333;
+    box-shadow: 0 0 0 3px rgba(224, 253, 83, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
     transform: translateY(-1px);
 }
 
 .time-inputs input:hover {
-    border-color: var(--primary-color);
+    border-color: var(--accent-primary);
+    background: #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -239,23 +241,23 @@
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 25px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
     transition: all 0.3s ease;
 }
 
 .sound-toggle:hover {
-    background: var(--bg-light);
+    background: var(--bg-tertiary);
 }
 
 .sound-toggle input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: var(--primary-color);
+    accent-color: var(--accent-primary);
 }
 
 .sound-label {
-    color: var(--text-color);
+    color: var(--text-primary);
     font-weight: 500;
 }
 
@@ -271,24 +273,24 @@
 }
 
 .timer-display.warning {
-    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.3));
     border-color: #ffc107;
 }
 
 .timer-display.warning .time-display {
-    color: #856404;
-    text-shadow: 0 2px 4px rgba(255, 193, 7, 0.3);
+    color: #ffd60a;
+    text-shadow: 0 2px 8px rgba(255, 193, 7, 0.5);
     animation: warning-pulse 1s ease-in-out infinite;
 }
 
 .timer-display.danger {
-    background: linear-gradient(135deg, #f8d7da, #ff7675);
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.2), rgba(220, 53, 69, 0.3));
     border-color: #dc3545;
 }
 
 .timer-display.danger .time-display {
-    color: #721c24;
-    text-shadow: 0 2px 4px rgba(220, 53, 69, 0.4);
+    color: #ff6b6b;
+    text-shadow: 0 2px 8px rgba(220, 53, 69, 0.5);
     animation: danger-pulse 0.5s ease-in-out infinite;
 }
 
@@ -362,68 +364,6 @@
     }
 }
 
-/* 다크모드 스타일 추가 */
-[data-theme="dark"] .timer-display {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .round-info {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .timer-settings {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .sound-toggle {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .sound-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* 다크모드에서 input 색상 명확히 설정 */
-[data-theme="dark"] .time-inputs input {
-    background: #2a2a2a;
-    color: #ffffff;
-    border-color: #444;
-}
-
-[data-theme="dark"] .time-inputs input:hover {
-    border-color: var(--primary-color);
-    background: #333;
-}
-
-[data-theme="dark"] .time-inputs input:focus {
-    background: #333;
-}
-
-/* 다크모드 경고 효과 */
-[data-theme="dark"] .timer-display.warning {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.3));
-    border-color: #ffc107;
-}
-
-[data-theme="dark"] .timer-display.warning .time-display {
-    color: #ffd60a;
-    text-shadow: 0 2px 8px rgba(255, 193, 7, 0.5);
-}
-
-[data-theme="dark"] .timer-display.danger {
-    background: linear-gradient(135deg, rgba(220, 53, 69, 0.2), rgba(220, 53, 69, 0.3));
-    border-color: #dc3545;
-}
-
-[data-theme="dark"] .timer-display.danger .time-display {
-    color: #ff6b6b;
-    text-shadow: 0 2px 8px rgba(220, 53, 69, 0.5);
-}
-
 /* 모바일 가로 모드 - 시간만 표시 */
 @media (max-width: 1024px) and (orientation: landscape) {
     /* 모든 요소 숨기기 */
@@ -459,7 +399,7 @@
         justify-content: center;
         border: none;
         border-radius: 0;
-        background: var(--bg-color);
+        background: var(--bg-body);
         box-sizing: border-box;
     }
     

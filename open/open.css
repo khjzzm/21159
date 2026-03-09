@@ -4,7 +4,7 @@
     justify-content: center;
     margin-bottom: 0;
     gap: 0;
-    background: linear-gradient(135deg, #3182f6, #1b64da);
+    background: linear-gradient(135deg, #e0fd53, #c8e019);
     border-radius: 12px;
     padding: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -18,28 +18,28 @@
 .open-toggle .toggle-btn {
     flex: 1;
     padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.05);
     border: none;
     border-radius: 0;
     font-size: 14px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .open-toggle .toggle-btn:first-child {
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .open-toggle .toggle-btn.active {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    background: rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
 }
 
 .open-toggle .toggle-btn:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
+    background: rgba(0, 0, 0, 0.08);
+    color: #1a1a1a;
 }
 
 /* 탭 콘텐츠 */
@@ -152,13 +152,13 @@
     border-radius: 12px;
     padding: 24px;
     transition: all 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
 
 .workout-card:hover {
-    box-shadow: 0 4px 16px rgba(49,130,246,0.1);
+    box-shadow: 0 4px 16px rgba(224, 253, 83, 0.2);
     border-color: var(--accent-primary);
     transform: translateY(-2px);
 }
@@ -364,12 +364,15 @@
 }
 
 .bar-label {
-    min-width: 160px;
+    width: 120px;
+    flex-shrink: 0;
     text-align: right;
     font-size: 13px;
     font-weight: 500;
     color: var(--text-primary);
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .bar-track {
@@ -439,7 +442,7 @@
 
 @media (max-width: 768px) {
     .bar-label {
-        min-width: 120px;
+        width: 100px;
         font-size: 12px;
     }
     .bar-fill {
@@ -452,7 +455,7 @@
 
 @media (max-width: 480px) {
     .bar-label {
-        min-width: 90px;
+        width: 80px;
         font-size: 11px;
     }
     .bar-track {
@@ -465,78 +468,6 @@
     .stats-title {
         font-size: 20px;
     }
-}
-
-/* 다크 모드 대응 */
-@media (prefers-color-scheme: dark) {
-    .workout-type {
-        background: var(--bg-tertiary);
-    }
-}
-
-[data-theme="dark"] .workout-type {
-    background: var(--bg-tertiary);
-}
-
-[data-theme="dark"] .workout-card {
-    background: var(--bg-secondary);
-    border-color: var(--border-light);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="dark"] .workout-card:hover {
-    box-shadow: 0 4px 16px rgba(49, 130, 246, 0.2);
-    border-color: var(--accent-primary);
-}
-
-[data-theme="dark"] .workout-header {
-    border-bottom-color: var(--border-light);
-}
-
-[data-theme="dark"] .workout-content {
-    color: var(--text-secondary);
-}
-
-[data-theme="dark"] .workout-content strong {
-    color: var(--text-primary);
-}
-
-[data-theme="dark"] .description {
-    background: var(--bg-secondary);
-    border-color: var(--border-light);
-}
-
-[data-theme="dark"] .year-filter {
-    border-bottom-color: var(--border-light);
-}
-
-[data-theme="dark"] .year-title {
-    color: var(--accent-primary);
-    border-bottom-color: var(--accent-primary);
-}
-
-[data-theme="dark"] .bar-track {
-    background: var(--bg-tertiary);
-}
-
-[data-theme="dark"] .bar-label {
-    color: var(--text-primary);
-}
-
-[data-theme="dark"] .stats-section {
-    border-top-color: var(--border-light);
-}
-
-[data-theme="dark"] .stats-title {
-    color: var(--accent-primary);
-}
-
-[data-theme="dark"] .stats-desc {
-    color: var(--text-secondary);
-}
-
-[data-theme="dark"] .legend-item {
-    color: var(--text-secondary);
 }
 
 /* 애니메이션 */

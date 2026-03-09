@@ -114,7 +114,7 @@
     height: 36px;
     font-size: var(--font-size-sm);
     font-weight: 500;
-    color: white;
+    color: #1a1a1a;
     background: var(--accent-primary);
     border: none;
     border-radius: 4px;
@@ -178,7 +178,7 @@
     height: 40px;
     font-size: 14px;
     font-weight: 500;
-    color: white;
+    color: #1a1a1a;
     background: var(--accent-primary);
     border: none;
     border-radius: 4px;
@@ -284,17 +284,6 @@
 .calculator-card--rm .re-we {
     color: var(--text-primary);
     font-size: 0.85rem;
-}
-
-/* 다크모드 대응 */
-[data-theme="dark"] .calculator-card {
-    background: var(--bg-primary);
-    border-color: var(--border-light);
-}
-
-[data-theme="dark"] .calculator-card--rm {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-light);
 }
 
 /* Responsive Grid Layout */

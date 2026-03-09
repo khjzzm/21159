@@ -90,7 +90,7 @@
 /* 선택된 버튼 스타일 */
 .barbell-btn.active {
     background: var(--accent-primary);
-    color: white;
+    color: #1a1a1a;
     border: 2px solid var(--accent-primary);
     z-index: 1;
 }
@@ -721,9 +721,9 @@
     font-weight: 500;
 }
 .reset-btn:hover {
-    background: #3182f6;
-    color: #fff;
-    border-color: #3182f6;
+    background: #e0fd53;
+    color: #1a1a1a;
+    border-color: #e0fd53;
 }
 
 .plate-btn.collar-btn {
@@ -745,7 +745,7 @@
 }
 .barbell-image .collar:hover {
     opacity: 1;
-    box-shadow: 0 0 0 2px #3182f6;
+    box-shadow: 0 0 0 2px #e0fd53;
 }
 
 /* 페이지 하단 고정 초기화 버튼 */
@@ -818,28 +818,14 @@
     content: "";
     display: block;
     width: 100%;
-    border-top: 2px dashed #222; /* 라이트 모드: 진한 검정 */
-    opacity: 0.25;
+    border-top: 2px dashed #fff;
+    opacity: 0.18;
     border-top-style: dashed;
     border-top-width: 2px;
-    border-top-color: #222;
-    border-image: none;
-    transition: border-top-color 0.2s, opacity 0.2s;
-}
-
-/* 다크 모드에서 흰색 점선 */
-@media (prefers-color-scheme: dark) {
-    .section-divider::before {
-        border-top-color: #fff;
-        opacity: 0.18;
-    }
-}
-
-/* 수동 다크모드 대응 (data-theme="dark" 커스텀 속성 사용 시) */
-[data-theme="dark"] .section-divider::before {
     border-top-color: #fff;
-    opacity: 0.18;
+    border-image: none;
 }
+
 
 .plate-btn, .plate-btn:active, .plate-btn:focus {
     touch-action: manipulation;

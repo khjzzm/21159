@@ -3,43 +3,6 @@ const KG_TO_LB = 2.20462;
 const LB_TO_KG = 0.453592;
 let currentUnit = 'kg';
 
-// 다크모드 관련 함수
-function initTheme() {
-    // 저장된 테마 불러오기 또는 시스템 설정 확인
-    const savedTheme = localStorage.getItem('theme');
-    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-    } else if (systemDarkMode) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        updateThemeIcon('dark');
-    }
-}
-
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-    
-    // 테마 변경 애니메이션 효과
-    document.body.style.transition = 'all 0.3s ease';
-    setTimeout(() => {
-        document.body.style.transition = '';
-    }, 300);
-}
-
-function updateThemeIcon(theme) {
-    const themeIcon = document.querySelector('.theme-icon');
-    if (themeIcon) {
-        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
-}
-
 // 단위 변환 함수
 function convertWeight(weight, fromUnit, toUnit) {
     if (fromUnit === toUnit) return weight;
@@ -108,23 +71,6 @@ function updatePlaceholders() {
 
 // 공통 이벤트 핸들러
 $(document).ready(function() {
-    // 다크모드 초기화
-    initTheme();
-    
-    // 다크모드 토글 버튼 이벤트
-    $('#theme-toggle').click(function() {
-        toggleTheme();
-    });
-    
-    // 시스템 다크모드 변경 감지
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-        if (!localStorage.getItem('theme')) {
-            const newTheme = e.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            updateThemeIcon(newTheme);
-        }
-    });
-    
     // 초기 placeholder 설정
     updatePlaceholders();
 
@@ -193,10 +139,6 @@ function initSidebarNavigation() {
             </div>
             <div class="sidebar-content">
                 <div class="nav-group">
-                    <div class="nav-group-title">홈</div>
-                    <a href="/" class="sidebar-nav-item">21-15-9</a>
-                </div>
-                <div class="nav-group">
                     <div class="nav-group-title">PR</div>
                     <a href="/weightlifting/" class="sidebar-nav-item">보조운동·역도 상관관계</a>
                     <a href="/1rm/" class="sidebar-nav-item">1RM</a>
@@ -214,7 +156,15 @@ function initSidebarNavigation() {
                 <div class="nav-group">
                     <div class="nav-group-title">도구</div>
                     <a href="/timer/" class="sidebar-nav-item">크로스핏 타이머</a>
+                    <a href="/random-wod/" class="sidebar-nav-item">Random WOD</a>
                 </div>
+                <nav class="sidebar-secondary" aria-label="Secondary">
+                    <ul>
+                        <li><span class="sidebar-dot"></span><a href="https://khjzzm.github.io/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><span class="sidebar-dot"></span><a href="https://github.com/khjzzm" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><span class="sidebar-dot"></span><a href="mailto:khjzzm@gmail.com">Mail</a></li>
+                    </ul>
+                </nav>
             </div>
         </nav>
     `;
@@ -222,34 +172,23 @@ function initSidebarNavigation() {
     // 페이지에 사이드바 추가
     document.body.insertAdjacentHTML('beforeend', sidebarHTML);
     
-    // 헤더에 햄버거 버튼 추가
+    // 헤더에 햄버거 버튼 및 모바일 제목 추가
     const headerContent = document.querySelector('.header-content');
     if (headerContent) {
+        // 모바일 헤더 제목 - 21-15-9 (홈 링크)
+        const headerTitle = document.createElement('a');
+        headerTitle.className = 'header-title';
+        headerTitle.textContent = '21-15-9';
+        headerTitle.href = '/';
+        headerContent.insertBefore(headerTitle, headerContent.firstChild);
+
+        // 햄버거 버튼 (오른쪽, margin-left:auto)
         const hamburgerButton = document.createElement('button');
         hamburgerButton.className = 'hamburger-menu';
         hamburgerButton.id = 'hamburgerMenu';
         hamburgerButton.innerHTML = '☰';
         hamburgerButton.setAttribute('aria-label', '메뉴 열기');
-        
-        headerContent.insertBefore(hamburgerButton, headerContent.firstChild);
-
-        // 모바일 헤더 페이지 제목 추가
-        const pageTitles = {
-            '/': '21-15-9',
-            '/weightlifting/': '역도',
-            '/records/': 'WR',
-            '/1rm/': '1RM',
-            '/convert/': '파운드',
-            '/plates/': '플레이트',
-            '/open/': '오픈',
-            '/timer/': '타이머'
-        };
-        const path = window.location.pathname.replace(/\/index\.html$/, '/');
-        const titleText = pageTitles[path] || '21-15-9';
-        const headerTitle = document.createElement('span');
-        headerTitle.className = 'header-title';
-        headerTitle.textContent = titleText;
-        hamburgerButton.after(headerTitle);
+        headerContent.appendChild(hamburgerButton);
     }
     
     // 현재 페이지에 맞는 active 상태 설정
@@ -262,15 +201,7 @@ function initSidebarNavigation() {
     const sidebarNav = document.getElementById('sidebarNav');
     
     if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', openSidebar);
-    }
-    
-    if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', closeSidebar);
-    }
-    
-    if (sidebarClose) {
-        sidebarClose.addEventListener('click', closeSidebar);
+        hamburgerMenu.addEventListener('click', toggleSidebar);
     }
     
     // ESC 키로 사이드바 닫기
@@ -281,27 +212,29 @@ function initSidebarNavigation() {
     });
 }
 
-// 사이드바 열기
-function openSidebar() {
+// 사이드바 토글
+function toggleSidebar() {
     const sidebarNav = document.getElementById('sidebarNav');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    
-    if (sidebarNav && sidebarOverlay) {
-        sidebarNav.classList.add('open');
-        sidebarOverlay.classList.add('show');
-        document.body.style.overflow = 'hidden';
+    const hamburger = document.getElementById('hamburgerMenu');
+    if (sidebarNav) {
+        const isOpen = sidebarNav.classList.toggle('open');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        if (hamburger) {
+            hamburger.innerHTML = isOpen ? '✕' : '☰';
+        }
     }
 }
 
 // 사이드바 닫기
 function closeSidebar() {
     const sidebarNav = document.getElementById('sidebarNav');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    
-    if (sidebarNav && sidebarOverlay) {
+    const hamburger = document.getElementById('hamburgerMenu');
+    if (sidebarNav) {
         sidebarNav.classList.remove('open');
-        sidebarOverlay.classList.remove('show');
         document.body.style.overflow = '';
+        if (hamburger) {
+            hamburger.innerHTML = '☰';
+        }
     }
 }
 

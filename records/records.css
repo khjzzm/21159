@@ -1,9 +1,11 @@
 /* Update Note */
 .update-note {
     text-align: center;
-    font-size: 13px;
-    color: var(--text-tertiary);
+    font-size: 12px;
+    color: #8e8e93;
     margin: 4px 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Filter Bar */
@@ -17,8 +19,8 @@
 /* Segment Control */
 .segment-control {
     display: flex;
-    background: var(--bg-secondary);
-    border-radius: 10px;
+    background: #2c2c2c;
+    border-radius: 8px;
     padding: 3px;
     gap: 2px;
 }
@@ -27,37 +29,26 @@
     padding: 8px 16px;
     background: transparent;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 13px;
     font-weight: 600;
-    color: var(--text-tertiary);
+    color: #8e8e93;
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
 }
 
 .segment-btn:hover:not(.active) {
-    color: var(--text-secondary);
+    color: #ccc;
 }
 
 .segment-btn.active {
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    background: #e0fd53;
+    color: #1a1a1a;
 }
 
 .era-year {
     display: none;
-}
-
-[data-theme="dark"] .segment-control {
-    background: rgba(255, 255, 255, 0.06);
-}
-
-[data-theme="dark"] .segment-btn.active {
-    background: rgba(255, 255, 255, 0.12);
-    color: #f9fafb;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* Records Section */
@@ -76,99 +67,100 @@
     font-weight: 600;
 }
 
-/* Table Styles */
+/* Table Styles - CF Games Leaderboard */
 .table-container {
     overflow-x: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    background: var(--bg-primary);
+    border-radius: 8px;
+    background: #1a1a1a;
     margin-bottom: 32px;
+    border: 1px solid #333;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: var(--accent-primary) transparent;
+    scrollbar-color: #444 transparent;
 }
 
 .table-container::-webkit-scrollbar {
-    height: 6px;
+    height: 4px;
 }
 
 .table-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 3px;
+    background: transparent;
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 3px;
-}
-
-.table-container::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-secondary);
+    background: #444;
+    border-radius: 2px;
 }
 
 .records-table {
     width: 100%;
     border-collapse: collapse;
     margin: 0;
-    background: white;
-    border-radius: 0;
-    overflow: hidden;
-    box-shadow: none;
+    background: #1a1a1a;
 }
 
 .records-table th {
-    background: var(--bg-secondary);
-    color: var(--text-secondary) !important;
-    padding: 12px;
-    text-align: center;
+    background: #111;
+    color: #8e8e93 !important;
+    padding: 10px 14px;
+    text-align: left;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     position: sticky;
     top: 0;
     z-index: 10;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #333;
 }
 
-[data-theme="dark"] .records-table th {
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text-tertiary) !important;
-    border-bottom-color: rgba(255, 255, 255, 0.06);
+.records-table th:first-child {
+    text-align: center;
 }
 
 .records-table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #2a2a2a;
     font-size: 13px;
+    color: #e5e5e5;
+}
+
+.records-table tbody tr {
+    transition: background 0.15s;
 }
 
 .records-table tbody tr:hover {
-    background-color: #f8f9fa;
+    background-color: #222;
 }
 
-/* Table Cell Specific Styles */
+/* 행 배경 - 미묘한 차이 */
+.snatch-row {
+    background-color: transparent;
+}
+
+.clean-jerk-row {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.total-row {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Cell Specific */
 .weight-class {
-    background-color: #f8f9fa;
-    font-weight: 700;
-    color: var(--accent-primary);
+    background-color: #151515 !important;
+    font-weight: 800;
+    color: #e0fd53 !important;
     vertical-align: middle;
+    text-align: center !important;
+    font-size: 15px;
+    letter-spacing: -0.3px;
 }
 
 .lift-type {
     font-weight: 600;
-    padding: 8px 12px !important;
-}
-
-.snatch-row {
-    background-color: #fff8e7;
-}
-
-.clean-jerk-row {
-    background-color: #e7f8ff;
-}
-
-.total-row {
-    background-color: #f0fff0;
+    padding: 10px 14px !important;
 }
 
 .lift-type:before {
@@ -177,66 +169,57 @@
 }
 
 .lift-snatch {
-    color: #d97706;
-}
-
-.lift-cj {
-    color: #0369a1;
-}
-
-.lift-total {
-    color: #059669;
-}
-
-[data-theme="dark"] .lift-snatch {
     color: #fbbf24;
 }
 
-[data-theme="dark"] .lift-cj {
+.lift-cj {
     color: #60a5fa;
 }
 
-[data-theme="dark"] .lift-total {
-    color: #34d399;
+.lift-total {
+    color: #e0fd53;
 }
 
 .snatch, .clean-jerk, .total {
     font-weight: 700;
     font-size: 15px;
+    font-variant-numeric: tabular-nums;
 }
 
 .snatch {
-    color: #d97706;
+    color: #fbbf24;
 }
 
 .clean-jerk {
-    color: #0369a1;
+    color: #60a5fa;
 }
 
 .total {
-    color: #059669;
+    color: #e0fd53;
 }
 
 .athlete {
     font-weight: 600;
-    color: #1f2937;
+    color: #fff;
 }
 
 .country {
-    font-weight: 500;
+    font-weight: 400;
+    color: #8e8e93;
+}
+
+.date {
+    color: #6d6d6d;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
 }
 
 .competition {
     font-size: 12px;
-    color: #4b5563;
+    color: #6d6d6d;
 }
 
-.date {
-    color: #6b7280;
-    font-size: 12px;
-}
-
-/* Description Styles */
+/* Description */
 .description ul {
     padding-left: 20px;
     margin: 16px 0;
@@ -247,23 +230,11 @@
     line-height: var(--line-height-relaxed);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
-    .records-table {
-        font-size: var(--font-size-xs);
-    }
-    
     .records-table th,
     .records-table td {
-        padding: 10px 8px;
-    }
-    
-    .competition {
-        font-size: 10px;
-    }
-    
-    .date {
-        font-size: 10px;
+        padding: 10px 10px;
     }
 }
 
@@ -283,18 +254,13 @@
         display: inline;
         font-size: 10px;
         font-weight: 400;
-        color: var(--text-tertiary);
+        color: #6d6d6d;
         margin-left: 4px;
-    }
-
-    .records-section h2 {
-        font-size: var(--font-size-lg);
-        margin-bottom: 20px;
     }
 
     .table-container {
         margin-bottom: 24px;
-        border-radius: 10px;
+        border-radius: 6px;
         overflow-x: hidden;
     }
 
@@ -312,8 +278,8 @@
     }
 
     .records-table th {
-        padding: 12px 8px;
-        font-size: 12px;
+        padding: 10px 8px;
+        font-size: 10px;
     }
 
     .records-table td {
@@ -321,11 +287,7 @@
     }
 
     .weight-class {
-        font-size: 14px;
-    }
-
-    .lift-type {
-        font-size: 13px;
+        font-size: 14px !important;
     }
 
     .snatch, .clean-jerk, .total {
@@ -345,16 +307,11 @@
 
     .table-container {
         margin-bottom: 20px;
-        border-radius: 8px;
-    }
-
-    .records-table {
-        font-size: 12px;
     }
 
     .records-table th {
-        padding: 10px 6px;
-        font-size: 11px;
+        padding: 8px 6px;
+        font-size: 9px;
     }
 
     .records-table td {
@@ -362,11 +319,7 @@
     }
 
     .weight-class {
-        font-size: 13px;
-    }
-
-    .lift-type {
-        font-size: 12px;
+        font-size: 13px !important;
     }
 
     .snatch, .clean-jerk, .total {
@@ -380,71 +333,3 @@
     }
 }
 
-/* 다크모드 */
-[data-theme="dark"] .records-table {
-    background: #1f2937;
-    color: #f9fafb;
-}
-
-[data-theme="dark"] .records-table td {
-    border-bottom-color: #374151;
-    color: #e5e7eb;
-}
-
-[data-theme="dark"] .records-table tbody tr:hover {
-    background-color: #374151;
-}
-
-[data-theme="dark"] .weight-class {
-    background-color: #374151;
-    color: #60a5fa;
-}
-
-[data-theme="dark"] .lift-type {
-    color: #f9fafb;
-}
-
-[data-theme="dark"] .athlete {
-    color: #f9fafb;
-}
-
-[data-theme="dark"] .country {
-    color: #d1d5db;
-}
-
-[data-theme="dark"] .date {
-    color: #9ca3af;
-}
-
-[data-theme="dark"] .competition {
-    color: #9ca3af;
-}
-
-[data-theme="dark"] .snatch-row {
-    background-color: rgba(217, 119, 6, 0.15);
-}
-
-[data-theme="dark"] .clean-jerk-row {
-    background-color: rgba(3, 105, 161, 0.15);
-}
-
-[data-theme="dark"] .total-row {
-    background-color: rgba(5, 150, 105, 0.15);
-}
-
-[data-theme="dark"] .snatch {
-    color: #fbbf24;
-}
-
-[data-theme="dark"] .clean-jerk {
-    color: #60a5fa;
-}
-
-[data-theme="dark"] .total {
-    color: #34d399;
-}
-
-[data-theme="dark"] .table-container {
-    background: #1f2937;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
