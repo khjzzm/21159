@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #e60012;
+            background: #3182f6;
             color: white;
             border: none;
             border-radius: 25px;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(230, 0, 18, 0.3);
+            box-shadow: 0 4px 12px rgba(49, 130, 246, 0.3);
             z-index: 1000;
             transition: all 0.3s ease;
         `;
@@ -176,7 +176,7 @@ style.textContent = `
     }
     
     .pwa-install-button:hover {
-        background: #c40010 !important;
+        background: #1b64da !important;
         transform: scale(1.05);
     }
 `;

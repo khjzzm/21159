@@ -136,12 +136,12 @@
 }
 
 .kg-cell {
-    background: rgba(230, 0, 18, 0.04);
+    background: rgba(49, 130, 246, 0.04);
     font-weight: 500;
 }
 
 [data-theme="dark"] .kg-cell {
-    background: rgba(230, 0, 18, 0.1);
+    background: rgba(49, 130, 246, 0.1);
 }
 
 .lb-cell {
@@ -162,7 +162,7 @@
 }
 
 [data-theme="dark"] .conversion-table tr:hover .kg-cell {
-    background: rgba(230, 0, 18, 0.15);
+    background: rgba(49, 130, 246, 0.15);
 }
 
 [data-theme="dark"] .conversion-table tr:hover .lb-cell {

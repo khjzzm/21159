@@ -232,6 +232,24 @@ function initSidebarNavigation() {
         hamburgerButton.setAttribute('aria-label', '메뉴 열기');
         
         headerContent.insertBefore(hamburgerButton, headerContent.firstChild);
+
+        // 모바일 헤더 페이지 제목 추가
+        const pageTitles = {
+            '/': '21-15-9',
+            '/weightlifting/': '역도',
+            '/records/': 'WR',
+            '/1rm/': '1RM',
+            '/convert/': '파운드',
+            '/plates/': '플레이트',
+            '/open/': '오픈',
+            '/timer/': '타이머'
+        };
+        const path = window.location.pathname.replace(/\/index\.html$/, '/');
+        const titleText = pageTitles[path] || '21-15-9';
+        const headerTitle = document.createElement('span');
+        headerTitle.className = 'header-title';
+        headerTitle.textContent = titleText;
+        hamburgerButton.after(headerTitle);
     }
     
     // 현재 페이지에 맞는 active 상태 설정

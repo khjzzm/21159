@@ -99,7 +99,7 @@
     background: var(--bg-quaternary);
     color: var(--accent-primary);
     border-color: var(--border-light);
-    box-shadow: 0 1px 4px rgba(230,0,18,0.06);
+    box-shadow: 0 1px 4px rgba(49,130,246,0.06);
 }
 
 /* 총 무게 표시 스타일 수정 */
@@ -721,9 +721,9 @@
     font-weight: 500;
 }
 .reset-btn:hover {
-    background: #e53935;
+    background: #3182f6;
     color: #fff;
-    border-color: #e53935;
+    border-color: #3182f6;
 }
 
 .plate-btn.collar-btn {
@@ -745,7 +745,7 @@
 }
 .barbell-image .collar:hover {
     opacity: 1;
-    box-shadow: 0 0 0 2px #e60012;
+    box-shadow: 0 0 0 2px #3182f6;
 }
 
 /* 페이지 하단 고정 초기화 버튼 */

@@ -22,14 +22,14 @@
 
 .mode-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(230, 0, 18, 0.2);
+    box-shadow: 0 4px 15px rgba(49, 130, 246, 0.2);
 }
 
 .mode-btn.active {
     background: var(--card-bg);
     color: var(--text-color);
     border: 3px solid var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(230, 0, 18, 0.2);
+    box-shadow: 0 0 0 2px rgba(49, 130, 246, 0.2);
 }
 
 /* 타이머 디스플레이 */
@@ -53,7 +53,7 @@
     color: var(--primary-color);
     font-family: 'Courier New', monospace;
     margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(230, 0, 18, 0.3);
+    text-shadow: 0 2px 10px rgba(49, 130, 246, 0.3);
 }
 
 .timer-label {
@@ -152,7 +152,7 @@
 .time-inputs input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(230, 0, 18, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 3px rgba(49, 130, 246, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
     transform: translateY(-1px);
 }
 
