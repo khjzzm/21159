@@ -1,3 +1,27 @@
+/* Era Title */
+.era-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 28px 0 12px;
+    padding: 8px 16px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-primary);
+}
+
+.era-title:first-child {
+    margin-top: 0;
+}
+
+/* Update Note */
+.update-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin: 4px 0 16px;
+}
+
 /* Records Toggle */
 .records-toggle {
     display: flex;

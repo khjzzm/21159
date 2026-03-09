@@ -59,6 +59,15 @@
                 <p>2011년부터 2026년까지의 크로스핏 오픈 워크아웃들을 연도별로 확인하세요.</p>
             </div>
 
+            <!-- 탭 토글 -->
+            <div class="toggle-container open-toggle">
+                <button class="toggle-btn active" data-tab="workouts">워크아웃</button>
+                <button class="toggle-btn" data-tab="stats">통계</button>
+            </div>
+
+            <!-- 워크아웃 탭 -->
+            <div class="open-tab active" id="tab-workouts">
+
             <!-- 연도 필터 -->
             <div class="year-filter">
                 <select id="year-select" class="year-select">
@@ -1267,6 +1276,17 @@
                     </div>
                 </div>
             </div>
+            </div><!-- /tab-workouts -->
+
+            <!-- 통계 탭 -->
+            <div class="open-tab" id="tab-stats">
+            <div class="stats-section">
+                <h2 class="stats-title">오픈 동작 통계</h2>
+                <p class="stats-desc">2011~2026 오픈 워크아웃에서 각 동작이 등장한 횟수</p>
+                <div class="bar-chart" id="movement-chart"></div>
+            </div>
+            </div><!-- /tab-stats -->
+
             <div id="toast-container"></div>
         </div>
     </div>

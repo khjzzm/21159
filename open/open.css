@@ -1,3 +1,63 @@
+/* 탭 토글 */
+.open-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    gap: 0;
+    background: linear-gradient(135deg, #e60012, #c2185b);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+}
+
+.open-toggle .toggle-btn {
+    flex: 1;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.open-toggle .toggle-btn:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.open-toggle .toggle-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.open-toggle .toggle-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+/* 탭 콘텐츠 */
+.open-tab {
+    display: none;
+}
+
+.open-tab.active {
+    display: block;
+}
+
+/* 통계 탭 내 stats-section 상단 여백 제거 */
+#tab-stats .stats-section {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
 /* 연도 필터 스타일 */
 .year-filter {
     display: flex;
@@ -166,6 +226,15 @@
 
 /* 반응형 스타일 */
 @media (max-width: 768px) {
+    .open-toggle {
+        max-width: 260px;
+        margin-bottom: 20px;
+    }
+    .open-toggle .toggle-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
     .year-filter {
         flex-direction: column;
         gap: 8px;
@@ -205,6 +274,15 @@
 }
 
 @media (max-width: 480px) {
+    .open-toggle {
+        max-width: 220px;
+        margin-bottom: 16px;
+    }
+    .open-toggle .toggle-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
     .year-filter {
         gap: 6px;
         padding: 12px 0;
@@ -249,6 +327,143 @@
     
     .description p {
         font-size: 14px;
+    }
+}
+
+/* 동작 통계 */
+.stats-section {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding-top: 48px;
+    border-top: 2px solid var(--border-light);
+}
+
+.stats-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--accent-primary);
+    margin-bottom: 8px;
+}
+
+.stats-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bar-label {
+    min-width: 160px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.bar-track {
+    flex: 1;
+    height: 28px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    min-width: 28px;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 0;
+}
+
+.bar-fill.animated {
+    /* width set by JS */
+}
+
+/* 카테고리 색상 */
+.bar-fill[data-cat="cardio"]     { background: #e53935; }
+.bar-fill[data-cat="barbell"]    { background: #1e88e5; }
+.bar-fill[data-cat="gymnastics"] { background: #43a047; }
+.bar-fill[data-cat="dumbbell"]   { background: #fb8c00; }
+.bar-fill[data-cat="body"]       { background: #8e24aa; }
+.bar-fill[data-cat="other"]      { background: #546e7a; }
+
+/* 범례 */
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.legend-dot[data-cat="cardio"]     { background: #e53935; }
+.legend-dot[data-cat="barbell"]    { background: #1e88e5; }
+.legend-dot[data-cat="gymnastics"] { background: #43a047; }
+.legend-dot[data-cat="dumbbell"]   { background: #fb8c00; }
+.legend-dot[data-cat="body"]       { background: #8e24aa; }
+.legend-dot[data-cat="other"]      { background: #546e7a; }
+
+@media (max-width: 768px) {
+    .bar-label {
+        min-width: 120px;
+        font-size: 12px;
+    }
+    .bar-fill {
+        font-size: 11px;
+    }
+    .stats-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bar-label {
+        min-width: 90px;
+        font-size: 11px;
+    }
+    .bar-track {
+        height: 24px;
+    }
+    .bar-fill {
+        font-size: 10px;
+        padding-right: 6px;
+    }
+    .stats-title {
+        font-size: 20px;
     }
 }
 
