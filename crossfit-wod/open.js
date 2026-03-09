@@ -9,7 +9,18 @@ $(document).ready(function() {
         // 통계 탭 전환 시 바 애니메이션 트리거
         if (tab === 'stats') {
             chartAnimated = false;
-            setTimeout(animateBars, 50);
+            setTimeout(function() {
+                // 탭이 보이면 바로 애니메이션, 아니면 스크롤에 맡김
+                if ($chart.is(':visible')) {
+                    chartAnimated = true;
+                    $('.bar-fill').each(function(i) {
+                        var $bar = $(this);
+                        setTimeout(function() {
+                            $bar.css('width', $bar.data('width'));
+                        }, i * 40);
+                    });
+                }
+            }, 100);
         }
     });
 
