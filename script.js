@@ -6,8 +6,8 @@ let currentUnit = 'kg';
 // 단위 변환 함수
 function convertWeight(weight, fromUnit, toUnit) {
     if (fromUnit === toUnit) return weight;
-    return fromUnit === 'kg' 
-        ? (weight * KG_TO_LB).toFixed(2) 
+    return fromUnit === 'kg'
+        ? (weight * KG_TO_LB).toFixed(2)
         : (weight * LB_TO_KG).toFixed(2);
 }
 
@@ -30,7 +30,7 @@ function updateUnitDisplay() {
 function showToast(message) {
     const toast = $('<div class="toast"></div>').text(message);
     $('#toast-container').append(toast);
-    
+
     setTimeout(() => {
         toast.addClass('show');
         setTimeout(() => {
@@ -63,7 +63,7 @@ function updatePlaceholders() {
     if (window.location.pathname.includes('convert')) {
         return;
     }
-    
+
     $('.weight-input').each(function() {
         $(this).attr('placeholder', `무게(${currentUnit.toLowerCase()})`);
     });
@@ -80,15 +80,15 @@ $(document).ready(function() {
         if (window.location.pathname.includes('convert')) {
             return;
         }
-        
+
         if ($(this).hasClass('active')) return;
-        
+
         const newUnit = $(this).data('unit');
         const oldUnit = currentUnit;
-        
+
         $('.unit-btn').removeClass('active');
         $(this).addClass('active');
-        
+
         // 입력 필드 단위 변환
         $('.weight-input').each(function() {
             const weight = $(this).val();
@@ -96,11 +96,11 @@ $(document).ready(function() {
                 $(this).val(convertWeight(weight, oldUnit, newUnit));
             }
         });
-        
+
         currentUnit = newUnit;
         updatePlaceholders();
         updateUnitDisplay();
-        
+
         // 페이지별 추가 업데이트 함수 호출
         if (typeof updateResults === 'function') {
             updateResults();
@@ -139,23 +139,24 @@ function initSidebarNavigation() {
             </div>
             <div class="sidebar-content">
                 <div class="nav-group">
-                    <div class="nav-group-title">PR</div>
-                    <a href="/weightlifting/" class="sidebar-nav-item">보조운동·역도 상관관계</a>
-                    <a href="/1rm/" class="sidebar-nav-item">1RM</a>
+                    <div class="nav-group-title">Strength</div>
+                    <a href="/weightlifting/" class="sidebar-nav-item">웨이트리프팅 동작 상관관계</a>
+                    <a href="/1rm/" class="sidebar-nav-item">NSCA 기반 1RM 최대중량</a>
                 </div>
                 <div class="nav-group">
-                    <div class="nav-group-title">1lb = 0.453592kg</div>
-                    <a href="/convert/" class="sidebar-nav-item">파운드 킬로 변환기</a>
-                    <a href="/plates/" class="sidebar-nav-item">바벨 플레이트 계산기</a>
+                    <div class="nav-group-title">Convert</div>
+                    <a href="/convert/" class="sidebar-nav-item">LB / KG Converter</a>
+                    <a href="/plates/" class="sidebar-nav-item">Plate Calculator</a>
                 </div>
                 <div class="nav-group">
-                    <div class="nav-group-title">아카이브</div>
+                    <div class="nav-group-title">Archive</div>
                     <a href="/open/" class="sidebar-nav-item">CrossFit Open</a>
-                    <a href="/records/" class="sidebar-nav-item">역도 세계 기록</a>
+                    <a href="/hero-wod/" class="sidebar-nav-item">Hero & Tribute Workouts</a>
+                    <a href="/records/" class="sidebar-nav-item">Weightlifting World Record</a>
                 </div>
                 <div class="nav-group">
-                    <div class="nav-group-title">도구</div>
-                    <a href="/timer/" class="sidebar-nav-item">크로스핏 타이머</a>
+                    <div class="nav-group-title">Tools</div>
+                    <a href="/timer/" class="sidebar-nav-item">Timer</a>
                     <a href="/random-wod/" class="sidebar-nav-item">Random WOD</a>
                 </div>
                 <nav class="sidebar-secondary" aria-label="Secondary">
@@ -168,10 +169,10 @@ function initSidebarNavigation() {
             </div>
         </nav>
     `;
-    
+
     // 페이지에 사이드바 추가
     document.body.insertAdjacentHTML('beforeend', sidebarHTML);
-    
+
     // 헤더에 햄버거 버튼 및 모바일 제목 추가
     const headerContent = document.querySelector('.header-content');
     if (headerContent) {
@@ -190,20 +191,20 @@ function initSidebarNavigation() {
         hamburgerButton.setAttribute('aria-label', '메뉴 열기');
         headerContent.appendChild(hamburgerButton);
     }
-    
+
     // 현재 페이지에 맞는 active 상태 설정
     setActiveSidebarItem();
-    
+
     // 이벤트 리스너 등록
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     const sidebarClose = document.getElementById('sidebarClose');
     const sidebarNav = document.getElementById('sidebarNav');
-    
+
     if (hamburgerMenu) {
         hamburgerMenu.addEventListener('click', toggleSidebar);
     }
-    
+
     // ESC 키로 사이드바 닫기
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && sidebarNav && sidebarNav.classList.contains('open')) {
@@ -242,11 +243,11 @@ function closeSidebar() {
 function setActiveSidebarItem() {
     const currentPath = window.location.pathname;
     const sidebarItems = document.querySelectorAll('.sidebar-nav-item');
-    
+
     sidebarItems.forEach(item => {
         const href = item.getAttribute('href');
         let isActive = false;
-        
+
         // 정확한 경로 매칭
         if (currentPath === '/' || currentPath === '/index.html') {
             isActive = (href === '/');
@@ -254,14 +255,14 @@ function setActiveSidebarItem() {
             // 경로 정규화 (끝의 슬래시 제거, index.html 제거)
             const normalizedCurrent = currentPath.replace(/\/$/, '').replace('/index.html', '');
             const normalizedHref = href.replace(/\/$/, '');
-            
+
             isActive = normalizedCurrent === normalizedHref;
         }
-        
+
         if (isActive) {
             item.classList.add('active');
         } else {
             item.classList.remove('active');
         }
     });
-} 
+}

@@ -1,3 +1,51 @@
+/* 검색 */
+.search-filter-area {
+    padding: 16px 0 0;
+}
+
+.search-box {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 1px solid var(--border-medium);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+    border-color: var(--accent-primary);
+}
+
+.search-box input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 43%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+}
+
+.search-count {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    padding: 8px 0 0;
+}
+
 /* 탭 토글 */
 .open-toggle {
     display: flex;

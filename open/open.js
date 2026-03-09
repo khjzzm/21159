@@ -15,17 +15,9 @@ $(document).ready(function() {
 
     // 연도 필터 기능 (select box)
     $('#year-select').change(function() {
+        filterWorkouts();
+
         const selectedYear = $(this).val();
-        
-        // 워크아웃 표시/숨김
-        if (selectedYear === 'all') {
-            $('.workout-year').removeClass('hidden').show();
-        } else {
-            $('.workout-year').addClass('hidden').hide();
-            $(`.workout-year[data-year="${selectedYear}"]`).removeClass('hidden').show();
-        }
-        
-        // 스크롤을 워크아웃 목록으로 이동
         if (selectedYear !== 'all') {
             $('html, body').animate({
                 scrollTop: $('.workouts-container').offset().top - 100
@@ -79,18 +71,55 @@ $(document).ready(function() {
         }
     });
     
-    // 검색 기능 (향후 추가 가능)
-    function searchWorkouts(searchTerm) {
-        const term = searchTerm.toLowerCase();
-        $('.workout-card').each(function() {
-            const cardText = $(this).text().toLowerCase();
-            if (cardText.includes(term)) {
-                $(this).show();
+    // 검색 + 연도 필터 통합
+    function filterWorkouts() {
+        const selectedYear = $('#year-select').val();
+        const term = ($('#search-input').val() || '').toLowerCase().trim();
+        let visibleCount = 0;
+        const totalCount = $('.workout-card').length;
+
+        $('.workout-year').each(function() {
+            const $year = $(this);
+            const year = $year.data('year').toString();
+            const yearMatch = selectedYear === 'all' || year === selectedYear;
+
+            if (!yearMatch) {
+                $year.addClass('hidden').hide();
+                return;
+            }
+
+            let yearHasVisible = false;
+            $year.find('.workout-card').each(function() {
+                const $card = $(this);
+                if (!term || $card.text().toLowerCase().indexOf(term) !== -1) {
+                    $card.show();
+                    yearHasVisible = true;
+                    visibleCount++;
+                } else {
+                    $card.hide();
+                }
+            });
+
+            if (yearHasVisible) {
+                $year.removeClass('hidden').show();
             } else {
-                $(this).hide();
+                $year.addClass('hidden').hide();
             }
         });
+
+        if (term) {
+            $('#search-count').text(visibleCount + ' / ' + totalCount + ' workouts');
+        } else {
+            $('#search-count').text('');
+        }
     }
+
+    // 검색 입력 이벤트
+    var searchTimer;
+    $('#search-input').on('input', function() {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(filterWorkouts, 200);
+    });
     
     // 반응형 체크
     function checkMobile() {

@@ -96,6 +96,54 @@
 /* =========================
    히어로 섹션
 ========================= */
+/* 배경 흘러가는 텍스트 */
+.ticker-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0.07;
+}
+
+.ticker-row {
+    display: inline-flex;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    width: max-content;
+}
+
+.ticker-row span {
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.ticker-row-1 { animation: ticker-left 60s linear infinite; }
+.ticker-row-2 { animation: ticker-right 55s linear infinite; }
+.ticker-row-3 { animation: ticker-left 65s linear infinite; }
+.ticker-row-4 { animation: ticker-right 58s linear infinite; }
+
+@keyframes ticker-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes ticker-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
 .hero-section {
     background: #121417;
 }
