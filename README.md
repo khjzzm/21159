@@ -45,7 +45,7 @@
 - RX 기준 무게 및 동작 표기
 - 더블 클릭으로 워크아웃 내용 클립보드 복사
 
-### 🥇 Weightlifting World Record
+### 🥇 Weightlifting Record
 - IWF 남녀 역도 세계 기록 현황 완전 수록
 - 체급별 상세 정보: 남자 61kg부터 +109kg, 여자 45kg부터 +87kg 모든 체급
 - 인상(Snatch), 용상(Clean & Jerk), 합계(Total) 3개 부문 완전 분리
@@ -157,7 +157,7 @@ git clone https://github.com/khjzzm/21159.git
 │   ├── hero-wod.js
 │   ├── hero-wod.css
 │   └── hero_data.js
-├── weightlifting-world-record/  # Weightlifting World Record
+├── weightlifting-record/  # Weightlifting Record
 │   ├── index.html
 │   ├── records.js
 │   └── records.css

@@ -149,7 +149,7 @@ function initSidebarNavigation() {
                     <div class="nav-group-title">Archive</div>
                     <a href="/crossfit-wod/" class="sidebar-nav-item">CrossFit Open</a>
                     <a href="/hero-wod/" class="sidebar-nav-item">Hero & Tribute Workouts</a>
-                    <a href="/weightlifting-world-record/" class="sidebar-nav-item">Weightlifting World Record</a>
+                    <a href="/weightlifting-record/" class="sidebar-nav-item">Weightlifting Record</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">Tools</div>

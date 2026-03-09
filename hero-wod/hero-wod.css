@@ -11,9 +11,41 @@
     background: var(--bg-primary);
 }
 
-.search-count {
-    text-align: right;
+.search-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 8px 4px 0;
+    gap: 8px;
+}
+
+.sort-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.sort-btn {
+    padding: 4px 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+.sort-btn:hover:not(.active) {
+    color: var(--text-secondary);
+    border-color: var(--text-secondary);
+}
+
+.sort-btn.active {
+    background: var(--accent-primary);
+    color: #1a1a1a;
+    border-color: var(--accent-primary);
 }
 
 /* WOD Grid */
@@ -158,6 +190,17 @@
 
     .search-area {
         top: 48px;
+    }
+
+    .search-toolbar {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 6px;
+    }
+
+    .sort-btn {
+        padding: 3px 8px;
+        font-size: 11px;
     }
 
     .wod-name {

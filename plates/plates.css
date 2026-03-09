@@ -1,122 +1,32 @@
-/* 하단 고정 버튼에 가려지지 않도록 여백 확보 */
+/* =========================
+   Plate Calculator
+========================= */
+
+/* 하단 고정 버튼 여백 */
 .container {
     padding-bottom: 64px;
 }
 
-/* 바벨 선택 영역 */
-.barbell-selector {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 6px;
-    max-width: 600px;         
-    margin: 0 auto 6px auto;
-    border-radius: 12px;      
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    flex-wrap: wrap;
-    min-height: unset;        
-}
-
-/* 바벨 그룹 컨테이너 */
-.barbell-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 12px;
-    background: var(--bg-secondary);
-    border-radius: 12px;
-    border: 1px solid var(--border-light);
-}
-
-/* 바벨 라벨 스타일 */
-.barbell-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-align: center;
-    color: var(--text-secondary);
-    margin-bottom: 2px;
-}
-
-/* 여자 그룹 라벨도 기본 색상으로 변경 */
-.female-group .barbell-label {
-    color: var(--text-secondary);
-}
-
-/* 바벨 버튼 컨테이너 */
-.barbell-buttons {
-    display: flex;
-    gap: 4px;
-}
-
-/* 바벨 선택 버튼 스타일 수정 */
-.barbell-btn {
-    flex: 1;
-    min-width: 0;
-    height: 36px;             
-    padding: 0 10px;          
-    border: 1px solid transparent;
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
-    font-size: 13px;   
-    font-weight: 600;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.3;
-    letter-spacing: -0.2px;
-    cursor: pointer;
-    user-select: none;
-    white-space: normal;
-    word-break: keep-all;
-    gap: 2px;
-    outline: none;
-    transition:
-        background 0.18s,
-        color 0.18s,
-        border 0.18s,
-        box-shadow 0.18s,
-        transform 0.12s;
-}
-
-.barbell-btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-}
-
-/* 선택된 버튼 스타일 */
-.barbell-btn.active {
-    background: var(--accent-primary);
-    color: #1a1a1a;
-    border: 2px solid var(--accent-primary);
-    z-index: 1;
-}
-
-.barbell-btn:not(.active):hover {
-    background: var(--bg-quaternary);
-    color: var(--accent-primary);
-    border-color: var(--border-light);
-    box-shadow: 0 1px 4px rgba(49,130,246,0.06);
-}
-
-/* 총 무게 표시 스타일 수정 */
+/* =========================
+   총 무게 표시
+========================= */
 .total-weight {
     text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    grid-column: 1 / -1; /* 그리드 전체 너비 사용 */
+    font-size: 40px;
+    font-weight: 800;
+    color: #f9fafb;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
 }
 
 .weight-separator {
-    margin: 0 8px;
-    color: var(--text-secondary);
+    margin: 0 12px;
+    color: var(--text-tertiary);
 }
 
-/* 플레이트 계산 영역 수정 */
+/* =========================
+   바벨 시각화
+========================= */
 .plates-calculator {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -125,7 +35,6 @@
     align-items: center;
     width: 100%;
     overflow: visible;
-    margin-bottom: 16px;
 }
 
 .plates-side {
@@ -133,10 +42,9 @@
     height: 120px;
     align-items: center;
     min-width: 0;
-    overflow-x: auto;    /* 가로 스크롤 허용 */
+    overflow-x: auto;
     overflow-y: visible;
     flex-shrink: 0;
-    width: auto;
 }
 
 .plates-side.left {
@@ -147,7 +55,7 @@
     justify-content: flex-start;
 }
 
-/* 플레이트 스타일 - 더 얇게 */
+/* 개별 플레이트 */
 .plate {
     height: 120px;
     position: relative;
@@ -160,26 +68,41 @@
     opacity: 0.8;
 }
 
-/* 무게별 플레이트 두께 및 색상 */
-.plate.red      { background: #e60012; width: 15px; border: 1px solid #b71c1c; } /* 25kg */
-.plate.blue     { background: #0066cc; width: 12px; border: 1px solid #0d47a1; } /* 20kg */
-.plate.yellow   { background: #ffd700; width: 10px; border: 1px solid #bfa100; } /* 15kg */
-.plate.green    { background: #00a650; width: 8px;  border: 1px solid #145a32; } /* 10kg */
-.plate.white    { background: #ffffff; width: 6px;  border: 1px solid #bbb; }    /* 5kg */
-.plate.black    { background: #222;    width: 4px;  border: 1px solid #444; }    /* 2.5kg */
-.plate.chrome   { background: linear-gradient(90deg, #e0e0e0 0%, #b0b0b0 100%); width: 3px; border: 1px solid #aaa; } /* 1.25kg, 0.5kg, 0.25kg */
-
-/* 무게 표시(숫자)만 안 보이게 */
 .plate::after {
     color: transparent !important;
 }
 
-.plate.white::after,
-.plate.white-small::after {
-    color: var(--text-primary);
+/* KG 플레이트 색상 */
+.plate.red      { background: #e60012; width: 15px; border: 1px solid #b71c1c; }
+.plate.blue     { background: #0066cc; width: 12px; border: 1px solid #0d47a1; }
+.plate.yellow   { background: #ffd700; width: 10px; border: 1px solid #bfa100; }
+.plate.green    { background: #00a650; width: 8px;  border: 1px solid #145a32; }
+.plate.white    { background: #ffffff; width: 6px;  border: 1px solid #bbb; }
+.plate.black    { background: #222;    width: 4px;  border: 1px solid #444; }
+.plate.chrome   { background: linear-gradient(90deg, #e0e0e0 0%, #b0b0b0 100%); width: 3px; border: 1px solid #aaa; }
+
+/* LB 플레이트 (검정 계열) */
+.plate.black-45 { background: #212529; width: 18px; border: 1px solid #495057; }
+.plate.black-35 { background: #212529; width: 15px; border: 1px solid #495057; }
+.plate.black-25 { background: #212529; width: 12px; border: 1px solid #495057; }
+.plate.black-15 { background: #212529; width: 9px;  border: 1px solid #495057; }
+.plate.black-10 { background: #212529; width: 7px;  border: 1px solid #495057; }
+.plate.black-5  { background: #212529; width: 4px;  border: 1px solid #495057; }
+
+/* 조임쇠 플레이트 */
+.plate.collar-plate {
+    background: #bdbdbd;
+    border: 2px dashed #888;
+    width: 8px;
 }
 
-/* 바벨 이미지 스타일 수정 */
+/* =========================
+   바벨 바
+========================= */
+.barbell-display {
+    text-align: center;
+}
+
 .barbell-image {
     position: relative;
     background: #666;
@@ -193,20 +116,44 @@
 .barbell-image.male {
     width: 300px;
     height: 12px;
-    background: linear-gradient(90deg, #e0e0e0 0%, #b0b0b0 100%); /* 은색 그라데이션 */
+    background: linear-gradient(90deg, #e0e0e0 0%, #b0b0b0 100%);
     border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(160,160,160,0.10);
+    box-shadow: 0 2px 8px rgba(160, 160, 160, 0.10);
 }
 
 .barbell-image.female {
     width: 300px;
     height: 10px;
-    background: linear-gradient(90deg, #ffb6c1 0%, #ff69b4 100%); /* 핑크 그라데이션 */
+    background: linear-gradient(90deg, #ffb6c1 0%, #ff69b4 100%);
     border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(255,105,180,0.10);
+    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.10);
 }
 
-/* 조임쇠 스타일 수정 */
+/* 바벨 너링 */
+.barbell-image::before,
+.barbell-image::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(90deg,
+        #666 1px, transparent 1px,
+        transparent 3px, #666 3px
+    );
+    background-size: 4px 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.barbell-image.male::before,
+.barbell-image.male::after {
+    opacity: 1;
+}
+
+.barbell-image::before { left: 50px; }
+.barbell-image::after { right: 50px; }
+
+/* 조임쇠 */
 .collar {
     position: absolute;
     width: 20px;
@@ -215,75 +162,144 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-    transition: all 0.3s ease; /* 부드러운 전환 효과 추가 */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0.85;
 }
 
-.collar.left {
-    left: 20px;
-}
-
-.collar.right {
-    right: 20px;
-}
-
-/* 바벨 knurling(옹이) 스타일 수정 */
-.barbell-image::before,
-.barbell-image::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        #666 1px, transparent 1px,
-        transparent 3px, #666 3px
-    );
-    background-size: 4px 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease; /* 부드러운 전환 효과 추가 */
-}
-
-.barbell-image.male::before,
-.barbell-image.male::after {
+.collar:hover {
     opacity: 1;
+    box-shadow: 0 0 0 2px #e0fd53;
 }
 
-.barbell-image::before {
-    left: 50px;
+.collar.left  { left: 20px; }
+.collar.right { right: 20px; }
+
+/* =========================
+   바벨 선택기 (플랫 버튼)
+========================= */
+.barbell-selector {
+    display: flex;
+    gap: 8px;
+    max-width: 600px;
+    margin: 0 auto 16px;
 }
 
-.barbell-image::after {
-    right: 50px;
+.barbell-btn {
+    flex: 1;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 플레이트 선택 영역 수정 */
+.barbell-btn:active {
+    transform: scale(0.97);
+}
+
+.barbell-btn.active {
+    background: var(--accent-primary);
+    color: #1a1a1a;
+    border-color: var(--accent-primary);
+}
+
+.barbell-btn:not(.active):hover {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* =========================
+   구분선
+========================= */
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e0fd53, transparent);
+    max-width: 600px;
+    margin: 8px auto 20px;
+}
+
+/* =========================
+   플레이트 선택 영역
+========================= */
 .plate-selector {
-    width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 0; /* 패딩 제거 */
-    background: none; /* 배경 제거 */
-    border-radius: 0; /* 테두리 둥글기 제거 */
-    box-shadow: none; /* 그림자 제거 */
 }
 
-/* 플레이트 버튼 컨테이너 수정 */
-.plate-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    max-width: 1200px;
-    margin: 12px auto;
+/* KG/LB 토글 */
+.plate-unit-toggle {
+    display: flex;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 4px;
+    max-width: 160px;
+    margin: 0 auto 20px;
+    border: 1px solid var(--border-light);
 }
 
-/* kg/lb 열 컨테이너 */
+.plate-toggle-btn {
+    flex: 1;
+    padding: 8px 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+}
+
+.plate-toggle-btn.active {
+    background: var(--accent-primary);
+    color: #1a1a1a;
+}
+
+.plate-toggle-btn:not(.active):hover {
+    color: var(--text-primary);
+}
+
+/* 플레이트 버튼 그리드 */
 .kg-plates,
 .lb-plates {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
-/* 버튼 색상도 동일하게 */
+.plate-btn {
+    height: 52px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+    touch-action: manipulation;
+}
+
+.plate-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+.plate-btn:active {
+    transform: scale(0.97);
+}
+
+/* KG 플레이트 버튼 색상 */
 .kg-plates .plate-btn.red    { background: #e60012; color: #fff; }
 .kg-plates .plate-btn.blue   { background: #0066cc; color: #fff; }
 .kg-plates .plate-btn.yellow { background: #ffd700; color: #222; }
@@ -292,52 +308,60 @@
 .kg-plates .plate-btn.black  { background: #222; color: #fff; }
 .kg-plates .plate-btn.chrome { background: linear-gradient(90deg, #e0e0e0 0%, #b0b0b0 100%); color: #222; border: 1px solid #aaa; }
 
-/* kg 작은 플레이트도 동일한 색상 사용 */
-.kg-plates .plate-btn.red-small { background: #d32f2f; }
-.kg-plates .plate-btn.blue-small { background: #1976d2; }
-.kg-plates .plate-btn.green-small { background: #388e3c; }
-.kg-plates .plate-btn.white-small { 
-    background: #f5f5f5;
-    color: #212529;
-    border: 1px solid #e0e0e0;
-}
-.kg-plates .plate-btn.white-smallest {
-    background: #f5f5f5;
-    color: #212529;
-    border: 1px solid #e0e0e0;
-}
-
-/* lb 플레이트는 모두 검정색 계열로 */
+/* LB 플레이트 버튼 (검정) */
 .lb-plates .plate-btn {
     background: #212529;
     border: 1px solid #495057;
-    color: white; /* 글자색 흰색으로 변경 */
+    color: #fff;
 }
 
-/* 호버 효과 */
-.plate-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+/* 조임쇠 버튼 */
+.plate-btn.collar-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 2px dashed var(--border-light);
 }
 
-/* 반응형 스타일 */
-@media (max-width: 1200px) {
-    .plate {
-        height: 160px;
+/* =========================
+   리셋 버튼 (하단 고정)
+========================= */
+.reset-btn-fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    z-index: 100;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-light);
+}
+
+.reset-btn-fixed .reset-btn {
+    width: 100%;
+    height: 52px;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    border: none;
+    border-radius: 0;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.reset-btn-fixed .reset-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+}
+
+/* =========================
+   반응형 - 768px
+========================= */
+@media (max-width: 768px) {
+    .total-weight {
+        font-size: 32px;
     }
 
-    .plate.red { width: 30px; }
-    .plate.blue { width: 25px; }
-    .plate.yellow { width: 20px; }
-    .plate.green { width: 16px; }
-    .plate.white { width: 12px; }
-    .plate.red-small { width: 10px; }
-    .plate.blue-small { width: 8px; }
-    .plate.green-small { width: 6px; }
-    .plate.white-small { width: 5px; }
-}
-
-@media (max-width: 768px) {
     .plates-calculator {
         gap: 5px;
     }
@@ -350,20 +374,23 @@
         height: 120px;
     }
 
-    .plate.red { width: 25px; }
-    .plate.blue { width: 20px; }
+    .plate.red    { width: 25px; }
+    .plate.blue   { width: 20px; }
     .plate.yellow { width: 16px; }
-    .plate.green { width: 12px; }
-    .plate.white { width: 10px; }
-    .plate.red-small { width: 8px; }
-    .plate.blue-small { width: 7px; }
-    .plate.green-small { width: 5px; }
-    .plate.white-small { width: 4px; }
+    .plate.green  { width: 12px; }
+    .plate.white  { width: 10px; }
+    .plate.chrome { width: 5px; }
 
-    /* 바벨 크기도 조정 */
+    .plate.black-45 { width: 25px; }
+    .plate.black-35 { width: 22px; }
+    .plate.black-25 { width: 18px; }
+    .plate.black-15 { width: 15px; }
+    .plate.black-10 { width: 12px; }
+    .plate.black-5  { width: 8px; }
+
     .barbell-image.male,
     .barbell-image.female {
-        width: 200px; /* 태블릿에서 고정 길이로 변경 */
+        width: 200px;
     }
 
     .collar {
@@ -371,64 +398,38 @@
         height: 25px;
     }
 
-    .collar.left {
-        left: 40px;
-    }
-
-    .collar.right {
-        right: 40px;
-    }
-
-    .plate-selector {
-        padding: 0;
-    }
-    
-    .plate-buttons {
-        gap: 20px;
-    }
-    
-    .plate-btn {
-        height: 48px;
-        font-size: 16px;
-        padding: 0 16px;
-    }
-    
-    .kg-plates,
-    .lb-plates {
-        gap: 10px;
-    }
-
-    .plate.black-45 { width: 25px; }
-    .plate.black-35 { width: 22px; }
-    .plate.black-25 { width: 18px; }
-    .plate.black-15 { width: 15px; }
-    .plate.black-10 { width: 12px; }
-    .plate.black-5 { width: 8px; }
+    .collar.left  { left: 40px; }
+    .collar.right { right: 40px; }
 
     .barbell-selector {
-        max-width: 98vw;
-        border-radius: 8px;
-        gap: 12px;
-        flex-direction: column;
+        flex-wrap: wrap;
     }
-    
-    .barbell-group {
-        padding: 12px;
-    }
-    
-    .barbell-buttons {
-        gap: 4px;
-    }
-    
+
     .barbell-btn {
-        height: 36px;
+        flex: 1 1 calc(50% - 4px);
+        height: 40px;
         font-size: 13px;
-        padding: 0 8px;
-        border-radius: 6px;
+    }
+
+    .plate-btn {
+        height: 46px;
+        font-size: 16px;
+    }
+
+    .reset-btn-fixed .reset-btn {
+        height: 48px;
+        font-size: var(--font-size-base);
     }
 }
 
+/* =========================
+   반응형 - 480px
+========================= */
 @media (max-width: 480px) {
+    .total-weight {
+        font-size: 28px;
+    }
+
     .plates-side {
         height: 80px;
     }
@@ -437,24 +438,27 @@
         height: 60px;
     }
 
-    .plate.red { width: 20px; }
-    .plate.blue { width: 16px; }
+    .plate.red    { width: 20px; }
+    .plate.blue   { width: 16px; }
     .plate.yellow { width: 12px; }
-    .plate.green { width: 10px; }
-    .plate.white { width: 8px; }
-    .plate.red-small { width: 6px; }
-    .plate.blue-small { width: 5px; }
-    .plate.green-small { width: 4px; }
-    .plate.white-small { width: 3px; }
+    .plate.green  { width: 10px; }
+    .plate.white  { width: 8px; }
+    .plate.chrome { width: 4px; }
 
-    /* 바벨 크기 더 축소 */
+    .plate.black-45 { width: 20px; }
+    .plate.black-35 { width: 18px; }
+    .plate.black-25 { width: 15px; }
+    .plate.black-15 { width: 12px; }
+    .plate.black-10 { width: 10px; }
+    .plate.black-5  { width: 6px; }
+
     .barbell-image.male {
-        width: 140px; /* 모바일에서 더 짧게 */
+        width: 140px;
         height: 8px;
     }
-    
+
     .barbell-image.female {
-        width: 140px; /* 모바일에서 더 짧게 */
+        width: 140px;
         height: 7px;
     }
 
@@ -463,97 +467,40 @@
         height: 16px;
     }
 
-    .collar.left {
-        left: 25px;
-    }
+    .collar.left  { left: 25px; }
+    .collar.right { right: 25px; }
 
-    .collar.right {
-        right: 25px;
-    }
-
-    /* 무게 표시 글자 크기 조정 */
-    .plate::after {
-        font-size: 10px;
-    }
-
-    .plate-selector {
-        padding: 0;
-    }
-    
-    .plate-buttons {
-        gap: 12px;
-    }
-    
-    .plate-btn {
-        height: 32px;
+    .barbell-btn {
+        height: 36px;
         font-size: 12px;
-        padding: 0 6px;
     }
-    
+
+    .plate-btn {
+        height: 40px;
+        font-size: 14px;
+    }
+
     .kg-plates,
     .lb-plates {
         gap: 8px;
     }
 
-    .total-weight {
-        font-size: 20px;
-        margin-bottom: 16px;
-    }
-
-    .plates-title {
-        font-size: 16px;
-        margin-bottom: 8px;
-    }
-
-    .plate.black-45 { width: 20px; }
-    .plate.black-35 { width: 18px; }
-    .plate.black-25 { width: 15px; }
-    .plate.black-15 { width: 12px; }
-    .plate.black-10 { width: 10px; }
-    .plate.black-5 { width: 6px; }
-
-    .barbell-selector {
-        gap: 8px;
-    }
-    
-    .barbell-group {
-        padding: 10px;
-    }
-    
-    .barbell-btn {
-        height: 32px;
-        font-size: 12px;
-        padding: 0 6px;
+    .reset-btn-fixed .reset-btn {
+        height: 42px;
+        font-size: var(--font-size-sm);
     }
 }
 
-/* 더 작은 모바일 화면 대응 */
+/* =========================
+   반응형 - 360px
+========================= */
 @media (max-width: 360px) {
+    .total-weight {
+        font-size: 24px;
+    }
+
     .plates-calculator {
         grid-template-columns: 60px auto 60px;
-    }
-
-    .barbell-image.male {
-        width: 120px;
-        height: 6px;
-    }
-    
-    .barbell-image.female {
-        width: 120px;
-        height: 5px;
-    }
-
-    .collar {
-        width: 8px;
-        height: 14px;
-    }
-
-    .collar.left {
-        left: 20px;
-    }
-
-    .collar.right {
-        right: 20px;
     }
 
     .plates-side {
@@ -564,275 +511,31 @@
         height: 50px;
     }
 
-    .total-weight {
-        font-size: 18px;
-        margin-bottom: 12px;
+    .barbell-image.male {
+        width: 120px;
+        height: 6px;
     }
 
-    .plate-selector {
-        padding: 0;
-    }
-    
-    .plate-buttons {
-        gap: 8px;
-    }
-    
-    .plate-btn {
-        height: 32px;
-        font-size: 12px;
-    }
-    
-    .kg-plates,
-    .lb-plates {
-        gap: 4px;
-    }
-}
-
-/* 바벨 디스플레이 수정 */
-.barbell-display {
-    text-align: center;
-}
-
-/* 컨트롤 섹션 스타일 추가 */
-.controls-section {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-/* 바벨 선택 영역 수정 */
-.barbell-selector {
-    flex: 2;
-    display: flex;
-    gap: 8px;
-}
-
-/* 반응형 스타일 추가 */
-@media (max-width: 768px) {
-    .controls-section {
-        flex-direction: column;
-        gap: 8px;
+    .barbell-image.female {
+        width: 120px;
+        height: 5px;
     }
 
-    .barbell-selector {
-        width: 100%;
+    .collar {
+        width: 8px;
+        height: 14px;
     }
-}
 
-@media (max-width: 480px) {
-    .barbell-btn {
-        padding: 8px;
-        font-size: 14px;
-    }
-}
+    .collar.left  { left: 20px; }
+    .collar.right { right: 20px; }
 
-/* lb 플레이트 스타일 추가 */
-.plate.black-45 { /* 45lb */
-    background: #212529;
-    width: 18px;
-    border: 1px solid #495057;
-}
-
-.plate.black-35 { /* 35lb */
-    background: #212529;
-    width: 15px;
-    border: 1px solid #495057;
-}
-
-.plate.black-25 { /* 25lb */
-    background: #212529;
-    width: 12px;
-    border: 1px solid #495057;
-}
-
-.plate.black-15 { /* 15lb */
-    background: #212529;
-    width: 9px;
-    border: 1px solid #495057;
-}
-
-.plate.black-10 { /* 10lb */
-    background: #212529;
-    width: 7px;
-    border: 1px solid #495057;
-}
-
-.plate.black-5 { /* 5lb */
-    background: #212529;
-    width: 4px;
-    border: 1px solid #495057;
-}
-
-/* lb 플레이트 무게 표시 색상 */
-.plate[class*="black-"]::after {
-    color: white;
-}
-
-/* 반응형에서 lb 플레이트 크기 조정 */
-@media (max-width: 768px) {
-    .plate.black-45 { width: 25px; }
-    .plate.black-35 { width: 22px; }
-    .plate.black-25 { width: 18px; }
-    .plate.black-15 { width: 15px; }
-    .plate.black-10 { width: 12px; }
-    .plate.black-5 { width: 8px; }
-}
-
-@media (max-width: 480px) {
-    .plate.black-45 { width: 20px; }
-    .plate.black-35 { width: 18px; }
-    .plate.black-25 { width: 15px; }
-    .plate.black-15 { width: 12px; }
-    .plate.black-10 { width: 10px; }
-    .plate.black-5 { width: 6px; }
-}
-
-/* PC 환경에서 플레이트 버튼 크기 증가 */
-.plate-btn {
-    height: 60px; /* 80px에서 60px로 줄임 */
-    font-size: 22px; /* 28px에서 22px로 줄임 */
-    border-radius: 12px;
-    padding: 0 20px; /* 24px에서 20px로 줄임 */
-    font-weight: bold;
-}
-
-/* 태블릿 이하 크기에서는 기존 크기로 */
-@media (max-width: 768px) {
-    .plate-btn {
-        height: 48px;
-        font-size: 16px;
-        padding: 0 16px;
-    }
-}
-
-@media (max-width: 480px) {
     .plate-btn {
         height: 36px;
         font-size: 13px;
-        padding: 0 12px;
+    }
+
+    .kg-plates,
+    .lb-plates {
+        gap: 6px;
     }
 }
-
-.reset-btn {
-    /* 필요하다면 강조색만 살짝 */
-    background: var(--bg-tertiary);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-light);
-    font-weight: 500;
-}
-.reset-btn:hover {
-    background: #e0fd53;
-    color: #1a1a1a;
-    border-color: #e0fd53;
-}
-
-.plate-btn.collar-btn {
-    background: #bdbdbd;
-    color: #333;
-    border: 2px dashed #888;
-}
-
-.plate.collar-plate {
-    background: #bdbdbd;
-    border: 2px dashed #888;
-    width: 8px;
-}
-
-.barbell-image .collar {
-    cursor: pointer;
-    opacity: 0.85;
-    transition: opacity 0.2s;
-}
-.barbell-image .collar:hover {
-    opacity: 1;
-    box-shadow: 0 0 0 2px #e0fd53;
-}
-
-/* 페이지 하단 고정 초기화 버튼 */
-.reset-btn-fixed {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    z-index: 100;
-    pointer-events: none; /* 버튼만 클릭 가능하게 */
-    background: var(--bg-secondary);
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.04);
-    border-top: 1.5px solid var(--border-light); /* 상단 구분선 추가 */
-}
-
-.reset-btn-fixed .reset-btn {
-    pointer-events: auto;
-    width: 100vw;
-    max-width: 100vw;
-    min-width: 0;
-    height: 56px;
-    font-size: var(--font-size-lg);
-    border-radius: 0;
-    box-shadow: none;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: none;
-    font-weight: bold;
-    transition: background 0.2s, color 0.2s;
-    margin: 0;
-    padding: 0;
-}
-
-.reset-btn-fixed .reset-btn:hover {
-    background: var(--bg-tertiary);
-    color: var(--accent-primary);
-}
-
-@media (max-width: 768px) {
-    .reset-btn-fixed .reset-btn {
-        height: 48px;
-        font-size: var(--font-size-base);
-    }
-}
-@media (max-width: 480px) {
-    .reset-btn-fixed .reset-btn {
-        height: 42px;
-        font-size: var(--font-size-sm);
-    }
-}
-
-.section-divider {
-    width: 100%;
-    max-width: 800px;
-    margin: 12px auto 12px auto;
-    border: none;
-    height: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 0 16px;
-}
-
-.section-divider::before {
-    content: "";
-    display: block;
-    width: 100%;
-    border-top: 2px dashed #fff;
-    opacity: 0.18;
-    border-top-style: dashed;
-    border-top-width: 2px;
-    border-top-color: #fff;
-    border-image: none;
-}
-
-
-.plate-btn, .plate-btn:active, .plate-btn:focus {
-    touch-action: manipulation;
-}
-
-/* 남자 바벨은 기본 스타일 유지 */
-.barbell-btn.male-barbell {
-    /* 기본 스타일 사용 */
-}
-

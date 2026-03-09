@@ -1,7 +1,7 @@
 {
   "name": "21-15-9",
   "short_name": "21-15-9",
-  "description": "CrossFit과 웨이트리프팅을 위한 종합 도구. 동작 상관관계, NSCA 1RM, 단위 변환, 플레이트 계산, 오픈 워크아웃, 히어로 WOD, 세계 기록, 타이머까지 한곳에서.",
+  "description": "CrossFit과 웨이트리프팅을 위한 종합 도구. 동작 상관관계, NSCA 1RM, 단위 변환, 플레이트 계산, 오픈 워크아웃, 히어로 WOD, 역도 기록, 타이머까지 한곳에서.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",
@@ -74,10 +74,10 @@
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "Weightlifting World Record",
-      "short_name": "세계기록",
-      "description": "IWF 남녀 역도 세계 기록 현황",
-      "url": "/weightlifting-world-record",
+      "name": "Weightlifting Record",
+      "short_name": "역도기록",
+      "description": "역도 한국기록, 동호인기록 현황",
+      "url": "/weightlifting-record",
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {

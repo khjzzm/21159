@@ -31,11 +31,10 @@ $(document).ready(function() {
         updateDisplay();
     });
 
-    // 단위 선택 이벤트 추가
-    $('.unit-btn').click(function() {
-        $('.unit-btn').removeClass('active');
+    // KG/LB 토글
+    $('.plate-toggle-btn').click(function() {
+        $('.plate-toggle-btn').removeClass('active');
         $(this).addClass('active');
-        
         const unit = $(this).data('unit');
         if (unit === 'kg') {
             $('.kg-plates').show();

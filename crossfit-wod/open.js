@@ -114,11 +114,135 @@ $(document).ready(function() {
         }
     }
 
+    // Autocomplete setup
+    var acKeywords = [];
+    var acSelectedIndex = -1;
+
+    function buildOpenKeywords() {
+        var kwSet = {};
+        // From movementData
+        movementData.forEach(function(item) {
+            kwSet[item.name] = true;
+        });
+        // Common CrossFit Open terms
+        var terms = [
+            'AMRAP', 'For Time', 'Ladder', 'Chipper',
+            'Thrusters', 'Deadlifts', 'Snatches', 'Cleans', 'Clean and Jerks',
+            'Double-unders', 'Toes-to-bars', 'Chest-to-bar pull-ups',
+            'Bar muscle-ups', 'Ring muscle-ups', 'Muscle-ups',
+            'Handstand push-ups', 'Handstand walk',
+            'Wall-ball shots', 'Wall walks', 'Box jumps',
+            'Overhead squats', 'Front squats', 'Back squats',
+            'Pull-ups', 'Push-ups', 'Burpees', 'Burpee box jump-overs',
+            'Rowing', 'Row', 'Ski erg', 'Bike',
+            'DB snatches', 'Dumbbell', 'Kettlebell',
+            'Rope climbs', 'Pistols', 'Lunges', 'Walking lunge',
+            'Shoulder-to-overhead', 'Ground-to-overhead',
+            'Calories', 'Shuttle runs'
+        ];
+        terms.forEach(function(t) { kwSet[t] = true; });
+        acKeywords = Object.keys(kwSet).sort();
+    }
+
+    function escapeHtmlAc(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function createOpenDropdown() {
+        var dd = $('<div class="search-autocomplete" id="search-autocomplete"></div>');
+        $('#search-input').parent().append(dd);
+    }
+
+    function showOpenAutocomplete(query) {
+        var dd = $('#search-autocomplete');
+        if (!query || query.length < 1) {
+            hideOpenAutocomplete();
+            return;
+        }
+        var q = query.toLowerCase();
+        var matches = acKeywords.filter(function(kw) {
+            return kw.toLowerCase().indexOf(q) !== -1;
+        }).slice(0, 8);
+
+        if (matches.length === 0) {
+            hideOpenAutocomplete();
+            return;
+        }
+
+        dd.empty();
+        matches.forEach(function(m) {
+            var idx = m.toLowerCase().indexOf(q);
+            var html = escapeHtmlAc(m.substring(0, idx)) +
+                '<mark>' + escapeHtmlAc(m.substring(idx, idx + q.length)) + '</mark>' +
+                escapeHtmlAc(m.substring(idx + q.length));
+            var $item = $('<div class="search-autocomplete-item">' + html + '</div>');
+            $item.on('mousedown', function(e) {
+                e.preventDefault();
+                $('#search-input').val(m);
+                hideOpenAutocomplete();
+                filterWorkouts();
+            });
+            dd.append($item);
+        });
+
+        dd.addClass('show');
+        $('#search-input').addClass('autocomplete-open');
+        acSelectedIndex = -1;
+    }
+
+    function hideOpenAutocomplete() {
+        $('#search-autocomplete').removeClass('show').empty();
+        $('#search-input').removeClass('autocomplete-open');
+        acSelectedIndex = -1;
+    }
+
+    buildOpenKeywords();
+    createOpenDropdown();
+
     // 검색 입력 이벤트
     var searchTimer;
     $('#search-input').on('input', function() {
+        showOpenAutocomplete($(this).val());
         clearTimeout(searchTimer);
         searchTimer = setTimeout(filterWorkouts, 200);
+    });
+
+    $('#search-input').on('keydown', function(e) {
+        var dd = $('#search-autocomplete');
+        if (!dd.hasClass('show')) return;
+        var items = dd.find('.search-autocomplete-item');
+        if (items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            acSelectedIndex = Math.min(acSelectedIndex + 1, items.length - 1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            acSelectedIndex = Math.max(acSelectedIndex - 1, -1);
+        } else if (e.key === 'Enter' && acSelectedIndex >= 0) {
+            e.preventDefault();
+            $('#search-input').val(items.eq(acSelectedIndex).text());
+            hideOpenAutocomplete();
+            filterWorkouts();
+            return;
+        } else if (e.key === 'Escape') {
+            hideOpenAutocomplete();
+            return;
+        } else {
+            return;
+        }
+
+        items.removeClass('selected');
+        if (acSelectedIndex >= 0) {
+            items.eq(acSelectedIndex).addClass('selected');
+            items[acSelectedIndex].scrollIntoView({ block: 'nearest' });
+        }
+    });
+
+    $('#search-input').on('blur', function() {
+        setTimeout(hideOpenAutocomplete, 150);
     });
     
     // 반응형 체크

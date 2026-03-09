@@ -1,4 +1,54 @@
-/* Filter Bar */
+/* =========================
+   Record Type Tabs
+========================= */
+.record-type-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 20px;
+    background: #2c2c2c;
+    border-radius: 10px;
+    padding: 4px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.record-type-btn {
+    flex: 1;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #8e8e93;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.record-type-btn.active {
+    background: #e0fd53;
+    color: #1a1a1a;
+}
+
+.record-type-btn:hover:not(.active) {
+    color: #ccc;
+}
+
+/* Record Type Sections */
+.record-type-section {
+    display: none;
+}
+
+.record-type-section.active {
+    display: block;
+}
+
+/* =========================
+   Filter Bar & Segment Control
+========================= */
 .filter-bar {
     display: flex;
     gap: 8px;
@@ -6,7 +56,6 @@
     margin-bottom: 20px;
 }
 
-/* Segment Control */
 .segment-control {
     display: flex;
     background: #2c2c2c;
@@ -37,11 +86,10 @@
     color: #1a1a1a;
 }
 
-.era-year {
-    display: none;
-}
 
-/* Records Section */
+/* =========================
+   Records Section
+========================= */
 .records-section {
     display: none;
 }
@@ -50,14 +98,9 @@
     display: block;
 }
 
-.records-section h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-}
-
-/* Table Styles - CF Games Leaderboard */
+/* =========================
+   Table Styles
+========================= */
 .table-container {
     overflow-x: auto;
     border-radius: 8px;
@@ -124,7 +167,7 @@
     background-color: #222;
 }
 
-/* 행 배경 - 미묘한 차이 */
+/* Row backgrounds */
 .snatch-row {
     background-color: transparent;
 }
@@ -137,7 +180,9 @@
     background-color: rgba(255, 255, 255, 0.04);
 }
 
-/* Cell Specific */
+/* =========================
+   Cell Styles
+========================= */
 .weight-class {
     background-color: #151515 !important;
     font-weight: 800;
@@ -151,11 +196,6 @@
 .lift-type {
     font-weight: 600;
     padding: 10px 14px !important;
-}
-
-.lift-type:before {
-    margin-right: 5px;
-    font-weight: bold;
 }
 
 .lift-snatch {
@@ -193,12 +233,12 @@
     color: #fff;
 }
 
-.country {
+.affiliation {
     font-weight: 400;
     color: #8e8e93;
 }
 
-.date {
+.birth-year {
     color: #6d6d6d;
     font-size: 12px;
     font-variant-numeric: tabular-nums;
@@ -209,18 +249,15 @@
     color: #6d6d6d;
 }
 
-/* Description */
-.description ul {
-    padding-left: 20px;
-    margin: 16px 0;
+.date {
+    color: #6d6d6d;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
 }
 
-.description li {
-    margin-bottom: 8px;
-    line-height: var(--line-height-relaxed);
-}
-
-/* Responsive */
+/* =========================
+   Responsive - 1024px
+========================= */
 @media (max-width: 1024px) {
     .records-table th,
     .records-table td {
@@ -228,6 +265,9 @@
     }
 }
 
+/* =========================
+   Responsive - 768px
+========================= */
 @media (max-width: 768px) {
     .filter-bar {
         flex-direction: column;
@@ -240,12 +280,9 @@
         font-size: 12px;
     }
 
-    .era-year {
-        display: inline;
-        font-size: 10px;
-        font-weight: 400;
-        color: #6d6d6d;
-        margin-left: 4px;
+    .record-type-btn {
+        padding: 8px 12px;
+        font-size: 13px;
     }
 
     .table-container {
@@ -259,11 +296,12 @@
         min-width: 0;
     }
 
-    /* 모바일에서 국가, 날짜 컬럼 숨김 */
-    .records-table th:nth-child(5),
-    .records-table th:nth-child(6),
-    .records-table td.country,
-    .records-table td.date {
+    /* Hide columns 5+ on mobile */
+    .records-table th:nth-child(n+5),
+    .records-table td.date,
+    .records-table td.affiliation,
+    .records-table td.birth-year,
+    .records-table td.competition {
         display: none;
     }
 
@@ -289,7 +327,19 @@
     }
 }
 
+/* =========================
+   Responsive - 480px
+========================= */
 @media (max-width: 480px) {
+    .record-type-tabs {
+        max-width: 100%;
+    }
+
+    .record-type-btn {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
     .segment-btn {
         padding: 6px 12px;
         font-size: 11px;
@@ -322,4 +372,3 @@
         word-break: keep-all;
     }
 }
-
