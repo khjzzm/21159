@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // 상태 관리
     let state = {
         barbellWeight: 0, // 초기값 0으로 변경
@@ -9,104 +9,117 @@ $(document).ready(function() {
     };
 
     // 바벨 선택 이벤트
-    $('.barbell-btn').click(function() {
-        // 조임쇠가 추가된 상태에서는 바벨 변경 불가
-        if (state.collarAdded) {
-            showToast('조임쇠를 빼고 다시 시도하세요.');
-            return;
-        }
-        $('.barbell-btn').removeClass('active');
-        $(this).addClass('active');
-        
-        state.barbellWeight = Number($(this).data('weight'));
-        state.barbellWeightKg = Number($(this).data('kg'));
-        
-        // 바벨 이미지 클래스 변경 - 45lb와 20kg는 male, 35lb와 15kg는 female
-        const weightLb = state.barbellWeight;
-        const isMale = (weightLb >= 44); // 44lb 이상이면 male (45lb, 44.09lb)
-        $('.barbell-image')
-            .removeClass('male female')
-            .addClass(isMale ? 'male' : 'female');
-        
-        updateDisplay();
+    document.querySelectorAll('.barbell-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            // 조임쇠가 추가된 상태에서는 바벨 변경 불가
+            if (state.collarAdded) {
+                showToast('조임쇠를 빼고 다시 시도하세요.');
+                return;
+            }
+            document.querySelectorAll('.barbell-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            state.barbellWeight = Number(this.dataset.weight);
+            state.barbellWeightKg = Number(this.dataset.kg);
+
+            // 바벨 이미지 클래스 변경 - 45lb와 20kg는 male, 35lb와 15kg는 female
+            const weightLb = state.barbellWeight;
+            const isMale = (weightLb >= 44); // 44lb 이상이면 male (45lb, 44.09lb)
+            var barbellImage = document.querySelector('.barbell-image');
+            barbellImage.classList.remove('male', 'female');
+            barbellImage.classList.add(isMale ? 'male' : 'female');
+
+            updateDisplay();
+        });
     });
 
     // KG/LB 토글
-    $('.plate-toggle-btn').click(function() {
-        $('.plate-toggle-btn').removeClass('active');
-        $(this).addClass('active');
-        const unit = $(this).data('unit');
-        if (unit === 'kg') {
-            $('.kg-plates').show();
-            $('.lb-plates').hide();
-        } else {
-            $('.kg-plates').hide();
-            $('.lb-plates').show();
-        }
+    document.querySelectorAll('.plate-toggle-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.plate-toggle-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
+            const unit = this.dataset.unit;
+            if (unit === 'kg') {
+                document.querySelectorAll('.kg-plates').forEach(function(el) { el.style.display = ''; });
+                document.querySelectorAll('.lb-plates').forEach(function(el) { el.style.display = 'none'; });
+            } else {
+                document.querySelectorAll('.kg-plates').forEach(function(el) { el.style.display = 'none'; });
+                document.querySelectorAll('.lb-plates').forEach(function(el) { el.style.display = ''; });
+            }
+        });
     });
 
 
     // 플레이트 추가 이벤트 수정
-    $('.plate-btn').click(function() {
-        // 바벨이 선택되지 않은 경우
-        if (state.barbellWeight === 0 || state.barbellWeightKg === 0) {
-            showToast('먼저 바벨을 선택하세요.');
-            return;
-        }
+    document.querySelectorAll('.plate-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            // 바벨이 선택되지 않은 경우
+            if (state.barbellWeight === 0 || state.barbellWeightKg === 0) {
+                showToast('먼저 바벨을 선택하세요.');
+                return;
+            }
 
-        const isCollar = $(this).data('collar');
-        if (state.collarAdded && !isCollar) {
-            showToast('조임쇠가 추가된 상태에서는 다른 플레이트를 추가할 수 없습니다.');
-            return;
-        }
-        if (isCollar && state.collarAdded) {
-            showToast('조임쇠는 한 번만 추가할 수 있습니다.');
-            return;
-        }
+            const isCollar = this.dataset.collar;
+            if (state.collarAdded && !isCollar) {
+                showToast('조임쇠가 추가된 상태에서는 다른 플레이트를 추가할 수 없습니다.');
+                return;
+            }
+            if (isCollar && state.collarAdded) {
+                showToast('조임쇠는 한 번만 추가할 수 있습니다.');
+                return;
+            }
 
-        const kg = $(this).data('kg');
-        const lb = $(this).data('lb');
-        let color = '';
-        if (isCollar) {
-            color = 'collar-plate';
-        } else if (kg) {
-            const classes = $(this).attr('class').split(' ');
-            color = classes.filter(c => c !== 'plate-btn' && c !== 'active' && c !== 'plate').join(' ');
-            if (!color) color = 'red';
-        } else {
-            color = `black-${lb}`;
-        }
-        const weight = kg || lb;
-        const isKg = !!kg;
-        const plateData = {
-            weight: weight,
-            kg: isKg ? weight : weight * 0.453592,
-            isKg: isKg,
-            color: color,
-            isCollar: !!isCollar
-        };
-        state.leftPlates.unshift(plateData);
-        state.rightPlates.unshift(plateData);
+            const kg = this.dataset.kg ? parseFloat(this.dataset.kg) : 0;
+            const lb = this.dataset.lb ? parseFloat(this.dataset.lb) : 0;
+            let color = '';
+            if (isCollar) {
+                color = 'collar-plate';
+            } else if (kg) {
+                const classes = this.getAttribute('class').split(' ');
+                color = classes.filter(c => c !== 'plate-btn' && c !== 'active' && c !== 'plate').join(' ');
+                if (!color) color = 'red';
+            } else {
+                color = `black-${lb}`;
+            }
+            const weight = kg || lb;
+            const isKg = !!kg;
+            const plateData = {
+                weight: weight,
+                kg: isKg ? weight : weight * 0.453592,
+                isKg: isKg,
+                color: color,
+                isCollar: !!isCollar
+            };
+            state.leftPlates.unshift(plateData);
+            state.rightPlates.unshift(plateData);
 
-        if (isCollar) {
-            state.collarAdded = true;
-            // 버튼 비활성화 코드를 제거하세요!
-            // $('.plate-btn').not('.collar-btn').prop('disabled', true);
-            // $('.collar-btn').prop('disabled', true);
-        }
-        updateDisplay();
+            if (isCollar) {
+                state.collarAdded = true;
+                // 버튼 비활성화 코드를 제거하세요!
+                // document.querySelectorAll('.plate-btn:not(.collar-btn)').forEach(function(el) { el.disabled = true; });
+                // document.querySelectorAll('.collar-btn').forEach(function(el) { el.disabled = true; });
+            }
+            updateDisplay();
+        });
     });
 
     // 플레이트 제거 이벤트
-    $(document).on('click', '.plate', function() {
-        const side = $(this).parent().hasClass('left') ? 'left' : 'right';
-        const index = $(this).index();
+    document.addEventListener('click', function(e) {
+        var plate = e.target.closest('.plate');
+        if (!plate) return;
+        var parent = plate.parentElement;
+        var side = parent.classList.contains('left') ? 'left' : 'right';
+        var index = Array.prototype.indexOf.call(parent.children, plate);
 
         // 조임쇠 제거 시 상태 복구
         const plateArr = side === 'left' ? state.leftPlates : state.rightPlates;
         if (plateArr[index] && plateArr[index].isCollar) {
             state.collarAdded = false;
-            $('.plate-btn').prop('disabled', false);
+            document.querySelectorAll('.plate-btn').forEach(function(el) { el.disabled = false; });
         }
 
         if (side === 'left') {
@@ -124,11 +137,11 @@ $(document).ready(function() {
         // 총 무게 계산
         const totalWeight = calculateTotalWeight();
         const totalWeightKg = calculateTotalWeightKg();
-        
+
         // 무게 표시 업데이트
-        $('.weight-lb').text(`${totalWeight} lb`);
-        $('.weight-kg').text(`${totalWeightKg} kg`);
-        
+        document.querySelectorAll('.weight-lb').forEach(function(el) { el.textContent = `${totalWeight} lb`; });
+        document.querySelectorAll('.weight-kg').forEach(function(el) { el.textContent = `${totalWeightKg} kg`; });
+
         // 조임쇠(2.5kg, red-small) 플레이트 데이터
         const collarPlate = {
             weight: 2.5,
@@ -138,23 +151,23 @@ $(document).ready(function() {
         };
 
         // 왼쪽 플레이트 업데이트
-        const leftStack = $('.plates-side.left');
-        leftStack.empty();
+        var leftStack = document.querySelector('.plates-side.left');
+        leftStack.innerHTML = '';
         state.leftPlates.forEach(plate => {
-            const plateElement = $('<div>')
-                .addClass(`plate ${plate.color}`)
-                .attr('data-weight', plate.isKg ? `${plate.weight}kg` : `${plate.weight}lb`);
-            leftStack.append(plateElement);
+            var plateElement = document.createElement('div');
+            plateElement.className = `plate ${plate.color}`;
+            plateElement.setAttribute('data-weight', plate.isKg ? `${plate.weight}kg` : `${plate.weight}lb`);
+            leftStack.appendChild(plateElement);
         });
-        
+
         // 오른쪽 플레이트 업데이트
-        const rightStack = $('.plates-side.right');
-        rightStack.empty();
+        var rightStack = document.querySelector('.plates-side.right');
+        rightStack.innerHTML = '';
         [...state.rightPlates].reverse().forEach(plate => {
-            const plateElement = $('<div>')
-                .addClass(`plate ${plate.color}`)
-                .attr('data-weight', plate.isKg ? `${plate.weight}kg` : `${plate.weight}lb`);
-            rightStack.append(plateElement);
+            var plateElement = document.createElement('div');
+            plateElement.className = `plate ${plate.color}`;
+            plateElement.setAttribute('data-weight', plate.isKg ? `${plate.weight}kg` : `${plate.weight}lb`);
+            rightStack.appendChild(plateElement);
         });
     }
 
@@ -172,7 +185,7 @@ $(document).ready(function() {
     function calculateTotalWeight() {
         // 정확한 kg 값에서 lb로 변환
         const totalKg = calculateTotalWeightKg();
-        
+
         // 바벨이 lb 기준이면 바벨만 원래 lb 값 사용, 플레이트는 변환
         let totalLb;
         if (state.barbellWeight && (state.barbellWeight === 45 || state.barbellWeight === 35)) {
@@ -185,34 +198,37 @@ $(document).ready(function() {
             // kg 바벨의 경우 전체를 변환
             totalLb = totalKg * 2.20462262;
         }
-        
+
         return Math.round(totalLb * 10) / 10; // 소수점 첫째 자리까지
     }
 
     // HTML 초기화 시 바벨 구조 생성
-    $('.barbell-image').html(`
+    document.querySelector('.barbell-image').innerHTML = `
         <div class="collar left"></div>
         <div class="collar right"></div>
-    `);
+    `;
 
     // 초기 화면 업데이트
     updateDisplay();
 
     // 초기화 버튼 이벤트
-    $('#reset-btn').click(function() {
+    document.getElementById('reset-btn').addEventListener('click', function() {
         // 상태 초기화
         state.barbellWeight = 0;
         state.barbellWeightKg = 0;
         state.leftPlates = [];
         state.rightPlates = [];
         state.collarAdded = false; // 조임쇠 상태도 초기화
-        $('.barbell-btn').removeClass('active');
-        $('.barbell-image').removeClass('male female');
+        document.querySelectorAll('.barbell-btn').forEach(function(b) { b.classList.remove('active'); });
+        var barbellImage = document.querySelector('.barbell-image');
+        barbellImage.classList.remove('male', 'female');
         updateDisplay();
     });
 
     // 바벨 이미지의 조임쇠 클릭 시 조임쇠 해제
-    $(document).on('click', '.barbell-image .collar', function() {
+    document.addEventListener('click', function(e) {
+        var collar = e.target.closest('.barbell-image .collar');
+        if (!collar) return;
         // 조임쇠가 추가된 상태일 때만 동작
         if (state.collarAdded) {
             // 조임쇠 플레이트(양쪽) 제거
@@ -220,16 +236,18 @@ $(document).ready(function() {
             state.leftPlates = state.leftPlates.filter(plate => !plate.isCollar);
             state.rightPlates = state.rightPlates.filter(plate => !plate.isCollar);
             state.collarAdded = false;
-            $('.plate-btn').prop('disabled', false); // 혹시 모를 disabled 해제
+            document.querySelectorAll('.plate-btn').forEach(function(el) { el.disabled = false; }); // 혹시 모를 disabled 해제
             updateDisplay();
             showToast('조임쇠가 해제되었습니다.');
         }
     });
 
     // 플레이트 더블탭 확대 방지 (모바일)
-    $('.plate-btn').on('touchstart', function(e) {
-        if (e.touches.length > 1) {
-            e.preventDefault();
-        }
+    document.querySelectorAll('.plate-btn').forEach(function(btn) {
+        btn.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        });
     });
-}); 
+});

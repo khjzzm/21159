@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <script>if(location.pathname!=="/"&&!location.pathname.endsWith("/")&&location.pathname.indexOf(".")===-1)location.replace(location.pathname+"/"+location.search+location.hash);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7V24WCSR0"></script>
@@ -27,6 +31,16 @@
     <meta property="og:description" content="역도 한국기록, 동호인기록 현황 - 인상, 용상, 합계 기록과 선수 정보">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://21-15-9.com/weightlifting-record/">
+    <meta property="og:image" content="https://21-15-9.com/assets/og-image.svg">
+    <meta property="og:site_name" content="21-15-9">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:updated_time" content="2026-03-10T00:00:00+09:00">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="역도 기록 | 21-15-9">
+    <meta name="twitter:description" content="역도 한국기록, 동호인기록 - 인상, 용상, 합계 기록과 선수 정보">
+    <meta name="twitter:image" content="https://21-15-9.com/assets/og-image.svg">
 
     <!-- Favicon -->
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -44,18 +58,43 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="21-15-9">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "21-15-9",
+                "item": "https://21-15-9.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "역도 기록",
+                "item": "https://21-15-9.com/weightlifting-record/"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
-    <div class="header-container">
+    
+
+    <!-- Main Content -->
+    <header class="header-container" role="banner">
         <div class="header-content">
-                <nav class="nav-tabs">
+                <nav class="nav-tabs" aria-label="메인 메뉴">
                     <a href="/" class="nav-item">21-15-9</a>
                     <div class="nav-mega-wrapper">
                         <a href="/weightlifting/" class="nav-item nav-trigger">Strength</a>
                         <a href="/convert/" class="nav-item nav-trigger">Convert</a>
                         <a href="/weightlifting-record/" class="nav-item nav-trigger active">Archive</a>
-                        <a href="/timer/" class="nav-item nav-trigger">Tools</a>
+                        <a href="/search-wod/" class="nav-item nav-trigger">WOD</a>
                         <div class="mega-menu">
                             <div class="mega-col">
                                 <div class="mega-col-title">Strength</div>
@@ -74,18 +113,18 @@
                                 <a href="/hero-wod/" class="mega-item">Hero & Tribute Workouts</a>
                             </div>
                             <div class="mega-col">
-                                <div class="mega-col-title">Tools</div>
+                                <div class="mega-col-title">WOD</div>
+                                <a href="/search-wod/" class="mega-item">Search WOD</a>
+                                <a href="/random-wod/" class="mega-item mega-highlight">Random WOD<span class="mega-highlight-badge">new</span></a>
                                 <a href="/timer/" class="mega-item">Timer</a>
-                                <a href="/random-wod/" class="mega-item">Random WOD</a>
                             </div>
                         </div>
                     </div>
                 </nav>
         </div>
-    </div>
+    </header>
 
-    <!-- Main Content -->
-    <div class="wrapper">
+    <main class="wrapper" id="main-content">
         <div class="container">
             <div class="page-header">
                 <h1>Weightlifting Records</h1>
@@ -129,14 +168,12 @@
             </div>
 
         </div>
-    </div>
+    </main>
 
     <!-- Toast Container -->
     <div id="toast-container"></div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/js/script.js?v=1773019964"></script>
+    <!-- Scripts -->    <script src="/js/script.js?v=1773019964"></script>
     <script src="/js/pwa.js?v=1773019964"></script>
     <script src="/js/visitor-counter.js?v=1773019964"></script>
     <script src="records.js?v=1773019964"></script>

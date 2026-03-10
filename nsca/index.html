@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <script>if(location.pathname!=="/"&&!location.pathname.endsWith("/")&&location.pathname.indexOf(".")===-1)location.replace(location.pathname+"/"+location.search+location.hash);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     
     <!-- 캐시 방지 메타 태그 -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -40,7 +44,7 @@
     <meta property="og:image:alt" content="21-15-9 1RM 계산기">
     <meta property="og:site_name" content="21-15-9">
     <meta property="og:locale" content="ko_KR">
-    <meta property="og:updated_time" content="2024-05-29T00:00:00+09:00">
+    <meta property="og:updated_time" content="2026-03-10T00:00:00+09:00">
     
     <!-- 카카오톡 최적화 -->
     <meta property="og:image:secure_url" content="https://21-15-9.com/assets/og-image.svg">
@@ -71,18 +75,39 @@
     <link rel="stylesheet" href="/css/common.css?v=1773019964">
     <link rel="stylesheet" href="/css/nav.css?v=1773019964">
     <link rel="stylesheet" href="1rm.css?v=1773019964">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "21-15-9",
+                "item": "https://21-15-9.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "NSCA 기반 1RM 최대중량",
+                "item": "https://21-15-9.com/nsca/"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header-container">
+    <header class="header-container" role="banner">
             <div class="header-content">
-                <nav class="nav-tabs">
+                <nav class="nav-tabs" aria-label="메인 메뉴">
                     <a href="/" class="nav-item">21-15-9</a>
                     <div class="nav-mega-wrapper">
                         <a href="/weightlifting/" class="nav-item nav-trigger active">Strength</a>
                         <a href="/convert/" class="nav-item nav-trigger">Convert</a>
                         <a href="/weightlifting-record/" class="nav-item nav-trigger">Archive</a>
-                        <a href="/timer/" class="nav-item nav-trigger">Tools</a>
+                        <a href="/search-wod/" class="nav-item nav-trigger">WOD</a>
                         <div class="mega-menu">
                             <div class="mega-col">
                                 <div class="mega-col-title">Strength</div>
@@ -101,16 +126,18 @@
                                 <a href="/hero-wod/" class="mega-item">Hero & Tribute Workouts</a>
                             </div>
                             <div class="mega-col">
-                                <div class="mega-col-title">Tools</div>
+                                <div class="mega-col-title">WOD</div>
+                                <a href="/search-wod/" class="mega-item">Search WOD</a>
+                                <a href="/random-wod/" class="mega-item mega-highlight">Random WOD<span class="mega-highlight-badge">new</span></a>
                                 <a href="/timer/" class="mega-item">Timer</a>
-                                <a href="/random-wod/" class="mega-item">Random WOD</a>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-        </div>
-        
+        </header>
+
+    <main class="wrapper" id="main-content">
         <div class="container">
             <div class="page-header">
                 <h1>NSCA 1RM Calculator</h1>
@@ -122,6 +149,7 @@
                         <button type="button" class="save-btn">저장</button>
                         <button type="button" class="load-btn">열기</button>
                         <button type="button" class="share-btn">공유</button>
+                        <button type="button" class="pr-btn">PR</button>
                     </div>
                     <div class="unit-buttons">
                         <button type="button" class="unit-btn active" data-unit="kg">KG</button>
@@ -136,7 +164,7 @@
                         <h2>스쿼트</h2>
                     </header>
                     <div class="calculator-input">
-                        <select name="squat-reps" class="reps-select">
+                        <select name="squat-reps" class="reps-select" aria-label="스쿼트 반복 횟수">
                             <option value="">반복횟수</option>
                             <option value="1">1회</option>
                             <option value="2">2회</option>
@@ -150,7 +178,7 @@
                             <option value="10">10회</option>
                         </select>
                         <div class="input-with-unit">
-                            <input type="text" name="squat-weight" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <input type="text" name="squat-weight" aria-label="스쿼트 무게" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
                             <span class="unit-display">kg</span>
                         </div>
                         <button class="calculate-btn" data-exercise="squat">계산하기</button>
@@ -163,7 +191,7 @@
                         <h2>벤치프레스</h2>
                     </header>
                     <div class="calculator-input">
-                        <select name="benchpress-reps" class="reps-select">
+                        <select name="benchpress-reps" class="reps-select" aria-label="벤치프레스 반복 횟수">
                             <option value="">반복횟수</option>
                             <option value="1">1회</option>
                             <option value="2">2회</option>
@@ -177,7 +205,7 @@
                             <option value="10">10회</option>
                         </select>
                         <div class="input-with-unit">
-                            <input type="text" name="benchpress-weight" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <input type="text" name="benchpress-weight" aria-label="벤치프레스 무게" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
                             <span class="unit-display">kg</span>
                         </div>
                         <button class="calculate-btn" data-exercise="benchpress">계산하기</button>
@@ -190,7 +218,7 @@
                         <h2>데드리프트</h2>
                     </header>
                     <div class="calculator-input">
-                        <select name="deadlift-reps" class="reps-select">
+                        <select name="deadlift-reps" class="reps-select" aria-label="데드리프트 반복 횟수">
                             <option value="">반복횟수</option>
                             <option value="1">1회</option>
                             <option value="2">2회</option>
@@ -204,7 +232,7 @@
                             <option value="10">10회</option>
                         </select>
                         <div class="input-with-unit">
-                            <input type="text" name="deadlift-weight" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
+                            <input type="text" name="deadlift-weight" aria-label="데드리프트 무게" class="weight-input" min="0" step="0.5" placeholder="무게(kg)">
                             <span class="unit-display">kg</span>
                         </div>
                         <button class="calculate-btn" data-exercise="deadlift">계산하기</button>
@@ -214,12 +242,11 @@
             </div>
             <div id="toast-container"></div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/js/script.js?v=1773019964"></script>
+    </main>    <script src="/js/script.js?v=1773019964"></script>
     <script src="/js/pwa.js?v=1773019964"></script>
     <script src="/js/visitor-counter.js?v=1773019964"></script>
     <script src="/js/input-validation.js?v=1773019964"></script>
+    <script src="/js/pr-history.js?v=1773019964"></script>
     <script src="1rm.js?v=1773019964"></script>
 </body>
 </html> 

@@ -3,72 +3,73 @@
  * 1rm.js, weightlifting.js에서 공유
  */
 function setupInputValidation(selector, callbacks) {
-    $(selector).on('input', function() {
-        let value = $(this).val();
+    document.querySelectorAll(selector).forEach(function(el) {
+        el.addEventListener('input', function() {
+            var value = this.value;
 
-        if (value.startsWith('.')) {
-            value = '0' + value;
-        }
-        value = value.replace(/[^0-9.]/g, '');
+            if (value.startsWith('.')) {
+                value = '0' + value;
+            }
+            value = value.replace(/[^0-9.]/g, '');
 
-        // 소수점이 여러 개인 경우 첫 번째만 유지
-        const decimalCount = (value.match(/\./g) || []).length;
-        if (decimalCount > 1) {
-            value = value.replace(/\./g, function(match, index, original) {
-                return index === original.indexOf('.') ? match : '';
-            });
-        }
-
-        $(this).val(value);
-
-        if (value !== '' && value !== '.' && !value.endsWith('.')) {
-            const numValue = parseFloat(value);
-            const max = currentUnit === 'kg' ? 1000 : 2200;
-
-            if (numValue < 0) {
-                $(this).val(0);
-            } else if (numValue > max) {
-                $(this).val(max);
-                showToast('최대 ' + max + currentUnit + ' 까지 입력 가능합니다.');
+            var decimalCount = (value.match(/\./g) || []).length;
+            if (decimalCount > 1) {
+                value = value.replace(/\./g, function(match, index, original) {
+                    return index === original.indexOf('.') ? match : '';
+                });
             }
 
-            if (value.includes('.') && value.split('.')[1].length > 2) {
-                $(this).val(parseFloat(value).toFixed(2));
+            this.value = value;
+
+            if (value !== '' && value !== '.' && !value.endsWith('.')) {
+                var numValue = parseFloat(value);
+                var max = currentUnit === 'kg' ? 1000 : 2200;
+
+                if (numValue < 0) {
+                    this.value = 0;
+                } else if (numValue > max) {
+                    this.value = max;
+                    showToast('최대 ' + max + currentUnit + ' 까지 입력 가능합니다.');
+                }
+
+                if (value.includes('.') && value.split('.')[1].length > 2) {
+                    this.value = parseFloat(value).toFixed(2);
+                }
             }
-        }
 
-        if (callbacks && callbacks.onInput) {
-            callbacks.onInput.call(this);
-        }
-    });
+            if (callbacks && callbacks.onInput) {
+                callbacks.onInput.call(this);
+            }
+        });
 
-    $(selector).on('blur', function() {
-        const value = $(this).val();
+        el.addEventListener('blur', function() {
+            var value = this.value;
 
-        if (value === '' || value === '.') {
-            $(this).val('');
-            if (callbacks && callbacks.onBlur) callbacks.onBlur.call(this);
-            return;
-        }
+            if (value === '' || value === '.') {
+                this.value = '';
+                if (callbacks && callbacks.onBlur) callbacks.onBlur.call(this);
+                return;
+            }
 
-        if (isNaN(value)) {
-            $(this).val('');
-            showToast('올바른 숫자를 입력해주세요.');
-            if (callbacks && callbacks.onBlur) callbacks.onBlur.call(this);
-            return;
-        }
+            if (isNaN(value)) {
+                this.value = '';
+                showToast('올바른 숫자를 입력해주세요.');
+                if (callbacks && callbacks.onBlur) callbacks.onBlur.call(this);
+                return;
+            }
 
-        if (value.endsWith('.')) {
-            $(this).val(value.slice(0, -1));
-        }
+            if (value.endsWith('.')) {
+                this.value = value.slice(0, -1);
+            }
 
-        const numValue = parseFloat(value);
-        if (!isNaN(numValue)) {
-            $(this).val(numValue.toFixed(numValue % 1 === 0 ? 0 : 2));
-        }
+            var numValue = parseFloat(value);
+            if (!isNaN(numValue)) {
+                this.value = numValue.toFixed(numValue % 1 === 0 ? 0 : 2);
+            }
 
-        if (callbacks && callbacks.onBlur) {
-            callbacks.onBlur.call(this);
-        }
+            if (callbacks && callbacks.onBlur) {
+                callbacks.onBlur.call(this);
+            }
+        });
     });
 }

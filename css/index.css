@@ -13,7 +13,9 @@
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
     height: 100vh;
+    height: 100dvh;
     color: #f9fafb;
+    overscroll-behavior-y: contain;
 }
 
 /* SEO용 숨김 h1 */
@@ -32,6 +34,7 @@
 /* 스냅 섹션 공통 */
 .snap-section {
     min-height: 100vh;
+    min-height: 100dvh;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -548,6 +551,10 @@
    반응형
 ========================= */
 @media (max-width: 768px) {
+    .landing-wrapper {
+        -webkit-overflow-scrolling: touch;
+    }
+
     .snap-section {
         padding: 60px 20px;
     }

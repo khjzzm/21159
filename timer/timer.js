@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // 전역 변수
     let timerInterval = null;
     let currentMode = 'countdown';
@@ -7,7 +7,7 @@ $(document).ready(function() {
     let startTime = 0;
     let elapsedTime = 0;
     let totalTime = 0;
-    
+
     // EMOM & Tabata 관련 변수
     let currentRound = 1;
     let totalRounds = 1;
@@ -17,49 +17,49 @@ $(document).ready(function() {
     let emomWorkTime = 40;
     let emomRestTime = 20;
     let intervalTime = 60;
-    
+
     // 준비시간 관련 변수
     let isPrepPhase = false;
     let prepStartTime = 0;
     let prepTime = 10;
-    
+
     // DOM 요소
-    const $timeDisplay = $('#timeDisplay');
-    const $timerLabel = $('#timerLabel');
-    const $roundInfo = $('#roundInfo');
-    const $currentRound = $('#currentRound');
-    const $totalRounds = $('#totalRounds');
-    const $startBtn = $('#startBtn');
-    const $pauseBtn = $('#pauseBtn');
-    const $resetBtn = $('#resetBtn');
-    const $soundEnabled = $('#soundEnabled');
+    var timeDisplay = document.getElementById('timeDisplay');
+    var timerLabel = document.getElementById('timerLabel');
+    var roundInfo = document.getElementById('roundInfo');
+    var currentRoundEl = document.getElementById('currentRound');
+    var totalRoundsEl = document.getElementById('totalRounds');
+    var startBtn = document.getElementById('startBtn');
+    var pauseBtn = document.getElementById('pauseBtn');
+    var resetBtn = document.getElementById('resetBtn');
+    var soundEnabled = document.getElementById('soundEnabled');
 
     // 사운드 생성 (Web Audio API 사용)
     let audioContext;
-    
+
     function initAudio() {
         if (!audioContext) {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
         }
     }
-    
+
     function playBeep(frequency = 800, duration = 200) {
-        if (!$soundEnabled.is(':checked')) return;
-        
+        if (!soundEnabled.checked) return;
+
         initAudio();
-        
+
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
-        
+
         oscillator.connect(gainNode);
         gainNode.connect(audioContext.destination);
-        
+
         oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
         oscillator.type = 'sine';
-        
+
         gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
-        
+
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + duration / 1000);
     }
@@ -68,43 +68,49 @@ $(document).ready(function() {
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
-        
+
         if (mins >= 60) {
             const hours = Math.floor(mins / 60);
             const remainingMins = mins % 60;
             return `${hours.toString().padStart(2, '0')}:${remainingMins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
-        
+
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     }
 
     // 모드 변경
-    $('.mode-btn').click(function() {
-        if (isRunning) {
-            showToast('타이머가 실행 중입니다. 먼저 정지해주세요.');
-            return;
-        }
-        
-        $('.mode-btn').removeClass('active');
-        $(this).addClass('active');
-        
-        currentMode = $(this).data('mode');
-        resetTimer();
-        updateSettingsDisplay();
+    document.querySelectorAll('.mode-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            if (isRunning) {
+                showToast('타이머가 실행 중입니다. 먼저 정지해주세요.');
+                return;
+            }
+
+            document.querySelectorAll('.mode-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            currentMode = this.dataset.mode;
+            resetTimer();
+            updateSettingsDisplay();
+        });
     });
 
     // 설정 패널 업데이트
     function updateSettingsDisplay() {
-        $('.setting-group').hide();
-        $(`#${currentMode}Settings`).show();
-        
+        document.querySelectorAll('.setting-group').forEach(function(el) {
+            el.style.display = 'none';
+        });
+        document.getElementById(currentMode + 'Settings').style.display = 'block';
+
         // 라운드 정보 표시 여부
         if (currentMode === 'emom' || currentMode === 'tabata') {
-            $roundInfo.show();
+            roundInfo.style.display = 'block';
         } else {
-            $roundInfo.hide();
+            roundInfo.style.display = 'none';
         }
-        
+
         // 타이머 라벨 업데이트
         updateTimerLabel();
     }
@@ -113,26 +119,26 @@ $(document).ready(function() {
     function updateTimerLabel() {
         switch (currentMode) {
             case 'countdown':
-                $timerLabel.text('For Time');
+                timerLabel.textContent = 'For Time';
                 break;
             case 'amrap':
-                $timerLabel.text('AMRAP');
+                timerLabel.textContent = 'AMRAP';
                 break;
             case 'emom':
-                $timerLabel.text(`라운드 ${currentRound}`);
+                timerLabel.textContent = `라운드 ${currentRound}`;
                 break;
             case 'tabata':
                 if (isWorkPhase) {
-                    $timerLabel.text('운동');
+                    timerLabel.textContent = '운동';
                 } else {
-                    $timerLabel.text('휴식');
+                    timerLabel.textContent = '휴식';
                 }
                 break;
         }
     }
 
     // 시작 버튼
-    $startBtn.click(function() {
+    startBtn.addEventListener('click', function() {
         if (isPaused) {
             resumeTimer();
         } else {
@@ -141,23 +147,24 @@ $(document).ready(function() {
     });
 
     // 일시정지 버튼
-    $pauseBtn.click(function() {
+    pauseBtn.addEventListener('click', function() {
         pauseTimer();
     });
 
     // 리셋 버튼
-    $resetBtn.click(function() {
+    resetBtn.addEventListener('click', function() {
         resetTimer();
     });
 
     // 타이머 시작
     function startTimer() {
         initAudio(); // 사용자 상호작용 후 오디오 컨텍스트 초기화
-        
+
         // 준비시간 설정
-        prepTime = parseInt($('#prepTime').val());
+        var prepTimeInput = document.getElementById('prepTime');
+        prepTime = prepTimeInput ? parseInt(prepTimeInput.value) : 10;
         if (isNaN(prepTime) || prepTime < 0) prepTime = 10;
-        
+
         if (prepTime > 0) {
             // 준비시간부터 시작
             startPrepPhase();
@@ -165,15 +172,16 @@ $(document).ready(function() {
             // 준비시간 없으면 바로 메인 타이머 시작
             startMainTimer();
         }
-        
+
         isRunning = true;
         isPaused = false;
-        
-        $startBtn.hide();
-        $pauseBtn.show();
-        
-        $('.timer-display').addClass('pulse');
-        setTimeout(() => $('.timer-display').removeClass('pulse'), 1000);
+
+        startBtn.style.display = 'none';
+        pauseBtn.style.display = '';
+
+        var timerDisplayEl = document.querySelector('.timer-display');
+        timerDisplayEl.classList.add('pulse');
+        setTimeout(function() { timerDisplayEl.classList.remove('pulse'); }, 1000);
     }
 
     // 타이머 일시정지
@@ -182,17 +190,18 @@ $(document).ready(function() {
             clearInterval(timerInterval);
             timerInterval = null;
         }
-        
+
         isRunning = false;
         isPaused = true;
-        
-        $pauseBtn.hide();
-        $startBtn.show().text('재시작');
-        
+
+        pauseBtn.style.display = 'none';
+        startBtn.style.display = '';
+        startBtn.textContent = '재시작';
+
         if (isPrepPhase) {
-            $timerLabel.text('준비 일시정지');
+            timerLabel.textContent = '준비 일시정지';
         } else {
-            $timerLabel.text('일시정지');
+            timerLabel.textContent = '일시정지';
         }
     }
 
@@ -200,12 +209,12 @@ $(document).ready(function() {
     function resumeTimer() {
         if (isPrepPhase) {
             // 준비시간 재시작
-            prepStartTime = Date.now() - (prepTime - parseInt($timeDisplay.text().split(':').pop())) * 1000;
+            prepStartTime = Date.now() - (prepTime - parseInt(timeDisplay.textContent.split(':').pop())) * 1000;
             timerInterval = setInterval(updatePrepPhase, 100);
         } else {
             // 메인 타이머 재시작
             startTime = Date.now() - elapsedTime;
-            
+
             switch (currentMode) {
                 case 'countdown':
                     timerInterval = setInterval(updateForTime, 100);
@@ -221,13 +230,13 @@ $(document).ready(function() {
                     break;
             }
         }
-        
+
         isRunning = true;
         isPaused = false;
-        
-        $startBtn.hide();
-        $pauseBtn.show();
-        
+
+        startBtn.style.display = 'none';
+        pauseBtn.style.display = '';
+
         updateTimerLabel();
     }
 
@@ -237,144 +246,155 @@ $(document).ready(function() {
             clearInterval(timerInterval);
             timerInterval = null;
         }
-        
+
         isRunning = false;
         isPaused = false;
         elapsedTime = 0;
         currentRound = 1;
         isWorkPhase = true;
         isPrepPhase = false; // 준비시간 플래그 리셋
-        
-        $startBtn.show().text('시작');
-        $pauseBtn.hide();
-        
-        $('.timer-display').removeClass('warning danger');
-        
+
+        startBtn.style.display = '';
+        startBtn.textContent = '시작';
+        pauseBtn.style.display = 'none';
+
+        var timerDisplayEl = document.querySelector('.timer-display');
+        timerDisplayEl.classList.remove('warning');
+        timerDisplayEl.classList.remove('danger');
+
         // 초기 시간 설정
         switch (currentMode) {
             case 'countdown':
-                $timeDisplay.text('00:00'); // For Time은 0부터 시작
+                timeDisplay.textContent = '00:00'; // For Time은 0부터 시작
                 break;
             case 'amrap':
-                const amrapMinutes = parseInt($('#amrapMinutes').val());
-                const amrapSeconds = parseInt($('#amrapSeconds').val());
+                const amrapMinutes = parseInt(document.getElementById('amrapMinutes').value);
+                const amrapSeconds = parseInt(document.getElementById('amrapSeconds').value);
                 const finalAmrapMinutes = isNaN(amrapMinutes) ? 15 : amrapMinutes;
                 const finalAmrapSeconds = isNaN(amrapSeconds) ? 0 : amrapSeconds;
                 totalTime = finalAmrapMinutes * 60 + finalAmrapSeconds;
-                $timeDisplay.text(formatTime(totalTime));
+                timeDisplay.textContent = formatTime(totalTime);
                 break;
             case 'emom':
-                const emomRounds = parseInt($('#emomRounds').val());
-                const emomWork = parseInt($('#emomWork').val());
-                
+                const emomRounds = parseInt(document.getElementById('emomRounds').value);
+                const emomWork = parseInt(document.getElementById('emomWork').value);
+
                 totalRounds = isNaN(emomRounds) ? 10 : emomRounds;
                 emomWorkTime = isNaN(emomWork) ? 40 : emomWork;
                 intervalTime = 60; // EMOM은 항상 60초 간격
-                $timeDisplay.text(formatTime(emomWorkTime));
-                $currentRound.text('1');
-                $totalRounds.text(totalRounds);
+                timeDisplay.textContent = formatTime(emomWorkTime);
+                currentRoundEl.textContent = '1';
+                totalRoundsEl.textContent = totalRounds;
                 break;
             case 'tabata':
-                const tabataRounds = parseInt($('#tabataRounds').val());
-                const tabataWork = parseInt($('#tabataWork').val());
-                const tabataRest = parseInt($('#tabataRest').val());
-                
+                const tabataRounds = parseInt(document.getElementById('tabataRounds').value);
+                const tabataWork = parseInt(document.getElementById('tabataWork').value);
+                const tabataRest = parseInt(document.getElementById('tabataRest').value);
+
                 totalRounds = isNaN(tabataRounds) ? 8 : tabataRounds;
                 workTime = isNaN(tabataWork) ? 20 : tabataWork;
                 restTime = isNaN(tabataRest) ? 10 : tabataRest;
-                $timeDisplay.text(formatTime(workTime));
-                $currentRound.text('1');
-                $totalRounds.text(totalRounds);
+                timeDisplay.textContent = formatTime(workTime);
+                currentRoundEl.textContent = '1';
+                totalRoundsEl.textContent = totalRounds;
                 break;
         }
-        
+
         updateTimerLabel();
     }
 
     // For Time 모드 (스톱워치 + Time Cap)
     function startForTime() {
-        const minutes = parseInt($('#countdownMinutes').val());
-        const seconds = parseInt($('#countdownSeconds').val());
+        const minutes = parseInt(document.getElementById('countdownMinutes').value);
+        const seconds = parseInt(document.getElementById('countdownSeconds').value);
         // 값이 NaN이면 기본값 사용, 0은 유효한 값으로 처리
         const finalMinutes = isNaN(minutes) ? 15 : minutes;
         const finalSeconds = isNaN(seconds) ? 0 : seconds;
         totalTime = finalMinutes * 60 + finalSeconds; // Time Cap
-        
+
         startTime = Date.now();
         timerInterval = setInterval(updateForTime, 100);
-        $timerLabel.text('For Time 진행 중');
+        timerLabel.textContent = 'For Time 진행 중';
     }
 
     function updateForTime() {
         elapsedTime = Date.now() - startTime;
         const currentSeconds = Math.floor(elapsedTime / 1000);
-        
-        $timeDisplay.text(formatTime(currentSeconds));
-        
+
+        timeDisplay.textContent = formatTime(currentSeconds);
+
         // Time Cap 체크
         if (totalTime > 0 && currentSeconds >= totalTime) {
             playBeep(1200, 500);
             finishTimer();
             return;
         }
-        
+
         // 경고 효과 (For Time용 기준)
         const warningTime = Math.min(60, Math.floor(totalTime * 0.2)); // 전체의 20% 또는 60초
         const dangerTime = Math.min(30, Math.floor(totalTime * 0.1)); // 전체의 10% 또는 30초
-        
+
+        var timerDisplayEl = document.querySelector('.timer-display');
         if (totalTime > 0) {
             const remainingTime = totalTime - currentSeconds;
-            
+
             if (remainingTime <= warningTime && remainingTime > dangerTime) {
-                $('.timer-display').addClass('warning').removeClass('danger');
+                timerDisplayEl.classList.add('warning');
+                timerDisplayEl.classList.remove('danger');
             } else if (remainingTime <= dangerTime && remainingTime > 0) {
-                $('.timer-display').addClass('danger').removeClass('warning');
+                timerDisplayEl.classList.add('danger');
+                timerDisplayEl.classList.remove('warning');
                 // 마지막 3초 카운트다운
                 if (remainingTime <= 3) {
                     playBeep(1000, 100);
                 }
             } else {
-                $('.timer-display').removeClass('warning danger');
+                timerDisplayEl.classList.remove('warning');
+                timerDisplayEl.classList.remove('danger');
             }
         }
     }
 
     // AMRAP 모드
     function startAmrap() {
-        const amrapMinutes = parseInt($('#amrapMinutes').val());
-        const amrapSeconds = parseInt($('#amrapSeconds').val());
+        const amrapMinutes = parseInt(document.getElementById('amrapMinutes').value);
+        const amrapSeconds = parseInt(document.getElementById('amrapSeconds').value);
         const finalAmrapMinutes = isNaN(amrapMinutes) ? 15 : amrapMinutes;
         const finalAmrapSeconds = isNaN(amrapSeconds) ? 0 : amrapSeconds;
         totalTime = finalAmrapMinutes * 60 + finalAmrapSeconds;
-        
+
         startTime = Date.now();
         timerInterval = setInterval(updateAmrap, 100);
-        $timerLabel.text('AMRAP 진행 중');
+        timerLabel.textContent = 'AMRAP 진행 중';
     }
 
     function updateAmrap() {
         elapsedTime = Date.now() - startTime;
         const remainingTime = Math.max(0, totalTime - Math.floor(elapsedTime / 1000));
-        
-        $timeDisplay.text(formatTime(remainingTime));
-        
+
+        timeDisplay.textContent = formatTime(remainingTime);
+
         // 경고 효과 (AMRAP용 기준)
         const warningTime = Math.min(60, Math.floor(totalTime * 0.2)); // 전체의 20% 또는 60초
         const dangerTime = Math.min(30, Math.floor(totalTime * 0.1)); // 전체의 10% 또는 30초
-        
+
+        var timerDisplayEl = document.querySelector('.timer-display');
         if (remainingTime <= warningTime && remainingTime > dangerTime) {
-            $('.timer-display').addClass('warning').removeClass('danger');
+            timerDisplayEl.classList.add('warning');
+            timerDisplayEl.classList.remove('danger');
         } else if (remainingTime <= dangerTime && remainingTime > 0) {
-            $('.timer-display').addClass('danger').removeClass('warning');
+            timerDisplayEl.classList.add('danger');
+            timerDisplayEl.classList.remove('warning');
         } else {
-            $('.timer-display').removeClass('warning danger');
+            timerDisplayEl.classList.remove('warning');
+            timerDisplayEl.classList.remove('danger');
         }
-        
+
         // AMRAP 마지막 3초 카운트다운
         if (remainingTime <= 3 && remainingTime > 0) {
             playBeep(1000, 100);
         }
-        
+
         if (remainingTime === 0) {
             playBeep(1200, 500);
             finishTimer();
@@ -383,16 +403,16 @@ $(document).ready(function() {
 
     // EMOM 모드
     function startEmom() {
-        const emomRounds = parseInt($('#emomRounds').val());
-        const emomWork = parseInt($('#emomWork').val());
-        
+        const emomRounds = parseInt(document.getElementById('emomRounds').value);
+        const emomWork = parseInt(document.getElementById('emomWork').value);
+
         totalRounds = isNaN(emomRounds) ? 10 : emomRounds;
         emomWorkTime = isNaN(emomWork) ? 40 : emomWork;
         intervalTime = 60; // EMOM은 항상 60초 간격
-        
+
         startTime = Date.now();
         timerInterval = setInterval(updateEmom, 100);
-        $timerLabel.text(`라운드 ${currentRound}`);
+        timerLabel.textContent = `라운드 ${currentRound}`;
     }
 
     function updateEmom() {
@@ -400,49 +420,53 @@ $(document).ready(function() {
         const totalSeconds = Math.floor(elapsedTime / 1000);
         const currentRoundNumber = Math.floor(totalSeconds / emomWorkTime) + 1;
         const secondsInCurrentRound = totalSeconds % emomWorkTime;
-        
+
         // 라운드 변경 체크
         if (currentRoundNumber !== currentRound) {
             currentRound = currentRoundNumber;
             isWorkPhase = true;
             playBeep(1000, 200); // 새 라운드 시작 알림
-            $currentRound.text(currentRound);
+            currentRoundEl.textContent = currentRound;
             updateTimerLabel();
-            
+
             if (currentRound > totalRounds) {
                 finishTimer();
                 return;
             }
         }
-        
+
         // 각 라운드는 설정한 시간만큼 진행
         const remainingTime = emomWorkTime - secondsInCurrentRound;
-        
-        $timeDisplay.text(formatTime(remainingTime));
-        
+
+        timeDisplay.textContent = formatTime(remainingTime);
+
         // 경고 효과 (EMOM용 기준)
         const warningTime = Math.min(10, Math.floor(emomWorkTime * 0.1)); // 전체의 10% 또는 10초
         const dangerTime = Math.min(5, Math.floor(emomWorkTime * 0.05)); // 전체의 5% 또는 5초
-        
+
+        var timerDisplayEl = document.querySelector('.timer-display');
         if (remainingTime <= warningTime && remainingTime > dangerTime) {
-            $('.timer-display').addClass('warning').removeClass('danger');
+            timerDisplayEl.classList.add('warning');
+            timerDisplayEl.classList.remove('danger');
         } else if (remainingTime <= dangerTime && remainingTime > 0) {
-            $('.timer-display').addClass('danger').removeClass('warning');
+            timerDisplayEl.classList.add('danger');
+            timerDisplayEl.classList.remove('warning');
         } else {
-            $('.timer-display').removeClass('warning danger');
+            timerDisplayEl.classList.remove('warning');
+            timerDisplayEl.classList.remove('danger');
         }
     }
 
     // TABATA 모드
     function startTabata() {
-        const tabataRounds = parseInt($('#tabataRounds').val());
-        const tabataWork = parseInt($('#tabataWork').val());
-        const tabataRest = parseInt($('#tabataRest').val());
-        
+        const tabataRounds = parseInt(document.getElementById('tabataRounds').value);
+        const tabataWork = parseInt(document.getElementById('tabataWork').value);
+        const tabataRest = parseInt(document.getElementById('tabataRest').value);
+
         totalRounds = isNaN(tabataRounds) ? 8 : tabataRounds;
         workTime = isNaN(tabataWork) ? 20 : tabataWork;
         restTime = isNaN(tabataRest) ? 10 : tabataRest;
-        
+
         startTime = Date.now();
         timerInterval = setInterval(updateTabata, 100);
         updateTimerLabel();
@@ -453,10 +477,10 @@ $(document).ready(function() {
         const totalSeconds = Math.floor(elapsedTime / 1000);
         const cycleTime = workTime + restTime; // 한 사이클 총 시간
         const cycleElapsed = totalSeconds % cycleTime;
-        
+
         let remainingTime;
         let newWorkPhase;
-        
+
         if (cycleElapsed < workTime) {
             // 운동 페이즈
             newWorkPhase = true;
@@ -466,7 +490,7 @@ $(document).ready(function() {
             newWorkPhase = false;
             remainingTime = cycleTime - cycleElapsed;
         }
-        
+
         // 페이즈 변경 감지
         if (newWorkPhase !== isWorkPhase) {
             isWorkPhase = newWorkPhase;
@@ -476,8 +500,8 @@ $(document).ready(function() {
                 if (newRound !== currentRound) {
                     currentRound = newRound;
                     playBeep(1000, 300);
-                    $currentRound.text(currentRound);
-                    
+                    currentRoundEl.textContent = currentRound;
+
                     if (currentRound > totalRounds) {
                         finishTimer();
                         return;
@@ -489,20 +513,24 @@ $(document).ready(function() {
             }
             updateTimerLabel();
         }
-        
-        $timeDisplay.text(formatTime(remainingTime));
-        
+
+        timeDisplay.textContent = formatTime(remainingTime);
+
         // 경고 효과 (TABATA용 기준)
         const currentPhaseTime = isWorkPhase ? workTime : restTime;
         const warningTime = Math.min(5, Math.floor(currentPhaseTime * 0.1)); // 전체의 10% 또는 5초
         const dangerTime = Math.min(3, Math.floor(currentPhaseTime * 0.05)); // 전체의 5% 또는 3초
-        
+
+        var timerDisplayEl = document.querySelector('.timer-display');
         if (remainingTime <= warningTime && remainingTime > dangerTime) {
-            $('.timer-display').addClass('warning').removeClass('danger');
+            timerDisplayEl.classList.add('warning');
+            timerDisplayEl.classList.remove('danger');
         } else if (remainingTime <= dangerTime && remainingTime > 0) {
-            $('.timer-display').addClass('danger').removeClass('warning');
+            timerDisplayEl.classList.add('danger');
+            timerDisplayEl.classList.remove('warning');
         } else {
-            $('.timer-display').removeClass('warning danger');
+            timerDisplayEl.classList.remove('warning');
+            timerDisplayEl.classList.remove('danger');
         }
     }
 
@@ -512,22 +540,25 @@ $(document).ready(function() {
             clearInterval(timerInterval);
             timerInterval = null;
         }
-        
+
         isRunning = false;
         isPaused = false;
-        
-        $startBtn.show().text('시작');
-        $pauseBtn.hide();
-        
-        $timerLabel.text('완료!');
-        $timeDisplay.text('00:00');
-        
-        $('.timer-display').removeClass('warning danger');
-        
+
+        startBtn.style.display = '';
+        startBtn.textContent = '시작';
+        pauseBtn.style.display = 'none';
+
+        timerLabel.textContent = '완료!';
+        timeDisplay.textContent = '00:00';
+
+        var timerDisplayEl = document.querySelector('.timer-display');
+        timerDisplayEl.classList.remove('warning');
+        timerDisplayEl.classList.remove('danger');
+
         // 완료 알림
         playBeep(1200, 1000);
         showToast('타이머가 완료되었습니다! 🎉');
-        
+
         // 진동 (모바일)
         if ('vibrate' in navigator) {
             navigator.vibrate([500, 200, 500]);
@@ -535,46 +566,57 @@ $(document).ready(function() {
     }
 
     // 설정 값 변경 감지
-    $('#countdownMinutes, #countdownSeconds').on('input', function() {
-        if (!isRunning && currentMode === 'countdown') {
-            resetTimer();
-        }
+    ['countdownMinutes', 'countdownSeconds'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', function() {
+            if (!isRunning && currentMode === 'countdown') {
+                resetTimer();
+            }
+        });
     });
 
-    $('#amrapMinutes, #amrapSeconds').on('input', function() {
-        if (!isRunning && currentMode === 'amrap') {
-            resetTimer();
-        }
+    ['amrapMinutes', 'amrapSeconds'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', function() {
+            if (!isRunning && currentMode === 'amrap') {
+                resetTimer();
+            }
+        });
     });
 
-    $('#emomRounds, #emomWork').on('input', function() {
-        if (!isRunning && currentMode === 'emom') {
-            resetTimer();
-        }
+    ['emomRounds', 'emomWork'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', function() {
+            if (!isRunning && currentMode === 'emom') {
+                resetTimer();
+            }
+        });
     });
 
-    $('#tabataWork, #tabataRest, #tabataRounds').on('input', function() {
-        if (!isRunning && currentMode === 'tabata') {
-            resetTimer();
-        }
+    ['tabataWork', 'tabataRest', 'tabataRounds'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', function() {
+            if (!isRunning && currentMode === 'tabata') {
+                resetTimer();
+            }
+        });
     });
 
     // 준비시간 설정 변경 감지
-    $('#prepTime').on('input', function() {
-        if (!isRunning) {
-            // 타이머가 실행 중이 아닐 때만 반영
-            prepTime = parseInt($(this).val());
-            if (isNaN(prepTime) || prepTime < 0) prepTime = 10;
-        }
-    });
+    var prepTimeInput = document.getElementById('prepTime');
+    if (prepTimeInput) {
+        prepTimeInput.addEventListener('input', function() {
+            if (!isRunning) {
+                // 타이머가 실행 중이 아닐 때만 반영
+                prepTime = parseInt(this.value);
+                if (isNaN(prepTime) || prepTime < 0) prepTime = 10;
+            }
+        });
+    }
 
     // 키보드 단축키
-    $(document).keydown(function(e) {
+    document.addEventListener('keydown', function(e) {
         // input 필드에 포커스가 있으면 키보드 단축키 무시
-        if ($(e.target).is('input, textarea, select')) {
+        if (e.target.matches('input, textarea, select')) {
             return;
         }
-        
+
         // 스페이스바: 시작/일시정지
         if (e.code === 'Space') {
             e.preventDefault();
@@ -588,20 +630,21 @@ $(document).ready(function() {
                 }
             }
         }
-        
+
         // R키: 리셋
         if (e.code === 'KeyR') {
             e.preventDefault();
             resetTimer();
         }
-        
+
         // 1-4키: 모드 변경 (stopwatch 제거됨)
         if (e.code >= 'Digit1' && e.code <= 'Digit4') {
             e.preventDefault();
             const modeIndex = parseInt(e.code.slice(-1)) - 1;
             const modes = ['countdown', 'amrap', 'emom', 'tabata'];
             if (modes[modeIndex]) {
-                $(`.mode-btn[data-mode="${modes[modeIndex]}"]`).click();
+                var modeBtn = document.querySelector('.mode-btn[data-mode="' + modes[modeIndex] + '"]');
+                if (modeBtn) modeBtn.click();
             }
         }
     });
@@ -612,7 +655,7 @@ $(document).ready(function() {
             // 페이지가 다시 보일 때 시간 동기화
             const now = Date.now();
             const actualElapsed = now - startTime;
-            
+
             // 시간 차이가 클 경우 동기화
             if (Math.abs(actualElapsed - elapsedTime) > 1000) {
                 elapsedTime = actualElapsed;
@@ -625,28 +668,30 @@ $(document).ready(function() {
         isPrepPhase = true;
         prepStartTime = Date.now();
         timerInterval = setInterval(updatePrepPhase, 100);
-        $timerLabel.text('준비 중...');
+        timerLabel.textContent = '준비 중...';
     }
 
     // 준비시간 업데이트
     function updatePrepPhase() {
         const elapsedPrepTime = Math.floor((Date.now() - prepStartTime) / 1000);
         const remainingPrepTime = Math.max(0, prepTime - elapsedPrepTime);
-        
-        $timeDisplay.text(formatTime(remainingPrepTime));
-        
+
+        timeDisplay.textContent = formatTime(remainingPrepTime);
+
         // 마지막 3초 카운트다운
         if (remainingPrepTime <= 3 && remainingPrepTime > 0) {
             playBeep(800, 200);
-            $('.timer-display').addClass('warning');
+            document.querySelector('.timer-display').classList.add('warning');
         }
-        
+
         // 준비시간 종료
         if (remainingPrepTime === 0) {
             playBeep(1000, 500); // 시작 신호
             clearInterval(timerInterval);
             isPrepPhase = false;
-            $('.timer-display').removeClass('warning danger');
+            var timerDisplayEl = document.querySelector('.timer-display');
+            timerDisplayEl.classList.remove('warning');
+            timerDisplayEl.classList.remove('danger');
             startMainTimer();
         }
     }
@@ -672,4 +717,4 @@ $(document).ready(function() {
     // 초기화
     updateSettingsDisplay();
     resetTimer();
-}); 
+});

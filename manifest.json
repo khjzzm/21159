@@ -88,9 +88,16 @@
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
+      "name": "Search WOD",
+      "short_name": "Search WOD",
+      "description": "동작, 장비별 크로스핏 워크아웃 검색",
+      "url": "/search-wod",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
+    },
+    {
       "name": "Random WOD",
       "short_name": "Random WOD",
-      "description": "랜덤 크로스핏 워크아웃 생성기",
+      "description": "오늘의 랜덤 크로스핏 워크아웃",
       "url": "/random-wod",
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     }

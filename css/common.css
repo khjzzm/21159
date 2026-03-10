@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
-
 /* =========================
    CSS Variables & Color Themes
 ========================= */
@@ -53,6 +51,228 @@
     --line-height-tight: 1.25;
     --line-height-normal: 1.5;
     --line-height-relaxed: 1.75;
+}
+
+/* =========================
+   Accessibility
+========================= */
+/* Offline Banner */
+.offline-banner {
+    display: none;
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-tertiary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.offline-banner svg {
+    display: block;
+    margin: 0 auto 12px;
+    stroke: var(--text-tertiary);
+    opacity: 0.5;
+}
+
+.offline-banner strong {
+    display: block;
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: fixed;
+    top: -100%;
+    left: 16px;
+    z-index: 9999;
+    padding: 12px 24px;
+    background: #e0fd53;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* =========================
+   PR History Modal
+========================= */
+.pr-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pr-modal {
+    background: #1e1e24;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pr-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pr-modal-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f9fafb;
+    margin: 0;
+}
+
+.pr-modal-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.pr-modal-body {
+    padding: 16px 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.pr-exercise {
+    margin-bottom: 16px;
+}
+
+.pr-exercise:last-child {
+    margin-bottom: 0;
+}
+
+.pr-exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pr-exercise-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #b0b8c1;
+}
+
+.pr-best {
+    font-size: 18px;
+    font-weight: 800;
+    color: #e0fd53;
+}
+
+.pr-best.pr-empty {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.pr-history-list {
+    padding: 4px 0;
+}
+
+.pr-history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pr-date {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.pr-weight {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.pr-note {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+.pr-empty-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    padding: 32px 0;
+    line-height: 1.8;
+}
+
+.pr-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 24px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pr-clear-btn {
+    background: none;
+    border: 1px solid rgba(255, 77, 77, 0.4);
+    color: #ff4d4d;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pr-clear-btn:hover {
+    background: rgba(255, 77, 77, 0.1);
+    border-color: #ff4d4d;
+}
+
+.pr-share-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: 8px;
+}
+
+.pr-share-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
 }
 
 /* =========================
@@ -159,21 +379,21 @@ body {
 }
 
 /* Link Styles */
-a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger) {
+a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title) {
     color: var(--link-color);
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 500;
 }
 
-a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):hover {
+a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title):hover {
     color: var(--link-hover);
     background-color: rgba(224, 253, 83, 0.1);
     padding: 2px 4px;
     border-radius: 4px;
 }
 
-a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):focus {
+a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title):focus {
     outline: 2px solid rgba(224, 253, 83, 0.3);
     outline-offset: 2px;
 }

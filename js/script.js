@@ -1,3 +1,26 @@
+// 에러 트래킹 (콘솔 + localStorage)
+(function() {
+    var ERROR_KEY = 'error-log';
+    var MAX_ERRORS = 50;
+
+    function logError(entry) {
+        try {
+            var logs = JSON.parse(localStorage.getItem(ERROR_KEY) || '[]');
+            logs.push(entry);
+            if (logs.length > MAX_ERRORS) logs = logs.slice(-MAX_ERRORS);
+            localStorage.setItem(ERROR_KEY, JSON.stringify(logs));
+        } catch (e) { /* localStorage 용량 초과 시 무시 */ }
+    }
+
+    window.onerror = function(msg, src, line, col) {
+        logError({ t: Date.now(), m: msg, s: src, l: line, c: col });
+    };
+
+    window.onunhandledrejection = function(e) {
+        logError({ t: Date.now(), m: 'Promise: ' + (e.reason && e.reason.message || e.reason) });
+    };
+})();
+
 // 공통 상수
 const KG_TO_LB = 2.20462;
 const LB_TO_KG = 0.453592;
@@ -28,14 +51,18 @@ function updateUnitDisplay() {
 
 // 토스트 메시지 표시 함수
 function showToast(message) {
-    const toast = $('<div class="toast"></div>').text(message);
-    $('#toast-container').append(toast);
+    var toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.textContent = message;
+    document.getElementById('toast-container').appendChild(toast);
 
-    setTimeout(() => {
-        toast.addClass('show');
-        setTimeout(() => {
-            toast.removeClass('show');
-            setTimeout(() => toast.remove(), 300);
+    setTimeout(function() {
+        toast.classList.add('show');
+        setTimeout(function() {
+            toast.classList.remove('show');
+            setTimeout(function() { toast.remove(); }, 300);
         }, 2000);
     }, 100);
 }
@@ -47,92 +74,122 @@ function calculatePercentage(value, total) {
 
 // 공유 모달 관련 함수
 function showShareModal() {
-    $('#share-modal').css('display', 'block');
+    var modal = document.getElementById('share-modal');
+    if (modal) modal.style.display = 'block';
 }
 
 function hideShareModal() {
-    $('#share-modal').css('display', 'none');
+    var modal = document.getElementById('share-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Web Share API 헬퍼
+// url: 생략하면 현재 페이지, false면 URL 제외
+function shareContent(title, text, url) {
+    var includeUrl = url !== false;
+    if (includeUrl && !url) url = window.location.href;
+
+    if (navigator.share) {
+        var shareData = { title: title, text: text };
+        if (includeUrl) shareData.url = url;
+        navigator.share(shareData).catch(function () {});
+    } else {
+        var copyText = includeUrl ? text + '\n' + url : text;
+        navigator.clipboard.writeText(copyText).then(function () {
+            showToast('클립보드에 복사되었습니다');
+        }).catch(function () {
+            showToast('복사에 실패했습니다.');
+        });
+    }
 }
 
 // placeholder 업데이트 함수
 function updatePlaceholders() {
-    // convert 페이지에서는 실행하지 않음
-    if (window.location.pathname.includes('convert')) {
-        return;
-    }
-
-    $('.weight-input').each(function() {
-        $(this).attr('placeholder', `무게(${currentUnit.toLowerCase()})`);
+    if (window.location.pathname.includes('convert')) return;
+    document.querySelectorAll('.weight-input').forEach(function(el) {
+        el.placeholder = '무게(' + currentUnit.toLowerCase() + ')';
     });
 }
 
 // 공통 이벤트 핸들러
-$(document).ready(function() {
-    // 초기 placeholder 설정
+document.addEventListener('DOMContentLoaded', function() {
     updatePlaceholders();
 
-    // 단위 버튼 클릭 이벤트
-    $('.unit-btn').click(function() {
-        // convert 페이지에서는 실행하지 않음
-        if (window.location.pathname.includes('convert')) {
-            return;
-        }
+    document.querySelectorAll('.unit-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            if (window.location.pathname.includes('convert')) return;
+            if (this.classList.contains('active')) return;
 
-        if ($(this).hasClass('active')) return;
+            var newUnit = this.dataset.unit;
+            var oldUnit = currentUnit;
 
-        const newUnit = $(this).data('unit');
-        const oldUnit = currentUnit;
+            document.querySelectorAll('.unit-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
 
-        $('.unit-btn').removeClass('active');
-        $(this).addClass('active');
+            document.querySelectorAll('.weight-input').forEach(function(input) {
+                var weight = input.value;
+                if (weight) {
+                    input.value = convertWeight(weight, oldUnit, newUnit);
+                }
+            });
 
-        // 입력 필드 단위 변환
-        $('.weight-input').each(function() {
-            const weight = $(this).val();
-            if (weight) {
-                $(this).val(convertWeight(weight, oldUnit, newUnit));
-            }
+            currentUnit = newUnit;
+            updatePlaceholders();
+            updateUnitDisplay();
+
+            if (typeof updateResults === 'function') updateResults();
+            if (typeof calculateAll === 'function') calculateAll();
         });
-
-        currentUnit = newUnit;
-        updatePlaceholders();
-        updateUnitDisplay();
-
-        // 페이지별 추가 업데이트 함수 호출
-        if (typeof updateResults === 'function') {
-            updateResults();
-        }
-        if (typeof calculateAll === 'function') {
-            calculateAll();
-        }
     });
 
-    // 모달 닫기
-    $(window).click(function(event) {
-        if (event.target == $('#share-modal')[0]) {
+    window.addEventListener('click', function(event) {
+        var shareModal = document.getElementById('share-modal');
+        if (shareModal && event.target === shareModal) {
             hideShareModal();
         }
     });
 
-    // 프린트 버튼
-    $('#print-btn').click(function() {
-        window.print();
-        hideShareModal();
-    });
+    var printBtn = document.getElementById('print-btn');
+    if (printBtn) {
+        printBtn.addEventListener('click', function() {
+            window.print();
+            hideShareModal();
+        });
+    }
 
-    // 햄버거 메뉴 및 사이드바 기능
     initSidebarNavigation();
+    initSkipLink();
 });
+
+// Skip-to-content 링크 초기화
+function initSkipLink() {
+    // 메인 콘텐츠 영역에 id 부여
+    const main = document.querySelector('main');
+    if (main && !main.id) {
+        main.id = 'main-content';
+    }
+
+    const targetId = main ? 'main-content' : 'content';
+
+    // skip link 삽입
+    const skipLink = document.createElement('a');
+    skipLink.href = '#' + targetId;
+    skipLink.className = 'skip-link';
+    skipLink.textContent = '본문으로 건너뛰기';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+}
 
 // 사이드바 네비게이션 초기화
 function initSidebarNavigation() {
     // HTML에 사이드바 구조 추가
     const sidebarHTML = `
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
-        <nav class="sidebar-nav" id="sidebarNav">
+        <nav class="sidebar-nav" id="sidebarNav" aria-label="모바일 메뉴" aria-hidden="true">
             <div class="sidebar-header">
                 <span class="sidebar-title">21-15-9</span>
-                <button class="sidebar-close" id="sidebarClose">✕</button>
+                <button class="sidebar-close" id="sidebarClose" aria-label="메뉴 닫기">✕</button>
             </div>
             <div class="sidebar-content">
                 <div class="nav-group">
@@ -152,15 +209,18 @@ function initSidebarNavigation() {
                     <a href="/weightlifting-record/" class="sidebar-nav-item">Weightlifting Record</a>
                 </div>
                 <div class="nav-group">
-                    <div class="nav-group-title">Tools</div>
+                    <div class="nav-group-title">WOD</div>
+                    <a href="/search-wod/" class="sidebar-nav-item">Search WOD</a>
+                    <a href="/random-wod/" class="sidebar-nav-item">Random WOD <span class="sidebar-highlight-badge">N</span></a>
                     <a href="/timer/" class="sidebar-nav-item">Timer</a>
-                    <a href="/random-wod/" class="sidebar-nav-item">Random WOD</a>
                 </div>
                 <nav class="sidebar-secondary" aria-label="Secondary">
                     <ul>
-                        <li><span class="sidebar-dot"></span><a href="https://khjzzm.github.io/" target="_blank" rel="noopener">Blog</a></li>
-                        <li><span class="sidebar-dot"></span><a href="https://github.com/khjzzm" target="_blank" rel="noopener">GitHub</a></li>
-                        <li><span class="sidebar-dot"></span><a href="mailto:khjzzm@gmail.com">Mail</a></li>
+                        <li><a href="https://khjzzm.github.io/" target="_blank" rel="noopener" class="sidebar-ext-link">Blog</a></li>
+                        <li class="sidebar-sep" aria-hidden="true">|</li>
+                        <li><a href="https://github.com/khjzzm" target="_blank" rel="noopener" class="sidebar-ext-link">GitHub</a></li>
+                        <li class="sidebar-sep" aria-hidden="true">|</li>
+                        <li><a href="mailto:khjzzm@gmail.com" class="sidebar-ext-link">Mail</a></li>
                     </ul>
                 </nav>
             </div>
@@ -186,6 +246,8 @@ function initSidebarNavigation() {
         hamburgerButton.id = 'hamburgerMenu';
         hamburgerButton.innerHTML = '☰';
         hamburgerButton.setAttribute('aria-label', '메뉴 열기');
+        hamburgerButton.setAttribute('aria-expanded', 'false');
+        hamburgerButton.setAttribute('aria-controls', 'sidebarNav');
         headerContent.appendChild(hamburgerButton);
     }
 
@@ -202,10 +264,36 @@ function initSidebarNavigation() {
         hamburgerMenu.addEventListener('click', toggleSidebar);
     }
 
-    // ESC 키로 사이드바 닫기
+    if (sidebarClose) {
+        sidebarClose.addEventListener('click', closeSidebar);
+    }
+
+    // ESC 키로 사이드바 닫기 + 포커스 트랩
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && sidebarNav && sidebarNav.classList.contains('open')) {
+        if (!sidebarNav || !sidebarNav.classList.contains('open')) return;
+
+        if (e.key === 'Escape') {
             closeSidebar();
+            return;
+        }
+
+        // 포커스 트랩: Tab 키를 사이드바 내부로 제한
+        if (e.key === 'Tab') {
+            const focusable = sidebarNav.querySelectorAll('a[href], button, input, [tabindex]:not([tabindex="-1"])');
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else {
+                if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
         }
     });
 }
@@ -217,8 +305,16 @@ function toggleSidebar() {
     if (sidebarNav) {
         const isOpen = sidebarNav.classList.toggle('open');
         document.body.style.overflow = isOpen ? 'hidden' : '';
+        sidebarNav.setAttribute('aria-hidden', !isOpen);
         if (hamburger) {
             hamburger.innerHTML = isOpen ? '✕' : '☰';
+            hamburger.setAttribute('aria-expanded', isOpen);
+            hamburger.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+        }
+        // 열릴 때 첫 번째 링크에 포커스
+        if (isOpen) {
+            const firstLink = sidebarNav.querySelector('.sidebar-nav-item');
+            if (firstLink) firstLink.focus();
         }
     }
 }
@@ -229,9 +325,13 @@ function closeSidebar() {
     const hamburger = document.getElementById('hamburgerMenu');
     if (sidebarNav) {
         sidebarNav.classList.remove('open');
+        sidebarNav.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         if (hamburger) {
             hamburger.innerHTML = '☰';
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.setAttribute('aria-label', '메뉴 열기');
+            hamburger.focus();
         }
     }
 }
@@ -258,8 +358,10 @@ function setActiveSidebarItem() {
 
         if (isActive) {
             item.classList.add('active');
+            item.setAttribute('aria-current', 'page');
         } else {
             item.classList.remove('active');
+            item.removeAttribute('aria-current');
         }
     });
 }

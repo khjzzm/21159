@@ -184,7 +184,7 @@
             let text = wod.n + '\n' + wod.w;
             if (wod.rx) text += '\n' + wod.rx;
             navigator.clipboard.writeText(text).then(function() {
-                showToast('Copied to clipboard');
+                showToast('클립보드에 복사되었습니다');
             });
         });
 

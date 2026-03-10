@@ -1,4 +1,4 @@
-const CACHE_NAME = '21-15-9-v1.2.0';
+const CACHE_NAME = '21-15-9-v1.5.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -18,8 +18,8 @@ const urlsToCache = [
   '/weightlifting-record/index.html',
   '/hero-wod/',
   '/hero-wod/index.html',
-  '/random-wod/',
-  '/random-wod/index.html',
+  '/search-wod/',
+  '/search-wod/index.html',
   '/css/common.css',
   '/css/nav.css',
   '/css/index.css',
@@ -28,6 +28,7 @@ const urlsToCache = [
   '/js/input-validation.js',
   '/js/pwa.js',
   '/js/visitor-counter.js',
+  '/js/pr-history.js',
   '/manifest.json',
   '/weightlifting/weightlifting.js',
   '/weightlifting/weightlifting.css',
@@ -46,6 +47,9 @@ const urlsToCache = [
   '/hero-wod/hero-wod.js',
   '/hero-wod/hero-wod.css',
   '/hero-wod/hero_data.js',
+  '/search-wod/search-wod.css',
+  '/random-wod/',
+  '/random-wod/index.html',
   '/random-wod/random-wod.css',
   '/assets/favicon.svg',
   '/assets/icon-192.svg',
@@ -78,7 +82,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
 
-  // 외부 요청은 무시 (GA, AdSense, jQuery CDN 등)
+  // 외부 요청은 무시 (GA, AdSense 등)
   if (url.origin !== self.location.origin) return;
 
   // HTML 네비게이션 → Network First (배포 즉시 반영)

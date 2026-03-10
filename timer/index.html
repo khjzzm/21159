@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <script>if(location.pathname!=="/"&&!location.pathname.endsWith("/")&&location.pathname.indexOf(".")===-1)location.replace(location.pathname+"/"+location.search+location.hash);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     
     <!-- 캐시 방지 메타 태그 -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -40,6 +44,7 @@
     <meta property="og:image:alt" content="21-15-9 크로스핏 타이머">
     <meta property="og:site_name" content="21-15-9">
     <meta property="og:locale" content="ko_KR">
+    <meta property="og:updated_time" content="2026-03-10T00:00:00+09:00">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -66,18 +71,39 @@
     <link rel="stylesheet" href="/css/common.css?v=1773019964">
     <link rel="stylesheet" href="/css/nav.css?v=1773019964">
     <link rel="stylesheet" href="timer.css?v=1773019964">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "21-15-9",
+                "item": "https://21-15-9.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "크로스핏 타이머",
+                "item": "https://21-15-9.com/timer/"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header-container">
+    <header class="header-container" role="banner">
             <div class="header-content">
-                <nav class="nav-tabs">
+                <nav class="nav-tabs" aria-label="메인 메뉴">
                     <a href="/" class="nav-item">21-15-9</a>
                     <div class="nav-mega-wrapper">
                         <a href="/weightlifting/" class="nav-item nav-trigger">Strength</a>
                         <a href="/convert/" class="nav-item nav-trigger">Convert</a>
                         <a href="/weightlifting-record/" class="nav-item nav-trigger">Archive</a>
-                        <a href="/timer/" class="nav-item nav-trigger active">Tools</a>
+                        <a href="/search-wod/" class="nav-item nav-trigger active">WOD</a>
                         <div class="mega-menu">
                             <div class="mega-col">
                                 <div class="mega-col-title">Strength</div>
@@ -96,16 +122,18 @@
                                 <a href="/hero-wod/" class="mega-item">Hero & Tribute Workouts</a>
                             </div>
                             <div class="mega-col">
-                                <div class="mega-col-title">Tools</div>
+                                <div class="mega-col-title">WOD</div>
+                                <a href="/search-wod/" class="mega-item">Search WOD</a>
+                                <a href="/random-wod/" class="mega-item mega-highlight">Random WOD<span class="mega-highlight-badge">new</span></a>
                                 <a href="/timer/" class="mega-item active">Timer</a>
-                                <a href="/random-wod/" class="mega-item">Random WOD</a>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-        </div>
-        
+        </header>
+
+    <main class="wrapper" id="main-content">
         <!-- PC용 사이드바 광고 제거 -->
         
         <!-- 모바일용 헤더 아래 배너 제거 -->
@@ -139,8 +167,8 @@
             <!-- 타이머 디스플레이 -->
             <div class="timer-display">
                 <div class="timer-main">
-                    <div class="time-display" id="timeDisplay">00:00</div>
-                    <div class="timer-label" id="timerLabel">준비</div>
+                    <div class="time-display" id="timeDisplay" role="timer" aria-live="off" aria-atomic="true">00:00</div>
+                    <div class="timer-label" id="timerLabel" aria-live="polite">준비</div>
                 </div>
                 
                 <!-- 라운드/세트 정보 -->
@@ -159,11 +187,11 @@
                 <div class="setting-group" id="countdownSettings">
                     <h3>For Time 설정</h3>
                     <div class="time-input-group">
-                        <label>Time Cap (제한 시간):</label>
+                        <label for="countdownMinutes">Time Cap (제한 시간):</label>
                         <div class="time-inputs">
-                            <input type="number" id="countdownMinutes" min="0" max="60" value="15" placeholder="분">
+                            <input type="number" id="countdownMinutes" aria-label="제한 시간 (분)" min="0" max="60" value="15" placeholder="분">
                             <span>:</span>
-                            <input type="number" id="countdownSeconds" min="0" max="59" value="0" placeholder="초">
+                            <input type="number" id="countdownSeconds" aria-label="제한 시간 (초)" min="0" max="59" value="0" placeholder="초">
                         </div>
                     </div>
                     <p>주어진 워크아웃을 최대한 빨리 완료하세요. Time Cap에 도달하면 자동 종료됩니다.</p>
@@ -173,11 +201,11 @@
                 <div class="setting-group" id="amrapSettings" style="display: none;">
                     <h3>AMRAP 설정</h3>
                     <div class="time-input-group">
-                        <label>운동 시간:</label>
+                        <label for="amrapMinutes">운동 시간:</label>
                         <div class="time-inputs">
-                            <input type="number" id="amrapMinutes" min="0" max="60" value="15" placeholder="분">
+                            <input type="number" id="amrapMinutes" aria-label="운동 시간 (분)" min="0" max="60" value="15" placeholder="분">
                             <span>:</span>
-                            <input type="number" id="amrapSeconds" min="0" max="59" value="0" placeholder="초">
+                            <input type="number" id="amrapSeconds" aria-label="운동 시간 (초)" min="0" max="59" value="0" placeholder="초">
                         </div>
                     </div>
                     <p>설정된 시간 동안 최대한 많은 라운드를 수행하세요.</p>
@@ -187,12 +215,12 @@
                 <div class="setting-group" id="emomSettings" style="display: none;">
                     <h3>EMOM 설정</h3>
                     <div class="time-input-group">
-                        <label>총 라운드:</label>
-                        <input type="number" id="emomRounds" min="1" max="30" value="10" placeholder="라운드">
+                        <label for="emomRounds">총 라운드:</label>
+                        <input type="number" id="emomRounds" aria-label="총 라운드 수" min="1" max="30" value="10" placeholder="라운드">
                     </div>
                     <div class="time-input-group">
-                        <label>라운드당 시간:</label>
-                        <input type="number" id="emomWork" min="10" max="60" value="60" placeholder="60">
+                        <label for="emomWork">라운드당 시간:</label>
+                        <input type="number" id="emomWork" aria-label="라운드당 시간 (초)" min="10" max="60" value="60" placeholder="60">
                     </div>
                     <p>설정한 시간마다 새로운 라운드가 시작됩니다. 각 라운드는 설정한 시간 동안 진행됩니다.</p>
                 </div>
@@ -201,16 +229,16 @@
                 <div class="setting-group" id="tabataSettings" style="display: none;">
                     <h3>TABATA 설정</h3>
                     <div class="time-input-group">
-                        <label>운동 시간:</label>
-                        <input type="number" id="tabataWork" min="10" max="60" value="20" placeholder="20">
+                        <label for="tabataWork">운동 시간:</label>
+                        <input type="number" id="tabataWork" aria-label="운동 시간 (초)" min="10" max="60" value="20" placeholder="20">
                     </div>
                     <div class="time-input-group">
-                        <label>휴식 시간:</label>
-                        <input type="number" id="tabataRest" min="5" max="60" value="10" placeholder="10">
+                        <label for="tabataRest">휴식 시간:</label>
+                        <input type="number" id="tabataRest" aria-label="휴식 시간 (초)" min="5" max="60" value="10" placeholder="10">
                     </div>
                     <div class="time-input-group">
-                        <label>라운드 수:</label>
-                        <input type="number" id="tabataRounds" min="1" max="20" value="8" placeholder="라운드">
+                        <label for="tabataRounds">라운드 수:</label>
+                        <input type="number" id="tabataRounds" aria-label="라운드 수" min="1" max="20" value="8" placeholder="라운드">
                     </div>
                     <p>고강도 인터벌 트레이닝을 위한 타이머입니다.</p>
                 </div>
@@ -234,11 +262,9 @@
         
         <!-- 컨텐츠 하단 광고 제거 -->
         
-    </div>
+    </main>
     
-    <div id="toast-container"></div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/js/script.js?v=1773019964"></script>
+    <div id="toast-container"></div>    <script src="/js/script.js?v=1773019964"></script>
     <script src="/js/pwa.js?v=1773019964"></script>
     <script src="/js/visitor-counter.js?v=1773019964"></script>
     <script src="timer.js?v=1773019964"></script>

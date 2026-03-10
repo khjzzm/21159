@@ -36,11 +36,14 @@ window.addEventListener('appinstalled', () => {
 function showInstallPrompt() {
     if (document.getElementById('pwa-install-btn')) return;
 
+    const wrap = document.createElement('div');
+    wrap.id = 'pwa-install-btn';
+    wrap.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:1000;';
+
     const btn = document.createElement('button');
-    btn.id = 'pwa-install-btn';
     btn.textContent = '앱 설치';
     btn.className = 'pwa-install-button';
-    btn.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#e0fd53;color:#1a1a1a;border:none;border-radius:25px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(224,253,83,0.3);z-index:1000;transition:all 0.3s ease;';
+    btn.style.cssText = 'background:#e0fd53;color:#1a1a1a;border:none;border-radius:25px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(224,253,83,0.3);transition:all 0.3s ease;';
 
     btn.addEventListener('click', async () => {
         if (!deferredPrompt) return;
@@ -50,11 +53,17 @@ function showInstallPrompt() {
         hideInstallPrompt();
     });
 
-    document.body.appendChild(btn);
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '✕';
+    closeBtn.style.cssText = 'position:absolute;top:-6px;right:-6px;background:#333;color:#999;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;';
+    closeBtn.addEventListener('click', (e) => { e.stopPropagation(); hideInstallPrompt(); });
 
-    setTimeout(() => {
-        btn.style.animation = 'pulse 2s infinite';
-    }, 3000);
+    wrap.appendChild(btn);
+    wrap.appendChild(closeBtn);
+    document.body.appendChild(wrap);
+
+    // 10초 후 자동 숨김
+    setTimeout(() => hideInstallPrompt(), 10000);
 }
 
 function hideInstallPrompt() {

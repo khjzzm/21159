@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // 변환 상수
     const KG_TO_LB = 2.20462;
     const LB_TO_KG = 1 / KG_TO_LB;
@@ -19,39 +19,39 @@ $(document).ready(function() {
     // 실시간 변환기
     let isUpdating = false;
 
-    $('#kg-input').on('input', function() {
+    document.getElementById('kg-input').addEventListener('input', function() {
         if (isUpdating) return;
-        
-        const kgValue = parseFloat($(this).val());
+
+        const kgValue = parseFloat(this.value);
         if (!isNaN(kgValue) && kgValue >= 0) {
             isUpdating = true;
             const lbValue = formatWeight(kgToLb(kgValue), 1);
-            $('#lb-input').val(lbValue);
+            document.getElementById('lb-input').value = lbValue;
             isUpdating = false;
-        } else if ($(this).val() === '') {
-            $('#lb-input').val('');
+        } else if (this.value === '') {
+            document.getElementById('lb-input').value = '';
         }
     });
 
-    $('#lb-input').on('input', function() {
+    document.getElementById('lb-input').addEventListener('input', function() {
         if (isUpdating) return;
-        
-        const lbValue = parseFloat($(this).val());
+
+        const lbValue = parseFloat(this.value);
         if (!isNaN(lbValue) && lbValue >= 0) {
             isUpdating = true;
             const kgValue = formatWeight(lbToKg(lbValue), 1);
-            $('#kg-input').val(kgValue);
+            document.getElementById('kg-input').value = kgValue;
             isUpdating = false;
-        } else if ($(this).val() === '') {
-            $('#kg-input').val('');
+        } else if (this.value === '') {
+            document.getElementById('kg-input').value = '';
         }
     });
 
     // 변환표 생성 함수 (파운드 기준)
     function generateTableByLb(startLb, endLb, step = 5) {
-        const tbody = $('#table-body');
-        tbody.empty();
-        
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = '';
+
         const weights = [];
         for (let lb = startLb; lb <= endLb; lb += step) {
             weights.push({
@@ -63,77 +63,97 @@ $(document).ready(function() {
         // 3컬럼으로 나누어 표시
         const itemsPerRow = 3;
         for (let i = 0; i < weights.length; i += itemsPerRow) {
-            const row = $('<tr></tr>');
-            
+            const row = document.createElement('tr');
+
             for (let j = 0; j < itemsPerRow; j++) {
                 const index = i + j;
                 if (index < weights.length) {
                     const weight = weights[index];
-                    row.append(`<td class="lb-cell">${weight.lb}</td>`);
-                    row.append(`<td class="kg-cell">${weight.kg}</td>`);
+                    row.insertAdjacentHTML('beforeend', `<td class="lb-cell">${weight.lb}</td>`);
+                    row.insertAdjacentHTML('beforeend', `<td class="kg-cell">${weight.kg}</td>`);
                 } else {
-                    row.append('<td></td><td></td>');
+                    row.insertAdjacentHTML('beforeend', '<td></td><td></td>');
                 }
             }
-            
-            tbody.append(row);
+
+            tbody.appendChild(row);
         }
     }
 
     // 테이블 토글 버튼 이벤트
-    $('.table-toggle').on('click', function() {
-        $('.table-toggle').removeClass('active');
-        $(this).addClass('active');
-        
-        const range = $(this).data('range');
-        
-        switch(range) {
-            case 'light':
-                generateTableByLb(5, 220, 5); // 5-220lb (5lb 단위) - 일반 WOD
-                break;
-            case 'medium':
-                generateTableByLb(225, 350, 5); // 225-350lb (5lb 단위) - RX+ 레벨
-                break;
-            case 'heavy':
-                generateTableByLb(355, 500, 5); // 355-500lb (5lb 단위) - 컴피티션
-                break;
-        }
+    document.querySelectorAll('.table-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.table-toggle').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            const range = this.dataset.range;
+
+            switch(range) {
+                case 'light':
+                    generateTableByLb(5, 220, 5); // 5-220lb (5lb 단위) - 일반 WOD
+                    break;
+                case 'medium':
+                    generateTableByLb(225, 350, 5); // 225-350lb (5lb 단위) - RX+ 레벨
+                    break;
+                case 'heavy':
+                    generateTableByLb(355, 500, 5); // 355-500lb (5lb 단위) - 컴피티션
+                    break;
+            }
+        });
     });
 
     // 초기 테이블 생성 (일반 WOD)
     generateTableByLb(5, 220, 5);
 
     // 공통 변환값 클릭 이벤트
-    $('.common-item').on('click', function() {
-        const kgText = $(this).find('.common-kg').text();
-        const lbText = $(this).find('.common-lb').text();
-        
-        // kg 값 추출 (숫자만)
-        const kgMatch = kgText.match(/(\d+(?:\.\d+)?)/);
-        const lbMatch = lbText.match(/(\d+(?:\.\d+)?)/);
-        
-        if (kgMatch) {
-            $('#kg-input').val(kgMatch[1]).trigger('input');
-        } else if (lbMatch) {
-            $('#lb-input').val(lbMatch[1]).trigger('input');
-        }
+    document.querySelectorAll('.common-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+            const kgText = this.querySelector('.common-kg').textContent;
+            const lbText = this.querySelector('.common-lb').textContent;
+
+            // kg 값 추출 (숫자만)
+            const kgMatch = kgText.match(/(\d+(?:\.\d+)?)/);
+            const lbMatch = lbText.match(/(\d+(?:\.\d+)?)/);
+
+            if (kgMatch) {
+                const kgInput = document.getElementById('kg-input');
+                kgInput.value = kgMatch[1];
+                kgInput.dispatchEvent(new Event('input'));
+            } else if (lbMatch) {
+                const lbInput = document.getElementById('lb-input');
+                lbInput.value = lbMatch[1];
+                lbInput.dispatchEvent(new Event('input'));
+            }
+        });
     });
 
     // 테이블 셀 클릭 이벤트
-    $(document).on('click', '.kg-cell', function() {
-        const kgValue = $(this).text();
-        $('#kg-input').val(kgValue).trigger('input');
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('.kg-cell')) {
+            const kgValue = e.target.textContent;
+            const kgInput = document.getElementById('kg-input');
+            kgInput.value = kgValue;
+            kgInput.dispatchEvent(new Event('input'));
+        }
     });
 
-    $(document).on('click', '.lb-cell', function() {
-        const lbValue = $(this).text();
-        $('#lb-input').val(lbValue).trigger('input');
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('.lb-cell')) {
+            const lbValue = e.target.textContent;
+            const lbInput = document.getElementById('lb-input');
+            lbInput.value = lbValue;
+            lbInput.dispatchEvent(new Event('input'));
+        }
     });
 
     // 모바일 input 더블탭 확대 방지
-    $("input[type='number']").on('touchstart', function(e) {
-        if (e.touches.length > 1) {
-            e.preventDefault();
-        }
+    document.querySelectorAll("input[type='number']").forEach(function(input) {
+        input.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        });
     });
-}); 
+});

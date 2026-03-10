@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <script>if(location.pathname!=="/"&&!location.pathname.endsWith("/")&&location.pathname.indexOf(".")===-1)location.replace(location.pathname+"/"+location.search+location.hash);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
     <!-- 캐시 방지 메타 태그 -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -11,6 +15,25 @@
     <meta http-equiv="Expires" content="0">
 
     <title>크로스핏 오픈 워크아웃 | 21-15-9</title>
+    <meta name="description" content="2011~2026 크로스핏 오픈 전체 워크아웃 아카이브 - 연도별 오픈 워크아웃 검색 및 확인">
+    <meta name="keywords" content="크로스핏 오픈, CrossFit Open, 오픈 워크아웃, CrossFit Open workouts, 2024 Open, 2025 Open, 2026 Open">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="크로스핏 오픈 워크아웃 | 21-15-9">
+    <meta property="og:description" content="2011~2026 크로스핏 오픈 전체 워크아웃 아카이브">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://21-15-9.com/crossfit-wod/">
+    <meta property="og:image" content="https://21-15-9.com/assets/og-image.svg">
+    <meta property="og:site_name" content="21-15-9">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:updated_time" content="2026-03-10T00:00:00+09:00">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="크로스핏 오픈 워크아웃 | 21-15-9">
+    <meta name="twitter:description" content="2011~2026 크로스핏 오픈 전체 워크아웃 아카이브">
+    <meta name="twitter:image" content="https://21-15-9.com/assets/og-image.svg">
 
     <link rel="canonical" href="https://21-15-9.com/crossfit-wod">
     <link rel="stylesheet" href="/css/common.css?v=1773019964">
@@ -41,19 +64,39 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="21-15-9">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "21-15-9",
+                "item": "https://21-15-9.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "크로스핏 오픈 워크아웃",
+                "item": "https://21-15-9.com/crossfit-wod/"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
-    <div class="wrapper">
-        <!-- 헤더 영역 -->
-        <div class="header-container">
+    <header class="header-container" role="banner">
             <div class="header-content">
-                <nav class="nav-tabs">
+                <nav class="nav-tabs" aria-label="메인 메뉴">
                     <a href="/" class="nav-item">21-15-9</a>
                     <div class="nav-mega-wrapper">
                         <a href="/weightlifting/" class="nav-item nav-trigger">Strength</a>
                         <a href="/convert/" class="nav-item nav-trigger">Convert</a>
                         <a href="/weightlifting-record/" class="nav-item nav-trigger active">Archive</a>
-                        <a href="/timer/" class="nav-item nav-trigger">Tools</a>
+                        <a href="/search-wod/" class="nav-item nav-trigger">WOD</a>
                         <div class="mega-menu">
                             <div class="mega-col">
                                 <div class="mega-col-title">Strength</div>
@@ -72,15 +115,20 @@
                                 <a href="/hero-wod/" class="mega-item">Hero & Tribute Workouts</a>
                             </div>
                             <div class="mega-col">
-                                <div class="mega-col-title">Tools</div>
+                                <div class="mega-col-title">WOD</div>
+                                <a href="/search-wod/" class="mega-item">Search WOD</a>
+                                <a href="/random-wod/" class="mega-item mega-highlight">Random WOD<span class="mega-highlight-badge">new</span></a>
                                 <a href="/timer/" class="mega-item">Timer</a>
-                                <a href="/random-wod/" class="mega-item">Random WOD</a>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-        </div>
+        </header>
+
+    <main class="wrapper" id="main-content">
+        <!-- 헤더 영역 -->
+        
 
         <!-- PC용 사이드바 광고 제거 -->
 
@@ -1330,10 +1378,7 @@
 
             <div id="toast-container"></div>
         </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/js/script.js?v=1773019964"></script>
+    </main>    <script src="/js/script.js?v=1773019964"></script>
     <script src="/js/pwa.js?v=1773019964"></script>
     <script src="/js/visitor-counter.js?v=1773019964"></script>
     <script src="open.js?v=1773019964"></script>
