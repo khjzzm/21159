@@ -379,21 +379,21 @@ body {
 }
 
 /* Link Styles */
-a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title) {
+a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.showcase-cta):not(.hl-card-link):not(.apple-stat):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title) {
     color: var(--link-color);
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 500;
 }
 
-a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title):hover {
+a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.showcase-cta):not(.hl-card-link):not(.apple-stat):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title):hover {
     color: var(--link-hover);
     background-color: rgba(224, 253, 83, 0.1);
     padding: 2px 4px;
     border-radius: 4px;
 }
 
-a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title):focus {
+a:not(.nav-item):not(.sidebar-nav-item):not(.hero-btn):not(.feature-card):not(.section-cta):not(.showcase-cta):not(.hl-card-link):not(.apple-stat):not(.footer-link):not(.mega-item):not(.nav-trigger):not(.sidebar-ext-link):not(.header-title):focus {
     outline: 2px solid rgba(224, 253, 83, 0.3);
     outline-offset: 2px;
 }

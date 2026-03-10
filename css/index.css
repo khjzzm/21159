@@ -54,7 +54,26 @@
 
 .reveal.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0);
+}
+
+/* 쇼케이스 좌우 번갈아 등장 */
+.reveal-from-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-from-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-from-left.visible,
+.reveal-from-right.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .reveal-delay-1 { transition-delay: 0.1s; }
@@ -64,15 +83,6 @@
 .reveal-delay-5 { transition-delay: 0.5s; }
 .reveal-delay-6 { transition-delay: 0.6s; }
 .reveal-delay-7 { transition-delay: 0.7s; }
-
-/* 가로 스크롤 카드는 왼쪽에서 등장 */
-.feature-card.reveal {
-    transform: translateX(30px);
-}
-
-.feature-card.reveal.visible {
-    transform: translateX(0);
-}
 
 /* 섹션 라벨 */
 .section-label,
@@ -84,6 +94,16 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 16px;
+}
+
+.hero-label {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #e0fd53, #53fdc8, #53c8fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* 섹션 타이틀 */
@@ -279,114 +299,340 @@
 }
 
 /* =========================
-   기능 카드 섹션
+   기능 쇼케이스 섹션
 ========================= */
-.features-section {
-    background: #191f28;
-    padding-left: 0;
-    padding-right: 0;
+
+/* 배경 이미지 + 오버레이 */
+.showcase-section {
+    background-color: #191f28;
 }
 
-.features-section::before {
+.showcase-section::before {
     content: '';
     position: absolute;
-    top: 10%;
-    left: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(224, 253, 83, 0.08) 0%, transparent 70%);
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+}
+
+/* STRENGTH */
+.showcase-section:nth-child(2)::before {
+    background-image: url('/img/bg-strength.jpg');
+    opacity: 0.1;
+}
+
+/* CONVERT */
+.showcase-section:nth-child(3)::before {
+    background-image: url('/img/bg-convert.webp');
+    opacity: 0.1;
+}
+
+/* ARCHIVE */
+.showcase-section:nth-child(4)::before {
+    background-image: url('/img/bg-archive.jpeg');
+    opacity: 0.1;
+}
+
+/* WOD */
+.showcase-section:nth-child(5)::before {
+    background-image: url('/img/bg-wod.jpg');
+    opacity: 0.1;
+}
+
+/* 섹션별 그라디언트 글로우 */
+.showcase-section::after {
+    content: '';
+    position: absolute;
     border-radius: 50%;
     pointer-events: none;
 }
 
-.features-inner {
+.showcase-section:nth-child(2)::after {
+    top: -20%;
+    right: -15%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(224, 253, 83, 0.18) 0%, transparent 65%);
+}
+
+.showcase-section:nth-child(3)::after {
+    bottom: -15%;
+    left: -20%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(83, 200, 253, 0.15) 0%, transparent 65%);
+}
+
+.showcase-section:nth-child(4)::after {
+    top: 5%;
+    left: -15%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(253, 183, 83, 0.15) 0%, transparent 65%);
+}
+
+.showcase-section:nth-child(5)::after {
+    bottom: -15%;
+    right: -10%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(183, 83, 253, 0.15) 0%, transparent 65%);
+}
+
+.showcase-inner {
     text-align: center;
     position: relative;
     z-index: 1;
-}
-
-.features-row {
-    overflow: hidden;
-    padding: 10px 0;
-    margin: 0 -24px;
-}
-
-.feature-card {
-    flex: 0 0 340px;
-    min-width: 340px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 44px 36px;
-    text-decoration: none;
-    transition: all 0.3s;
-    text-align: left;
-    min-height: 260px;
+    max-width: 800px;
+    width: 100%;
+    padding: 0 24px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 
-.feature-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
-    border-color: rgba(224, 253, 83, 0.4);
-    background: rgba(255, 255, 255, 0.08);
+.showcase-label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding: 4px 12px;
+    color: #e0fd53;
+    background: none;
+    border-radius: 0;
 }
 
-.feature-icon {
-    font-size: 48px;
-    margin-bottom: 28px;
+/* STRENGTH — 좌우 라인 + 그라디언트 텍스트 */
+.showcase-section:nth-child(2) .showcase-label {
+    gap: 16px;
+    background: linear-gradient(135deg, #fd5353, #fd8353);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 14px;
+    font-weight: 800;
 }
 
-.feature-card h3 {
-    font-size: 22px;
+.showcase-section:nth-child(2) .showcase-label::before,
+.showcase-section:nth-child(2) .showcase-label::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #fd5353);
+}
+
+.showcase-section:nth-child(2) .showcase-label::after {
+    background: linear-gradient(90deg, #fd5353, transparent);
+}
+
+/* CONVERT — 슬래시 + 그라디언트 텍스트 */
+.showcase-section:nth-child(3) .showcase-label {
+    background: linear-gradient(135deg, #53c8fd, #5383fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 14px;
+    font-weight: 800;
+    gap: 10px;
+}
+
+.showcase-section:nth-child(3) .showcase-label::before,
+.showcase-section:nth-child(3) .showcase-label::after {
+    content: '/';
+    color: rgba(83, 200, 253, 0.4);
+    font-size: 14px;
+}
+
+/* ARCHIVE — 그라디언트 텍스트 */
+.showcase-section:nth-child(4) .showcase-label {
+    background: linear-gradient(135deg, #fdb753, #fd8f53);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+/* WOD — 아웃라인 pill */
+.showcase-section:nth-child(5) .showcase-label {
+    color: #b753fd;
+    border: 1px solid rgba(183, 83, 253, 0.4);
+    border-radius: 20px;
+    padding: 5px 16px;
+}
+
+.showcase-heading {
+    font-size: 32px;
     font-weight: 700;
     color: #f9fafb;
-    margin: 0 0 12px;
+    margin: 0 0 40px;
+    letter-spacing: -0.5px;
 }
 
-.feature-card p {
+/* 데이터 카드 그리드 */
+.showcase-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 36px;
+}
+
+.showcase-data-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 링크형 hl-card */
+.hl-card-link {
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.hl-card-link:hover {
+    border-color: rgba(224, 253, 83, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA 링크 그룹 */
+.showcase-links {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.showcase-cta {
+    display: inline-block;
+    padding: 14px 36px;
     font-size: 15px;
-    color: #8b95a1;
-    line-height: 1.7;
-    margin: 0;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #e0fd53;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.showcase-cta:hover {
+    background: #c8e019;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(224, 253, 83, 0.3);
+}
+
+.showcase-cta-alt {
+    background: rgba(255, 255, 255, 0.06);
+    color: #b0b8c1;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.showcase-cta-alt:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #f9fafb;
+    box-shadow: none;
+}
+
+/* 프로그레스 도트 */
+.showcase-progress {
+    display: flex;
+    gap: 8px;
+}
+
+.showcase-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    transition: all 0.3s;
+}
+
+.showcase-dot.active {
+    background: #e0fd53;
+    width: 24px;
+    border-radius: 4px;
 }
 
 
 /* =========================
-   하이라이트 섹션
+   Apple-style 통계 & 카피 레이아웃
 ========================= */
-.highlight-section {
-    background: #121417;
-}
 
-.highlight-section::before {
-    content: '';
-    position: absolute;
-    bottom: 5%;
-    right: -15%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(224, 253, 83, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.highlight-inner {
-    max-width: 960px;
+/* ARCHIVE 섹션 - 큰 숫자 통계 (텍스트 스타일) */
+.apple-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     width: 100%;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 36px;
 }
 
-.highlight-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
+.apple-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 28px 16px;
+    transition: all 0.3s;
+    cursor: pointer;
 }
+
+.apple-stat:hover .apple-number {
+    color: #c8e019;
+}
+
+.apple-stat:hover .apple-desc {
+    color: #b0b8c1;
+}
+
+.apple-number {
+    font-size: 64px;
+    font-weight: 800;
+    color: #e0fd53;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.apple-plus {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.apple-desc {
+    font-size: 15px;
+    color: #6b7684;
+    line-height: 1.6;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+/* WOD 섹션 - 카피라이팅 */
+.apple-line {
+    font-size: 28px;
+    font-weight: 600;
+    color: #f9fafb;
+    line-height: 1.8;
+    text-align: center;
+    margin: 0 0 8px;
+}
+
+.apple-line:last-of-type {
+    margin-bottom: 40px;
+}
+
+.text-accent {
+    color: #e0fd53;
+}
+
+/* =========================
+   hl-card 공통 스타일
+========================= */
 
 .hl-card {
     background: rgba(255, 255, 255, 0.04);
@@ -422,18 +668,6 @@
     color: #e0fd53;
 }
 
-.section-cta {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-    color: #e0fd53;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.section-cta:hover {
-    color: #e0fd53;
-}
 
 /* =========================
    푸터 섹션
@@ -591,34 +825,42 @@
         margin-bottom: 32px;
     }
 
-    .feature-card {
-        flex: 0 0 300px;
-        min-width: 300px;
-        padding: 36px 28px;
-        border-radius: 20px;
-        min-height: 230px;
+    .showcase-section::after {
+        width: 300px !important;
+        height: 300px !important;
     }
 
-    .feature-icon {
-        font-size: 40px;
-        margin-bottom: 22px;
+    .showcase-heading {
+        font-size: 24px;
+        margin-bottom: 28px;
     }
 
-    .feature-card h3 {
-        font-size: 20px;
-    }
-
-    .feature-card p {
-        font-size: 14px;
-    }
-
-    .highlight-cards {
+    .showcase-data,
+    .showcase-data-3 {
         grid-template-columns: 1fr;
         gap: 12px;
     }
 
-    .hl-card {
-        border-radius: 12px;
+    .showcase-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .showcase-cta {
+        text-align: center;
+    }
+
+    .apple-number {
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+    .apple-stat {
+        padding: 20px 16px;
+    }
+
+    .apple-line {
+        font-size: 20px;
     }
 
     .footer-accent-line {
@@ -662,11 +904,9 @@
         margin-bottom: 24px;
     }
 
-    .feature-card {
-        flex: 0 0 270px;
-        min-width: 270px;
-        padding: 32px 24px;
-        min-height: 210px;
+    .showcase-heading {
+        font-size: 22px;
+        margin-bottom: 20px;
     }
 
     .footer-title {
