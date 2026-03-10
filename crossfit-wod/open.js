@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var movementData = [
         { name: 'Double-unders', count: 15, cat: 'cardio' },
         { name: 'Thrusters', count: 12, cat: 'barbell' },
-        { name: 'Chest-to-bar pull-ups', count: 10, cat: 'gymnastics' },
+        { name: 'Chest-to-bar pull-ups', count: 11, cat: 'gymnastics' },
         { name: 'Deadlifts', count: 10, cat: 'barbell' },
         { name: 'Toes-to-bars', count: 10, cat: 'gymnastics' },
         { name: 'Wall-ball shots', count: 10, cat: 'other' },
@@ -152,16 +152,16 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'Row (calories)', count: 9, cat: 'cardio' },
         { name: 'Cleans', count: 9, cat: 'barbell' },
         { name: 'Burpees', count: 9, cat: 'body' },
+        { name: 'Muscle-ups', count: 7, cat: 'gymnastics' },
         { name: 'Bar muscle-ups', count: 6, cat: 'gymnastics' },
         { name: 'Handstand push-ups', count: 6, cat: 'gymnastics' },
         { name: 'Box jumps', count: 6, cat: 'body' },
-        { name: 'Muscle-ups', count: 6, cat: 'gymnastics' },
         { name: 'Walking lunge', count: 5, cat: 'body' },
         { name: 'DB snatches', count: 5, cat: 'dumbbell' },
         { name: 'Overhead squats', count: 4, cat: 'barbell' },
         { name: 'Wall walks', count: 4, cat: 'gymnastics' },
-        { name: 'Clean and jerks', count: 3, cat: 'barbell' },
-        { name: 'Pull-ups', count: 2, cat: 'gymnastics' }
+        { name: 'Pull-ups', count: 3, cat: 'gymnastics' },
+        { name: 'Clean and jerks', count: 3, cat: 'barbell' }
     ];
 
     // Autocomplete setup
