@@ -1,6 +1,10 @@
 (function() {
     var API_BASE = 'https://c3po.crossfit.com/api/leaderboards/v2/competitions/open/';
-    var PROXY = 'https://corsproxy.io/?';
+    var PROXIES = [
+        'https://api.allorigins.win/raw?url=',
+        'https://corsproxy.io/?',
+        'https://api.codetabs.com/v1/proxy?quest='
+    ];
     var PER_PAGE = 50;
 
     // 워크아웃 요약 데이터
@@ -76,11 +80,19 @@
                 return res.json();
             })
             .catch(function() {
-                return fetch(PROXY + encodeURIComponent(url))
-                    .then(function(res) {
-                        if (!res.ok) throw new Error('proxy failed');
-                        return res.json();
-                    });
+                return tryProxies(url, 0);
+            });
+    }
+
+    function tryProxies(url, idx) {
+        if (idx >= PROXIES.length) return Promise.reject(new Error('all proxies failed'));
+        return fetch(PROXIES[idx] + encodeURIComponent(url))
+            .then(function(res) {
+                if (!res.ok) throw new Error('proxy ' + idx + ' failed');
+                return res.json();
+            })
+            .catch(function() {
+                return tryProxies(url, idx + 1);
             });
     }
 
