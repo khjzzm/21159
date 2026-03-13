@@ -118,7 +118,9 @@
                 return { total: data.total, pairs: pairs };
             })
             .catch(function() {
-                return loadFromAPI(year, division, event);
+                return loadFromAPI(year, division, event).catch(function() {
+                    throw new Error('in_progress');
+                });
             });
     }
 
@@ -218,7 +220,11 @@
                 showResult(pct, userRank, total, year);
             })
             .catch(function(e) {
-                showError('API 요청 실패 — 잠시 후 다시 시도해주세요');
+                if (e && e.message === 'in_progress') {
+                    showInProgress();
+                } else {
+                    showError('API 요청 실패 — 잠시 후 다시 시도해주세요');
+                }
             })
             .finally(function() {
                 calcBtn.disabled = false;
@@ -344,6 +350,7 @@
     // =====================
     function showResult(pct, rank, total, year) {
         resultSection.style.display = 'block';
+        resultPct.style.fontSize = '';
 
         var displayPct = pct < 1 ? pct.toFixed(2) : pct.toFixed(1);
         resultPct.textContent = '상위 ' + displayPct + '%';
@@ -365,8 +372,22 @@
         loadingEl.style.display = 'none';
         calcBtn.disabled = false;
         resultSection.style.display = 'block';
+        resultPct.style.fontSize = '';
         resultPct.textContent = '—';
         resultRank.textContent = msg;
+        resultBar.style.width = '0';
+        resultMarker.style.left = '0';
+        resultMeta.textContent = '';
+    }
+
+    function showInProgress() {
+        loadingEl.style.display = 'none';
+        calcBtn.disabled = false;
+        resultSection.style.display = 'block';
+        var eventLabel = currentYear.toString().slice(2) + '.' + currentEvent;
+        resultPct.textContent = 'WOD IN PROGRESS';
+        resultPct.style.fontSize = '28px';
+        resultRank.textContent = eventLabel + ' 이벤트가 아직 진행 중입니다. 종료 후 결과가 반영됩니다.';
         resultBar.style.width = '0';
         resultMarker.style.left = '0';
         resultMeta.textContent = '';
