@@ -1,4 +1,4 @@
-const CACHE_NAME = '21-15-9-v1.7.0';
+const CACHE_NAME = '21-15-9-v1.8.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -66,7 +66,8 @@ const urlsToCache = [
   '/assets/favicon.svg',
   '/assets/icon-192.svg',
   '/assets/icon-512.svg',
-  '/assets/og-image.svg'
+  '/assets/og-image.svg',
+  '/404.html'
 ];
 
 // Service Worker 설치
@@ -102,9 +103,13 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(event.request)
         .then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-          return response;
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+            return response;
+          }
+          // 404 등 에러 응답 → 캐시된 404 페이지 반환
+          return caches.match('/404.html').then(r => r || response);
         })
         .catch(() => caches.match(event.request).then(r => r || caches.match('/')))
     );
