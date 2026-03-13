@@ -407,24 +407,10 @@
 
     function checkInProgress() {
         if (isInProgress()) {
-            // 입력 영역 비활성화
-            calcBtn.disabled = true;
-            scoreRadios.forEach(function(r) { r.disabled = true; });
-            timeMinInput.disabled = true;
-            timeSecInput.disabled = true;
-            repsInput.disabled = true;
-            scoreSection.style.opacity = '0.4';
-            scoreSection.style.pointerEvents = 'none';
-            // 바로 진행 중 표시
+            scoreSection.style.display = 'none';
             showInProgress();
         } else {
-            calcBtn.disabled = false;
-            scoreRadios.forEach(function(r) { r.disabled = false; });
-            timeMinInput.disabled = false;
-            timeSecInput.disabled = false;
-            repsInput.disabled = false;
-            scoreSection.style.opacity = '';
-            scoreSection.style.pointerEvents = '';
+            scoreSection.style.display = '';
             resultSection.style.display = 'none';
         }
     }
