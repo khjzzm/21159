@@ -114,6 +114,13 @@
       "description": "크로스핏 벤치마크 WOD 레벨별 목표 시간 가이드",
       "url": "/the-girls",
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Open Percentile",
+      "short_name": "Percentile",
+      "description": "크로스핏 오픈 점수 한국 상위 퍼센타일 계산기",
+      "url": "/open-percentile",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     }
   ]
 }

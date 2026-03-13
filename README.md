@@ -59,8 +59,32 @@
 - 모바일 가로 모드에서 전체 화면 타이머 경험
 - 백그라운드 탭 전환 시에도 정확한 시간 동기화
 
+### 💪 The Girls — CrossFit Benchmark WODs
+- Fran, Grace, Diane 등 16개 벤치마크 WOD 수록
+- 레벨별 목표 시간 가이드 (Beginner / Intermediate / Advanced / Elite)
+- 남녀별 레벨 기준 분리
+- 개인 기록(PR) 입력 및 localStorage 저장
+- 현재 레벨 자동 판별 및 시각화
+
+### 📊 Open Percentile
+- 크로스핏 오픈 점수 입력 → 한국 참가자 중 상위 몇% 실시간 계산
+- CrossFit Games 리더보드 API 기반 (Korea, RX 기준)
+- 2024~2026 오픈 지원, 남녀 구분
+- 완료(시간) / 타임캡(렙수) 입력 모드
+- 샘플링 기반 순위 추정 및 퍼센타일 바 시각화
+
+### 🚣 Erg Calculator
+- 로잉, 스키에르그, 어썰트바이크 페이스 & 칼로리 계산기
+- 거리/칼로리 ↔ 페이스/칼로리레이트 양방향 변환
+- Concept2 공식 기반 체중 보정 칼로리 표시
+- 장비별 독립 패널 및 실시간 계산
+
+### 🔍 Search WOD
+- 동작, 장비별 크로스핏 워크아웃 검색
+- 필터 조합으로 원하는 WOD 찾기
+
 ### 🎲 Random WOD
-- 랜덤 크로스핏 워크아웃 생성기 (준비중)
+- 랜덤 크로스핏 워크아웃 생성기
 
 ### 💾 데이터 관리
 - 계산 결과 로컬 스토리지 저장 및 불러오기
@@ -87,7 +111,6 @@
 - HTML5
 - CSS3 (반응형 디자인)
 - JavaScript (ES6+)
-- jQuery 3.7.1
 - Google Analytics 4
 - PWA (Service Worker)
 
@@ -165,7 +188,22 @@ git clone https://github.com/khjzzm/21159.git
 │   ├── index.html
 │   ├── timer.js
 │   └── timer.css
-└── random-wod/             # Random WOD (준비중)
+├── the-girls/              # The Girls 벤치마크 WOD
+│   ├── index.html
+│   ├── the-girls.js
+│   └── the-girls.css
+├── open-percentile/        # 오픈 퍼센타일 계산기
+│   ├── index.html
+│   ├── percentile.js
+│   └── percentile.css
+├── erg/                    # Erg Calculator
+│   ├── index.html
+│   ├── erg.js
+│   └── erg.css
+├── search-wod/             # Search WOD
+│   ├── index.html
+│   └── search-wod.css
+└── random-wod/             # Random WOD
     ├── index.html
     └── random-wod.css
 ```

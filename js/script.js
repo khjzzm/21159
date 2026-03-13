@@ -197,6 +197,7 @@ function initSidebarNavigation() {
                     <a href="/crossfit-wod/" class="sidebar-nav-item">CrossFit Open</a>
                     <a href="/hero-wod/" class="sidebar-nav-item">Hero & Tribute Workouts</a>
                     <a href="/the-girls/" class="sidebar-nav-item">The Girls</a>
+                    <a href="/open-percentile/" class="sidebar-nav-item">Open Percentile</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">WOD</div>

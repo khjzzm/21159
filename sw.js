@@ -1,4 +1,4 @@
-const CACHE_NAME = '21-15-9-v1.6.0';
+const CACHE_NAME = '21-15-9-v1.7.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -59,6 +59,10 @@ const urlsToCache = [
   '/the-girls/index.html',
   '/the-girls/the-girls.js',
   '/the-girls/the-girls.css',
+  '/open-percentile/',
+  '/open-percentile/index.html',
+  '/open-percentile/percentile.js',
+  '/open-percentile/percentile.css',
   '/assets/favicon.svg',
   '/assets/icon-192.svg',
   '/assets/icon-512.svg',
