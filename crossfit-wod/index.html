@@ -93,32 +93,34 @@
                 <nav class="nav-tabs" aria-label="메인 메뉴">
                     <a href="/" class="nav-item">21-15-9</a>
                     <div class="nav-mega-wrapper">
-                        <a href="/weightlifting/" class="nav-item nav-trigger">Strength</a>
-                        <a href="/convert/" class="nav-item nav-trigger">Convert</a>
-                        <a href="/weightlifting-record/" class="nav-item nav-trigger active">Archive</a>
+                        <a href="/crossfit-wod/" class="nav-item nav-trigger active">CrossFit</a>
                         <a href="/search-wod/" class="nav-item nav-trigger">WOD</a>
+                        <a href="/convert/" class="nav-item nav-trigger">Calculator</a>
+                        <a href="/weightlifting/" class="nav-item nav-trigger">Weightlifting</a>
                         <div class="mega-menu">
                             <div class="mega-col">
-                                <div class="mega-col-title">Strength</div>
-                                <a href="/weightlifting/" class="mega-item">웨이트리프팅 동작 상관관계</a>
-                                <a href="/nsca/" class="mega-item">NSCA 기반 1RM 최대중량</a>
-                            </div>
-                            <div class="mega-col">
-                                <div class="mega-col-title">Convert</div>
-                                <a href="/convert/" class="mega-item">LB / KG Converter</a>
-                                <a href="/plates/" class="mega-item">Plate Calculator</a>
-                            </div>
-                            <div class="mega-col">
-                                <div class="mega-col-title">Archive</div>
-                                <a href="/weightlifting-record/" class="mega-item">Weightlifting Record</a>
+                                <div class="mega-col-title">CrossFit</div>
                                 <a href="/crossfit-wod/" class="mega-item active">CrossFit Open</a>
                                 <a href="/hero-wod/" class="mega-item">Hero & Tribute Workouts</a>
+                                <a href="/the-girls/" class="mega-item">The Girls</a>
                             </div>
                             <div class="mega-col">
                                 <div class="mega-col-title">WOD</div>
                                 <a href="/search-wod/" class="mega-item">Search WOD</a>
                                 <a href="/random-wod/" class="mega-item mega-highlight">Random WOD<span class="mega-highlight-badge">new</span></a>
                                 <a href="/timer/" class="mega-item">Timer</a>
+                            </div>
+                            <div class="mega-col">
+                                <div class="mega-col-title">Calculator</div>
+                                <a href="/nsca/" class="mega-item">NSCA 1RM</a>
+                                <a href="/convert/" class="mega-item">LB / KG Converter</a>
+                                <a href="/plates/" class="mega-item">Plate Calculator</a>
+                                <a href="/erg/" class="mega-item">Erg Calculator</a>
+                            </div>
+                            <div class="mega-col">
+                                <div class="mega-col-title">Weightlifting</div>
+                                <a href="/weightlifting/" class="mega-item">Lift Correlation</a>
+                                <a href="/weightlifting-record/" class="mega-item">Weightlifting Record</a>
                             </div>
                         </div>
                     </div>
@@ -1407,6 +1409,53 @@
                 <h2 class="stats-title">오픈 동작 통계</h2>
                 <p class="stats-desc">2011~2026 오픈 워크아웃에서 각 동작이 등장한 횟수</p>
                 <div class="bar-chart" id="movement-chart"></div>
+            </div>
+
+            <div class="stats-section repeat-section">
+                <h2 class="stats-title">리핏 워크아웃</h2>
+                <p class="stats-desc">역대 오픈에서 동일하거나 거의 같은 포맷으로 반복된 워크아웃</p>
+                <div class="repeat-list">
+                    <div class="repeat-card">
+                        <div class="repeat-badge exact">EXACT</div>
+                        <div class="repeat-workouts">11.6 → 12.5 → 18.5</div>
+                        <div class="repeat-desc">3-6-9-12-15-18-21... Thrusters & C2B Pull-ups (7-min AMRAP)</div>
+                    </div>
+                    <div class="repeat-card">
+                        <div class="repeat-badge exact">EXACT</div>
+                        <div class="repeat-workouts">12.4 → 13.3</div>
+                        <div class="repeat-desc">150 Wall-ball shots, 90 Double-unders, 30 Muscle-ups (12-min AMRAP)</div>
+                    </div>
+                    <div class="repeat-card">
+                        <div class="repeat-badge exact">EXACT</div>
+                        <div class="repeat-workouts">16.4 → 17.4</div>
+                        <div class="repeat-desc">55 Deadlifts, Wall-balls, Row cal, HSPUs (13-min AMRAP)</div>
+                    </div>
+                    <div class="repeat-card">
+                        <div class="repeat-badge exact">EXACT</div>
+                        <div class="repeat-workouts">17.1 → 21.2</div>
+                        <div class="repeat-desc">10-20-30-40-50 DB Snatches + 15 Burpee Box Jump-overs (20-min)</div>
+                    </div>
+                    <div class="repeat-card">
+                        <div class="repeat-badge exact">EXACT</div>
+                        <div class="repeat-workouts">22.3 → 25.2</div>
+                        <div class="repeat-desc">Pull-ups, Double-unders, Thrusters → C2B → Bar Muscle-ups (12-min)</div>
+                    </div>
+                    <div class="repeat-card">
+                        <div class="repeat-badge similar">SIMILAR</div>
+                        <div class="repeat-workouts">14.2 ≈ 15.2</div>
+                        <div class="repeat-desc">Every 3 min: Overhead Squats & C2B Pull-ups (10-12-14-16...)</div>
+                    </div>
+                    <div class="repeat-card">
+                        <div class="repeat-badge similar">SIMILAR</div>
+                        <div class="repeat-workouts">14.5 ≈ 16.5</div>
+                        <div class="repeat-desc">21-18-15-12-9-6-3 Thrusters & Burpees (동일 무게, No time cap)</div>
+                    </div>
+                    <div class="repeat-card">
+                        <div class="repeat-badge similar">SIMILAR</div>
+                        <div class="repeat-workouts">18.4 ≈ 20.3</div>
+                        <div class="repeat-desc">21-15-9 Deadlifts & HSPUs → Deadlifts & HS Walk (무게 상이)</div>
+                    </div>
+                </div>
             </div>
             </div><!-- /tab-stats -->
 

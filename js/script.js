@@ -193,26 +193,28 @@ function initSidebarNavigation() {
             </div>
             <div class="sidebar-content">
                 <div class="nav-group">
-                    <div class="nav-group-title">Strength</div>
-                    <a href="/weightlifting/" class="sidebar-nav-item">웨이트리프팅 동작 상관관계</a>
-                    <a href="/nsca/" class="sidebar-nav-item">NSCA 기반 1RM 최대중량</a>
-                </div>
-                <div class="nav-group">
-                    <div class="nav-group-title">Convert</div>
-                    <a href="/convert/" class="sidebar-nav-item">LB / KG Converter</a>
-                    <a href="/plates/" class="sidebar-nav-item">Plate Calculator</a>
-                </div>
-                <div class="nav-group">
-                    <div class="nav-group-title">Archive</div>
+                    <div class="nav-group-title">CrossFit</div>
                     <a href="/crossfit-wod/" class="sidebar-nav-item">CrossFit Open</a>
                     <a href="/hero-wod/" class="sidebar-nav-item">Hero & Tribute Workouts</a>
-                    <a href="/weightlifting-record/" class="sidebar-nav-item">Weightlifting Record</a>
+                    <a href="/the-girls/" class="sidebar-nav-item">The Girls</a>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">WOD</div>
                     <a href="/search-wod/" class="sidebar-nav-item">Search WOD</a>
                     <a href="/random-wod/" class="sidebar-nav-item">Random WOD <span class="sidebar-highlight-badge">N</span></a>
                     <a href="/timer/" class="sidebar-nav-item">Timer</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-title">Calculator</div>
+                    <a href="/nsca/" class="sidebar-nav-item">NSCA 1RM</a>
+                    <a href="/convert/" class="sidebar-nav-item">LB / KG Converter</a>
+                    <a href="/plates/" class="sidebar-nav-item">Plate Calculator</a>
+                    <a href="/erg/" class="sidebar-nav-item">Erg Calculator</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-title">Weightlifting</div>
+                    <a href="/weightlifting/" class="sidebar-nav-item">Lift Correlation</a>
+                    <a href="/weightlifting-record/" class="sidebar-nav-item">Weightlifting Record</a>
                 </div>
                 <nav class="sidebar-secondary" aria-label="Secondary">
                     <ul>

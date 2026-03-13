@@ -1,0 +1,305 @@
+/* 성별 토글 */
+.bm-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.bm-gender-toggle {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-secondary);
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.bm-gender {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bm-gender:hover {
+    color: var(--text-primary);
+}
+
+.bm-gender.active {
+    background: var(--accent-primary);
+    color: #1a1a1a;
+}
+
+/* WOD 카드 리스트 */
+.bm-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* WOD 카드 */
+.bm-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 24px;
+    transition: border-color 0.2s;
+}
+
+.bm-card:hover {
+    border-color: var(--border-medium);
+}
+
+.bm-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.bm-card-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent-primary);
+    letter-spacing: -0.3px;
+}
+
+.bm-card-type {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+.bm-card-workout {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    white-space: pre-line;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* 레벨 바 */
+.bm-levels {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.bm-level {
+    flex: 1;
+    text-align: center;
+    padding: 8px 4px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.bm-level-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.bm-level-time {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.bm-level-elite {
+    background: rgba(224, 253, 83, 0.08);
+    border: 1px solid rgba(224, 253, 83, 0.15);
+}
+.bm-level-elite .bm-level-label { color: #e0fd53; }
+.bm-level-elite .bm-level-time { color: #e0fd53; }
+
+.bm-level-advanced {
+    background: rgba(83, 253, 200, 0.06);
+    border: 1px solid rgba(83, 253, 200, 0.12);
+}
+.bm-level-advanced .bm-level-label { color: #53fdc8; }
+.bm-level-advanced .bm-level-time { color: #53fdc8; }
+
+.bm-level-intermediate {
+    background: rgba(83, 200, 253, 0.06);
+    border: 1px solid rgba(83, 200, 253, 0.12);
+}
+.bm-level-intermediate .bm-level-label { color: #53c8fd; }
+.bm-level-intermediate .bm-level-time { color: #53c8fd; }
+
+.bm-level-beginner {
+    background: rgba(107, 118, 132, 0.08);
+    border: 1px solid rgba(107, 118, 132, 0.15);
+}
+.bm-level-beginner .bm-level-label { color: #6b7684; }
+.bm-level-beginner .bm-level-time { color: #6b7684; }
+
+/* 현재 레벨 하이라이트 */
+.bm-level.current {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(224, 253, 83, 0.15);
+}
+
+/* 내 기록 입력 */
+.bm-my-record {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bm-my-record label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+}
+
+.bm-record-inputs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.bm-record-inputs input {
+    width: 48px;
+    height: 34px;
+    padding: 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.bm-record-inputs input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(224, 253, 83, 0.15);
+}
+
+.bm-record-sep {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.bm-my-level {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    transition: all 0.3s;
+}
+
+.bm-my-level[data-level="elite"] {
+    color: #e0fd53;
+    background: rgba(224, 253, 83, 0.1);
+}
+.bm-my-level[data-level="advanced"] {
+    color: #53fdc8;
+    background: rgba(83, 253, 200, 0.1);
+}
+.bm-my-level[data-level="intermediate"] {
+    color: #53c8fd;
+    background: rgba(83, 200, 253, 0.1);
+}
+.bm-my-level[data-level="beginner"] {
+    color: #6b7684;
+    background: rgba(107, 118, 132, 0.1);
+}
+
+/* 범례 */
+.bm-legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.bm-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.bm-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* 노트 */
+.bm-note {
+    text-align: center;
+    padding: 16px;
+}
+
+.bm-note p {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .bm-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .bm-card {
+        padding: 18px;
+    }
+
+    .bm-card-name {
+        font-size: 18px;
+    }
+
+    .bm-levels {
+        gap: 4px;
+    }
+
+    .bm-level-label {
+        font-size: 9px;
+    }
+
+    .bm-level-time {
+        font-size: 12px;
+    }
+
+    .bm-legend {
+        flex-wrap: wrap;
+        gap: 12px 20px;
+    }
+
+    .bm-my-record {
+        flex-wrap: wrap;
+    }
+
+    .bm-my-level {
+        margin-left: 0;
+        margin-top: 4px;
+    }
+}

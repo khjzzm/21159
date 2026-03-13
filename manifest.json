@@ -1,7 +1,7 @@
 {
   "name": "21-15-9",
   "short_name": "21-15-9",
-  "description": "CrossFit과 웨이트리프팅을 위한 종합 도구. 동작 상관관계, NSCA 1RM, 단위 변환, 플레이트 계산, 오픈 워크아웃, 히어로 WOD, 역도 기록, 타이머까지 한곳에서.",
+  "description": "CrossFit과 웨이트리프팅을 위한 종합 도구. Lift Correlation, NSCA 1RM, 단위 변환, 플레이트 계산, Erg 칼로리, 오픈 워크아웃, 히어로 WOD, The Girls, 역도 기록, 타이머까지 한곳에서.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",
@@ -32,14 +32,14 @@
   "categories": ["health", "fitness", "sports", "utilities"],
   "shortcuts": [
     {
-      "name": "웨이트리프팅 동작 상관관계",
-      "short_name": "웨이트리프팅",
+      "name": "Lift Correlation",
+      "short_name": "Lift Corr",
       "description": "백 스쿼트, 클린 앤 저크, 스내치 등 웨이트리프팅 동작 간 상관관계 계산기",
       "url": "/weightlifting",
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     },
     {
-      "name": "NSCA 기반 1RM 최대중량",
+      "name": "NSCA 1RM",
       "short_name": "1RM",
       "description": "NSCA 공식 기반 스쿼트, 벤치프레스, 데드리프트 1RM~10RM 최대중량 계산기",
       "url": "/nsca",
@@ -99,6 +99,20 @@
       "short_name": "Random WOD",
       "description": "오늘의 랜덤 크로스핏 워크아웃",
       "url": "/random-wod",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Erg Calculator",
+      "short_name": "Erg Calc",
+      "description": "로잉, 어썰트바이크, 스키에르그 페이스 & 칼로리 계산기",
+      "url": "/erg",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "The Girls",
+      "short_name": "The Girls",
+      "description": "크로스핏 벤치마크 WOD 레벨별 목표 시간 가이드",
+      "url": "/the-girls",
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     }
   ]
