@@ -238,6 +238,7 @@ a.nav-trigger.active {
     left: 0;
     width: 100%;
     height: calc(100vh - 48px);
+    height: calc(100dvh - 48px);
     background: #1a1a1a;
     z-index: 999;
     display: flex;
