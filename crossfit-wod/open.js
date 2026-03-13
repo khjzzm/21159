@@ -143,15 +143,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // 동작 통계 데이터
     var movementData = [
         { name: 'Double-unders', count: 15, cat: 'cardio' },
-        { name: 'Thrusters', count: 12, cat: 'barbell' },
+        { name: 'Thrusters', count: 13, cat: 'barbell' },
         { name: 'Chest-to-bar pull-ups', count: 11, cat: 'gymnastics' },
         { name: 'Deadlifts', count: 10, cat: 'barbell' },
         { name: 'Toes-to-bars', count: 10, cat: 'gymnastics' },
         { name: 'Wall-ball shots', count: 10, cat: 'other' },
         { name: 'Snatches', count: 10, cat: 'barbell' },
         { name: 'Row (calories)', count: 9, cat: 'cardio' },
-        { name: 'Cleans', count: 9, cat: 'barbell' },
-        { name: 'Burpees', count: 9, cat: 'body' },
+        { name: 'Cleans', count: 10, cat: 'barbell' },
+        { name: 'Burpees', count: 10, cat: 'body' },
         { name: 'Muscle-ups', count: 7, cat: 'gymnastics' },
         { name: 'Bar muscle-ups', count: 6, cat: 'gymnastics' },
         { name: 'Handstand push-ups', count: 6, cat: 'gymnastics' },
