@@ -101,6 +101,59 @@
             '&scaled=0&sort=' + sort + '&occupation=0&country=KR&page=' + page;
     }
 
+    // 정적 JSON 로드 → 실패 시 API 폴백
+    function loadStaticData(year, division, event) {
+        var jsonPath = 'data/' + year + '_' + division + '_' + event + '.json';
+        return fetch(jsonPath)
+            .then(function(res) {
+                if (!res.ok) throw new Error('no static data');
+                return res.json();
+            })
+            .then(function(data) {
+                if (!data.pairs || data.pairs.length === 0) throw new Error('empty');
+                // 순차 랭크 재할당 (1, 2, 3, ...)
+                var pairs = data.pairs.map(function(p, i) {
+                    return { rank: i + 1, score: p.score };
+                });
+                return { total: data.total, pairs: pairs };
+            })
+            .catch(function() {
+                return loadFromAPI(year, division, event);
+            });
+    }
+
+    function loadFromAPI(year, division, event) {
+        return apiFetch(buildURL(year, division, event, 1))
+            .then(function(data1) {
+                var total = parseInt(data1.pagination.totalCompetitors) || 0;
+                var pages = parseInt(data1.pagination.totalPages) || 0;
+                if (total === 0 || pages === 0) throw new Error('no data');
+
+                var sampleNums = [1];
+                var numSamples = Math.min(15, pages);
+                for (var i = 1; i < numSamples; i++) {
+                    var p = Math.max(1, Math.round(pages * i / (numSamples - 1)));
+                    if (sampleNums.indexOf(p) === -1) sampleNums.push(p);
+                }
+
+                var toFetch = sampleNums.filter(function(p) { return p !== 1; });
+                var promises = toFetch.map(function(p) {
+                    return apiFetch(buildURL(year, division, event, p));
+                });
+
+                return Promise.all(promises).then(function(results) {
+                    var pairs = [];
+                    extractPairs(data1, 1, pairs);
+                    results.forEach(function(data, idx) {
+                        extractPairs(data, toFetch[idx], pairs);
+                    });
+                    pairs.sort(function(a, b) { return a.rank - b.rank; });
+                    pairs = trimScaled(pairs);
+                    return { total: total, pairs: pairs };
+                });
+            });
+    }
+
     // =====================
     // 점수 파싱 & 비교
     // =====================
@@ -153,59 +206,16 @@
         loadingEl.style.display = 'block';
         resultSection.style.display = 'none';
 
-        // 1단계: 페이지 1 조회 → 메타데이터
-        apiFetch(buildURL(year, currentDivision, currentEvent, 1))
-            .then(function(data1) {
-                var total = parseInt(data1.pagination.totalCompetitors) || 0;
-                var pages = parseInt(data1.pagination.totalPages) || 0;
+        // 정적 JSON 우선 → 실패 시 API 폴백
+        loadStaticData(year, currentDivision, currentEvent)
+            .then(function(result) {
+                var pairs = result.pairs;
+                var total = result.total;
 
-                if (total === 0 || pages === 0) {
-                    showError('해당 조건의 데이터가 없습니다');
-                    return;
-                }
-
-                // 2단계: 샘플 페이지 계산 (최대 15개, 균등 분포)
-                var sampleNums = [1];
-                var numSamples = Math.min(15, pages);
-                for (var i = 1; i < numSamples; i++) {
-                    var p = Math.max(1, Math.round(pages * i / (numSamples - 1)));
-                    if (sampleNums.indexOf(p) === -1) sampleNums.push(p);
-                }
-
-                // 3단계: 나머지 페이지 병렬 조회
-                var toFetch = sampleNums.filter(function(p) { return p !== 1; });
-                var promises = toFetch.map(function(p) {
-                    return apiFetch(buildURL(year, currentDivision, currentEvent, p));
-                });
-
-                return Promise.all(promises).then(function(results) {
-                    // 4단계: rank-score 쌍 구축 (RX만)
-                    var pairs = [];
-                    extractPairs(data1, 1, pairs);
-                    results.forEach(function(data, idx) {
-                        extractPairs(data, toFetch[idx], pairs);
-                    });
-
-                    pairs.sort(function(a, b) { return a.rank - b.rank; });
-
-                    // RX→Scaled 경계 감지 후 Scaled 구간 제거
-                    pairs = trimScaled(pairs);
-
-                    // 디버그
-                    console.log('[Percentile] pairs:', pairs.length,
-                        'first:', pairs[0] && pairs[0].score,
-                        'last:', pairs[pairs.length - 1] && pairs[pairs.length - 1].score,
-                        'lastRank:', pairs[pairs.length - 1] && pairs[pairs.length - 1].rank,
-                        'total:', total, 'userScore:', userScore);
-
-                    // 5단계: 사용자 순위 찾기
-                    var userRank = findRank(pairs, userScore, total);
-                    var pct = userRank / total * 100;
-
-                    console.log('[Percentile] userRank:', userRank, 'pct:', pct);
-
-                    showResult(pct, userRank, total, year);
-                });
+                // 5단계: 사용자 순위 찾기
+                var userRank = findRank(pairs, userScore, total);
+                var pct = userRank / total * 100;
+                showResult(pct, userRank, total, year);
             })
             .catch(function(e) {
                 showError('API 요청 실패 — 잠시 후 다시 시도해주세요');
@@ -248,14 +258,10 @@
         for (var i = 0; i < pairs.length; i++) {
             if (pairs[i].score.type === 'reps') {
                 if (lastRepsVal !== null && pairs[i].score.value > lastRepsVal + 10) {
-                    console.log('[Percentile] Scaled boundary at index', i,
-                        'prev reps:', lastRepsVal, '→ cur reps:', pairs[i].score.value);
                     return pairs.slice(0, i);
                 }
                 lastRepsVal = pairs[i].score.value;
             } else if (pairs[i].score.type === 'time' && lastRepsVal !== null) {
-                // 렙수 구간 이후 시간이 나오면 = Scaled 완료자
-                console.log('[Percentile] Scaled boundary (time after reps) at index', i);
                 return pairs.slice(0, i);
             }
         }

@@ -113,6 +113,8 @@
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .pct-btn:hover {
@@ -198,6 +200,10 @@
 
 .pct-radio input[type="radio"] {
     accent-color: var(--accent-primary);
+    -webkit-appearance: radio;
+    width: 16px;
+    height: 16px;
+    margin: 0;
 }
 
 .pct-radio input[type="radio"]:checked + span {
@@ -221,13 +227,16 @@
     width: 80px;
     height: 48px;
     padding: 0 12px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--text-primary);
     background: var(--bg-tertiary);
     border: 1px solid var(--border-light);
     border-radius: 8px;
     text-align: center;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
 }
 
 .pct-time-input input:focus,
@@ -265,6 +274,9 @@
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
 }
 
 .pct-calc-btn:hover {
@@ -433,7 +445,7 @@
 
     .pct-time-input input,
     .pct-reps-input input {
-        font-size: 18px;
+        font-size: 16px;
         height: 44px;
     }
 }

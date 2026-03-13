@@ -1,0 +1,299 @@
+{
+  "total": 2223,
+  "pairs": [
+    {
+      "rank": 89,
+      "score": {
+        "type": "reps",
+        "value": 215
+      }
+    },
+    {
+      "rank": 204,
+      "score": {
+        "type": "reps",
+        "value": 190
+      }
+    },
+    {
+      "rank": 206,
+      "score": {
+        "type": "reps",
+        "value": 190
+      }
+    },
+    {
+      "rank": 227,
+      "score": {
+        "type": "reps",
+        "value": 188
+      }
+    },
+    {
+      "rank": 235,
+      "score": {
+        "type": "reps",
+        "value": 187
+      }
+    },
+    {
+      "rank": 252,
+      "score": {
+        "type": "reps",
+        "value": 185
+      }
+    },
+    {
+      "rank": 258,
+      "score": {
+        "type": "reps",
+        "value": 185
+      }
+    },
+    {
+      "rank": 275,
+      "score": {
+        "type": "reps",
+        "value": 183
+      }
+    },
+    {
+      "rank": 284,
+      "score": {
+        "type": "reps",
+        "value": 182
+      }
+    },
+    {
+      "rank": 285,
+      "score": {
+        "type": "reps",
+        "value": 182
+      }
+    },
+    {
+      "rank": 299,
+      "score": {
+        "type": "reps",
+        "value": 181
+      }
+    },
+    {
+      "rank": 301,
+      "score": {
+        "type": "reps",
+        "value": 181
+      }
+    },
+    {
+      "rank": 317,
+      "score": {
+        "type": "reps",
+        "value": 180
+      }
+    },
+    {
+      "rank": 323,
+      "score": {
+        "type": "reps",
+        "value": 179
+      }
+    },
+    {
+      "rank": 362,
+      "score": {
+        "type": "reps",
+        "value": 173
+      }
+    },
+    {
+      "rank": 379,
+      "score": {
+        "type": "reps",
+        "value": 171
+      }
+    },
+    {
+      "rank": 380,
+      "score": {
+        "type": "reps",
+        "value": 171
+      }
+    },
+    {
+      "rank": 382,
+      "score": {
+        "type": "reps",
+        "value": 170
+      }
+    },
+    {
+      "rank": 393,
+      "score": {
+        "type": "reps",
+        "value": 169
+      }
+    },
+    {
+      "rank": 403,
+      "score": {
+        "type": "reps",
+        "value": 168
+      }
+    },
+    {
+      "rank": 416,
+      "score": {
+        "type": "reps",
+        "value": 166
+      }
+    },
+    {
+      "rank": 417,
+      "score": {
+        "type": "reps",
+        "value": 165
+      }
+    },
+    {
+      "rank": 419,
+      "score": {
+        "type": "reps",
+        "value": 165
+      }
+    },
+    {
+      "rank": 447,
+      "score": {
+        "type": "reps",
+        "value": 162
+      }
+    },
+    {
+      "rank": 462,
+      "score": {
+        "type": "reps",
+        "value": 160
+      }
+    },
+    {
+      "rank": 477,
+      "score": {
+        "type": "reps",
+        "value": 157
+      }
+    },
+    {
+      "rank": 480,
+      "score": {
+        "type": "reps",
+        "value": 157
+      }
+    },
+    {
+      "rank": 503,
+      "score": {
+        "type": "reps",
+        "value": 153
+      }
+    },
+    {
+      "rank": 551,
+      "score": {
+        "type": "reps",
+        "value": 145
+      }
+    },
+    {
+      "rank": 579,
+      "score": {
+        "type": "reps",
+        "value": 141
+      }
+    },
+    {
+      "rank": 599,
+      "score": {
+        "type": "reps",
+        "value": 139
+      }
+    },
+    {
+      "rank": 638,
+      "score": {
+        "type": "reps",
+        "value": 135
+      }
+    },
+    {
+      "rank": 650,
+      "score": {
+        "type": "reps",
+        "value": 134
+      }
+    },
+    {
+      "rank": 653,
+      "score": {
+        "type": "reps",
+        "value": 134
+      }
+    },
+    {
+      "rank": 658,
+      "score": {
+        "type": "reps",
+        "value": 133
+      }
+    },
+    {
+      "rank": 707,
+      "score": {
+        "type": "reps",
+        "value": 127
+      }
+    },
+    {
+      "rank": 742,
+      "score": {
+        "type": "reps",
+        "value": 120
+      }
+    },
+    {
+      "rank": 750,
+      "score": {
+        "type": "reps",
+        "value": 118
+      }
+    },
+    {
+      "rank": 755,
+      "score": {
+        "type": "reps",
+        "value": 117
+      }
+    },
+    {
+      "rank": 814,
+      "score": {
+        "type": "reps",
+        "value": 94
+      }
+    },
+    {
+      "rank": 818,
+      "score": {
+        "type": "reps",
+        "value": 93
+      }
+    },
+    {
+      "rank": 834,
+      "score": {
+        "type": "reps",
+        "value": 36
+      }
+    }
+  ]
+}

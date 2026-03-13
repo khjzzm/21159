@@ -1,0 +1,1013 @@
+{
+  "total": 5130,
+  "pairs": [
+    {
+      "rank": 6,
+      "score": {
+        "type": "reps",
+        "value": 254
+      }
+    },
+    {
+      "rank": 11,
+      "score": {
+        "type": "reps",
+        "value": 244
+      }
+    },
+    {
+      "rank": 13,
+      "score": {
+        "type": "reps",
+        "value": 238
+      }
+    },
+    {
+      "rank": 24,
+      "score": {
+        "type": "reps",
+        "value": 232
+      }
+    },
+    {
+      "rank": 25,
+      "score": {
+        "type": "reps",
+        "value": 232
+      }
+    },
+    {
+      "rank": 26,
+      "score": {
+        "type": "reps",
+        "value": 232
+      }
+    },
+    {
+      "rank": 29,
+      "score": {
+        "type": "reps",
+        "value": 231
+      }
+    },
+    {
+      "rank": 31,
+      "score": {
+        "type": "reps",
+        "value": 229
+      }
+    },
+    {
+      "rank": 38,
+      "score": {
+        "type": "reps",
+        "value": 226
+      }
+    },
+    {
+      "rank": 47,
+      "score": {
+        "type": "reps",
+        "value": 223
+      }
+    },
+    {
+      "rank": 51,
+      "score": {
+        "type": "reps",
+        "value": 222
+      }
+    },
+    {
+      "rank": 63,
+      "score": {
+        "type": "reps",
+        "value": 220
+      }
+    },
+    {
+      "rank": 76,
+      "score": {
+        "type": "reps",
+        "value": 217
+      }
+    },
+    {
+      "rank": 79,
+      "score": {
+        "type": "reps",
+        "value": 216
+      }
+    },
+    {
+      "rank": 83,
+      "score": {
+        "type": "reps",
+        "value": 216
+      }
+    },
+    {
+      "rank": 86,
+      "score": {
+        "type": "reps",
+        "value": 215
+      }
+    },
+    {
+      "rank": 98,
+      "score": {
+        "type": "reps",
+        "value": 213
+      }
+    },
+    {
+      "rank": 124,
+      "score": {
+        "type": "reps",
+        "value": 210
+      }
+    },
+    {
+      "rank": 128,
+      "score": {
+        "type": "reps",
+        "value": 209
+      }
+    },
+    {
+      "rank": 142,
+      "score": {
+        "type": "reps",
+        "value": 207
+      }
+    },
+    {
+      "rank": 152,
+      "score": {
+        "type": "reps",
+        "value": 206
+      }
+    },
+    {
+      "rank": 161,
+      "score": {
+        "type": "reps",
+        "value": 204
+      }
+    },
+    {
+      "rank": 181,
+      "score": {
+        "type": "reps",
+        "value": 204
+      }
+    },
+    {
+      "rank": 185,
+      "score": {
+        "type": "reps",
+        "value": 204
+      }
+    },
+    {
+      "rank": 188,
+      "score": {
+        "type": "reps",
+        "value": 204
+      }
+    },
+    {
+      "rank": 190,
+      "score": {
+        "type": "reps",
+        "value": 204
+      }
+    },
+    {
+      "rank": 201,
+      "score": {
+        "type": "reps",
+        "value": 204
+      }
+    },
+    {
+      "rank": 217,
+      "score": {
+        "type": "reps",
+        "value": 204
+      }
+    },
+    {
+      "rank": 228,
+      "score": {
+        "type": "reps",
+        "value": 202
+      }
+    },
+    {
+      "rank": 235,
+      "score": {
+        "type": "reps",
+        "value": 201
+      }
+    },
+    {
+      "rank": 251,
+      "score": {
+        "type": "reps",
+        "value": 199
+      }
+    },
+    {
+      "rank": 278,
+      "score": {
+        "type": "reps",
+        "value": 197
+      }
+    },
+    {
+      "rank": 288,
+      "score": {
+        "type": "reps",
+        "value": 196
+      }
+    },
+    {
+      "rank": 296,
+      "score": {
+        "type": "reps",
+        "value": 196
+      }
+    },
+    {
+      "rank": 305,
+      "score": {
+        "type": "reps",
+        "value": 195
+      }
+    },
+    {
+      "rank": 307,
+      "score": {
+        "type": "reps",
+        "value": 195
+      }
+    },
+    {
+      "rank": 315,
+      "score": {
+        "type": "reps",
+        "value": 194
+      }
+    },
+    {
+      "rank": 334,
+      "score": {
+        "type": "reps",
+        "value": 192
+      }
+    },
+    {
+      "rank": 342,
+      "score": {
+        "type": "reps",
+        "value": 192
+      }
+    },
+    {
+      "rank": 342,
+      "score": {
+        "type": "reps",
+        "value": 192
+      }
+    },
+    {
+      "rank": 375,
+      "score": {
+        "type": "reps",
+        "value": 189
+      }
+    },
+    {
+      "rank": 376,
+      "score": {
+        "type": "reps",
+        "value": 189
+      }
+    },
+    {
+      "rank": 384,
+      "score": {
+        "type": "reps",
+        "value": 188
+      }
+    },
+    {
+      "rank": 399,
+      "score": {
+        "type": "reps",
+        "value": 187
+      }
+    },
+    {
+      "rank": 399,
+      "score": {
+        "type": "reps",
+        "value": 187
+      }
+    },
+    {
+      "rank": 404,
+      "score": {
+        "type": "reps",
+        "value": 187
+      }
+    },
+    {
+      "rank": 405,
+      "score": {
+        "type": "reps",
+        "value": 187
+      }
+    },
+    {
+      "rank": 422,
+      "score": {
+        "type": "reps",
+        "value": 186
+      }
+    },
+    {
+      "rank": 424,
+      "score": {
+        "type": "reps",
+        "value": 186
+      }
+    },
+    {
+      "rank": 433,
+      "score": {
+        "type": "reps",
+        "value": 185
+      }
+    },
+    {
+      "rank": 435,
+      "score": {
+        "type": "reps",
+        "value": 185
+      }
+    },
+    {
+      "rank": 438,
+      "score": {
+        "type": "reps",
+        "value": 185
+      }
+    },
+    {
+      "rank": 440,
+      "score": {
+        "type": "reps",
+        "value": 185
+      }
+    },
+    {
+      "rank": 466,
+      "score": {
+        "type": "reps",
+        "value": 183
+      }
+    },
+    {
+      "rank": 468,
+      "score": {
+        "type": "reps",
+        "value": 183
+      }
+    },
+    {
+      "rank": 472,
+      "score": {
+        "type": "reps",
+        "value": 183
+      }
+    },
+    {
+      "rank": 484,
+      "score": {
+        "type": "reps",
+        "value": 182
+      }
+    },
+    {
+      "rank": 511,
+      "score": {
+        "type": "reps",
+        "value": 181
+      }
+    },
+    {
+      "rank": 513,
+      "score": {
+        "type": "reps",
+        "value": 181
+      }
+    },
+    {
+      "rank": 521,
+      "score": {
+        "type": "reps",
+        "value": 181
+      }
+    },
+    {
+      "rank": 524,
+      "score": {
+        "type": "reps",
+        "value": 181
+      }
+    },
+    {
+      "rank": 552,
+      "score": {
+        "type": "reps",
+        "value": 180
+      }
+    },
+    {
+      "rank": 553,
+      "score": {
+        "type": "reps",
+        "value": 180
+      }
+    },
+    {
+      "rank": 563,
+      "score": {
+        "type": "reps",
+        "value": 180
+      }
+    },
+    {
+      "rank": 567,
+      "score": {
+        "type": "reps",
+        "value": 180
+      }
+    },
+    {
+      "rank": 588,
+      "score": {
+        "type": "reps",
+        "value": 177
+      }
+    },
+    {
+      "rank": 601,
+      "score": {
+        "type": "reps",
+        "value": 176
+      }
+    },
+    {
+      "rank": 603,
+      "score": {
+        "type": "reps",
+        "value": 176
+      }
+    },
+    {
+      "rank": 609,
+      "score": {
+        "type": "reps",
+        "value": 176
+      }
+    },
+    {
+      "rank": 620,
+      "score": {
+        "type": "reps",
+        "value": 175
+      }
+    },
+    {
+      "rank": 625,
+      "score": {
+        "type": "reps",
+        "value": 175
+      }
+    },
+    {
+      "rank": 652,
+      "score": {
+        "type": "reps",
+        "value": 173
+      }
+    },
+    {
+      "rank": 676,
+      "score": {
+        "type": "reps",
+        "value": 171
+      }
+    },
+    {
+      "rank": 681,
+      "score": {
+        "type": "reps",
+        "value": 171
+      }
+    },
+    {
+      "rank": 683,
+      "score": {
+        "type": "reps",
+        "value": 171
+      }
+    },
+    {
+      "rank": 687,
+      "score": {
+        "type": "reps",
+        "value": 171
+      }
+    },
+    {
+      "rank": 703,
+      "score": {
+        "type": "reps",
+        "value": 170
+      }
+    },
+    {
+      "rank": 713,
+      "score": {
+        "type": "reps",
+        "value": 170
+      }
+    },
+    {
+      "rank": 726,
+      "score": {
+        "type": "reps",
+        "value": 169
+      }
+    },
+    {
+      "rank": 732,
+      "score": {
+        "type": "reps",
+        "value": 168
+      }
+    },
+    {
+      "rank": 742,
+      "score": {
+        "type": "reps",
+        "value": 168
+      }
+    },
+    {
+      "rank": 750,
+      "score": {
+        "type": "reps",
+        "value": 168
+      }
+    },
+    {
+      "rank": 757,
+      "score": {
+        "type": "reps",
+        "value": 167
+      }
+    },
+    {
+      "rank": 799,
+      "score": {
+        "type": "reps",
+        "value": 164
+      }
+    },
+    {
+      "rank": 802,
+      "score": {
+        "type": "reps",
+        "value": 164
+      }
+    },
+    {
+      "rank": 820,
+      "score": {
+        "type": "reps",
+        "value": 163
+      }
+    },
+    {
+      "rank": 825,
+      "score": {
+        "type": "reps",
+        "value": 163
+      }
+    },
+    {
+      "rank": 828,
+      "score": {
+        "type": "reps",
+        "value": 163
+      }
+    },
+    {
+      "rank": 833,
+      "score": {
+        "type": "reps",
+        "value": 162
+      }
+    },
+    {
+      "rank": 849,
+      "score": {
+        "type": "reps",
+        "value": 161
+      }
+    },
+    {
+      "rank": 872,
+      "score": {
+        "type": "reps",
+        "value": 160
+      }
+    },
+    {
+      "rank": 887,
+      "score": {
+        "type": "reps",
+        "value": 159
+      }
+    },
+    {
+      "rank": 890,
+      "score": {
+        "type": "reps",
+        "value": 159
+      }
+    },
+    {
+      "rank": 898,
+      "score": {
+        "type": "reps",
+        "value": 158
+      }
+    },
+    {
+      "rank": 902,
+      "score": {
+        "type": "reps",
+        "value": 158
+      }
+    },
+    {
+      "rank": 911,
+      "score": {
+        "type": "reps",
+        "value": 158
+      }
+    },
+    {
+      "rank": 923,
+      "score": {
+        "type": "reps",
+        "value": 157
+      }
+    },
+    {
+      "rank": 930,
+      "score": {
+        "type": "reps",
+        "value": 157
+      }
+    },
+    {
+      "rank": 932,
+      "score": {
+        "type": "reps",
+        "value": 157
+      }
+    },
+    {
+      "rank": 938,
+      "score": {
+        "type": "reps",
+        "value": 156
+      }
+    },
+    {
+      "rank": 947,
+      "score": {
+        "type": "reps",
+        "value": 156
+      }
+    },
+    {
+      "rank": 950,
+      "score": {
+        "type": "reps",
+        "value": 156
+      }
+    },
+    {
+      "rank": 954,
+      "score": {
+        "type": "reps",
+        "value": 156
+      }
+    },
+    {
+      "rank": 959,
+      "score": {
+        "type": "reps",
+        "value": 155
+      }
+    },
+    {
+      "rank": 965,
+      "score": {
+        "type": "reps",
+        "value": 155
+      }
+    },
+    {
+      "rank": 970,
+      "score": {
+        "type": "reps",
+        "value": 154
+      }
+    },
+    {
+      "rank": 972,
+      "score": {
+        "type": "reps",
+        "value": 153
+      }
+    },
+    {
+      "rank": 976,
+      "score": {
+        "type": "reps",
+        "value": 153
+      }
+    },
+    {
+      "rank": 1013,
+      "score": {
+        "type": "reps",
+        "value": 150
+      }
+    },
+    {
+      "rank": 1033,
+      "score": {
+        "type": "reps",
+        "value": 149
+      }
+    },
+    {
+      "rank": 1042,
+      "score": {
+        "type": "reps",
+        "value": 148
+      }
+    },
+    {
+      "rank": 1048,
+      "score": {
+        "type": "reps",
+        "value": 148
+      }
+    },
+    {
+      "rank": 1053,
+      "score": {
+        "type": "reps",
+        "value": 148
+      }
+    },
+    {
+      "rank": 1061,
+      "score": {
+        "type": "reps",
+        "value": 147
+      }
+    },
+    {
+      "rank": 1103,
+      "score": {
+        "type": "reps",
+        "value": 144
+      }
+    },
+    {
+      "rank": 1105,
+      "score": {
+        "type": "reps",
+        "value": 144
+      }
+    },
+    {
+      "rank": 1105,
+      "score": {
+        "type": "reps",
+        "value": 144
+      }
+    },
+    {
+      "rank": 1125,
+      "score": {
+        "type": "reps",
+        "value": 142
+      }
+    },
+    {
+      "rank": 1129,
+      "score": {
+        "type": "reps",
+        "value": 142
+      }
+    },
+    {
+      "rank": 1134,
+      "score": {
+        "type": "reps",
+        "value": 141
+      }
+    },
+    {
+      "rank": 1138,
+      "score": {
+        "type": "reps",
+        "value": 141
+      }
+    },
+    {
+      "rank": 1141,
+      "score": {
+        "type": "reps",
+        "value": 141
+      }
+    },
+    {
+      "rank": 1152,
+      "score": {
+        "type": "reps",
+        "value": 140
+      }
+    },
+    {
+      "rank": 1164,
+      "score": {
+        "type": "reps",
+        "value": 139
+      }
+    },
+    {
+      "rank": 1186,
+      "score": {
+        "type": "reps",
+        "value": 138
+      }
+    },
+    {
+      "rank": 1189,
+      "score": {
+        "type": "reps",
+        "value": 138
+      }
+    },
+    {
+      "rank": 1207,
+      "score": {
+        "type": "reps",
+        "value": 137
+      }
+    },
+    {
+      "rank": 1211,
+      "score": {
+        "type": "reps",
+        "value": 137
+      }
+    },
+    {
+      "rank": 1218,
+      "score": {
+        "type": "reps",
+        "value": 136
+      }
+    },
+    {
+      "rank": 1221,
+      "score": {
+        "type": "reps",
+        "value": 136
+      }
+    },
+    {
+      "rank": 1231,
+      "score": {
+        "type": "reps",
+        "value": 135
+      }
+    },
+    {
+      "rank": 1247,
+      "score": {
+        "type": "reps",
+        "value": 135
+      }
+    },
+    {
+      "rank": 1248,
+      "score": {
+        "type": "reps",
+        "value": 135
+      }
+    },
+    {
+      "rank": 1251,
+      "score": {
+        "type": "reps",
+        "value": 134
+      }
+    },
+    {
+      "rank": 1275,
+      "score": {
+        "type": "reps",
+        "value": 134
+      }
+    },
+    {
+      "rank": 1308,
+      "score": {
+        "type": "reps",
+        "value": 132
+      }
+    },
+    {
+      "rank": 1314,
+      "score": {
+        "type": "reps",
+        "value": 131
+      }
+    },
+    {
+      "rank": 1359,
+      "score": {
+        "type": "reps",
+        "value": 122
+      }
+    },
+    {
+      "rank": 1364,
+      "score": {
+        "type": "reps",
+        "value": 121
+      }
+    },
+    {
+      "rank": 1369,
+      "score": {
+        "type": "reps",
+        "value": 120
+      }
+    },
+    {
+      "rank": 1380,
+      "score": {
+        "type": "reps",
+        "value": 117
+      }
+    },
+    {
+      "rank": 1391,
+      "score": {
+        "type": "reps",
+        "value": 114
+      }
+    },
+    {
+      "rank": 1396,
+      "score": {
+        "type": "reps",
+        "value": 112
+      }
+    },
+    {
+      "rank": 1401,
+      "score": {
+        "type": "reps",
+        "value": 109
+      }
+    }
+  ]
+}
