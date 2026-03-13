@@ -6,6 +6,8 @@
         'https://api.codetabs.com/v1/proxy?quest='
     ];
     var PER_PAGE = 50;
+    // 정적 데이터가 없는 (진행 중) 이벤트 목록
+    var IN_PROGRESS = { '2026_3': true };
 
     // 워크아웃 요약 데이터
     var EVENTS = {
@@ -397,11 +399,42 @@
     // 이벤트 리스너
     // =====================
 
+    function isInProgress() {
+        return IN_PROGRESS[currentYear + '_' + currentEvent] === true;
+    }
+
+    var scoreSection = document.querySelector('.pct-section:last-of-type') || calcBtn.parentElement;
+
+    function checkInProgress() {
+        if (isInProgress()) {
+            // 입력 영역 비활성화
+            calcBtn.disabled = true;
+            scoreRadios.forEach(function(r) { r.disabled = true; });
+            timeMinInput.disabled = true;
+            timeSecInput.disabled = true;
+            repsInput.disabled = true;
+            scoreSection.style.opacity = '0.4';
+            scoreSection.style.pointerEvents = 'none';
+            // 바로 진행 중 표시
+            showInProgress();
+        } else {
+            calcBtn.disabled = false;
+            scoreRadios.forEach(function(r) { r.disabled = false; });
+            timeMinInput.disabled = false;
+            timeSecInput.disabled = false;
+            repsInput.disabled = false;
+            scoreSection.style.opacity = '';
+            scoreSection.style.pointerEvents = '';
+            resultSection.style.display = 'none';
+        }
+    }
+
     function updateSummary() {
         summaryYear.textContent = currentYear;
         summaryDiv.textContent = currentDivision === 1 ? 'Male' : 'Female';
         summaryEvent.textContent = currentYear.toString().slice(2) + '.' + currentEvent;
         updateEventInfo();
+        checkInProgress();
     }
 
     // 연도 토글
