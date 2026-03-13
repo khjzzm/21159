@@ -1,0 +1,79 @@
+# 21-15-9
+
+> CrossFit & Weightlifting Tools — 크로스핏과 웨이트리프팅을 위한 종합 도구
+
+21-15-9.com은 크로스핏 선수와 웨이트리프터를 위한 무료 웹 도구 모음입니다.
+
+## Pages
+
+### Open Percentile
+- URL: https://21-15-9.com/open-percentile/
+- 크로스핏 오픈 점수를 입력하면 한국 참가자 중 상위 몇%인지 실시간 계산
+- 2024~2026 오픈 지원, 남녀 구분, RX 기준
+- CrossFit Games 리더보드 데이터 기반
+
+### CrossFit Open Archive
+- URL: https://21-15-9.com/crossfit-wod/
+- 2011~2026 모든 CrossFit Open 워크아웃 아카이브
+- 남녀별 중량, 박스 높이, Time Cap 정보
+
+### Hero & Tribute Workouts
+- URL: https://21-15-9.com/hero-wod/
+- 243개 크로스핏 히어로 & 트리뷰트 워크아웃 전체 아카이브
+- 워크아웃 이름 또는 동작으로 실시간 검색
+- 각 워크아웃의 헌정 대상 및 배경 스토리
+
+### The Girls — Benchmark WODs
+- URL: https://21-15-9.com/the-girls/
+- Fran, Grace, Diane 등 16개 벤치마크 WOD
+- 레벨별 목표 시간 (Beginner / Intermediate / Advanced / Elite)
+- 남녀별 레벨 기준 분리
+
+### NSCA 1RM Calculator
+- URL: https://21-15-9.com/nsca/
+- NSCA 공식 기반 1RM~10RM 최대중량 추정
+- 스쿼트, 벤치프레스, 데드리프트 지원
+- KG/LB 단위 변환
+
+### LB / KG Converter
+- URL: https://21-15-9.com/convert/
+- 파운드(LB) ↔ 킬로그램(KG) 실시간 무게 단위 변환
+
+### Plate Calculator
+- URL: https://21-15-9.com/plates/
+- 목표 무게에 필요한 올림픽 규격 바벨 플레이트 조합 자동 계산
+- KG/LB 바벨 규격 모두 지원
+
+### Erg Calculator
+- URL: https://21-15-9.com/erg/
+- 로잉, 스키에르그, 어썰트바이크 페이스 & 칼로리 계산기
+- Concept2 공식 기반 체중 보정 칼로리
+
+### Weightlifting Lift Correlation
+- URL: https://21-15-9.com/weightlifting/
+- 백 스쿼트 기준 스내치 60~65%, 클린 앤 저크 80~85% 등 동작 간 상관관계 계산
+- 8개 동작 지원, KG/LB 실시간 변환
+
+### Weightlifting Record
+- URL: https://21-15-9.com/weightlifting-record/
+- IWF 남녀 역도 세계 기록 현황
+- 체급별 인상(Snatch), 용상(Clean & Jerk), 합계(Total)
+
+### Search WOD
+- URL: https://21-15-9.com/search-wod/
+- 동작, 장비별 크로스핏 워크아웃 검색
+
+### Random WOD
+- URL: https://21-15-9.com/random-wod/
+- 랜덤 크로스핏 워크아웃 생성기
+
+### Timer
+- URL: https://21-15-9.com/timer/
+- For Time, AMRAP, EMOM, TABATA 4가지 타이머
+- 키보드 단축키 지원
+
+## Tech
+- Static site (HTML/CSS/JS), hosted on GitHub Pages
+- No backend, no login required
+- PWA support for offline use
+- Korean language (한국어)
