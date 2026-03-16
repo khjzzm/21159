@@ -1,4 +1,4 @@
-const CACHE_NAME = '21-15-9-v1.8.0';
+const CACHE_NAME = '21-15-9-v1.9.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -63,6 +63,10 @@ const urlsToCache = [
   '/open-percentile/index.html',
   '/open-percentile/percentile.js',
   '/open-percentile/percentile.css',
+  '/benchmark/',
+  '/benchmark/index.html',
+  '/benchmark/benchmark.js',
+  '/benchmark/benchmark.css',
   '/assets/favicon.svg',
   '/assets/icon-192.svg',
   '/assets/icon-512.svg',

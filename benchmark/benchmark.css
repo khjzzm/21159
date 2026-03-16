@@ -1,0 +1,339 @@
+/* =========================
+   Benchmark Stats Page
+========================= */
+
+/* Action bar */
+.bm-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bm-summary {
+    font-size: 14px;
+    color: var(--text-tertiary);
+}
+
+.bm-summary strong {
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.bm-action-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.bm-action-btn {
+    background: none;
+    border: 1px solid var(--border-light);
+    color: var(--text-tertiary);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.bm-action-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.bm-action-btn.clear-btn {
+    border-color: rgba(255, 77, 77, 0.3);
+    color: rgba(255, 77, 77, 0.6);
+}
+
+.bm-action-btn.clear-btn:hover {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.08);
+}
+
+/* Search */
+.bm-search-box {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.bm-search-box input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: 1px solid var(--border-medium);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+    height: auto;
+    margin-bottom: 0;
+}
+
+.bm-search-box input:focus {
+    border-color: var(--accent-primary);
+}
+
+.bm-search-box input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.bm-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+    font-size: 14px;
+}
+
+/* Category Tabs */
+.bm-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+}
+
+.bm-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.bm-tab {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.bm-tab:hover {
+    color: var(--text-secondary);
+    border-color: var(--border-medium);
+}
+
+.bm-tab.active {
+    color: #1a1a1a;
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Category - Grid Layout */
+.bm-category {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.bm-category-header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 0 6px;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 2px;
+}
+
+.bm-category-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.bm-category-count {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    background: var(--bg-tertiary);
+    padding: 2px 7px;
+    border-radius: 10px;
+}
+
+/* Benchmark Item - Card */
+.bm-item {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    transition: all 0.15s;
+    gap: 4px;
+}
+
+.bm-item:hover {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.bm-item.filled {
+    background: rgba(224, 253, 83, 0.04);
+    border-color: rgba(224, 253, 83, 0.1);
+}
+
+.bm-name {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.3;
+}
+
+.bm-item.filled .bm-name {
+    color: var(--text-secondary);
+}
+
+.bm-input {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0;
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    padding: 2px 0;
+    height: auto;
+    margin-bottom: 0;
+    transition: all 0.2s;
+}
+
+.bm-input::placeholder {
+    color: rgba(255, 255, 255, 0.12);
+    font-weight: 400;
+}
+
+.bm-input:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.bm-input:focus {
+    outline: none;
+    border-bottom-color: var(--accent-primary);
+    color: var(--text-primary);
+    box-shadow: none;
+}
+
+.bm-item.filled .bm-input {
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+/* No results */
+#no-results {
+    grid-column: 1 / -1;
+}
+
+/* Scroll top button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .bm-category {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bm-tabs {
+        gap: 6px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bm-category {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+
+    .bm-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bm-action-btns {
+        justify-content: flex-end;
+    }
+
+    .bm-tabs {
+        gap: 5px;
+        margin-bottom: 14px;
+    }
+
+    .bm-tab {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    .bm-item {
+        padding: 7px 8px;
+    }
+
+    .bm-name {
+        font-size: 11px;
+    }
+
+    .bm-input {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bm-category {
+        gap: 4px;
+    }
+
+    .bm-search-box input {
+        padding: 10px 14px 10px 38px;
+        font-size: 13px;
+    }
+
+    .bm-tab {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+
+    .bm-item {
+        padding: 6px 7px;
+    }
+
+    .bm-name {
+        font-size: 10px;
+    }
+
+    .bm-input {
+        font-size: 12px;
+    }
+
+    .bm-category-header {
+        padding: 12px 0 4px;
+    }
+}

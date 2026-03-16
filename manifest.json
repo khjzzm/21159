@@ -121,6 +121,13 @@
       "description": "크로스핏 오픈 점수 한국 상위 퍼센타일 계산기",
       "url": "/open-percentile",
       "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Benchmark Stats",
+      "short_name": "Benchmark",
+      "description": "크로스핏 벤치마크 개인 기록 관리",
+      "url": "/benchmark",
+      "icons": [{ "src": "/assets/favicon.svg", "sizes": "any" }]
     }
   ]
 }
