@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let emomRestTime = 20;
     let intervalTime = 60;
 
-    // 준비시간 관련 변수
+    // 준비시간 관련 변수 (설정 UI 없이 10초 고정)
     let isPrepPhase = false;
     let prepStartTime = 0;
-    let prepTime = 10;
+    const prepTime = 10;
 
     // DOM 요소
     var timeDisplay = document.getElementById('timeDisplay');
@@ -159,11 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // 타이머 시작
     function startTimer() {
         initAudio(); // 사용자 상호작용 후 오디오 컨텍스트 초기화
-
-        // 준비시간 설정
-        var prepTimeInput = document.getElementById('prepTime');
-        prepTime = prepTimeInput ? parseInt(prepTimeInput.value) : 10;
-        if (isNaN(prepTime) || prepTime < 0) prepTime = 10;
 
         if (prepTime > 0) {
             // 준비시간부터 시작
@@ -597,18 +592,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // 준비시간 설정 변경 감지
-    var prepTimeInput = document.getElementById('prepTime');
-    if (prepTimeInput) {
-        prepTimeInput.addEventListener('input', function() {
-            if (!isRunning) {
-                // 타이머가 실행 중이 아닐 때만 반영
-                prepTime = parseInt(this.value);
-                if (isNaN(prepTime) || prepTime < 0) prepTime = 10;
-            }
-        });
-    }
 
     // 키보드 단축키
     document.addEventListener('keydown', function(e) {
