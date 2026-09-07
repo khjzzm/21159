@@ -308,6 +308,18 @@ body {
     padding: 20px 0;
 }
 
+/* 애드센스 광고 영역 */
+.ad-container {
+    width: 100%;
+    margin: 32px 0 24px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ad-container .adsbygoogle {
+    display: block;
+}
+
 /* 페이지 헤더 */
 .page-header {
     text-align: center;
